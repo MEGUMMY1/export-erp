@@ -136,3 +136,13 @@
 body {
   @apply bg-gray-10 font-sans text-body-md text-gray-90 antialiased;
 }
+
+/* Tailwind v4는 버튼 기본 커서가 default — 클릭 가능한 요소는 pointer로 */
+@layer base {
+  button:not(:disabled),
+  [role='button'],
+  [role='option'],
+  [role='tab'] {
+    cursor: pointer;
+  }
+}

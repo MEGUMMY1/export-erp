@@ -33,7 +33,7 @@ export function Chip({ tone = 'default', size = 'sm', className, children }: Chi
   return (
     <span
       className={cn(
-        'inline-flex shrink-0 items-center justify-center gap-1 rounded-full border whitespace-nowrap',
+        'inline-flex shrink-0 cursor-pointer items-center justify-center gap-1 rounded-full border whitespace-nowrap',
         toneClass[tone],
         sizeClass[size],
         className,

@@ -29,9 +29,11 @@ export function TaskList({ tasks, user }: { tasks: Task[]; user: User }) {
       {tasks.length === 0 ? (
         <p className="px-5 py-6 text-body-md text-gray-70">지금 처리할 업무가 없습니다.</p>
       ) : (
-        <ul className="grid grid-cols-2 [&>li:nth-child(2n)]:border-l [&>li:nth-child(n+3)]:border-t">
+        // 1px 간격 + 배경색으로 구분선을 그려, 개수가 홀수여도 선이 끊기지 않게 한다
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-b-xl bg-gray-20">
+          {tasks.length % 2 === 1 && <li aria-hidden className="order-last bg-white" />}
           {tasks.map((t) => (
-            <li key={t.id} className="border-gray-20">
+            <li key={t.id} className="bg-white">
               <button
                 type="button"
                 onClick={() => navigate(t.to)}
