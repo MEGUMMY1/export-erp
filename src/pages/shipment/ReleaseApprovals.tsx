@@ -6,7 +6,7 @@ import { GateLabel } from '@/components/domain/RiskChip'
 import { Button, Chip, toast } from '@/components/ui'
 import { GATE_META } from '@/domain/constants'
 import { dday, formatDate, formatDateTime, formatKRW } from '@/domain/format'
-import { can, isOpenRelease, isOverdue, permissionHint, type Evaluation } from '@/domain/rules'
+import { can, canApproveRelease, isOpenRelease, isOverdue, permissionHint, type Evaluation } from '@/domain/rules'
 import type { ConditionalRelease, ErpData, Role } from '@/domain/types'
 import { useErpStore } from '@/store'
 
@@ -36,11 +36,8 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
     }
   }
 
-  /** 요청 이후 생긴 차단(Hard) 항목 — 있으면 승인 불가 */
-  const blockedReason = (vehicleId: string) => {
-    const hard = evals[vehicleId]?.gates.filter((g) => g.severity === 'HARD') ?? []
-    return hard.length ? `차단 항목이 있어 승인할 수 없습니다: ${hard.map((g) => `[${g.code}] ${g.title}`).join(', ')}` : undefined
-  }
+  /** 승인할 수 없는 사유 — 요청 이후 생긴 차단 항목, 책임자 미해소 한도 */
+  const blockedReason = (release: ConditionalRelease) => canApproveRelease(release, data).reasons[0]
 
   const decide = (approve: boolean) => (note: string) => {
     if (!target) return false
@@ -59,7 +56,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
           const v = data.vehicles[r.vehicleId]
           const gates = evals[r.vehicleId]?.gates.filter((g) => r.gateCodes.includes(g.code)) ?? []
           const t = track(r.ownerId)
-          const blocked = blockedReason(r.vehicleId)
+          const blocked = blockedReason(r)
           return (
             <Panel
               key={r.id}
@@ -89,7 +86,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
                 </Field>
                 <Field label="책임자 이행 이력">
                   <span className={t.overdue || t.writtenOff ? 'text-red-60' : undefined}>
-                    미해소 {t.open}건 · 기한 초과 {t.overdue}건 · 지연 보완 {t.late}건 · 불공제 확정 {t.writtenOff}건
+                    미해소 {t.open}/{data.policy.perUserOpenLimit}건 · 기한 초과 {t.overdue}건 · 지연 보완 {t.late}건 · 불공제 확정 {t.writtenOff}건
                   </span>
                 </Field>
               </dl>
@@ -153,7 +150,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
         <DecisionModal
           title="조건부 선적 결재"
           notePlaceholder={`승인 메모 (비우면 '보완 기한 ${formatDate(target.dueDate)} 엄수') / 반려 사유 (필수)`}
-          approveBlockedReason={blockedReason(target.vehicleId)}
+          approveBlockedReason={blockedReason(target)}
           onApprove={decide(true)}
           onReject={decide(false)}
           onClose={() => setTarget(null)}

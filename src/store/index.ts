@@ -7,6 +7,7 @@ import { evaluateGates } from '@/domain/gates'
 import {
   can,
   canAddToSlip,
+  canApproveRelease,
   canConfirmPurchase,
   canRequestRelease,
   canWriteOff,
@@ -774,9 +775,9 @@ export const useErpStore = create<ErpState>()(
           if (!r || r.status !== 'PENDING') return fail('결재 대기 중인 요청이 아닙니다.')
           if (!approve && !note.trim()) return fail('반려 사유를 입력해 주세요.')
           if (approve) {
-            // 요청 이후 차단 항목이 생겼으면 승인할 수 없다 (예: VIN 재조회에서 압류 확인)
-            const hard = evaluateGates(r.vehicleId, data).filter((g) => g.severity === 'HARD')
-            if (hard.length) return fail(`차단 항목이 있어 승인할 수 없습니다: ${hard.map((g) => `[${g.code}] ${g.title}`).join(', ')}`)
+            // 요청 이후 차단 항목이 생겼거나(예: VIN 재조회 압류) 책임자의 미해소 건이 한도에 차 있으면 승인할 수 없다
+            const guard = canApproveRelease(r, data)
+            if (!guard.ok) return guard
           }
           const decisionNote = note.trim() || `보완 기한 ${formatDate(r.dueDate)} 엄수`
           commit(

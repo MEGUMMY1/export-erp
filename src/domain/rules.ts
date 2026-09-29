@@ -138,6 +138,19 @@ export function releaseDueDate(days: number, policy: ErpData['policy']): { dueDa
 /** 승인됐지만 아직 보완이 끝나지 않은 조건부 선적 */
 export const isOpenRelease = (release: ConditionalRelease) => release.status === 'APPROVED' && !release.resolvedAt
 
+/**
+ * 조건부 선적 승인 가능 여부 — 요청 이후 차단 항목이 생겼거나, 책임자의 미해소 건이 한도에 차 있으면 승인할 수 없다.
+ * 한도는 "승인됐지만 보완이 끝나지 않은 건" 기준이며 결재 대기 건은 세지 않는다. 대신 요청 시점과 승인 시점에 모두 검사한다.
+ */
+export function canApproveRelease(release: ConditionalRelease, db: ErpData): Guard {
+  const hard = evaluateGates(release.vehicleId, db).filter((g) => g.severity === 'HARD')
+  const open = db.releases.filter((r) => r.ownerId === release.ownerId && isOpenRelease(r)).length
+  return guard([
+    hard.length > 0 && `차단 항목이 있어 승인할 수 없습니다: ${hard.map((g) => `[${g.code}] ${g.title}`).join(', ')}`,
+    open >= db.policy.perUserOpenLimit && `책임자의 미해소 조건부 선적이 한도(${db.policy.perUserOpenLimit}건)에 차 있어 승인할 수 없습니다.`,
+  ])
+}
+
 export function canRequestRelease(vehicleId: string, userId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
   const stage = db.vehicles[vehicleId].stage
   const mine = db.releases.filter((r) => r.ownerId === userId)

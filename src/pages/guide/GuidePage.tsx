@@ -190,7 +190,10 @@ export function GuidePage() {
                 최대 {policy.conditionalDueDays}일 (단축만 가능)
                 <span className="block text-caption-md text-gray-70">단, 부가세 신고 마감 {policy.filingBufferDays}일 전을 넘길 수 없음</span>
               </Field>
-              <Field label="담당자별 미해소 조건부 선적 한도">{policy.perUserOpenLimit}건</Field>
+              <Field label="담당자별 미해소 조건부 선적 한도">
+                {policy.perUserOpenLimit}건
+                <span className="block text-caption-md text-gray-70">승인됐지만 보완이 끝나지 않은 건 기준 (결재 대기 제외) · 요청과 승인 시점에 모두 검사</span>
+              </Field>
               <Field label="기한 초과 시">
                 해당 담당자의 신규 조건부 선적 요청 제한
                 <span className="block text-caption-md text-gray-70">늦게 보완돼도 이행 이력에 지연 보완으로 남음</span>
