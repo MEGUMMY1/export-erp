@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
 import { ROLE_LABEL, TODAY } from '@/domain/constants'
 import { dday, formatDate } from '@/domain/format'
+import { can, type Permission } from '@/domain/rules'
 import { cn } from '@/lib/cn'
 import { useCurrentUser, useData, useErpStore } from '@/store'
 import { Dropdown, Modal, toast } from '@/components/ui'
@@ -9,13 +10,14 @@ import { isUnread, notificationsFor } from '@/domain/notifications'
 import { NotificationCenter } from './NotificationCenter'
 import { usePageTitleStore } from './pageTitle'
 
-const NAV = [
+// 등록 화면은 권한이 있는 역할에게만 메뉴를 보여준다 (조회 화면은 모두에게)
+const NAV: { section: string; items: { to: string; label: string; permission?: Permission }[] }[] = [
   { section: '현황', items: [{ to: '/workbench', label: '업무 현황' }] },
   {
     section: '업무 등록',
     items: [
-      { to: '/purchases/new', label: '매입 등록' },
-      { to: '/sales/new', label: '판매 등록' },
+      { to: '/purchases/new', label: '매입 등록', permission: 'REGISTER_PURCHASE' },
+      { to: '/sales/new', label: '판매 등록', permission: 'REGISTER_SALE' },
     ],
   },
   { section: '선적', items: [{ to: '/shipments', label: '선적 승인' }] },
@@ -31,6 +33,9 @@ export function AppLayout() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [resetOpen, setResetOpen] = useState(false)
+  const nav = NAV.map((group) => ({ ...group, items: group.items.filter((n) => !n.permission || can(user.role, n.permission)) })).filter(
+    (group) => group.items.length > 0,
+  )
 
   // 화면이 바뀌면 맨 위부터 보여준다
   useEffect(() => {
@@ -55,7 +60,7 @@ export function AppLayout() {
           <p className="mt-1 text-title-md text-gray-10">수출 관리</p>
         </div>
         <nav className="flex flex-col gap-5 py-5">
-          {NAV.map((group) => (
+          {nav.map((group) => (
             <div key={group.section} className="flex flex-col gap-2">
               <p className="px-1 text-label-xs text-gray-70">{group.section}</p>
               {group.items.map((n) => (

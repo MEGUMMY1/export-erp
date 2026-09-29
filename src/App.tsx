@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router'
 import { AppLayout } from './components/layout/AppLayout'
+import { RequirePermission } from './components/layout/RequirePermission'
 import { Toaster } from './components/ui'
 import { GuidePage } from './pages/guide/GuidePage'
 import { PurchasePage } from './pages/purchase/PurchasePage'
@@ -15,8 +16,22 @@ function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/workbench" replace />} />
           <Route path="/workbench" element={<WorkbenchPage />} />
-          <Route path="/purchases/new" element={<PurchasePage />} />
-          <Route path="/sales/new" element={<SalePage />} />
+          <Route
+            path="/purchases/new"
+            element={
+              <RequirePermission permission="REGISTER_PURCHASE" title="매입 등록">
+                <PurchasePage />
+              </RequirePermission>
+            }
+          />
+          <Route
+            path="/sales/new"
+            element={
+              <RequirePermission permission="REGISTER_SALE" title="판매 등록">
+                <SalePage />
+              </RequirePermission>
+            }
+          />
           <Route path="/shipments" element={<ShipmentsPage />} />
           <Route path="/vehicles/:id" element={<VehicleDetailPage />} />
           <Route path="/guide" element={<GuidePage />} />
