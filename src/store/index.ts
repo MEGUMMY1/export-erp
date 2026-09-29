@@ -95,11 +95,11 @@ function crossCheckNotes(vehicleId: string, db: ErpData): NewNotification[] {
 
   const mismatch = pick(['S2', 'S8'])
   if (mismatch.length) {
-    // 증빙 없는 매입을 과세 매출로 처리 → 부가세 이중 손실로 격상
+    // 증빙 없는 매입을 과세 매출로 처리하면 제목에 부가세 이중 손실을 밝힌다 (보완 항목이므로 경고 수준)
     const doubleLoss = mismatch.some((g) => g.code === 'S8' && g.vatImpact)
     notes.push({
       ...base,
-      severity: doubleLoss ? 'error' : 'warning',
+      severity: 'warning',
       title: doubleLoss ? '거래 유형 불일치 · 부가세 이중 손실' : '거래 유형 불일치',
       message: `${plate} · ${mismatch.map((g) => g.title).join(', ')}${amount(mismatch)}`,
     })

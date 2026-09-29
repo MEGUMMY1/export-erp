@@ -65,9 +65,9 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
 
     taxTreatment === 'DOMESTIC' && vat.unsecured > 0
       ? {
-          // 원문의 "현금으로 매입해 놓고 계산서 매출로 잡아 버리는" 경우
+          // 원문의 "현금으로 매입해 놓고 계산서 매출로 잡아 버리는" 경우 — [S8]은 보완 항목이므로 차단 색(빨강)을 쓰지 않는다
           key: 'vat',
-          status: 'error',
+          status: 'warn',
           title: '거래 유형 · 부가세 이중 손실',
           result: `증빙 미확보 예상 금액 ${formatKRW(vat.unsecured)}`,
           note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}인데 국내 과세 매출이라 매출세액${saleKrw ? ` ${formatKRW(inputVat(saleKrw))}` : ''}까지 발생합니다. 회계 팀장 확인 전에는 진행할 수 없습니다.`,

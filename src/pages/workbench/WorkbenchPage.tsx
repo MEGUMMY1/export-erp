@@ -72,6 +72,7 @@ export function WorkbenchPage() {
   const isReady = (v: Vehicle) => canAddToSlip(v.id, data, evals[v.id]).ok
   const riskCount = (f: RiskFilter) =>
     f === 'ALL' ? exportBase.length : f === 'READY' ? exportBase.filter(isReady).length : exportBase.filter((v) => evals[v.id].risk === f).length
+  const readyConditional = exportBase.filter((v) => isReady(v) && evals[v.id].risk !== 'CLEAR').length
 
   const exportRows = exportBase
     .filter((v) => (risk === 'ALL' ? true : risk === 'READY' ? isReady(v) : evals[v.id].risk === risk))
@@ -133,6 +134,12 @@ export function WorkbenchPage() {
               RISK_FILTERS.map((f) => (
                 <FilterChip key={f.value} selected={risk === f.value} onClick={() => setParam('risk', f.value === 'ALL' ? null : f.value)}>
                   {f.label} <span className="text-gray-50">{riskCount(f.value)}</span>
+                  {/* 전표 편입 가능 = 정상 + 서류 항목을 조건부 승인받은 보완 차량 */}
+                  {f.value === 'READY' && readyConditional > 0 && (
+                    <span className="text-gray-50">
+                      (정상 {riskCount('READY') - readyConditional} + 조건부 승인 {readyConditional})
+                    </span>
+                  )}
                 </FilterChip>
               ))}
             <div className="ml-auto flex items-center gap-2">
