@@ -1,1 +1,138 @@
 @import 'tailwindcss';
+
+/*
+ * 디자인 토큰 — 색·타이포는 여기서만 정의하고 컴포넌트는 토큰 이름만 사용한다.
+ * Tailwind 기본 팔레트는 비우고 아래 팔레트만 사용한다.
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-brand-10: #eef1f8;
+  --color-brand-20: #d5dcf0;
+  --color-brand-30: #aab8e0;
+  --color-brand-60: #2e50a0;
+  --color-brand-70: #1e3b80;
+  --color-brand-80: #102660;
+  --color-brand-90: #071540;
+
+  --color-gray-10: #f7f7f8;
+  --color-gray-20: #efeff1;
+  --color-gray-30: #e3e3e7;
+  --color-gray-40: #d1d1d7;
+  --color-gray-50: #b8b8c0;
+  --color-gray-60: #b8b8c0;
+  --color-gray-70: #72727c;
+  --color-gray-80: #515159;
+  --color-gray-90: #353535;
+  --color-gray-100: #161618;
+
+  --color-green-10: #edfaf2;
+  --color-green-30: #87dda8;
+  --color-green-40: #3dc274;
+  --color-green-50: #19a356;
+  --color-green-60: #0e8040;
+
+  --color-orange-10: #fff5eb;
+  --color-orange-30: #ffc07a;
+  --color-orange-60: #b85500;
+
+  --color-red-10: #fff0ee;
+  --color-red-30: #ffa59a;
+  --color-red-40: #f0574a;
+  --color-red-50: #d93025;
+  --color-red-60: #b01d14;
+
+  --color-blue-10: #ebf3ff;
+  --color-blue-30: #85bcff;
+  --color-blue-60: #0f5ebf;
+
+  --font-sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+
+  /* Typography — letter-spacing은 % 값을 em으로 환산 */
+  --text-title-xl: 32px;
+  --text-title-xl--line-height: 40px;
+  --text-title-xl--letter-spacing: -0.02em;
+  --text-title-xl--font-weight: 700;
+  --text-title-lg: 24px;
+  --text-title-lg--line-height: 31px;
+  --text-title-lg--letter-spacing: -0.015em;
+  --text-title-lg--font-weight: 700;
+  --text-title-md: 20px;
+  --text-title-md--line-height: 27px;
+  --text-title-md--letter-spacing: -0.01em;
+  --text-title-md--font-weight: 600;
+  --text-title-sm: 16px;
+  --text-title-sm--line-height: 22px;
+  --text-title-sm--letter-spacing: -0.005em;
+  --text-title-sm--font-weight: 600;
+
+  --text-subtitle-lg: 18px;
+  --text-subtitle-lg--line-height: 25px;
+  --text-subtitle-lg--letter-spacing: -0.01em;
+  --text-subtitle-lg--font-weight: 600;
+  --text-subtitle-md: 15px;
+  --text-subtitle-md--line-height: 22px;
+  --text-subtitle-md--font-weight: 600;
+  --text-subtitle-sm: 13px;
+  --text-subtitle-sm--line-height: 20px;
+  --text-subtitle-sm--letter-spacing: 0.01em;
+  --text-subtitle-sm--font-weight: 500;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 26px;
+  --text-body-lg--letter-spacing: -0.005em;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 22px;
+  --text-body-md-m: 14px;
+  --text-body-md-m--line-height: 22px;
+  --text-body-md-m--font-weight: 500;
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 20px;
+
+  --text-caption-md: 13px;
+  --text-caption-md--line-height: 20px;
+  --text-caption-md-m: 13px;
+  --text-caption-md-m--line-height: 20px;
+  --text-caption-md-m--font-weight: 500;
+  --text-caption-sm: 12px;
+  --text-caption-sm--line-height: 18px;
+  --text-caption-sm--letter-spacing: 0.01em;
+
+  --text-label-xl: 16px;
+  --text-label-xl--line-height: 20px;
+  --text-label-xl--font-weight: 500;
+  --text-label-lg: 14px;
+  --text-label-lg--line-height: 17px;
+  --text-label-lg--font-weight: 500;
+  --text-label-md: 13px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--font-weight: 500;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 14px;
+  --text-label-sm--letter-spacing: 0.02em;
+  --text-label-sm--font-weight: 500;
+  --text-label-xs: 11px;
+  --text-label-xs--line-height: 13px;
+  --text-label-xs--letter-spacing: 0.06em;
+  --text-label-xs--font-weight: 500;
+
+  --text-btn-lg: 16px;
+  --text-btn-lg--line-height: 16px;
+  --text-btn-lg--letter-spacing: -0.01em;
+  --text-btn-lg--font-weight: 600;
+  --text-btn-md: 14px;
+  --text-btn-md--line-height: 14px;
+  --text-btn-md--font-weight: 600;
+  --text-btn-sm: 13px;
+  --text-btn-sm--line-height: 13px;
+  --text-btn-sm--font-weight: 600;
+
+  --shadow-modal: 0 0 10px 0 rgb(0 0 0 / 0.1);
+  --shadow-toast: 2px 2px 20px 0 rgb(0 0 0 / 0.1);
+}
+
+body {
+  @apply bg-gray-10 font-sans text-body-md text-gray-90 antialiased;
+}

@@ -21,3 +21,8 @@
 - 정상 차량은 선적 전표 단위 일괄 결재, 조건부 선적만 회계 팀장 개별 결재
 - 화면은 5개로 축소, 기준정보 관리 화면 제외
 - 세법은 단정하지 않고 회계팀 소유의 규칙 테이블(Policy)로 분리
+- 최종 제출 기획서는 개발 완료 후 HTML 보고서 형식으로 제작 (docs/planning.md는 작업용 원본)
+- 공통 UI는 과제에 실제 쓰이는 것만: Button, Chip, Modal, Toast (src/components/ui)
+- 색·타이포는 index.css @theme 디자인 토큰으로만 관리 (Tailwind 기본 팔레트 제거, bg-brand-70 / text-title-lg 등)
+- 리스크 표시 매핑: 🟢 CLEAR → Chip success, 🟡 REVIEW → warning, 🔴 BLOCKED → error
+- 추후 필요 시 DS에서 가져올 후보: StepBar(진행 단계 타임라인), Tabs, Empty, TextField, Dropdown
