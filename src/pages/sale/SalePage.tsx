@@ -166,7 +166,8 @@ export function SalePage() {
               <Dropdown
                 size="sm"
                 label="관세사"
-                placeholder="미지정 — 통관 정보 누락으로 판정"
+                required={draft.taxTreatment !== 'DOMESTIC'}
+                placeholder={draft.taxTreatment === 'DOMESTIC' ? '국내 판매 — 해당 없음' : '수출신고를 맡을 관세사'}
                 value={draft.customsBroker}
                 onChange={(b) => update({ customsBroker: b })}
                 options={data.brokers.map((b) => ({ value: b, label: b }))}

@@ -132,7 +132,7 @@ addE(1, 'S5_LOSS', { lossNote: true, requester: 'U-SAL2', reason: '장기 재고
 addE(2, 'S5_LOSS')
 addE(2, 'S2_RECEIPT')
 addE(2, 'S3_AMOUNT')
-addE(4, 'S6_BROKER')
+addE(4, 'S6_SHIPDATE')
 addE(1, 'S7_PLATE')
 addE(2, 'S1_SUBMITTED')
 addE(2, 'H1_SEIZURE')
@@ -296,8 +296,9 @@ plan.forEach((p, i) => {
       ...(stageIdx >= 5 ? { shipmentRate: rates.USD + 5 } : {}),
       incoterms: pick(['FOB', 'FOB', 'FOB', 'CIF']),
       taxTreatment: 'ZERO_RATED',
-      customsBroker: p.scenario === 'S6_BROKER' ? undefined : pick(brokers),
-      expectedShipmentDate: stageIdx >= 5 ? ymd(9, 20) : ymd(10, int(3, 15)),
+      // 관세사는 판매 등록 필수 — S6은 예정 선적일 누락 (난수 순서를 바꾸지 않도록 값은 뽑은 뒤 비운다)
+      customsBroker: p.scenario === 'S6_SHIPDATE' ? brokers[0] : pick(brokers),
+      expectedShipmentDate: ((date) => (p.scenario === 'S6_SHIPDATE' ? undefined : date))(stageIdx >= 5 ? ymd(9, 20) : ymd(10, int(3, 15))),
       salesDate: ymd(9, sDay),
       salesPersonId,
     })

@@ -84,7 +84,7 @@
     "exchangeRate": 1381,
     "incoterms": "FOB",
     "taxTreatment": "ZERO_RATED",
-    "expectedShipmentDate": "2026-10-07",
+    "customsBroker": "한결관세사무소",
     "salesDate": "2026-09-18",
     "salesPersonId": "U-SAL2"
   },
@@ -953,7 +953,7 @@
     "exchangeRate": 1379,
     "incoterms": "FOB",
     "taxTreatment": "ZERO_RATED",
-    "expectedShipmentDate": "2026-10-06",
+    "customsBroker": "한결관세사무소",
     "salesDate": "2026-09-22",
     "salesPersonId": "U-SAL2"
   },
@@ -1057,7 +1057,7 @@
     "exchangeRate": 1393,
     "incoterms": "FOB",
     "taxTreatment": "ZERO_RATED",
-    "expectedShipmentDate": "2026-10-13",
+    "customsBroker": "한결관세사무소",
     "salesDate": "2026-09-21",
     "salesPersonId": "U-SAL2"
   },
@@ -1116,7 +1116,7 @@
     "exchangeRate": 1378,
     "incoterms": "FOB",
     "taxTreatment": "ZERO_RATED",
-    "expectedShipmentDate": "2026-10-03",
+    "customsBroker": "한결관세사무소",
     "salesDate": "2026-09-11",
     "salesPersonId": "U-SAL1"
   },

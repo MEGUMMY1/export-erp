@@ -20,6 +20,8 @@ export function validateSale(vehicleId: string | null, d: SaleDraft, db: ErpData
     vehicleId && db.vehicles[vehicleId]?.stage !== 'PURCHASE_CONFIRMED' && '매입 확정된 차량만 판매 등록할 수 있습니다.',
     !d.buyerId && '바이어를 선택해 주세요.',
     !(d.amount && d.amount > 0) && '판매가를 입력해 주세요.',
+    // 수출신고는 관세사가 하므로 수출 건은 관세사가 있어야 등록된다 (국내 판매는 해당 없음)
+    d.taxTreatment !== 'DOMESTIC' && !d.customsBroker && '관세사를 선택해 주세요.',
   ].filter(Boolean) as string[]
 }
 

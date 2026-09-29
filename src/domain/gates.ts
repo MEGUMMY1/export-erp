@@ -98,8 +98,8 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
 
     // 통관·수출신고 판정은 수출 건에만 (국내 판매는 선적 대상이 아니다)
     const exportSale = sale.taxTreatment !== 'DOMESTIC'
-    const saleMissing = [!sale.customsBroker && '관세사', !sale.expectedShipmentDate && '예정 선적일'].filter(Boolean)
-    if (exportSale && saleMissing.length) push('S6', `${saleMissing.join(' · ')} 정보가 없습니다.`)
+    // 관세사는 판매 등록 때 필수 — 선적 일정만 나중에 보완할 수 있다
+    if (exportSale && !sale.expectedShipmentDate) push('S6', '예정 선적일 정보가 없습니다. 선적 일정을 잡을 수 없습니다.')
 
     if (!exportSale) {
       // 현금·무증빙 매입을 과세 매출로 잡으면 매출세액은 내고 매입세액은 못 돌려받는다 (부가세 이중 손실)
