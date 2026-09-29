@@ -14,7 +14,7 @@ type Tab = 'slips' | 'releases'
 const STATUS_ORDER: ShipmentStatus[] = ['PENDING', 'APPROVED', 'SHIPPED', 'REJECTED']
 
 export function ShipmentsPage() {
-  usePageTitle('선적 전표 · 결재', '정상 차량은 전표 단위로 일괄 결재하고, 예외만 개별 결재합니다.')
+  usePageTitle('선적 승인', '정상 차량은 선적 전표 단위로 일괄 승인하고, 예외만 개별 결재합니다.')
   const data = useData()
   const evals = useEvaluations()
   const user = useCurrentUser()

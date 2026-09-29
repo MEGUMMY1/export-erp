@@ -18,7 +18,7 @@ const NAV = [
       { to: '/sales/new', label: '판매 등록' },
     ],
   },
-  { section: '선적', items: [{ to: '/shipments', label: '선적 전표 · 결재' }] },
+  { section: '선적', items: [{ to: '/shipments', label: '선적 승인' }] },
 ]
 
 export function AppLayout() {
