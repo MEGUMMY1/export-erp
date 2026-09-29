@@ -47,10 +47,12 @@ interface Props {
   gates: GateResult[]
   role: Role
   onAction: (kind: GateActionKind, gate: GateResult) => void
+  /** 지금 실행할 수 없는 액션과 그 사유 (예: 압류 차량의 인수 처리) */
+  blockedActions?: Partial<Record<GateActionKind, string>>
 }
 
 /** 게이트 판정 — 왜 막혔는지, 누가 무엇을 하면 풀리는지 */
-export function GatePanel({ gates, role, onAction }: Props) {
+export function GatePanel({ gates, role, onAction, blockedActions = {} }: Props) {
   const hard = gates.filter((g) => g.severity === 'HARD').length
   return (
     <Panel
@@ -87,13 +89,21 @@ export function GatePanel({ gates, role, onAction }: Props) {
                     <p className="mt-0.5 text-caption-md text-orange-60">미확보 매입세액 {formatKRW(g.vatImpact)}</p>
                   )}
                 </div>
-                <div className="shrink-0 pt-0.5">
+                <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">
                   {g.nextAction === 'STOP_DEAL' ? (
                     <span className="text-caption-md text-red-60">거래 중단 대상</span>
                   ) : action && allowed ? (
-                    <Button variant={g.severity === 'HARD' ? 'outlined-red' : 'outlined'} size="sm" onClick={() => onAction(action.kind, g)}>
-                      {action.label}
-                    </Button>
+                    <>
+                      <Button
+                        variant={g.severity === 'HARD' ? 'outlined-red' : 'outlined'}
+                        size="sm"
+                        disabled={!!blockedActions[action.kind]}
+                        onClick={() => onAction(action.kind, g)}
+                      >
+                        {action.label}
+                      </Button>
+                      {blockedActions[action.kind] && <span className="text-caption-sm text-gray-70">{blockedActions[action.kind]}</span>}
+                    </>
                   ) : (
                     <span className="text-caption-md text-gray-50">{ROLE_LABEL[g.ownerRole]} 담당 처리</span>
                   )}

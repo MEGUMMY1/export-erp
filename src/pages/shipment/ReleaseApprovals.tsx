@@ -31,6 +31,12 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
     return { open: mine.filter(isOpenRelease).length, overdue: mine.filter((r) => isOverdue(r, data)).length }
   }
 
+  /** 요청 이후 생긴 차단(Hard) 항목 — 있으면 승인 불가 */
+  const blockedReason = (vehicleId: string) => {
+    const hard = evals[vehicleId]?.gates.filter((g) => g.severity === 'HARD') ?? []
+    return hard.length ? `차단 항목이 있어 승인할 수 없습니다: ${hard.map((g) => `[${g.code}] ${g.title}`).join(', ')}` : undefined
+  }
+
   const decide = (approve: boolean) => (note: string) => {
     if (!target) return false
     const r = decideRelease(target.id, approve, note)
@@ -48,6 +54,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
           const v = data.vehicles[r.vehicleId]
           const gates = evals[r.vehicleId]?.gates.filter((g) => r.gateCodes.includes(g.code)) ?? []
           const t = track(r.ownerId)
+          const blocked = blockedReason(r.vehicleId)
           return (
             <Panel
               key={r.id}
@@ -82,6 +89,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
                 </Field>
               </dl>
               <div className="flex flex-col gap-3 border-t border-gray-20 pt-4">
+                {blocked && <p className="text-body-sm text-red-60">{blocked} — 반려만 가능합니다.</p>}
                 {gates.length ? (
                   gates.map((g) => (
                     <div key={g.code}>
@@ -140,6 +148,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
         <DecisionModal
           title="조건부 선적 결재"
           notePlaceholder={`승인 메모 (비우면 '보완 기한 ${formatDate(target.dueDate)} 엄수') / 반려 사유 (필수)`}
+          approveBlockedReason={blockedReason(target.vehicleId)}
           onApprove={decide(true)}
           onReject={decide(false)}
           onClose={() => setTarget(null)}

@@ -84,6 +84,11 @@ export function VehicleDetailPage() {
     else if (kind === 'RELEASE') setModal({ type: 'release' })
   }
 
+  // 압류·저당·도난 차량은 해제 확인(재조회) 전 인수 불가
+  const vinBlocked = !!v.vinCheck && (v.vinCheck.theft || v.vinCheck.seizure || v.vinCheck.lien)
+  const handoverBlocked = !vinBlocked ? undefined : v.vinCheck?.theft ? '도난 차량 — 인수 불가' : '압류·저당 해제 후 인수 가능'
+  const blockedActions = handoverBlocked ? { HANDOVER: handoverBlocked } : undefined
+
   // 단계별 주요 행동
   const primary = (() => {
     if (v.stage === 'PURCHASE_REGISTERED' || v.stage === 'HANDED_OVER') {
@@ -91,18 +96,14 @@ export function VehicleDetailPage() {
       return (
         <>
           {v.stage === 'PURCHASE_REGISTERED' && (
-            <Button
-              variant="outlined"
-              // 압류·저당·도난 차량은 해제 확인 전 인수 불가
-              disabled={!can(user.role, 'HANDOVER') || !!(v.vinCheck && (v.vinCheck.theft || v.vinCheck.seizure || v.vinCheck.lien))}
-              onClick={() => setModal({ type: 'handover' })}
-            >
+            <Button variant="outlined" disabled={!can(user.role, 'HANDOVER') || vinBlocked} onClick={() => setModal({ type: 'handover' })}>
               인수 처리
             </Button>
           )}
           <Button disabled={!allowed || !confirmGuard.ok} onClick={() => run(store.confirmPurchase(id), '매입을 확정했습니다')}>
             매입 확정
           </Button>
+          {v.stage === 'PURCHASE_REGISTERED' && handoverBlocked && <Hint danger>{handoverBlocked}</Hint>}
           {!allowed && <Hint>{permissionHint('CONFIRM_PURCHASE')}</Hint>}
           {allowed && !confirmGuard.ok && <Hint danger>{`확정 차단: ${confirmGuard.reasons.join(', ')}`}</Hint>}
         </>
@@ -156,7 +157,7 @@ export function VehicleDetailPage() {
 
       <div className="grid grid-cols-[minmax(0,1fr)_360px] items-start gap-5">
         <div className="flex flex-col gap-5">
-          <GatePanel gates={ev.gates} role={user.role} onAction={onGateAction} />
+          <GatePanel gates={ev.gates} role={user.role} onAction={onGateAction} blockedActions={blockedActions} />
           <VatPanel vat={ev.vat} />
           <EvidencePanel
             vehicleId={id}
