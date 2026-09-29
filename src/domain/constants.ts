@@ -1,4 +1,4 @@
-import type { EvidenceKind, GateCode, NextAction, PurchaseType, Role, Severity, Stage } from './types'
+import type { Currency, EvidenceKind, GateCode, NextAction, PurchaseType, Role, Severity, Stage } from './types'
 
 /** 데모 기준일 — mock 데이터가 이 날짜에 맞춰 생성되어 있다 */
 export const TODAY = '2026-09-29'
@@ -24,6 +24,13 @@ export const STAGE_LABEL: Record<Stage, string> = {
 }
 
 export const stageIndex = (stage: Stage) => STAGES.indexOf(stage)
+
+/** 통화별 소수 자릿수 — 금액 입력·표시에 사용 */
+export const CURRENCY_DECIMALS: Record<Currency, number> = {
+  KRW: 0,
+  USD: 2,
+  EUR: 2,
+}
 
 export const ROLE_LABEL: Record<Role, string> = {
   PURCHASER: '매입',

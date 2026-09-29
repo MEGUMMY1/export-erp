@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { GateChip } from '@/components/domain/RiskChip'
-import { Checkbox, Dropdown, Modal, TextArea, TextField, toast } from '@/components/ui'
-import { EVIDENCE_LABEL } from '@/domain/constants'
+import { Checkbox, Dropdown, Modal, NumberField, TextArea, TextField, toast } from '@/components/ui'
+import { CURRENCY_DECIMALS, EVIDENCE_LABEL } from '@/domain/constants'
 import { formatKRW } from '@/domain/format'
 import type { EvidenceKind, GateResult } from '@/domain/types'
 import { useData, useErpStore } from '@/store'
@@ -67,7 +67,7 @@ export function EvidenceUploadModal({ vehicleId, kind: initialKind, onClose }: {
   const p = data.purchases[vehicleId]
   const [kind, setKind] = useState<EvidenceKind>(initialKind)
   const [fileName, setFileName] = useState('')
-  const [amount, setAmount] = useState(String(p.amount))
+  const [amount, setAmount] = useState<number | null>(p.amount)
   const needsAmount = kind === 'TAX_INVOICE' || kind === 'SIMPLE_RECEIPT'
 
   return (
@@ -79,10 +79,10 @@ export function EvidenceUploadModal({ vehicleId, kind: initialKind, onClose }: {
       cancel={{ label: '취소', onClick: onClose }}
       confirm={{
         label: '제출',
-        disabled: !fileName,
+        disabled: !fileName || (needsAmount && !amount),
         onClick: () =>
           report(
-            uploadEvidence(vehicleId, { kind, fileName, amount: needsAmount ? Number(amount) : undefined }),
+            uploadEvidence(vehicleId, { kind, fileName, amount: needsAmount ? (amount ?? undefined) : undefined }),
             `${EVIDENCE_LABEL[kind]}를 제출했습니다 · 회계 검증 대기`,
           ) && onClose(),
       }}
@@ -108,13 +108,14 @@ export function EvidenceUploadModal({ vehicleId, kind: initialKind, onClose }: {
           />
         </div>
         {needsAmount && (
-          <TextField
+          <NumberField
             size="sm"
             label="증빙 금액"
-            inputMode="numeric"
+            required
             value={amount}
-            onChange={(e) => setAmount(e.target.value.replace(/\D/g, ''))}
-            suffix="원"
+            onChange={setAmount}
+            decimals={CURRENCY_DECIMALS.KRW}
+            suffix="KRW"
             message={`등록 매입가 ${formatKRW(p.amount)}와 다르면 금액 불일치(S3)로 판정됩니다.`}
           />
         )}

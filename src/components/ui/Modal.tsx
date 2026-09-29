@@ -108,7 +108,8 @@ export function Modal({
           </div>
         )}
 
-        {isContent && <div className="min-h-0 overflow-y-auto">{children}</div>}
+        {/* 본문 최소 높이 — 내부 드롭다운 목록이 잘리지 않도록 */}
+        {isContent && <div className="min-h-60 overflow-y-auto">{children}</div>}
 
         {actions && <div className="flex items-center gap-2">{actions}</div>}
       </div>
