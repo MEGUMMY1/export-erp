@@ -66,7 +66,7 @@ export function SalePage() {
       toast.error(result.reasons[0])
       return
     }
-    toast.success('판매를 등록했습니다 · 수출 검증 대상에 추가됨')
+    toast.success(draft.taxTreatment === 'DOMESTIC' ? '판매를 등록했습니다 · 국내 판매는 회계 확인 후 종결' : '판매를 등록했습니다 · 수출 검증 대상에 추가됨')
     navigate(`/vehicles/${result.id}`)
   }
 
@@ -208,7 +208,11 @@ export function SalePage() {
           ) : doubleLoss ? (
             <p className="text-caption-md text-orange-60">등록할 수 있지만 [S8] 부가세 이중 손실로 판정되어, 회계 팀장이 손실을 확인하기 전에는 다음 단계로 진행할 수 없습니다.</p>
           ) : (
-            <p className="text-caption-md text-gray-70">등록하면 수출 검증 대상에 추가되고, 보완 항목은 업무 현황에서 추적됩니다.</p>
+            <p className="text-caption-md text-gray-70">
+              {draft.taxTreatment === 'DOMESTIC'
+                ? '국내 판매는 선적 대상이 아닙니다. 보완 항목을 회계가 확인하면 종결됩니다.'
+                : '등록하면 수출 검증 대상에 추가되고, 보완 항목은 업무 현황에서 추적됩니다.'}
+            </p>
           )}
         </div>
       </div>

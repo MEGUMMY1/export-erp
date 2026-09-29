@@ -90,9 +90,11 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
           }
         : { key: 'vat', status: 'ok', title: '매입 증빙', result: '공제 요건 증빙 확보 (회계 검증 완료)' },
 
-    has('S6')
-      ? { key: 'customs', status: 'warn', title: '통관 정보', result: '관세사·예정 선적일 미입력', note: '선적 전까지 보완하면 됩니다.' }
-      : { key: 'customs', status: 'ok', title: '통관 정보', result: '입력 완료' },
+    taxTreatment === 'DOMESTIC'
+      ? { key: 'customs', status: 'ok', title: '통관 정보', result: '국내 판매 — 해당 없음', note: '선적 대상이 아니며, 회계 확인 후 종결됩니다.' }
+      : has('S6')
+        ? { key: 'customs', status: 'warn', title: '통관 정보', result: '관세사·예정 선적일 미입력', note: '선적 전까지 보완하면 됩니다.' }
+        : { key: 'customs', status: 'ok', title: '통관 정보', result: '입력 완료' },
 
     ...gates
       .filter((g) => !COVERED.includes(g.code))

@@ -87,10 +87,14 @@ export function canConfirmPurchase(vehicleId: string, db: ErpData, ev = evaluate
   ])
 }
 
+/** 국내 판매로 등록된 차량 — 수출 선적 대상이 아니다 (회계 확인 후 종결) */
+export const isDomesticSale = (vehicleId: string, db: ErpData) => db.sales[vehicleId]?.taxTreatment === 'DOMESTIC'
+
 export function canAddToSlip(vehicleId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
   const stage = db.vehicles[vehicleId].stage
   const hard = ev.gates.filter((g) => g.severity === 'HARD')
   const soft = ev.gates.filter((g) => g.severity === 'SOFT')
+  if (isDomesticSale(vehicleId, db)) return guard(['국내 판매 차량은 선적 대상이 아닙니다.'])
   return guard([
     stage !== 'SALE_REGISTERED' && '수출 검증 단계 차량만 선적 전표에 담을 수 있습니다.',
     ...hard.map((g) => `[${g.code}] ${g.title} — 우회 불가`),
@@ -109,10 +113,12 @@ export function isOverdue(release: ConditionalRelease, db: ErpData) {
 /** 매입 증빙 게이트 — 사후 증빙을 끝내 받지 못하면 불공제 확정으로 종결할 수 있다 */
 export const EVIDENCE_GATES: GateCode[] = ['S1', 'S2', 'S3']
 
-/** 불공제 확정 — 선적 완료 후 사후 보완 중인 차량의 매입 증빙 항목만 대상 */
+/** 불공제 확정 — 선적 완료 후 사후 보완 중인 차량(또는 국내 판매 차량)의 매입 증빙 항목만 대상 */
 export function canWriteOff(vehicleId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
+  const stage = db.vehicles[vehicleId].stage
+  const domestic = stage === 'SALE_REGISTERED' && isDomesticSale(vehicleId, db)
   return guard([
-    db.vehicles[vehicleId].stage !== 'SHIPPED' && '선적 완료 후 사후 보완 중인 차량만 불공제 확정할 수 있습니다.',
+    stage !== 'SHIPPED' && !domestic && '선적 완료 후 사후 보완 중인 차량(또는 국내 판매 차량)만 불공제 확정할 수 있습니다.',
     !ev.gates.some((g) => EVIDENCE_GATES.includes(g.code)) && '확정할 매입 증빙 항목이 없습니다.',
   ])
 }
@@ -135,6 +141,7 @@ export function canRequestRelease(vehicleId: string, userId: string, db: ErpData
   const overdue = mine.filter((r) => isOverdue(r, db))
   const open = mine.filter(isOpenRelease)
   const soft = ev.gates.filter((g) => g.severity === 'SOFT')
+  if (isDomesticSale(vehicleId, db)) return guard(['국내 판매 차량은 조건부 선적 대상이 아닙니다. 보완 항목은 회계 확인으로 해소합니다.'])
   return guard([
     stage !== 'SALE_REGISTERED' && '수출 검증 단계 차량만 요청할 수 있습니다.',
     ev.gates.some((g) => g.severity === 'HARD') && '차단(Hard) 항목은 조건부 선적 대상이 아닙니다.',

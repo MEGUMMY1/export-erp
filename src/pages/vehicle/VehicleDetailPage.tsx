@@ -6,7 +6,7 @@ import { RiskChip } from '@/components/domain/RiskChip'
 import { Button, Chip, toast } from '@/components/ui'
 import { formatKRW, formatNumber } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
-import { can, canConfirmPurchase, canRequestRelease, canWriteOff, permissionHint } from '@/domain/rules'
+import { can, canConfirmPurchase, canRequestRelease, canWriteOff, isDomesticSale, permissionHint } from '@/domain/rules'
 import type { EvidenceKind, GateResult } from '@/domain/types'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
 import { AuditTrail } from './AuditTrail'
@@ -54,6 +54,8 @@ export function VehicleDetailPage() {
   const confirmGuard = canConfirmPurchase(id, data, ev)
   const releaseGuard = canRequestRelease(id, user.id, data, ev)
   const writeOffGuard = canWriteOff(id, data, ev)
+  const writeOffAllowed = can(user.role, 'WRITE_OFF_VAT') && writeOffGuard.ok
+  const domestic = isDomesticSale(id, data)
   const shipment = v.shipmentId ? data.shipments[v.shipmentId] : undefined
 
   const missingKind = (): EvidenceKind => {
@@ -118,6 +120,16 @@ export function VehicleDetailPage() {
         </Button>
       )
     }
+    // 국내 판매 차량은 선적하지 않는다 — 회계 확인으로 종결 (증빙을 끝내 못 받으면 불공제 확정)
+    if (v.stage === 'SALE_REGISTERED' && domestic) {
+      return writeOffAllowed ? (
+        <Button variant="outlined-red" onClick={() => setModal({ type: 'writeOff' })}>
+          불공제 확정
+        </Button>
+      ) : (
+        <Hint>국내 판매 — 선적 대상 아님 · 회계 확인 후 종결</Hint>
+      )
+    }
     if (v.stage === 'SALE_REGISTERED' && hasSoft && can(user.role, 'REQUEST_RELEASE')) {
       return (
         <>
@@ -130,7 +142,6 @@ export function VehicleDetailPage() {
     }
     if (shipment) {
       // 사후 증빙을 끝내 받지 못하면 회계가 불공제를 확정해 손실로 종결한다
-      const writeOffAllowed = can(user.role, 'WRITE_OFF_VAT') && writeOffGuard.ok
       return (
         <>
           {writeOffAllowed && (
@@ -168,7 +179,7 @@ export function VehicleDetailPage() {
 
       <div className="grid grid-cols-[minmax(0,1fr)_360px] items-start gap-5">
         <div className="flex flex-col gap-5">
-          <GatePanel gates={ev.gates} role={user.role} onAction={onGateAction} blockedActions={blockedActions} />
+          <GatePanel gates={ev.gates} role={user.role} onAction={onGateAction} blockedActions={blockedActions} exportable={!domestic} />
           <VatPanel vat={ev.vat} writeOff={v.writeOff} />
           <EvidencePanel
             vehicleId={id}

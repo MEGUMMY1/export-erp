@@ -96,10 +96,12 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
     if (saleKrw < p.amount)
       push('S5', `매입 ${formatKRW(p.amount)} / 판매 ${formatKRW(saleKrw)} (예상 손익 ${formatKRW(saleKrw - p.amount)})`)
 
+    // 통관·수출신고 판정은 수출 건에만 (국내 판매는 선적 대상이 아니다)
+    const exportSale = sale.taxTreatment !== 'DOMESTIC'
     const saleMissing = [!sale.customsBroker && '관세사', !sale.expectedShipmentDate && '예정 선적일'].filter(Boolean)
-    if (saleMissing.length) push('S6', `${saleMissing.join(' · ')} 정보가 없습니다.`)
+    if (exportSale && saleMissing.length) push('S6', `${saleMissing.join(' · ')} 정보가 없습니다.`)
 
-    if (sale.taxTreatment === 'DOMESTIC') {
+    if (!exportSale) {
       // 현금·무증빙 매입을 과세 매출로 잡으면 매출세액은 내고 매입세액은 못 돌려받는다 (부가세 이중 손실)
       if (vat.unsecured > 0) {
         const cash = p.paymentMethod === 'CASH' ? '현금 매입 · ' : ''
@@ -111,9 +113,7 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
       } else {
         push('S8', '국내 판매로 처리됩니다. 영세율 대상에서 제외되어 10% 과세 매출이 됩니다.')
       }
-    }
-
-    if (!decl) push('H7', '수출신고 전입니다. 수리 전에는 선적할 수 없습니다.')
+    } else if (!decl) push('H7', '수출신고 전입니다. 수리 전에는 선적할 수 없습니다.')
     else {
       if (decl.extracted.vin !== v.vin)
         push('H6', `신고필증 ${decl.extracted.vin} ≠ 전산 ${v.vin}. 다른 차량으로 신고되었을 수 있습니다.`)

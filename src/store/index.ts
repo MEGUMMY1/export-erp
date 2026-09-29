@@ -12,6 +12,7 @@ import {
   canWriteOff,
   evaluate,
   evaluateAll,
+  isDomesticSale,
   permissionHint,
   releaseDueDate,
   type Guard,
@@ -126,12 +127,14 @@ function settle(data: ErpData, actorId: string): ErpData {
     return { ...r, resolvedAt: nowStamp(), outcome: writtenOff ? ('WRITTEN_OFF' as const) : ('RESOLVED' as const) }
   })
   for (const v of Object.values(data.vehicles)) {
-    if (v.stage !== 'SHIPPED') continue
+    // 국내 판매 차량은 선적 없이, 회계 확인 등으로 보완 항목이 모두 해소되면 종결한다
+    const domestic = v.stage === 'SALE_REGISTERED' && isDomesticSale(v.id, data)
+    if (v.stage !== 'SHIPPED' && !domestic) continue
     if (evaluateGates(v.id, data).length === 0) {
       changed = true
       vehicles[v.id] = { ...v, stage: 'CLOSED' }
-      const reason = v.writeOff ? `매입세액 불공제 확정 · 손실 ${formatKRW(v.writeOff.amount)}` : '보완 항목 없음'
-      logs.push(audit({ vehicleId: v.id, action: '종결', actorId, prevStage: 'SHIPPED', nextStage: 'CLOSED', reason }))
+      const reason = v.writeOff ? `매입세액 불공제 확정 · 손실 ${formatKRW(v.writeOff.amount)}` : domestic ? '국내 판매 · 회계 확인 완료' : '보완 항목 없음'
+      logs.push(audit({ vehicleId: v.id, action: '종결', actorId, prevStage: v.stage, nextStage: 'CLOSED', reason }))
     }
   }
   return changed ? { ...data, vehicles, releases, auditLogs: [...data.auditLogs, ...logs] } : data
@@ -594,14 +597,19 @@ export const useErpStore = create<ErpState>()(
                 actorId: currentUserId,
                 prevStage: 'PURCHASE_CONFIRMED',
                 nextStage: 'SALE_REGISTERED',
-                reason: `${buyer.name} (${buyer.country}) · ${formatMoney(draft.amount ?? 0, draft.currency)}`,
+                reason: `${buyer.name} (${buyer.country}) · ${formatMoney(draft.amount ?? 0, draft.currency)}${draft.taxTreatment === 'DOMESTIC' ? ' · 국내 판매' : ''}`,
               },
-              {
-                vehicleId,
-                action: '수출신고 수리 (관세사 연동 mock)',
-                actorId: currentUserId,
-                reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치`,
-              },
+              // 국내 판매는 수출신고 대상이 아니다
+              ...(next.exportDecls[vehicleId]
+                ? [
+                    {
+                      vehicleId,
+                      action: '수출신고 수리 (관세사 연동 mock)',
+                      actorId: currentUserId,
+                      reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치`,
+                    },
+                  ]
+                : []),
             ],
             crossCheck,
           )

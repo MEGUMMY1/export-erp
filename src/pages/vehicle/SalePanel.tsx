@@ -55,42 +55,46 @@ export function SalePanel({ vehicleId, data }: { vehicleId: string; data: ErpDat
         <Field label="판매번호">{s.salesNo}</Field>
       </dl>
 
-      <div className="flex flex-col gap-2 border-t border-gray-20 pt-4">
-        <div className="flex items-center justify-between">
-          <p className="text-body-md-m">수출신고필증 대조 (AI 문서 추출)</p>
-          {decl && <Chip tone={decl.status === 'ACCEPTED' ? 'success' : 'warning'}>{decl.declNo} · {decl.status === 'ACCEPTED' ? '수리' : '신고 · 미수리'}</Chip>}
+      {s.taxTreatment === 'DOMESTIC' ? (
+        <p className="border-t border-gray-20 pt-4 text-body-sm text-gray-70">국내 판매 — 수출신고·선적 대상이 아닙니다. 보완 항목을 회계가 확인하면 종결됩니다.</p>
+      ) : (
+        <div className="flex flex-col gap-2 border-t border-gray-20 pt-4">
+          <div className="flex items-center justify-between">
+            <p className="text-body-md-m">수출신고필증 대조 (AI 문서 추출)</p>
+            {decl && <Chip tone={decl.status === 'ACCEPTED' ? 'success' : 'warning'}>{decl.declNo} · {decl.status === 'ACCEPTED' ? '수리' : '신고 · 미수리'}</Chip>}
+          </div>
+          {decl ? (
+            <table className="w-full text-left text-body-sm">
+              <thead className="text-label-md text-gray-70">
+                <tr className="border-b border-gray-20">
+                  <th className="py-2">항목</th>
+                  <th className="py-2">전산</th>
+                  <th className="py-2">신고필증</th>
+                  <th className="py-2 text-right">결과</th>
+                </tr>
+              </thead>
+              <tbody className="font-mono">
+                {rows.map((r) => {
+                  const same = r.erp === r.doc
+                  return (
+                    <tr key={r.label} className="border-b border-gray-20 last:border-0">
+                      <td className="py-2 font-sans">{r.label}</td>
+                      <td className="py-2">{r.erp}</td>
+                      <td className={cn('py-2', !same && 'text-red-60')}>{r.doc}</td>
+                      <td className="py-2 text-right font-sans">
+                        <Chip tone={same ? 'success' : 'error'}>{same ? '일치' : '불일치'}</Chip>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          ) : (
+            <p className="text-body-sm text-gray-70">수출신고 전입니다.</p>
+          )}
+          <p className="text-caption-md text-gray-70">AI는 문서에서 값을 추출해 대조만 합니다. 판정과 정정은 담당자가 합니다.</p>
         </div>
-        {decl ? (
-          <table className="w-full text-left text-body-sm">
-            <thead className="text-label-md text-gray-70">
-              <tr className="border-b border-gray-20">
-                <th className="py-2">항목</th>
-                <th className="py-2">전산</th>
-                <th className="py-2">신고필증</th>
-                <th className="py-2 text-right">결과</th>
-              </tr>
-            </thead>
-            <tbody className="font-mono">
-              {rows.map((r) => {
-                const same = r.erp === r.doc
-                return (
-                  <tr key={r.label} className="border-b border-gray-20 last:border-0">
-                    <td className="py-2 font-sans">{r.label}</td>
-                    <td className="py-2">{r.erp}</td>
-                    <td className={cn('py-2', !same && 'text-red-60')}>{r.doc}</td>
-                    <td className="py-2 text-right font-sans">
-                      <Chip tone={same ? 'success' : 'error'}>{same ? '일치' : '불일치'}</Chip>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        ) : (
-          <p className="text-body-sm text-gray-70">수출신고 전입니다.</p>
-        )}
-        <p className="text-caption-md text-gray-70">AI는 문서에서 값을 추출해 대조만 합니다. 판정과 정정은 담당자가 합니다.</p>
-      </div>
+      )}
     </Panel>
   )
 }
