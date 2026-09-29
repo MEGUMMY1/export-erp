@@ -6,7 +6,7 @@ import { addDays, formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/
 import { evaluateGates } from '@/domain/gates'
 import { can, canAddToSlip, canConfirmPurchase, canRequestRelease, evaluate, evaluateAll, permissionHint, type Guard, type Permission } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
-import { applySale, validateSale, type SaleDraft } from '@/domain/saleDraft'
+import { applySale, doubleLossReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { AuditLog, ErpData, EvidenceKind, GateCode, Notification, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
@@ -255,6 +255,8 @@ export const useErpStore = create<ErpState>()(
           const v = data.vehicles[vehicleId]
           if (v.stage !== 'PURCHASE_REGISTERED') return fail('인수 대기 단계가 아닙니다.')
           if (photoCount < 1) return fail('외관 사진을 1장 이상 올려 주세요.')
+          const vc = v.vinCheck
+          if (vc && (vc.theft || vc.seizure || vc.lien)) return fail('압류·저당·도난 차량은 인수할 수 없습니다. 해제 확인 후 VIN을 재조회해 주세요.')
           const handover = { receiverId: currentUserId, plateChecked: true, photoCount, at: nowStamp() }
           commit(
             {
@@ -439,6 +441,7 @@ export const useErpStore = create<ErpState>()(
           const at = nowStamp()
           const vinCheck = lookupVin(draft.vin, data, at)
           if (vinCheck.theft) return fail('도난 신고 차량은 매입 등록할 수 없습니다.')
+          if (vinCheck.seizure || vinCheck.lien) return fail('압류·저당 차량은 해제가 확인되기 전에는 매입 등록할 수 없습니다.')
 
           const vehicleId = nextId('V')
           const ids = { vehicleId, vendorId: nextId('I'), evidenceId: () => nextId('E') }
@@ -506,6 +509,8 @@ export const useErpStore = create<ErpState>()(
           const { data, currentUserId } = get()
           const invalid = validateSale(vehicleId, draft, data)
           if (invalid.length || !vehicleId) return fail(...invalid)
+          const doubleLoss = doubleLossReason(vehicleId, draft, data)
+          if (doubleLoss) return fail(doubleLoss)
 
           // 신규 판매번호: SO-YYMM-N001 (mock 번호와 겹치지 않도록 N 접두)
           const newCount = Object.values(data.sales).filter((s) => s.salesNo.includes('-N')).length

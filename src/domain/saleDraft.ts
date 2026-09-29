@@ -1,4 +1,5 @@
 import type { Currency, ErpData, TaxTreatment } from './types'
+import { calcVat } from './vat'
 
 /** 판매 등록 화면의 입력값 */
 export interface SaleDraft {
@@ -20,6 +21,18 @@ export function validateSale(vehicleId: string | null, d: SaleDraft, db: ErpData
     !d.buyerId && '바이어를 선택해 주세요.',
     !(d.amount && d.amount > 0) && '판매가를 입력해 주세요.',
   ].filter(Boolean) as string[]
+}
+
+/**
+ * 부가세 이중 손실 차단 — 매입세액을 확보하지 못한 차량(현금·무증빙 매입)을 국내 과세 매출로 처리하면
+ * 공제는 못 받고 매출세액만 생긴다. 판매 등록 자체를 막고 수출(영세율) 처리나 증빙 확보를 요구한다.
+ */
+export function doubleLossReason(vehicleId: string | null, d: SaleDraft, db: ErpData): string | null {
+  if (!vehicleId || d.taxTreatment !== 'DOMESTIC') return null
+  const purchase = db.purchases[vehicleId]
+  if (!purchase) return null
+  const vat = calcVat(purchase, db.evidences.filter((e) => e.vehicleId === vehicleId), db.policy)
+  return vat.unsecured > 0 ? '매입세액을 확보하지 못한 차량은 국내 판매로 등록할 수 없습니다. 영세율(수출)로 처리하거나 매입 증빙을 먼저 받아 주세요.' : null
 }
 
 /** 판매가 원화 환산 (등록 시점 환율 고정) */

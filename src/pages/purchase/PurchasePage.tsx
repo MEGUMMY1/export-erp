@@ -86,7 +86,9 @@ export function PurchasePage() {
 
   const invalid = validateDraft(draft, data)
   const confirmBlockers = preview.gates.filter((g) => CONFIRM_BLOCKERS.includes(g.code))
-  const theft = !!preview.vinCheck?.theft
+  const vc = preview.vinCheck
+  // 도난·압류·저당 차량은 등록 자체를 막는다 (해제 확인 후 재조회)
+  const vinBlocked = !!vc && (vc.theft || vc.seizure || vc.lien)
   const missingVatEvidence = data.policy.vatEvidence[draft.purchaseType].some((k) => !draft.evidences.some((e) => e.kind === k))
   const allowed = can(user.role, 'REGISTER_PURCHASE')
   // VIN은 17자리를 다 입력하면 형식(I·O·Q)·중복 오류를 바로 보여준다
@@ -246,27 +248,28 @@ export function PurchasePage() {
           vinValid={VIN_PATTERN.test(draft.vin)}
           vinCheck={preview.vinCheck}
           gates={preview.gates}
-          risk={preview.risk}
           vat={preview.vat}
+          purchaseType={draft.purchaseType}
+          vendorSelected={draft.purchaseType === 'INDIVIDUAL' ? !!draft.sellerName.trim() : !!draft.vendorId}
+          hasAmount={!!draft.amount}
           missingVatEvidence={missingVatEvidence}
+          missingFields={invalid.length}
         />
         <div className="flex flex-col gap-2">
-          <Button size="lg" disabled={!allowed || theft || invalid.length > 0} onClick={() => submit(false)}>
+          <Button size="lg" disabled={!allowed || vinBlocked || invalid.length > 0} onClick={() => submit(false)}>
             매입 등록
           </Button>
           <Button
             size="lg"
             variant="outlined"
-            disabled={!allowed || theft || invalid.length > 0 || !!confirmDisabledReason}
+            disabled={!allowed || vinBlocked || invalid.length > 0 || !!confirmDisabledReason}
             onClick={() => submit(true)}
           >
             등록 후 매입 확정
           </Button>
           {!allowed ? (
             <p className="text-caption-md text-gray-70">{permissionHint('REGISTER_PURCHASE')}이 필요합니다.</p>
-          ) : theft ? (
-            <p className="text-caption-md text-red-60">도난 신고 차량은 매입 등록할 수 없습니다.</p>
-          ) : invalid.length > 0 ? (
+          ) : vinBlocked ? null : invalid.length > 0 ? (
             <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
           ) : (
             <p className="text-caption-md text-gray-70">{confirmDisabledReason ?? '제출된 증빙은 회계 검증을 거쳐 매입세액으로 확보됩니다.'}</p>

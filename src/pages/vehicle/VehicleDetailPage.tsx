@@ -91,7 +91,12 @@ export function VehicleDetailPage() {
       return (
         <>
           {v.stage === 'PURCHASE_REGISTERED' && (
-            <Button variant="outlined" disabled={!can(user.role, 'HANDOVER')} onClick={() => setModal({ type: 'handover' })}>
+            <Button
+              variant="outlined"
+              // 압류·저당·도난 차량은 해제 확인 전 인수 불가
+              disabled={!can(user.role, 'HANDOVER') || !!(v.vinCheck && (v.vinCheck.theft || v.vinCheck.seizure || v.vinCheck.lien))}
+              onClick={() => setModal({ type: 'handover' })}
+            >
               인수 처리
             </Button>
           )}

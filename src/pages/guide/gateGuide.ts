@@ -16,7 +16,7 @@ export const GATE_GUIDE: Record<GateCode, GateGuide> = {
   H1: {
     when: '매입 등록 · 수출 검증 · 선적 직전 재조회',
     condition: () => 'VIN 조회 결과 압류 또는 저당이 등록되어 있음',
-    resolve: '압류·저당 해제 후 VIN 재조회',
+    resolve: '압류·저당 해제 후 VIN 재조회 (해제 전에는 매입 등록·인수 차단)',
     why: '압류·저당이 남아 있으면 수출 말소등록이 불가하여 어차피 수출할 수 없습니다.',
   },
   H2: {

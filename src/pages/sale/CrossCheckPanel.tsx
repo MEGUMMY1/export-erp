@@ -1,31 +1,9 @@
-import circleCheck from '@/assets/icons/circle-check.svg'
-import circleClose from '@/assets/icons/circle-close.svg'
-import circlePending from '@/assets/icons/circle-exclamation-neutral.svg'
-import triangle from '@/assets/icons/triangle-exclamation.svg'
+import { CheckList, type CheckItem } from '@/components/domain/CheckList'
 import { Panel } from '@/components/domain/Panel'
 import { RiskChip } from '@/components/domain/RiskChip'
 import { formatKRW } from '@/domain/format'
 import type { GateCode, GateResult, Purchase, Risk, TaxTreatment } from '@/domain/types'
 import { inputVat, type VatSummary } from '@/domain/vat'
-import { cn } from '@/lib/cn'
-
-type Status = 'ok' | 'warn' | 'error' | 'pending'
-
-interface CheckItem {
-  key: string
-  status: Status
-  title: string
-  result: string
-  note?: string
-}
-
-const ICON: Record<Status, string> = { ok: circleCheck, warn: triangle, error: circleClose, pending: circlePending }
-const RESULT_COLOR: Record<Status, string> = {
-  ok: 'text-green-60',
-  warn: 'text-orange-60',
-  error: 'text-red-60',
-  pending: 'text-gray-50',
-}
 
 /** 체크리스트가 직접 다루는 게이트 — 나머지는 '그 밖의 판정'으로 표시 */
 const COVERED: GateCode[] = ['S1', 'S2', 'S3', 'S5', 'S6', 'S8']
@@ -65,16 +43,16 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
           // 원문의 "현금으로 매입해 놓고 계산서 매출로 잡아 버리는" 경우
           key: 'vat',
           status: 'error',
-          title: '부가세 — 매입 증빙 ↔ 매출 처리 불일치',
-          result: `이중 손실: 매입세액 ${formatKRW(vat.unsecured)} 공제 불가 + 매출세액 ${saleKrw ? formatKRW(inputVat(saleKrw)) : '—'} 발생`,
-          note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}을 과세 매출로 처리하면 부가세를 내기만 하고 돌려받지 못합니다.`,
+          title: '부가세 이중 손실',
+          result: `매입세액 ${formatKRW(vat.unsecured)} 공제 불가`,
+          note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}인데 국내 과세 매출이라 매출세액${saleKrw ? ` ${formatKRW(inputVat(saleKrw))}` : ''}까지 발생합니다.`,
         }
       : taxTreatment === 'DOMESTIC'
       ? {
           key: 'vat',
           status: 'warn',
           title: '부가세',
-          result: `국내 판매 — 매출세액 ${saleKrw ? formatKRW(inputVat(saleKrw)) : ''} 발생`,
+          result: saleKrw ? `매출세액 ${formatKRW(inputVat(saleKrw))} 발생` : '국내 판매 — 매출세액 발생',
           note: '영세율(수출) 대상에서 제외됩니다.',
         }
       : vat.unsecured > 0
@@ -104,18 +82,7 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
 
   return (
     <Panel title="매입·매출 크로스체크" actions={risk && <RiskChip risk={risk} />}>
-      <ul className="divide-y divide-gray-20">
-        {items.map((item) => (
-          <li key={item.key} className="flex gap-3 py-3 first:pt-0 last:pb-0">
-            <img src={ICON[item.status]} width={20} height={20} alt="" className="mt-0.5 size-5 shrink-0" />
-            <div className="min-w-0 flex-1">
-              <p className="text-caption-md text-gray-70">{item.title}</p>
-              <p className={cn('text-body-md-m', RESULT_COLOR[item.status])}>{item.result}</p>
-              {item.note && <p className="text-caption-md text-gray-70">{item.note}</p>}
-            </div>
-          </li>
-        ))}
-      </ul>
+      <CheckList items={items} />
     </Panel>
   )
 }

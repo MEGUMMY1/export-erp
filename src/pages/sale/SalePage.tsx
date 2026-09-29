@@ -7,7 +7,7 @@ import { CURRENCY_DECIMALS, EVIDENCE_LABEL, PURCHASE_TYPE_LABEL, TODAY } from '@
 import { formatKRW, formatNumber, nowStamp } from '@/domain/format'
 import { evaluateGates, riskOf } from '@/domain/gates'
 import { can, permissionHint } from '@/domain/rules'
-import { applySale, INCOTERMS, saleKrw, validateSale, type SaleDraft } from '@/domain/saleDraft'
+import { applySale, doubleLossReason, INCOTERMS, saleKrw, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { Currency, TaxTreatment } from '@/domain/types'
 import { calcVat } from '@/domain/vat'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
@@ -55,6 +55,7 @@ export function SalePage() {
   }, [data, draft, selectedId, user.id])
 
   const invalid = validateSale(selectedId, draft, data)
+  const doubleLoss = doubleLossReason(selectedId, draft, data)
   const allowed = can(user.role, 'REGISTER_SALE')
   const evidences = selectedId ? data.evidences.filter((e) => e.vehicleId === selectedId && e.status !== 'REJECTED') : []
 
@@ -194,11 +195,13 @@ export function SalePage() {
           risk={preview?.risk}
         />
         <div className="flex flex-col gap-2">
-          <Button size="lg" disabled={!allowed || invalid.length > 0} onClick={submit}>
+          <Button size="lg" disabled={!allowed || invalid.length > 0 || !!doubleLoss} onClick={submit}>
             판매 등록
           </Button>
           {!allowed ? (
             <p className="text-caption-md text-gray-70">{permissionHint('REGISTER_SALE')}이 필요합니다.</p>
+          ) : doubleLoss ? (
+            <p className="text-caption-md text-red-60">{doubleLoss}</p>
           ) : invalid.length > 0 ? (
             <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
           ) : (
