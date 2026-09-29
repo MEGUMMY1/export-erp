@@ -19,7 +19,7 @@ interface Props {
   onRequestRelease: (id: string) => void
 }
 
-/** 수출 검증 대상 — 차량별 판정, 막힌 이유, 다음 행동 */
+/** 수출 검증 대상 — 차량별 판정, 판정 사유, 다음 행동 */
 export function ExportQueue({ rows, data, evals, userId, canRequest, selected, onToggle, onToggleAll, onRequestRelease }: Props) {
   const navigate = useNavigate()
   const eligible = rows.filter((v) => canAddToSlip(v.id, data, evals[v.id]).ok).map((v) => v.id)
@@ -55,7 +55,7 @@ export function ExportQueue({ rows, data, evals, userId, canRequest, selected, o
           <th className="py-3">매입</th>
           <th className="py-3">판매</th>
           <th className="py-3">판정</th>
-          <th className="py-3">막힌 이유</th>
+          <th className="py-3">판정 사유</th>
           <th className="py-3 text-right">미확보 매입세액</th>
           <th className="py-3 pr-5 text-right">다음 행동</th>
         </tr>
