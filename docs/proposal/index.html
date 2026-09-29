@@ -388,11 +388,11 @@
     <h2>언밸런스를 "주의"가 아니라 "이 차 한 대의 부가세 손실 금액"으로 보여줍니다</h2>
   </div>
   <div class="card navy" style="flex-direction: row; gap: 28px; align-items: center">
-    <p class="lead" style="flex: 1"><b>구조</b> — 수출은 영세율이라 매출세액이 0입니다. 그래서 매입 때 낸 부가세(<b>매입가 × 10/110</b>)가 곧 환급액이고, <b>증빙이 없으면 그 금액이 그대로 손실</b>입니다. 언밸런스는 "어떤 증빙으로 샀는지"와 "어떻게 팔았는지"가 맞지 않는 상태입니다.</p>
+    <p class="lead" style="flex: 1"><b>구조</b> — 수출은 영세율이라 매출세액이 0입니다. 그래서 공제 가능한 매입세액(<b>매입가 × 10/110</b> — 딜러·경매는 세금계산서, 개인 매입은 중고자동차 매입세액 공제 특례)이 곧 환급액이고, <b>공제 요건 증빙이 없으면 그 금액이 그대로 손실</b>입니다. 언밸런스는 "어떤 증빙으로 샀는지"와 "어떻게 팔았는지"가 맞지 않는 상태입니다.</p>
   </div>
   <table>
     <tr><th style="width: 180px">매입</th><th style="width: 170px">매출 처리</th><th>결과</th><th style="width: 300px">시스템 처리</th></tr>
-    <tr><td>세금계산서 (검증 완료)</td><td>수출 · 영세율</td><td>매입세액 전액 환급</td><td class="green"><b class="green">정상</b></td></tr>
+    <tr><td>공제 요건 증빙 (검증 완료)</td><td>수출 · 영세율</td><td>매입세액 전액 환급</td><td class="green"><b class="green">정상</b></td></tr>
     <tr><td>현금 · 무증빙 · 검증 전</td><td>수출 · 영세율</td><td>매입세액만큼 환급 불가</td><td class="orange"><b class="orange">보완</b> — 미확보 금액 표시 + 회계 알림</td></tr>
     <tr><td>현금 · 무증빙</td><td>국내 판매 · 과세</td><td>공제 없이 매출세액 10%까지 부담 = <b>이중 손실</b></td><td class="red"><b class="red">판매 등록 차단</b> — 수출 처리 또는 증빙 선확보</td></tr>
   </table>
