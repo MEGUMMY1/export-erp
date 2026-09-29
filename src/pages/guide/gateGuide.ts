@@ -72,7 +72,7 @@ export const GATE_GUIDE: Record<GateCode, GateGuide> = {
   S1: {
     when: '매입 등록 이후 · 선적 후에도 사후 보완 대상',
     condition: () => '매입 유형별 필수 증빙이 없거나(미수취), 제출됐지만 회계 검증 전',
-    resolve: '증빙 제출 → 회계 검증',
+    resolve: '증빙 제출 → 회계 검증 (선적 후 끝내 받지 못하면 회계가 불공제 확정 → 손실로 종결)',
     why: '증빙이 없으면 매입세액을 공제받지 못해 그대로 손실이 됩니다.',
   },
   S2: {

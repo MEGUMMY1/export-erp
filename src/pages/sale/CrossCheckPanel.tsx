@@ -33,13 +33,35 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
   const margin = saleKrw - purchase.amount
   const rate = purchase.amount ? (margin / purchase.amount) * 100 : 0
   const has = (code: GateCode) => gates.some((g) => g.code === code)
+  // 영세율이면 확보한 매입세액만큼 원가가 줄어든다 — 증빙 확보 여부에 따른 손익을 나란히 보여준다
+  const zeroRated = taxTreatment === 'ZERO_RATED'
+  const marginSecured = saleKrw - (purchase.amount - vat.expected)
+  const marginNow = saleKrw - (purchase.amount - vat.secured)
+  const signed = (n: number) => `${n >= 0 ? '+' : ''}${formatKRW(n)}`
+  const costNote = '부대비용(탁송·말소·통관·운임) 제외'
 
   const items: CheckItem[] = [
     !saleKrw
       ? { key: 'margin', status: 'pending', title: '손익', result: '판매가 입력 대기' }
       : margin < 0
-        ? { key: 'margin', status: 'warn', title: '손익', result: `역마진 ${formatKRW(margin)} (${rate.toFixed(1)}%)`, note: '결재 시 사유가 필요합니다.' }
-        : { key: 'margin', status: 'ok', title: '손익', result: `+${formatKRW(margin)} (${rate.toFixed(1)}%)` },
+        ? {
+            key: 'margin',
+            status: 'warn',
+            title: '손익',
+            result: `역마진 ${formatKRW(margin)} (${rate.toFixed(1)}%)`,
+            note: `매입가 기준입니다.${zeroRated ? ` 증빙 확보 시 ${signed(marginSecured)}.` : ''} 결재 시 사유가 필요합니다.`,
+          }
+        : zeroRated && vat.unsecured > 0
+          ? {
+              key: 'margin',
+              status: 'ok',
+              title: '손익',
+              result: `증빙 확보 시 ${signed(marginSecured)} · 미확보 시 ${signed(marginNow)}`,
+              note: `증빙을 확보해야 매입세액만큼 이익이 늘어납니다. ${costNote}`,
+            }
+          : zeroRated
+            ? { key: 'margin', status: 'ok', title: '손익', result: signed(marginSecured), note: `매입세액 환급 반영 · ${costNote}` }
+            : { key: 'margin', status: 'ok', title: '손익', result: `${signed(margin)} (${rate.toFixed(1)}%)`, note: costNote },
 
     taxTreatment === 'DOMESTIC' && vat.unsecured > 0
       ? {

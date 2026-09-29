@@ -2,9 +2,21 @@ import { useMemo } from 'react'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, TODAY } from '@/domain/constants'
-import { addDays, formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/format'
+import { formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
-import { can, canAddToSlip, canConfirmPurchase, canRequestRelease, evaluate, evaluateAll, permissionHint, type Guard, type Permission } from '@/domain/rules'
+import {
+  can,
+  canAddToSlip,
+  canConfirmPurchase,
+  canRequestRelease,
+  canWriteOff,
+  evaluate,
+  evaluateAll,
+  permissionHint,
+  releaseDueDate,
+  type Guard,
+  type Permission,
+} from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
 import { applySale, saleBlockReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { AuditLog, ErpData, EvidenceKind, GateCode, GateResult, Notification, Sale, Shipment, User } from '@/domain/types'
@@ -36,6 +48,8 @@ interface ErpState {
   correctDeclaration: (vehicleId: string) => ActionResult
   acceptDeclaration: (vehicleId: string) => ActionResult
   acknowledgeGate: (vehicleId: string, code: GateCode, note: string) => ActionResult
+  /** 사후 증빙을 끝내 받지 못한 차량의 매입세액 불공제를 확정하고 손실로 종결한다 */
+  writeOffVat: (vehicleId: string, reason: string) => ActionResult
   updateSale: (vehicleId: string, patch: Pick<Sale, 'customsBroker' | 'expectedShipmentDate'>) => ActionResult
   registerPurchase: (draft: PurchaseDraft, options: { confirm: boolean }) => ActionResult
   registerSale: (vehicleId: string | null, draft: SaleDraft) => ActionResult
@@ -96,6 +110,7 @@ const fail = (...reasons: string[]): ActionResult => ({ ok: false, reasons })
 
 /**
  * 변경 후 공통 정리: 선적 완료 차량의 보완 항목이 모두 해소되면 조건부 선적을 해소 처리하고 종결한다.
+ * 증빙을 끝내 받지 못해 불공제 확정한 차량은 "보완 완료"가 아니라 "불공제 확정"으로 종결을 남긴다.
  */
 function settle(data: ErpData, actorId: string): ErpData {
   let changed = false
@@ -106,15 +121,17 @@ function settle(data: ErpData, actorId: string): ErpData {
     const open = evaluateGates(r.vehicleId, data).some((g) => r.gateCodes.includes(g.code))
     if (open) return r
     changed = true
-    logs.push(audit({ vehicleId: r.vehicleId, action: '사후 증빙 보완 완료', actorId, reason: r.gateCodes.join('·') }))
-    return { ...r, resolvedAt: nowStamp() }
+    const writtenOff = !!data.vehicles[r.vehicleId].writeOff
+    logs.push(audit({ vehicleId: r.vehicleId, action: writtenOff ? '사후 증빙 미확보 · 불공제 확정' : '사후 증빙 보완 완료', actorId, reason: r.gateCodes.join('·') }))
+    return { ...r, resolvedAt: nowStamp(), outcome: writtenOff ? ('WRITTEN_OFF' as const) : ('RESOLVED' as const) }
   })
   for (const v of Object.values(data.vehicles)) {
     if (v.stage !== 'SHIPPED') continue
     if (evaluateGates(v.id, data).length === 0) {
       changed = true
       vehicles[v.id] = { ...v, stage: 'CLOSED' }
-      logs.push(audit({ vehicleId: v.id, action: '종결', actorId, prevStage: 'SHIPPED', nextStage: 'CLOSED', reason: '보완 항목 없음' }))
+      const reason = v.writeOff ? `매입세액 불공제 확정 · 손실 ${formatKRW(v.writeOff.amount)}` : '보완 항목 없음'
+      logs.push(audit({ vehicleId: v.id, action: '종결', actorId, prevStage: 'SHIPPED', nextStage: 'CLOSED', reason }))
     }
   }
   return changed ? { ...data, vehicles, releases, auditLogs: [...data.auditLogs, ...logs] } : data
@@ -173,7 +190,7 @@ export const useErpStore = create<ErpState>()(
           if (!guard.ok) return guard
           if (!reason.trim()) return fail('요청 사유를 입력해 주세요.')
 
-          const dueDate = addDays(TODAY, Math.min(dueDays, data.policy.conditionalDueDays))
+          const { dueDate } = releaseDueDate(dueDays, data.policy)
           const id = nextId('R')
           const gateCodes = ev.gates.filter((g) => g.severity === 'SOFT').map((g) => g.code)
           commit(
@@ -435,6 +452,46 @@ export const useErpStore = create<ErpState>()(
           return ok()
         },
 
+        writeOffVat: (vehicleId, reason) => {
+          const denied = deny('WRITE_OFF_VAT')
+          if (denied) return denied
+          const { data, currentUserId } = get()
+          const ev = evaluate(vehicleId, data)
+          const guard = canWriteOff(vehicleId, data, ev)
+          if (!guard.ok) return guard
+          if (!reason.trim()) return fail('불공제 확정 사유를 입력해 주세요.')
+          const v = data.vehicles[vehicleId]
+          const amount = ev.vat.unsecured
+          const codes = ev.gates.filter((g) => ['S1', 'S2', 'S3'].includes(g.code)).map((g) => g.code)
+          const owner = ev.release?.ownerId
+          commit(
+            {
+              ...data,
+              vehicles: { ...data.vehicles, [vehicleId]: { ...v, writeOff: { at: nowStamp(), by: currentUserId, amount, reason: reason.trim() } } },
+            },
+            [
+              {
+                vehicleId,
+                action: '매입세액 불공제 확정',
+                actorId: currentUserId,
+                reason: `${codes.join('·')} · 손실 ${formatKRW(amount)} · ${reason.trim()}`,
+              },
+            ],
+            [
+              {
+                severity: 'warning',
+                title: '매입세액 불공제 확정',
+                message: `${v.plateNumber} · 사후 증빙 미확보 · 손실 ${formatKRW(amount)}`,
+                link: `/vehicles/${vehicleId}`,
+                roles: ['ACCOUNTING'],
+                userIds: owner ? [owner] : [],
+                vehicleId,
+              },
+            ],
+          )
+          return ok()
+        },
+
         updateSale: (vehicleId, patch) => {
           const denied = deny('FIX_EXPORT')
           if (denied) return denied
@@ -657,6 +714,9 @@ export const useErpStore = create<ErpState>()(
             } else {
               shipped.push(id)
               next.vehicles[id] = { ...v, stage: 'SHIPPED' }
+              // 영세율 과세표준은 공급시기(선적일) 기준환율로 확정한다 — 판매 등록 환율은 예상 손익용
+              const sale = next.sales[id]
+              if (sale) next.sales = { ...next.sales, [id]: { ...sale, shipmentRate: next.rates[sale.currency] } }
               logs.push({
                 vehicleId: id,
                 shipmentId,
@@ -729,7 +789,7 @@ export const useErpStore = create<ErpState>()(
     {
       // 새로고침해도 시연 중 변경이 유지되도록 탭 단위(sessionStorage)로 저장
       name: 'k-auto-demo',
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => sessionStorage),
       partialize: (s) => ({ data: s.data, currentUserId: s.currentUserId }),
     },

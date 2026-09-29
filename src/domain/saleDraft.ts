@@ -42,7 +42,7 @@ export function isDoubleLoss(vehicleId: string | null, d: Pick<SaleDraft, 'taxTr
   return calcVat(purchase, db.evidences.filter((e) => e.vehicleId === vehicleId), db.policy).unsecured > 0
 }
 
-/** 판매가 원화 환산 (등록 시점 환율 고정) */
+/** 판매가 원화 환산 — 등록 시점 환율로 예상 손익을 본다 (영세율 과세표준은 선적 처리 시 선적일 기준환율로 확정) */
 export const saleKrw = (d: Pick<SaleDraft, 'amount' | 'currency'>, db: ErpData) => (d.amount ?? 0) * db.rates[d.currency]
 
 /**

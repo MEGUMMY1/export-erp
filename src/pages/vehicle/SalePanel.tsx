@@ -34,10 +34,18 @@ export function SalePanel({ vehicleId, data }: { vehicleId: string; data: ErpDat
         <Field label="판매가">
           {formatMoney(s.amount, s.currency)}
           <span className="block text-caption-sm text-gray-70">
-            {formatKRW(saleKrw)} (환율 {formatNumber(s.exchangeRate)} 고정)
+            {formatKRW(saleKrw)} (등록 시 환율 {formatNumber(s.exchangeRate)} · 예상 손익용)
           </span>
         </Field>
-        <Field label="예상 손익">
+        {s.taxTreatment === 'ZERO_RATED' && (
+          <Field label="영세율 과세표준">
+            {s.shipmentRate ? formatKRW(s.amount * s.shipmentRate) : <span className="text-gray-70">선적 시 확정</span>}
+            <span className="block text-caption-sm text-gray-70">
+              {s.shipmentRate ? `선적일 기준환율 ${formatNumber(s.shipmentRate)}` : '공급시기(선적일) 기준환율로 환산'}
+            </span>
+          </Field>
+        )}
+        <Field label="예상 손익 (매입가 기준)">
           <span className={margin < 0 ? 'text-red-60' : 'text-green-60'}>{formatKRW(margin)}</span>
         </Field>
         <Field label="매출 처리">{s.taxTreatment === 'ZERO_RATED' ? '영세율 (직수출)' : '국내 과세 (10%)'}</Field>

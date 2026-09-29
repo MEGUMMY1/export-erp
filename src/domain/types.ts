@@ -90,6 +90,8 @@ export interface Vehicle {
   shipmentId?: string
   /** 회계 확인으로 해소된 Soft 게이트 (S4·S5·S8) */
   acknowledgedGates?: GateCode[]
+  /** 사후 증빙을 끝내 받지 못해 회계가 매입세액 불공제를 확정한 기록 (매입 증빙 게이트 S1~S3 종결) */
+  writeOff?: { at: string; by: string; amount: number; reason: string }
 }
 
 export interface Handover {
@@ -118,8 +120,13 @@ export interface Sale {
   exportCountry: string
   amount: number
   currency: Currency
-  /** 판매 등록 시점 환율 고정 */
+  /** 판매 등록 시점 환율 — 예상 손익 계산용 (영세율 과세표준 환율이 아님) */
   exchangeRate: number
+  /**
+   * 선적일 기준환율 — 영세율 과세표준은 공급시기(선적일) 기준환율로 환산한다.
+   * 선적 처리 시 기록. 선적 전에 대금을 환가했다면 환가한 금액이 과세표준이 된다(외화 입금 연동은 범위 밖).
+   */
+  shipmentRate?: number
   incoterms: string
   taxTreatment: TaxTreatment
   customsBroker?: string
@@ -177,6 +184,8 @@ export interface ConditionalRelease {
   decidedAt?: string
   decisionNote?: string
   resolvedAt?: string
+  /** 종결 방식 — 증빙 보완 완료 / 증빙 미확보로 불공제 확정 */
+  outcome?: 'RESOLVED' | 'WRITTEN_OFF'
 }
 
 export interface AuditLog {
@@ -218,6 +227,8 @@ export interface Policy {
   repeatSellerThreshold: number
   vinCheckValidDays: number
   vatFilingDeadline: string
+  /** 조건부 선적 보완 기한은 부가세 신고 마감보다 이만큼 앞서야 한다 (신고 전 증빙 확보) */
+  filingBufferDays: number
   requiredEvidence: Record<PurchaseType, EvidenceKind[]>
   vatEvidence: Record<PurchaseType, EvidenceKind[]>
 }

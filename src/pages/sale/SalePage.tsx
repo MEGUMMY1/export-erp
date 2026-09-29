@@ -143,7 +143,7 @@ export function SalePage() {
                 message={
                   draft.currency === 'KRW'
                     ? undefined
-                    : `환율 ${formatNumber(data.rates[draft.currency])} (등록 시점 고정)${krw ? ` · ${formatKRW(krw)}` : ''}`
+                    : `환율 ${formatNumber(data.rates[draft.currency])} (예상 손익용 · 과세표준은 선적일 기준환율)${krw ? ` · ${formatKRW(krw)}` : ''}`
                 }
               />
               <Dropdown

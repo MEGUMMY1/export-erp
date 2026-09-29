@@ -28,7 +28,11 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
   /** 요청자의 조건부 선적 이행 이력 */
   const track = (ownerId: string) => {
     const mine = data.releases.filter((r) => r.ownerId === ownerId)
-    return { open: mine.filter(isOpenRelease).length, overdue: mine.filter((r) => isOverdue(r, data)).length }
+    return {
+      open: mine.filter(isOpenRelease).length,
+      overdue: mine.filter((r) => isOverdue(r, data)).length,
+      writtenOff: mine.filter((r) => r.outcome === 'WRITTEN_OFF').length,
+    }
   }
 
   /** 요청 이후 생긴 차단(Hard) 항목 — 있으면 승인 불가 */
@@ -83,8 +87,8 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
                   {userName(r.requestedBy)} · {formatDateTime(r.requestedAt)}
                 </Field>
                 <Field label="책임자 이행 이력">
-                  <span className={t.overdue ? 'text-red-60' : undefined}>
-                    미해소 {t.open}건 · 기한 초과 {t.overdue}건
+                  <span className={t.overdue || t.writtenOff ? 'text-red-60' : undefined}>
+                    미해소 {t.open}건 · 기한 초과 {t.overdue}건 · 불공제 확정 {t.writtenOff}건
                   </span>
                 </Field>
               </dl>

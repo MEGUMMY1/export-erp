@@ -1,7 +1,8 @@
 import { CONFIRM_BLOCKERS, ROLE_LABEL, TODAY } from './constants'
 import { evaluateGates, riskOf } from './gates'
+import { addDays } from './format'
 import { calcVat, type VatSummary } from './vat'
-import type { ConditionalRelease, ErpData, GateResult, Risk, Role } from './types'
+import type { ConditionalRelease, ErpData, GateCode, GateResult, Risk, Role } from './types'
 
 // ── 역할 권한 ─────────────────────────────────────────────
 export type Permission =
@@ -19,11 +20,12 @@ export type Permission =
   | 'PROCESS_SHIPMENT'
   | 'FIX_EXPORT'
   | 'RECHECK_VIN'
+  | 'WRITE_OFF_VAT'
 
 const PERMISSIONS: Record<Role, Permission[]> = {
   PURCHASER: ['REGISTER_PURCHASE', 'HANDOVER', 'CONFIRM_PURCHASE', 'UPLOAD_EVIDENCE', 'RECHECK_VIN'],
   SALES: ['REGISTER_SALE', 'REQUEST_RELEASE', 'CREATE_SLIP', 'UPLOAD_EVIDENCE'],
-  ACCOUNTING: ['VERIFY_EVIDENCE', 'ACKNOWLEDGE_GATE', 'DECIDE_RELEASE', 'DECIDE_SLIP'],
+  ACCOUNTING: ['VERIFY_EVIDENCE', 'ACKNOWLEDGE_GATE', 'DECIDE_RELEASE', 'DECIDE_SLIP', 'WRITE_OFF_VAT'],
   LOGISTICS: ['PROCESS_SHIPMENT', 'FIX_EXPORT', 'RECHECK_VIN'],
 }
 
@@ -104,7 +106,28 @@ export function isOverdue(release: ConditionalRelease, db: ErpData) {
 }
 
 /** 승인됐지만 아직 보완이 끝나지 않은 조건부 선적 */
-export const isOpenRelease = (release: ConditionalRelease) => release.status === 'APPROVED' && !release.resolvedAt
+/** 매입 증빙 게이트 — 사후 증빙을 끝내 받지 못하면 불공제 확정으로 종결할 수 있다 */
+export const EVIDENCE_GATES: GateCode[] = ['S1', 'S2', 'S3']
+
+/** 불공제 확정 — 선적 완료 후 사후 보완 중인 차량의 매입 증빙 항목만 대상 */
+export function canWriteOff(vehicleId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
+  return guard([
+    db.vehicles[vehicleId].stage !== 'SHIPPED' && '선적 완료 후 사후 보완 중인 차량만 불공제 확정할 수 있습니다.',
+    !ev.gates.some((g) => EVIDENCE_GATES.includes(g.code)) && '확정할 매입 증빙 항목이 없습니다.',
+  ])
+}
+
+/**
+ * 조건부 선적 보완 기한 =min(요청일 + 정책 기한, 부가세 신고 마감 − 버퍼)
+ * 신고 전에 증빙을 확보해야 매입세액을 공제받을 수 있으므로, 정책 기한이 남아 있어도 신고 마감에 맞춰 당긴다.
+ */
+export function releaseDueDate(days: number, policy: ErpData['policy']): { dueDate: string; cappedByFiling: boolean } {
+  const byPolicy = addDays(TODAY, Math.min(days, policy.conditionalDueDays))
+  const byFiling = addDays(policy.vatFilingDeadline, -policy.filingBufferDays)
+  return byFiling < byPolicy ? { dueDate: byFiling, cappedByFiling: true } : { dueDate: byPolicy, cappedByFiling: false }
+}
+
+export const isOpenRelease =(release: ConditionalRelease) => release.status === 'APPROVED' && !release.resolvedAt
 
 export function canRequestRelease(vehicleId: string, userId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
   const stage = db.vehicles[vehicleId].stage

@@ -4,6 +4,7 @@
   "repeatSellerThreshold": 3,
   "vinCheckValidDays": 7,
   "vatFilingDeadline": "2026-10-25",
+  "filingBufferDays": 5,
   "requiredEvidence": {
     "DEALER": [
       "TAX_INVOICE",

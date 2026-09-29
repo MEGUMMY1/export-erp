@@ -23,8 +23,10 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
   const vat = calcVat(p, evidences, policy)
 
   const out: GateResult[] = []
+  // 불공제 확정된 차량은 매입 증빙 게이트(S1~S3)를 손실로 종결한 것으로 본다
+  const writtenOff: GateCode[] = v.writeOff ? ['S1', 'S2', 'S3'] : []
   const push = (code: GateCode, reason: string, extra: Partial<GateResult> = {}) => {
-    if (acknowledged.includes(code)) return
+    if (acknowledged.includes(code) || writtenOff.includes(code)) return
     out.push({ code, ...GATE_META[code], reason, ...extra })
   }
   const has = (kind: string) => evidences.some((e) => e.kind === kind)

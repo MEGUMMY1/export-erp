@@ -70,6 +70,7 @@ const policy = {
   repeatSellerThreshold: 3,
   vinCheckValidDays: 7,
   vatFilingDeadline: '2026-10-25',
+  filingBufferDays: 5,
   requiredEvidence: {
     DEALER: ['TAX_INVOICE', 'CONTRACT'],
     AUCTION: ['TAX_INVOICE', 'AUCTION_CONFIRMATION'],
@@ -290,6 +291,8 @@ plan.forEach((p, i) => {
       amount: Math.round((amount * uplift) / exchangeRate / 10) * 10,
       currency: 'USD',
       exchangeRate,
+      // 선적 완료 차량: 영세율 과세표준용 선적일(9/20) 기준환율 (난수 순서를 바꾸지 않도록 고정값)
+      ...(stageIdx >= 5 ? { shipmentRate: rates.USD + 5 } : {}),
       incoterms: pick(['FOB', 'FOB', 'FOB', 'CIF']),
       taxTreatment: 'ZERO_RATED',
       customsBroker: p.scenario === 'S6_BROKER' ? undefined : pick(brokers),

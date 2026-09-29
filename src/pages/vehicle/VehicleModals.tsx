@@ -145,6 +145,43 @@ export function AcknowledgeModal({ vehicleId, gate, onClose }: { vehicleId: stri
   )
 }
 
+/** 불공제 확정 — 사후 증빙을 끝내 받지 못한 경우 손실로 확정하고 종결한다 (성공 경로만 있는 흐름을 막는다) */
+export function WriteOffModal({ vehicleId, amount, onClose }: { vehicleId: string; amount: number; onClose: () => void }) {
+  const writeOffVat = useErpStore((s) => s.writeOffVat)
+  const [reason, setReason] = useState('')
+
+  return (
+    <Modal
+      open
+      onClose={onClose}
+      title="매입세액 불공제 확정"
+      showClose
+      cancel={{ label: '취소', onClick: onClose }}
+      confirm={{
+        label: '불공제 확정',
+        disabled: !reason.trim(),
+        onClick: () => report(writeOffVat(vehicleId, reason), '불공제를 확정했습니다') && onClose(),
+      }}
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1 rounded-lg border border-gray-30 px-4 py-3">
+          <p className="text-caption-md text-gray-70">손실로 확정할 금액 (증빙 미확보 예상 금액)</p>
+          <p className="text-title-md text-red-60">{formatKRW(amount)}</p>
+          <p className="text-caption-md text-gray-70">매입 증빙 항목(S1~S3)이 종결되고, 다른 보완 항목이 없으면 차량이 종결됩니다. 손실 전표 발행은 회계 시스템에서 처리합니다.</p>
+        </div>
+        <TextArea
+          label="확정 사유"
+          required
+          placeholder="예) 매도 딜러 폐업으로 세금계산서 수취 불가"
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          message="사유는 처리 이력에 남고, 조건부 선적 책임자의 이행 이력에 불공제 확정으로 기록됩니다."
+        />
+      </div>
+    </Modal>
+  )
+}
+
 /** 통관 정보 보완 — 관세사·예정 선적일 */
 export function FixSaleModal({ vehicleId, onClose }: { vehicleId: string; onClose: () => void }) {
   const data = useData()

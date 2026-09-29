@@ -6,7 +6,7 @@ import { RiskChip } from '@/components/domain/RiskChip'
 import { Button, Chip, toast } from '@/components/ui'
 import { formatKRW, formatNumber } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
-import { can, canConfirmPurchase, canRequestRelease, permissionHint } from '@/domain/rules'
+import { can, canConfirmPurchase, canRequestRelease, canWriteOff, permissionHint } from '@/domain/rules'
 import type { EvidenceKind, GateResult } from '@/domain/types'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
 import { AuditTrail } from './AuditTrail'
@@ -16,7 +16,7 @@ import { ReleaseCard } from './ReleaseCard'
 import { SalePanel } from './SalePanel'
 import { StageStepper } from './StageStepper'
 import { VatPanel } from './VatPanel'
-import { AcknowledgeModal, EvidenceUploadModal, FixSaleModal, HandoverModal } from './VehicleModals'
+import { AcknowledgeModal, EvidenceUploadModal, FixSaleModal, HandoverModal, WriteOffModal } from './VehicleModals'
 
 type ModalState =
   | { type: 'handover' }
@@ -24,6 +24,7 @@ type ModalState =
   | { type: 'acknowledge'; gate: GateResult }
   | { type: 'fixSale' }
   | { type: 'release' }
+  | { type: 'writeOff' }
   | null
 
 export function VehicleDetailPage() {
@@ -52,6 +53,7 @@ export function VehicleDetailPage() {
   const postEvidence = v.stage === 'SHIPPED' && hasSoft
   const confirmGuard = canConfirmPurchase(id, data, ev)
   const releaseGuard = canRequestRelease(id, user.id, data, ev)
+  const writeOffGuard = canWriteOff(id, data, ev)
   const shipment = v.shipmentId ? data.shipments[v.shipmentId] : undefined
 
   const missingKind = (): EvidenceKind => {
@@ -127,10 +129,19 @@ export function VehicleDetailPage() {
       )
     }
     if (shipment) {
+      // 사후 증빙을 끝내 받지 못하면 회계가 불공제를 확정해 손실로 종결한다
+      const writeOffAllowed = can(user.role, 'WRITE_OFF_VAT') && writeOffGuard.ok
       return (
-        <Button variant="outlined" onClick={() => navigate(`/shipments?id=${shipment.id}`)}>
-          선적 전표 {shipment.slipNo}
-        </Button>
+        <>
+          {writeOffAllowed && (
+            <Button variant="outlined-red" onClick={() => setModal({ type: 'writeOff' })}>
+              불공제 확정
+            </Button>
+          )}
+          <Button variant="outlined" onClick={() => navigate(`/shipments?id=${shipment.id}`)}>
+            선적 전표 {shipment.slipNo}
+          </Button>
+        </>
       )
     }
     return null
@@ -158,7 +169,7 @@ export function VehicleDetailPage() {
       <div className="grid grid-cols-[minmax(0,1fr)_360px] items-start gap-5">
         <div className="flex flex-col gap-5">
           <GatePanel gates={ev.gates} role={user.role} onAction={onGateAction} blockedActions={blockedActions} />
-          <VatPanel vat={ev.vat} />
+          <VatPanel vat={ev.vat} writeOff={v.writeOff} />
           <EvidencePanel
             vehicleId={id}
             data={data}
@@ -179,6 +190,7 @@ export function VehicleDetailPage() {
       {modal?.type === 'acknowledge' && <AcknowledgeModal vehicleId={id} gate={modal.gate} onClose={() => setModal(null)} />}
       {modal?.type === 'fixSale' && <FixSaleModal vehicleId={id} onClose={() => setModal(null)} />}
       {modal?.type === 'release' && <ReleaseRequestModal vehicleId={id} onClose={() => setModal(null)} />}
+      {modal?.type === 'writeOff' && <WriteOffModal vehicleId={id} amount={ev.vat.unsecured} onClose={() => setModal(null)} />}
     </div>
   )
 }

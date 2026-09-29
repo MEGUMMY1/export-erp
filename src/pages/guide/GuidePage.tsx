@@ -23,7 +23,7 @@ const STAGE_RULE: Record<Stage, string> = {
   SALE_REGISTERED: '매입 확정 차량만 · 압류·저당·도난 차량은 등록 불가 · 부가세 이중 손실(무증빙 매입 + 국내 판매)은 [S8] 회계 확인 전 진행 불가 · 수출 검증 시작',
   IN_SLIP: '차단 없음 + 보완 항목은 조건부 선적 승인 → 전표 결재',
   SHIPPED: '전표 결재 승인 + 선적 직전 VIN 재조회·재판정 통과 (전표 결재는 차량별 선적 가능 상태를 전제로 한 승인 — 차단 또는 승인되지 않은 보완 항목이 생긴 차량은 승인 효력이 취소되어 자동 제외)',
-  CLOSED: '사후 보완 항목까지 모두 해소',
+  CLOSED: '사후 보완 항목까지 모두 해소 — 증빙을 끝내 받지 못하면 회계가 매입세액 불공제를 확정해 손실로 종결',
 }
 
 const PERMISSION_LABEL: Record<Permission, string> = {
@@ -41,6 +41,7 @@ const PERMISSION_LABEL: Record<Permission, string> = {
   PROCESS_SHIPMENT: '선적 처리',
   FIX_EXPORT: '통관 정보·신고필증 보완',
   RECHECK_VIN: 'VIN 재조회',
+  WRITE_OFF_VAT: '매입세액 불공제 확정',
 }
 
 function GateTable({ codes }: { codes: GateCode[] }) {
@@ -183,7 +184,10 @@ export function GuidePage() {
         <>
           <Panel title="회사 정책값">
             <dl className="grid grid-cols-3 gap-5">
-              <Field label="조건부 선적 보완 기한">최대 {policy.conditionalDueDays}일 (단축만 가능)</Field>
+              <Field label="조건부 선적 보완 기한">
+                최대 {policy.conditionalDueDays}일 (단축만 가능)
+                <span className="block text-caption-md text-gray-70">단, 부가세 신고 마감 {policy.filingBufferDays}일 전을 넘길 수 없음</span>
+              </Field>
               <Field label="담당자별 미해소 조건부 선적 한도">{policy.perUserOpenLimit}건</Field>
               <Field label="기한 초과 시">해당 담당자의 신규 조건부 선적 요청 제한</Field>
               <Field label="VIN 조회 유효기간">{policy.vinCheckValidDays}일 (경과 시 H3)</Field>

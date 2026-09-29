@@ -8,6 +8,7 @@ import type { ConditionalRelease, ErpData } from '@/domain/types'
 function state(r: ConditionalRelease, data: ErpData): { tone: ChipTone; label: string } {
   if (r.status === 'PENDING') return { tone: 'progress', label: '결재 대기' }
   if (r.status === 'REJECTED') return { tone: 'default', label: '반려' }
+  if (r.outcome === 'WRITTEN_OFF') return { tone: 'error', label: '불공제 확정' }
   if (r.resolvedAt) return { tone: 'success', label: '보완 완료' }
   if (isOverdue(r, data)) return { tone: 'error', label: `기한 초과 ${dday(r.dueDate)}` }
   return { tone: 'warning', label: `보완 중 ${dday(r.dueDate)}` }

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { GateLabel } from './RiskChip'
 import { Dropdown, Modal, TextArea, toast } from '@/components/ui'
-import { addDays, formatDate, formatKRW } from '@/domain/format'
+import { daysBetween, formatDate, formatKRW } from '@/domain/format'
 import { TODAY } from '@/domain/constants'
-import { canRequestRelease } from '@/domain/rules'
+import { canRequestRelease, releaseDueDate } from '@/domain/rules'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
 
 interface Props {
@@ -84,17 +84,25 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
             <p className="text-caption-md text-gray-80">증빙 미확보 예상 금액</p>
             <p className="text-title-md text-orange-60">{formatKRW(ev.vat.unsecured)}</p>
           </div>
-          <Dropdown
-            size="sm"
-            label="보완 기한"
-            required
-            value={dueDays}
-            onChange={setDueDays}
-            options={[3, 5, maxDays].map((d) => ({
-              value: String(d),
-              label: `${formatDate(addDays(TODAY, d))} (D-${d})${d === maxDays ? ' · 정책 최대' : ''}`,
-            }))}
-          />
+          <div className="flex flex-col gap-1.5">
+            <Dropdown
+              size="sm"
+              label="보완 기한"
+              required
+              value={dueDays}
+              onChange={setDueDays}
+              options={[3, 5, maxDays].map((d) => {
+                const { dueDate, cappedByFiling } = releaseDueDate(d, data.policy)
+                return {
+                  value: String(d),
+                  label: `${formatDate(dueDate)} (D-${daysBetween(TODAY, dueDate)})${cappedByFiling ? ' · 신고 마감 기준' : d === maxDays ? ' · 정책 최대' : ''}`,
+                }
+              })}
+            />
+            <p className="text-caption-md text-gray-70">
+              부가세 신고 마감({formatDate(data.policy.vatFilingDeadline)}) {data.policy.filingBufferDays}일 전을 넘길 수 없습니다.
+            </p>
+          </div>
         </div>
 
         <TextArea

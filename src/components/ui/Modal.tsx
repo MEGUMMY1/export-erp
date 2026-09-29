@@ -104,7 +104,7 @@ export function Modal({
 
         {!isContent && description && (
           <div className="flex min-h-15 items-center justify-center p-2.5">
-            <p className="text-center text-caption-md text-gray-80">{description}</p>
+            <p className="text-center text-body-lg break-keep text-gray-80">{description}</p>
           </div>
         )}
 
