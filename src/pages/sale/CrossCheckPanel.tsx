@@ -17,7 +17,10 @@ interface Props {
   risk?: Risk
 }
 
-/** 매입·매출 크로스체크 — 계산 과정 대신 결론(손익·부가세 환급·통관)을 먼저 보여준다 */
+/**
+ * 매입·매출 크로스체크 — 계산 과정 대신 결론을 먼저 보여준다.
+ * 경제적 손익(역마진) / 매입 증빙(세무) / 거래 유형(매출 처리)을 서로 다른 항목으로 나눈다.
+ */
 export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, risk }: Props) {
   if (!purchase || !vat) {
     return (
@@ -43,27 +46,27 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
           // 원문의 "현금으로 매입해 놓고 계산서 매출로 잡아 버리는" 경우
           key: 'vat',
           status: 'error',
-          title: '부가세 이중 손실',
-          result: `매입세액 ${formatKRW(vat.unsecured)} 공제 불가`,
+          title: '거래 유형 · 부가세 이중 손실',
+          result: `증빙 미확보 예상 금액 ${formatKRW(vat.unsecured)}`,
           note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}인데 국내 과세 매출이라 매출세액${saleKrw ? ` ${formatKRW(inputVat(saleKrw))}` : ''}까지 발생합니다. 회계 팀장 확인 전에는 진행할 수 없습니다.`,
         }
       : taxTreatment === 'DOMESTIC'
       ? {
           key: 'vat',
           status: 'warn',
-          title: '부가세',
-          result: saleKrw ? `매출세액 ${formatKRW(inputVat(saleKrw))} 발생` : '국내 판매 — 매출세액 발생',
+          title: '거래 유형',
+          result: saleKrw ? `국내 판매 — 매출세액 ${formatKRW(inputVat(saleKrw))} 발생` : '국내 판매 — 매출세액 발생',
           note: '영세율(수출) 대상에서 제외됩니다.',
         }
       : vat.unsecured > 0
         ? {
             key: 'vat',
             status: 'warn',
-            title: '부가세 환급',
-            result: `${formatKRW(vat.unsecured)} 환급 불가`,
+            title: '매입 증빙',
+            result: `증빙 미확보 예상 금액 ${formatKRW(vat.unsecured)}`,
             note: has('S1') || has('S2') || has('S3') ? '매입 증빙이 없거나 검증 전입니다.' : '매입 증빙을 확인해 주세요.',
           }
-        : { key: 'vat', status: 'ok', title: '부가세 환급', result: `매입세액 ${formatKRW(vat.expected)} 전액 환급 가능` },
+        : { key: 'vat', status: 'ok', title: '매입 증빙', result: '공제 요건 증빙 확보 (회계 검증 완료)' },
 
     has('S6')
       ? { key: 'customs', status: 'warn', title: '통관 정보', result: '관세사·예정 선적일 미입력', note: '선적 전까지 보완하면 됩니다.' }

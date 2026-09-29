@@ -7,7 +7,7 @@ import { evaluateGates } from '@/domain/gates'
 import { can, canAddToSlip, canConfirmPurchase, canRequestRelease, evaluate, evaluateAll, permissionHint, type Guard, type Permission } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
 import { applySale, saleBlockReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
-import type { AuditLog, ErpData, EvidenceKind, GateCode, Notification, Sale, Shipment, User } from '@/domain/types'
+import type { AuditLog, ErpData, EvidenceKind, GateCode, GateResult, Notification, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
 
@@ -55,21 +55,40 @@ const audit = (entry: Omit<AuditLog, 'id' | 'at'>): AuditLog => ({ id: nextId('L
 
 type NewNotification = Omit<Notification, 'id' | 'at' | 'actorId' | 'readBy'>
 
-/** 매입·매출 언밸런스 알림 — 판매 등록 직후 판정 결과로 만든다 */
-function unbalanceNote(vehicleId: string, db: ErpData): NewNotification | null {
-  const gates = evaluateGates(vehicleId, db).filter((g) => ['S1', 'S2', 'S3', 'S5', 'S8'].includes(g.code))
-  if (!gates.length) return null
-  const vat = gates.find((g) => g.vatImpact)?.vatImpact
-  // 증빙 없는 매입을 과세 매출로 처리 → 부가세 이중 손실로 격상
-  const doubleLoss = gates.some((g) => g.code === 'S8' && g.vatImpact)
-  return {
-    severity: doubleLoss ? 'error' : 'warning',
-    title: doubleLoss ? '매입·매출 언밸런스 · 부가세 이중 손실' : '매입·매출 언밸런스',
-    message: `${db.vehicles[vehicleId].plateNumber} · ${gates.map((g) => g.title).join(', ')}${vat ? ` · 미확보 매입세액 ${formatKRW(vat)}` : ''}`,
-    link: `/vehicles/${vehicleId}`,
-    roles: ['ACCOUNTING'],
-    vehicleId,
+/**
+ * 판매 등록 직후 크로스체크 알림 — 성격이 다른 세 가지를 따로 보낸다.
+ * A 매입·매출 언밸런스(판매가 < 매입가, S5) / B 매입 증빙 미확보(S1·S3) / C 거래 유형 불일치(증빙 유형 S2 · 매출 처리 S8)
+ */
+function crossCheckNotes(vehicleId: string, db: ErpData): NewNotification[] {
+  const gates = evaluateGates(vehicleId, db)
+  const pick = (codes: GateCode[]) => gates.filter((g) => codes.includes(g.code))
+  const plate = db.vehicles[vehicleId].plateNumber
+  const base = { link: `/vehicles/${vehicleId}`, roles: ['ACCOUNTING' as const], vehicleId }
+  const amount = (gs: GateResult[]) => {
+    const vat = gs.find((g) => g.vatImpact)?.vatImpact
+    return vat ? ` · 증빙 미확보 예상 금액 ${formatKRW(vat)}` : ''
   }
+  const notes: NewNotification[] = []
+
+  const [loss] = pick(['S5'])
+  if (loss) notes.push({ ...base, severity: 'warning', title: '매입·매출 언밸런스 · 역마진', message: `${plate} · ${loss.reason}` })
+
+  const evidence = pick(['S1', 'S3'])
+  if (evidence.length)
+    notes.push({ ...base, severity: 'warning', title: '매입 증빙 미확보', message: `${plate} · ${evidence.map((g) => g.title).join(', ')}${amount(evidence)}` })
+
+  const mismatch = pick(['S2', 'S8'])
+  if (mismatch.length) {
+    // 증빙 없는 매입을 과세 매출로 처리 → 부가세 이중 손실로 격상
+    const doubleLoss = mismatch.some((g) => g.code === 'S8' && g.vatImpact)
+    notes.push({
+      ...base,
+      severity: doubleLoss ? 'error' : 'warning',
+      title: doubleLoss ? '거래 유형 불일치 · 부가세 이중 손실' : '거래 유형 불일치',
+      message: `${plate} · ${mismatch.map((g) => g.title).join(', ')}${amount(mismatch)}`,
+    })
+  }
+  return notes
 }
 
 const ok = (id?: string): ActionResult => ({ ok: true, reasons: [], id })
@@ -188,7 +207,7 @@ export const useErpStore = create<ErpState>()(
               {
                 severity: 'warning',
                 title: '조건부 선적 결재 요청',
-                message: `${data.vehicles[vehicleId].plateNumber} · ${gateCodes.join('·')} · 보완 기한 ${formatDate(dueDate)}${ev.vat.unsecured ? ` · 미확보 ${formatKRW(ev.vat.unsecured)}` : ''}`,
+                message: `${data.vehicles[vehicleId].plateNumber} · ${gateCodes.join('·')} · 보완 기한 ${formatDate(dueDate)}${ev.vat.unsecured ? ` · 증빙 미확보 예상 금액 ${formatKRW(ev.vat.unsecured)}` : ''}`,
                 link: '/shipments?tab=releases',
                 roles: ['ACCOUNTING'],
                 vehicleId,
@@ -508,7 +527,7 @@ export const useErpStore = create<ErpState>()(
           const salesNo = `SO-${TODAY.slice(2, 4)}${TODAY.slice(5, 7)}-N${String(newCount + 1).padStart(3, '0')}`
           const next = applySale(data, vehicleId, draft, salesNo, currentUserId, nowStamp())
           const buyer = data.buyers[draft.buyerId ?? '']
-          const unbalance = unbalanceNote(vehicleId, next)
+          const crossCheck = crossCheckNotes(vehicleId, next)
           commit(
             next,
             [
@@ -527,7 +546,7 @@ export const useErpStore = create<ErpState>()(
                 reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치`,
               },
             ],
-            unbalance ? [unbalance] : [],
+            crossCheck,
           )
           return ok(vehicleId)
         },

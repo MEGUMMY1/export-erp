@@ -185,7 +185,7 @@ export function WorkbenchPage() {
           <div className="flex items-center justify-between gap-4">
             <p className="text-body-md">
               <b className="text-subtitle-md">{selectedIds.length}대</b> 선택
-              {selectedVat > 0 && <span className="ml-2 text-orange-60">· 조건부 승인 미확보 매입세액 {formatKRW(selectedVat)}</span>}
+              {selectedVat > 0 && <span className="ml-2 text-orange-60">· 조건부 승인 증빙 미확보 예상 금액 {formatKRW(selectedVat)}</span>}
             </p>
             <div className="flex items-center gap-3">
               <Button variant="outlined-gray" onClick={() => setSelected(new Set())}>

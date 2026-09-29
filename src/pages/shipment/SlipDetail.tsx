@@ -193,7 +193,7 @@ export function SlipDetail({ slip, data, evals, role }: Props) {
             </p>
             {count('warn') > 0 && (
               <p className="text-orange-60">
-                조건부 승인 {count('warn')}대 포함 · 미확보 매입세액 {formatKRW(conditionalVat)} (기한 내 보완 추적)
+                조건부 승인 {count('warn')}대 포함 · 증빙 미확보 예상 금액 {formatKRW(conditionalVat)} (기한 내 보완 추적)
               </p>
             )}
             {count('error') > 0 && <p className="text-red-60">현재 차단 {count('error')}대는 선적 처리 시 자동으로 제외됩니다.</p>}

@@ -81,7 +81,7 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1.5">
-            <p className="text-caption-md text-gray-80">예상 부가세 영향 (미확보 매입세액)</p>
+            <p className="text-caption-md text-gray-80">증빙 미확보 예상 금액</p>
             <p className="text-title-md text-orange-60">{formatKRW(ev.vat.unsecured)}</p>
           </div>
           <Dropdown

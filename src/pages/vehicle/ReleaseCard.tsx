@@ -34,7 +34,7 @@ export function ReleaseCard({ release, data }: { release: ConditionalRelease; da
             {release.decisionNote && <span className="block text-caption-md text-gray-70">{release.decisionNote}</span>}
           </Field>
         )}
-        <Field label="결재 당시 미확보 매입세액">{formatKRW(release.vatImpact)}</Field>
+        <Field label="결재 당시 증빙 미확보 예상 금액">{formatKRW(release.vatImpact)}</Field>
       </dl>
     </Panel>
   )

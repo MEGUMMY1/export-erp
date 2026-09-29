@@ -162,6 +162,14 @@ export function GuidePage() {
               <b className="text-gray-90">차단 항목이 없고 보완 항목이 모두 해소되면 수출 검증 정상</b>입니다. 보완 항목이 남은 차량은 조건부 선적 승인이 모든 보완 항목을 포함할 때만 전표에 담을 수 있습니다.
             </p>
           </Panel>
+          <Panel title="매입·매출 크로스체크 분류">
+            <dl className="grid grid-cols-3 gap-5">
+              <Field label="A · 매입·매출 언밸런스 (경제적 손익)">판매가 &lt; 매입가 → [S5] 역마진, 회계 확인</Field>
+              <Field label="B · 매입 증빙 (세무)">증빙 미비·금액 불일치 → [S1]·[S3], 증빙 미확보 예상 금액 표시</Field>
+              <Field label="C · 거래 유형 불일치">매입 유형·증빙 유형·매출 처리가 회사 정책과 다름 → [S2]·[S8]</Field>
+            </dl>
+            <p className="text-caption-md text-gray-70">판매 등록 시 세 가지를 서로 다른 알림으로 회계에 보냅니다.</p>
+          </Panel>
           <Panel title="차단 — Hard Gate" actions={<span className="text-caption-md text-gray-70">{HARD.length}개</span>}>
             <GateTable codes={HARD} />
           </Panel>
@@ -206,16 +214,16 @@ export function GuidePage() {
               </tbody>
             </table>
           </Panel>
-          <Panel title="부가세 계산 기준">
+          <Panel title="매입세액 산정 기준 (회사 정책값)">
             <ul className="flex flex-col gap-2 text-body-md text-gray-80">
               <li>
-                <b className="text-gray-90">매입세액 = 매입가(부가세 포함) × 10/110</b> — 딜러·경매는 세금계산서 매입세액, 개인 매입은 중고자동차 매입세액 공제 특례 기준
+                <b className="text-gray-90">확보 가능 예상 = 매입가(부가세 포함) × 10/110</b> — 딜러·경매는 세금계산서 매입세액, 개인 매입은 중고자동차 매입세액 공제 특례 기준
               </li>
               <li>
                 <b className="text-gray-90">확보</b> — 공제 요건 증빙이 모두 <b>회계 검증 완료</b>된 금액 (제출만으로는 확보 아님)
               </li>
               <li>
-                <b className="text-gray-90">미확보</b> — 증빙이 없거나 검증 전이라 현재 공제받을 수 없는 금액 = 부가세 손실 위험
+                <b className="text-gray-90">증빙 미확보 예상 금액</b> — 증빙이 없거나 검증 전이라 현재 공제를 확신할 수 없는 금액 = 부가세 손실 위험
               </li>
               <li>
                 <b className="text-gray-90">수출(영세율)</b>은 매출세액이 0이므로, 확보한 매입세액이 그대로 환급됩니다. 국내 판매로 처리하면 10% 매출세액이 발생합니다.

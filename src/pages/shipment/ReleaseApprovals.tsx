@@ -73,7 +73,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
               }
             >
               <dl className="grid grid-cols-4 gap-4">
-                <Field label="미확보 매입세액">
+                <Field label="증빙 미확보 예상 금액">
                   <span className={r.vatImpact > 0 ? 'text-orange-60' : undefined}>{formatKRW(r.vatImpact)}</span>
                 </Field>
                 <Field label="보완 기한">
@@ -157,7 +157,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
             <p>
               <b>{data.vehicles[target.vehicleId].plateNumber}</b> · 보완 기한 {formatDate(target.dueDate)} · 책임자 {userName(target.ownerId)}
             </p>
-            <p className="text-orange-60">미확보 매입세액 {formatKRW(target.vatImpact)}</p>
+            <p className="text-orange-60">증빙 미확보 예상 금액 {formatKRW(target.vatImpact)}</p>
             <p className="text-gray-70">승인하면 보완 전이라도 선적 전표에 담을 수 있고, 기한을 넘기면 책임자의 신규 조건부 요청이 제한됩니다.</p>
           </div>
         </DecisionModal>

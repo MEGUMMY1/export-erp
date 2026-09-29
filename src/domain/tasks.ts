@@ -58,11 +58,11 @@ export function tasksFor(user: User, db: ErpData, evals: Record<string, Evaluati
     const unsecured = vehicles.reduce((sum, v) => sum + (v.stage === 'CLOSED' ? 0 : (evals[v.id]?.vat.unsecured ?? 0)), 0)
     const deadline = daysFromToday(db.policy.vatFilingDeadline)
     add({ id: 'acc-overdue', tone: 'error', title: `사후 증빙 기한 초과 ${overdue.length}건`, description: '담당자의 신규 조건부 선적이 자동 제한되었습니다.', to: '/workbench?tab=post', actionLabel: '확인하기' }, overdue.length)
-    add({ id: 'acc-release', tone: 'warning', title: `조건부 선적 결재 대기 ${pending.length}건`, description: `미확보 매입세액 ${formatKRW(pendingVat)}`, to: '/shipments?tab=releases', actionLabel: '결재하기' }, pending.length)
+    add({ id: 'acc-release', tone: 'warning', title: `조건부 선적 결재 대기 ${pending.length}건`, description: `증빙 미확보 예상 금액 ${formatKRW(pendingVat)}`, to: '/shipments?tab=releases', actionLabel: '결재하기' }, pending.length)
     add({ id: 'acc-slip', tone: 'info', title: `선적 전표 결재 대기 ${slips.length}건`, description: `정상 차량 ${slips.reduce((n, s) => n + s.vehicleIds.length, 0)}대 일괄 결재`, to: '/shipments', actionLabel: '결재하기' }, slips.length)
     add({ id: 'acc-verify', tone: 'warning', title: `증빙 검증 대기 ${verify.size}대`, description: '제출된 증빙을 확인해야 매입세액이 확보됩니다.', to: '/workbench?gate=S1', actionLabel: '검증하기' }, verify.size)
     add({ id: 'acc-repeat', tone: 'warning', title: `개인 반복 매도인 ${repeat.length}대`, description: '사업자(위장 개인매입) 여부 확인이 필요합니다.', to: '/workbench?gate=S4', actionLabel: '검토하기' }, repeat.length)
-    add({ id: 'acc-vat', tone: deadline <= 14 ? 'error' : 'info', title: `미확보 매입세액 ${formatKRW(unsecured)}`, description: `부가세 예정신고 마감 ${formatDate(db.policy.vatFilingDeadline)} (${deadline}일 남음)`, to: '/workbench?risk=REVIEW', actionLabel: '보완 대상 보기' }, unsecured)
+    add({ id: 'acc-vat', tone: deadline <= 14 ? 'error' : 'info', title: `증빙 미확보 예상 금액 ${formatKRW(unsecured)}`, description: `부가세 예정신고 마감 ${formatDate(db.policy.vatFilingDeadline)} (${deadline}일 남음)`, to: '/workbench?risk=REVIEW', actionLabel: '보완 대상 보기' }, unsecured)
   }
 
   if (user.role === 'LOGISTICS') {

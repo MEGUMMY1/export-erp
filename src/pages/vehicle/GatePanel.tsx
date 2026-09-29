@@ -86,7 +86,7 @@ export function GatePanel({ gates, role, onAction, blockedActions = {} }: Props)
                   </div>
                   <p className="mt-1.5 text-body-md text-gray-90">{g.reason}</p>
                   {g.vatImpact != null && g.vatImpact > 0 && (
-                    <p className="mt-0.5 text-caption-md text-orange-60">미확보 매입세액 {formatKRW(g.vatImpact)}</p>
+                    <p className="mt-0.5 text-caption-md text-orange-60">증빙 미확보 예상 금액 {formatKRW(g.vatImpact)}</p>
                   )}
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">

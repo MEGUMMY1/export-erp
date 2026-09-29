@@ -30,7 +30,7 @@ export function PostEvidenceQueue({ rows, data, evals }: { rows: ConditionalRele
           <th className="py-3">보완 항목</th>
           <th className="py-3">책임자</th>
           <th className="py-3">보완 기한</th>
-          <th className="py-3 text-right">미확보 매입세액</th>
+          <th className="py-3 text-right">증빙 미확보 예상 금액</th>
           <th className="py-3 pr-5 text-right">상태</th>
         </tr>
       </thead>

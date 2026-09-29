@@ -11,8 +11,8 @@
     "userIds": [],
     "at": "2026-09-11T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
-    "message": "41나3504 · 딜러 매입인데 간이영수증만 수취 · 미확보 매입세액 ₩1,009,091",
+    "title": "거래 유형 불일치",
+    "message": "41나3504 · 딜러 매입인데 간이영수증만 수취 · 증빙 미확보 예상 금액 ₩1,009,091",
     "link": "/vehicles/V156",
     "roles": [
       "ACCOUNTING"
@@ -54,7 +54,7 @@
     "userIds": [],
     "at": "2026-09-15T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
+    "title": "매입·매출 언밸런스 · 역마진",
     "message": "295조1643 · 역마진 -₩4,020,020",
     "link": "/vehicles/V110",
     "roles": [
@@ -75,7 +75,7 @@
     "userIds": [],
     "at": "2026-09-16T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
+    "title": "매입·매출 언밸런스 · 역마진",
     "message": "60가1654 · 역마진 -₩5,623,530",
     "link": "/vehicles/V030",
     "roles": [
@@ -96,8 +96,8 @@
     "userIds": [],
     "at": "2026-09-19T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
-    "message": "310마6712 · 세금계산서 금액 불일치 · 미확보 매입세액 ₩45,455",
+    "title": "매입 증빙 미확보",
+    "message": "310마6712 · 세금계산서 금액 불일치 · 증빙 미확보 예상 금액 ₩45,455",
     "link": "/vehicles/V080",
     "roles": [
       "ACCOUNTING"
@@ -139,8 +139,8 @@
     "userIds": [],
     "at": "2026-09-21T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
-    "message": "183더3930 · 세금계산서 금액 불일치 · 미확보 매입세액 ₩45,455",
+    "title": "매입 증빙 미확보",
+    "message": "183더3930 · 세금계산서 금액 불일치 · 증빙 미확보 예상 금액 ₩45,455",
     "link": "/vehicles/V084",
     "roles": [
       "ACCOUNTING"
@@ -204,8 +204,8 @@
     "userIds": [],
     "at": "2026-09-24T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
-    "message": "122너2566 · 딜러 매입인데 간이영수증만 수취 · 미확보 매입세액 ₩872,727",
+    "title": "거래 유형 불일치",
+    "message": "122너2566 · 딜러 매입인데 간이영수증만 수취 · 증빙 미확보 예상 금액 ₩872,727",
     "link": "/vehicles/V150",
     "roles": [
       "ACCOUNTING"
@@ -225,7 +225,7 @@
     "userIds": [],
     "at": "2026-09-25T14:30",
     "severity": "warning",
-    "title": "매입·매출 언밸런스",
+    "title": "매입·매출 언밸런스 · 역마진",
     "message": "258마4267 · 역마진 -₩3,014,240",
     "link": "/vehicles/V037",
     "roles": [

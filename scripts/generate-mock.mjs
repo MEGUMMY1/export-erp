@@ -465,11 +465,13 @@ for (const v of vehicles) {
     notify({ at: `${s.salesDate}T16:10`, severity: 'error', title: '수출신고필증 VIN 불일치', message: `${v.plateNumber} · 신고필증과 전산 VIN이 다릅니다`, link: `/vehicles/${v.id}`, roles: ['LOGISTICS', 'ACCOUNTING'], actorId: 'SYSTEM', vehicleId: v.id })
   if (sc === 'S5_LOSS') {
     const margin = s.amount * s.exchangeRate - p.amount
-    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스', message: `${v.plateNumber} · 역마진 ${won(margin)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
+    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스 · 역마진', message: `${v.plateNumber} · 역마진 ${won(margin)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
   }
   if (sc === 'S2_RECEIPT' || sc === 'S3_AMOUNT') {
+    // 크로스체크 알림 분류: 증빙 유형 불일치(S2)는 거래 유형 불일치, 금액 불일치(S3)는 매입 증빙 미확보
+    const title = sc === 'S2_RECEIPT' ? '거래 유형 불일치' : '매입 증빙 미확보'
     const label = sc === 'S2_RECEIPT' ? '딜러 매입인데 간이영수증만 수취' : '세금계산서 금액 불일치'
-    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스', message: `${v.plateNumber} · ${label} · 미확보 매입세액 ${won(sc === 'S2_RECEIPT' ? (p.amount * 10) / 110 : (500000 * 10) / 110)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
+    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title, message: `${v.plateNumber} · ${label} · 증빙 미확보 예상 금액 ${won(sc === 'S2_RECEIPT' ? (p.amount * 10) / 110 : (500000 * 10) / 110)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
   }
 }
 

@@ -58,7 +58,7 @@ export function ExportQueue({ rows, data, evals, selectable, selected, onToggle,
           <th className="py-3">판매</th>
           <th className="py-3">판정</th>
           <th className="py-3">판정 사유</th>
-          <th className="py-3 pr-5 text-right">미확보 매입세액</th>
+          <th className="py-3 pr-5 text-right">증빙 미확보 예상 금액</th>
         </tr>
       </thead>
       <tbody>

@@ -76,10 +76,10 @@ export function RiskPreview({ vinValid, vinCheck, gates, vat, purchaseType, vend
         : { key: 'evidence', status: 'warn', title: '매입 증빙', result: s1.reason.replace(/^미수취: /, '미제출: '), note: '매입 이후에도 보완할 수 있지만, 그 전까지 매입세액은 공제되지 않습니다.' },
 
     !hasAmount
-      ? { key: 'vat', status: 'pending', title: '매입세액 (매입가 × 10/110)', result: '매입가 입력 대기' }
+      ? { key: 'vat', status: 'pending', title: '매입세액', result: '매입가 입력 대기' }
       : missingVatEvidence
-        ? { key: 'vat', status: 'warn', title: '매입세액 (매입가 × 10/110)', result: `${formatKRW(vat.expected)} 공제 불가`, note: '공제 요건 증빙이 제출되지 않았습니다.' }
-        : { key: 'vat', status: 'ok', title: '매입세액 (매입가 × 10/110)', result: `${formatKRW(vat.expected)} 공제 대상`, note: '회계 검증 후 확보됩니다.' },
+        ? { key: 'vat', status: 'warn', title: '매입세액', result: `증빙 미확보 예상 금액 ${formatKRW(vat.expected)}`, note: '공제 요건 증빙이 제출되지 않았습니다.' }
+        : { key: 'vat', status: 'ok', title: '매입세액', result: `${formatKRW(vat.expected)} 확보 가능 예상`, note: '회계 검증 후 확보됩니다.' },
 
     ...gates
       .filter((g) => !COVERED.includes(g.code))
