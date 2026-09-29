@@ -4,6 +4,7 @@ import { dday } from '../../domain/format'
 import { cn } from '../../lib/cn'
 import { useCurrentUser, useData, useErpStore } from '../../store'
 import { Dropdown } from '../ui'
+import { usePageTitleStore } from './pageTitle'
 
 const NAV = [
   { section: '검증', items: [{ to: '/workbench', label: '검증 작업 큐' }] },
@@ -21,6 +22,7 @@ export function AppLayout() {
   const data = useData()
   const user = useCurrentUser()
   const setCurrentUser = useErpStore((s) => s.setCurrentUser)
+  const page = usePageTitleStore()
 
   return (
     <div className="flex min-h-screen">
@@ -67,13 +69,19 @@ export function AppLayout() {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-40 flex h-16 items-center justify-end gap-4 border-b border-gray-30 bg-white px-8 text-body-sm text-gray-70">
-          <span>기준일 {TODAY}</span>
-          <span className="text-gray-40">|</span>
-          <span>
-            부가세 예정신고 마감 {data.policy.vatFilingDeadline}{' '}
-            <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
-          </span>
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-6 border-b border-gray-30 bg-white px-8">
+          <div className="flex min-w-0 items-baseline gap-3">
+            <h1 className="shrink-0 text-title-md text-gray-100">{page.title}</h1>
+            {page.description && <p className="truncate text-body-sm text-gray-70">{page.description}</p>}
+          </div>
+          <div className="flex shrink-0 items-center gap-4 text-body-sm text-gray-70">
+            <span>기준일 {TODAY}</span>
+            <span className="text-gray-40">|</span>
+            <span>
+              부가세 예정신고 마감 {data.policy.vatFilingDeadline}{' '}
+              <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
+            </span>
+          </div>
         </header>
         <main className="min-w-0 flex-1 px-8 py-6">
           <Outlet />

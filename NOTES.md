@@ -12,8 +12,9 @@
   - mock 200대: scripts/generate-mock.mjs → src/mock/*.json (수출 검증 150대 = 정상 115 / 보완 28 / 차단 7)
   - 스토어(useErpStore, useEvaluations) · 공통 레이아웃(사이드바, 시연 사용자 전환) · 라우트 뼈대
 
+- 검증 작업 큐 (/workbench) 완료 — 역할별 할 일, 수출 검증/매입 진행/사후 증빙 탭, 리스크·게이트 필터, 검색, 페이지네이션, 조건부 선적 요청, 선적 전표 생성
+
 ## 다음 할 일 (페이지 단위로 하나씩)
-1. 검증 작업 큐 (/workbench) — 역할별 할 일, 리스크 필터, 선적 전표 담기, 조건부 선적 요청
 2. 차량 상세 (/vehicles/:id) — 게이트 사유·해소 액션, 매입세액, 증빙, Audit Trail
 3. 매입 등록 (/purchases/new) — VIN 즉시 조회, 증빙 체크리스트, 실시간 게이트
 4. 판매 등록 (/sales/new) — 크로스체크 패널
@@ -33,7 +34,10 @@
 - 공통 UI는 과제에 실제 쓰이는 것만: Button, Chip, Modal, Toast (src/components/ui)
 - 색·타이포는 index.css @theme 디자인 토큰으로만 관리 (Tailwind 기본 팔레트 제거, bg-brand-70 / text-title-lg 등)
 - 리스크 표시 매핑: 🟢 CLEAR → Chip success, 🟡 REVIEW → warning, 🔴 BLOCKED → error
-- 추후 필요 시 추가할 공통 UI 후보: StepBar(진행 단계), Tabs, Empty, TextField, Dropdown
+- 공통 UI: Button, Chip, Modal, Toast, Dropdown, TextField, TextArea, Tabs, Checkbox, Pagination
+- 칩은 dot 없이 sm 크기 기본
+- 페이지 제목·설명은 본문이 아닌 상단 헤더에 표시 (usePageTitle)
+- 필터·탭·페이지는 URL 쿼리로 관리 → 할 일 카드에서 필터 적용된 목록으로 바로 이동
 - 데모 기준일은 2026-09-29로 고정 (mock 날짜와 D-day 계산 일관성)
 - 기획서에 없던 S8(국내 판매 전환) 게이트 추가 — 4.3 시나리오를 게이트로 승격
 - 수출신고 수리(H7)·신고필증 VIN(H6)은 판매 등록 이후부터 판정, 결재 미승인(H8)은 게이트가 아니라 선적 처리 가드로 구현
