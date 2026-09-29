@@ -202,7 +202,7 @@ export function SalePage() {
           ) : invalid.length > 0 ? (
             <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
           ) : (
-            <p className="text-caption-md text-gray-70">등록하면 수출 검증 대상에 추가되고, 보완 항목은 작업 큐에서 추적됩니다.</p>
+            <p className="text-caption-md text-gray-70">등록하면 수출 검증 대상에 추가되고, 보완 항목은 업무 현황에서 추적됩니다.</p>
           )}
         </div>
       </div>

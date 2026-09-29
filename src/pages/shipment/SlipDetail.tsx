@@ -222,7 +222,7 @@ export function SlipDetail({ slip, data, evals, role }: Props) {
                 ))}
               </ul>
             )}
-            <p className="text-caption-md text-gray-70">제외된 차량은 수출 검증 단계로 돌아가 작업 큐에서 추적됩니다.</p>
+            <p className="text-caption-md text-gray-70">제외된 차량은 수출 검증 단계로 돌아가 업무 현황에서 추적됩니다.</p>
           </div>
         </Modal>
       )}

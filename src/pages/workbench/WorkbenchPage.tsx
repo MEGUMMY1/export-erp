@@ -4,7 +4,7 @@ import { usePageTitle } from '@/components/layout/pageTitle'
 import { Button, Dropdown, Pagination, Tabs, TextField } from '@/components/ui'
 import { GATE_META, stageIndex } from '@/domain/constants'
 import { formatKRW } from '@/domain/format'
-import { can, canAddToSlip, permissionHint } from '@/domain/rules'
+import { can, canAddToSlip } from '@/domain/rules'
 import { tasksFor } from '@/domain/tasks'
 import type { GateCode, Risk, Vehicle } from '@/domain/types'
 import { useCurrentUser, useData, useEvaluations } from '@/store'
@@ -29,12 +29,18 @@ const RISK_FILTERS: { value: RiskFilter; label: string }[] = [
 ]
 
 export function WorkbenchPage() {
-  usePageTitle('검증 작업 큐', '시스템이 먼저 검증합니다. 판정 결과에 이슈가 있는 차량만 확인하세요.')
+  usePageTitle('업무 현황', '시스템이 먼저 검증합니다. 판정 결과에 이슈가 있는 차량만 확인하세요.')
   const data = useData()
   const evals = useEvaluations()
   const user = useCurrentUser()
   const [params, setParams] = useSearchParams()
   const [selected, setSelected] = useState<Set<string>>(new Set())
+  // 사용자가 바뀌면 선택을 초기화 (선택은 영업만 가능)
+  const [selectionOwner, setSelectionOwner] = useState(user.id)
+  if (selectionOwner !== user.id) {
+    setSelectionOwner(user.id)
+    setSelected(new Set())
+  }
   const [slipOpen, setSlipOpen] = useState(false)
 
   const tab = (params.get('tab') as Tab) ?? 'export'
@@ -155,6 +161,7 @@ export function WorkbenchPage() {
             rows={slice(exportRows)}
             data={data}
             evals={evals}
+            selectable={canSlip}
             selected={selected}
             onToggle={toggle}
             onToggleAll={toggleAll}
@@ -173,7 +180,7 @@ export function WorkbenchPage() {
         )}
       </section>
 
-      {tab === 'export' && selectedIds.length > 0 && (
+      {tab === 'export' && canSlip && selectedIds.length > 0 && (
         <div className="fixed right-0 bottom-0 left-65 z-30 border-t border-gray-30 bg-white px-8 py-4 shadow-toast">
           <div className="flex items-center justify-between gap-4">
             <p className="text-body-md">
@@ -181,11 +188,10 @@ export function WorkbenchPage() {
               {selectedVat > 0 && <span className="ml-2 text-orange-60">· 조건부 승인 미확보 매입세액 {formatKRW(selectedVat)}</span>}
             </p>
             <div className="flex items-center gap-3">
-              {!canSlip && <span className="text-caption-md text-gray-70">{permissionHint('CREATE_SLIP')}</span>}
               <Button variant="outlined-gray" onClick={() => setSelected(new Set())}>
                 선택 해제
               </Button>
-              <Button disabled={!canSlip} onClick={() => setSlipOpen(true)}>
+              <Button onClick={() => setSlipOpen(true)}>
                 선적 전표 만들기
               </Button>
             </div>

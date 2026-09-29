@@ -11,13 +11,15 @@ interface Props {
   rows: Vehicle[]
   data: ErpData
   evals: Record<string, Evaluation>
+  /** 선적 전표를 만들 수 있는 역할(영업)일 때만 선택 체크박스를 보인다 */
+  selectable: boolean
   selected: Set<string>
   onToggle: (id: string) => void
   onToggleAll: (ids: string[], checked: boolean) => void
 }
 
 /** 수출 검증 대상 — 차량별 판정과 판정 사유. 행을 누르면 상세에서 해소 액션을 처리한다 */
-export function ExportQueue({ rows, data, evals, selected, onToggle, onToggleAll }: Props) {
+export function ExportQueue({ rows, data, evals, selectable, selected, onToggle, onToggleAll }: Props) {
   const navigate = useNavigate()
   const eligible = rows.filter((v) => canAddToSlip(v.id, data, evals[v.id]).ok).map((v) => v.id)
   const allChecked = eligible.length > 0 && eligible.every((id) => selected.has(id))
@@ -29,7 +31,7 @@ export function ExportQueue({ rows, data, evals, selected, onToggle, onToggleAll
   return (
     <table className="w-full table-fixed text-left">
       <colgroup>
-        <col className="w-12" />
+        {selectable && <col className="w-12" />}
         <col className="w-44" />
         <col className="w-40" />
         <col className="w-36" />
@@ -39,15 +41,19 @@ export function ExportQueue({ rows, data, evals, selected, onToggle, onToggleAll
       </colgroup>
       <thead className="sticky top-16 z-10 bg-gray-10 text-label-md text-gray-70">
         <tr className="border-b border-gray-30">
-          <th className="px-4 py-3">
-            <Checkbox
-              aria-label="편입 가능 차량 전체 선택"
-              checked={allChecked}
-              disabled={!eligible.length}
-              onChange={(e) => onToggleAll(eligible, e.target.checked)}
-            />
-          </th>
-          <th className="py-3">차량</th>
+          {selectable && (
+            <th className="px-4 py-3">
+              {eligible.length > 0 && (
+                <Checkbox
+                  aria-label="이 페이지의 전표 편입 가능 차량 전체 선택"
+                  title="이 페이지의 전표 편입 가능 차량 전체 선택"
+                  checked={allChecked}
+                  onChange={(e) => onToggleAll(eligible, e.target.checked)}
+                />
+              )}
+            </th>
+          )}
+          <th className={cn('py-3', !selectable && 'pl-5')}>차량</th>
           <th className="py-3">매입</th>
           <th className="py-3">판매</th>
           <th className="py-3">판정</th>
@@ -66,17 +72,16 @@ export function ExportQueue({ rows, data, evals, selected, onToggle, onToggleAll
             <tr
               key={v.id}
               onClick={() => navigate(`/vehicles/${v.id}`)}
-              className={cn('cursor-pointer border-b border-gray-20 align-top hover:bg-gray-10', selected.has(v.id) && 'bg-brand-10 hover:bg-brand-10')}
+              className={cn('cursor-pointer border-b border-gray-20 align-top hover:bg-gray-10', selectable && selected.has(v.id) && 'bg-brand-10 hover:bg-brand-10')}
             >
-              <td className="px-4 py-3.5" onClick={(e) => e.stopPropagation()}>
-                <Checkbox
-                  aria-label={`${v.plateNumber} 선택`}
-                  checked={selected.has(v.id)}
-                  disabled={!eligibleRow}
-                  onChange={() => onToggle(v.id)}
-                />
-              </td>
-              <td className="py-3.5 pr-3">
+              {selectable && (
+                <td className="px-4 py-3.5" onClick={(e) => eligibleRow && e.stopPropagation()}>
+                  {eligibleRow && (
+                    <Checkbox aria-label={`${v.plateNumber} 선택`} checked={selected.has(v.id)} onChange={() => onToggle(v.id)} />
+                  )}
+                </td>
+              )}
+              <td className={cn('py-3.5 pr-3', !selectable && 'pl-5')}>
                 <p className="text-body-md-m text-gray-90">{v.plateNumber}</p>
                 <p className="text-caption-sm text-gray-70">
                   {v.manufacturer} {v.model} · {v.modelYear}

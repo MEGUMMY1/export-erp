@@ -10,7 +10,7 @@ import { NotificationCenter } from './NotificationCenter'
 import { usePageTitleStore } from './pageTitle'
 
 const NAV = [
-  { section: '검증', items: [{ to: '/workbench', label: '검증 작업 큐' }] },
+  { section: '현황', items: [{ to: '/workbench', label: '업무 현황' }] },
   {
     section: '업무 등록',
     items: [

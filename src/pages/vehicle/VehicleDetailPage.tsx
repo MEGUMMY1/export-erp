@@ -41,7 +41,7 @@ export function VehicleDetailPage() {
   if (!v) {
     return (
       <p className="rounded-xl border border-gray-30 bg-white p-10 text-center text-body-md text-gray-70">
-        차량을 찾을 수 없습니다. <Link to="/workbench" className="text-brand-70 underline">작업 큐로</Link>
+        차량을 찾을 수 없습니다. <Link to="/workbench" className="text-brand-70 underline">업무 현황으로</Link>
       </p>
     )
   }
