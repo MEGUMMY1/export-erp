@@ -1,6 +1,6 @@
 [
   {
-    "id": "N019",
+    "id": "N018",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -21,7 +21,7 @@
     "vehicleId": "V156"
   },
   {
-    "id": "N017",
+    "id": "N016",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -43,7 +43,7 @@
     "vehicleId": "V131"
   },
   {
-    "id": "N013",
+    "id": "N012",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -64,7 +64,7 @@
     "vehicleId": "V110"
   },
   {
-    "id": "N008",
+    "id": "N007",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -85,7 +85,7 @@
     "vehicleId": "V030"
   },
   {
-    "id": "N011",
+    "id": "N010",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -106,7 +106,7 @@
     "vehicleId": "V080"
   },
   {
-    "id": "N014",
+    "id": "N013",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -128,7 +128,7 @@
     "vehicleId": "V112"
   },
   {
-    "id": "N012",
+    "id": "N011",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -149,7 +149,7 @@
     "vehicleId": "V084"
   },
   {
-    "id": "N009",
+    "id": "N008",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -171,7 +171,7 @@
     "vehicleId": "V032"
   },
   {
-    "id": "N015",
+    "id": "N014",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -193,7 +193,7 @@
     "vehicleId": "V119"
   },
   {
-    "id": "N018",
+    "id": "N017",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -214,7 +214,7 @@
     "vehicleId": "V150"
   },
   {
-    "id": "N010",
+    "id": "N009",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -235,7 +235,7 @@
     "vehicleId": "V037"
   },
   {
-    "id": "N016",
+    "id": "N015",
     "readBy": [
       "U-PUR",
       "U-SAL1",
@@ -257,7 +257,7 @@
     "vehicleId": "V123"
   },
   {
-    "id": "N002",
+    "id": "N001",
     "readBy": [],
     "userIds": [],
     "at": "2026-09-27T15:47",
@@ -272,7 +272,7 @@
     "vehicleId": "V098"
   },
   {
-    "id": "N003",
+    "id": "N002",
     "readBy": [],
     "userIds": [
       "U-SAL1"
@@ -289,7 +289,7 @@
     "vehicleId": "V191"
   },
   {
-    "id": "N004",
+    "id": "N003",
     "readBy": [],
     "userIds": [
       "U-SAL1"
@@ -306,7 +306,7 @@
     "vehicleId": "V192"
   },
   {
-    "id": "N005",
+    "id": "N004",
     "readBy": [],
     "userIds": [
       "U-SAL2"
@@ -321,7 +321,7 @@
     "vehicleId": "V193"
   },
   {
-    "id": "N006",
+    "id": "N005",
     "readBy": [],
     "userIds": [
       "U-SAL2"
@@ -337,22 +337,7 @@
     "actorId": "U-ACC"
   },
   {
-    "id": "N001",
-    "readBy": [],
-    "userIds": [],
-    "at": "2026-09-28T15:21",
-    "severity": "warning",
-    "title": "조건부 선적 결재 요청",
-    "message": "258마4267 · S5 · 보완 기한 2026.10.05",
-    "link": "/shipments?tab=releases",
-    "roles": [
-      "ACCOUNTING"
-    ],
-    "actorId": "U-SAL2",
-    "vehicleId": "V037"
-  },
-  {
-    "id": "N007",
+    "id": "N006",
     "readBy": [],
     "userIds": [],
     "at": "2026-09-28T17:20",

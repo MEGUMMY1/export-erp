@@ -1,4 +1,4 @@
-import { CONFIRM_BLOCKERS, ROLE_LABEL, TODAY } from './constants'
+import { ACKNOWLEDGEABLE, CONFIRM_BLOCKERS, RELEASABLE, ROLE_LABEL, TODAY } from './constants'
 import { evaluateGates, riskOf } from './gates'
 import { addDays } from './format'
 import { calcVat, type VatSummary } from './vat'
@@ -55,13 +55,14 @@ export function evaluate(vehicleId: string, db: ErpData): Evaluation {
   const gates = evaluateGates(vehicleId, db)
   const p = db.purchases[vehicleId]
   const release = activeRelease(vehicleId, db)
-  const soft = gates.filter((g) => g.severity === 'SOFT')
+  const docs = gates.filter((g) => RELEASABLE.includes(g.code))
   return {
     gates,
     risk: riskOf(gates),
     vat: calcVat(p, db.evidences.filter((e) => e.vehicleId === vehicleId), db.policy),
     release,
-    releaseCovers: release?.status === 'APPROVED' && soft.every((g) => release.gateCodes.includes(g.code)),
+    // 조건부 선적은 서류 항목만 덮는다 — 판단 항목(S4·S5·S8)은 회계 확인으로만 해소
+    releaseCovers: release?.status === 'APPROVED' && docs.every((g) => release.gateCodes.includes(g.code)),
   }
 }
 
@@ -93,12 +94,14 @@ export const isDomesticSale = (vehicleId: string, db: ErpData) => db.sales[vehic
 export function canAddToSlip(vehicleId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
   const stage = db.vehicles[vehicleId].stage
   const hard = ev.gates.filter((g) => g.severity === 'HARD')
-  const soft = ev.gates.filter((g) => g.severity === 'SOFT')
+  const judgment = ev.gates.filter((g) => ACKNOWLEDGEABLE.includes(g.code))
+  const docs = ev.gates.filter((g) => RELEASABLE.includes(g.code))
   if (isDomesticSale(vehicleId, db)) return guard(['국내 판매 차량은 선적 대상이 아닙니다.'])
   return guard([
     stage !== 'SALE_REGISTERED' && '수출 검증 단계 차량만 선적 전표에 담을 수 있습니다.',
     ...hard.map((g) => `[${g.code}] ${g.title} — 우회 불가`),
-    soft.length > 0 && !ev.releaseCovers && '보완 항목이 있습니다. 조건부 선적 승인이 필요합니다.',
+    ...judgment.map((g) => `[${g.code}] ${g.title} — 회계 확인 필요`),
+    docs.length > 0 && !ev.releaseCovers && '서류 보완 항목이 있습니다. 조건부 선적 승인이 필요합니다.',
   ])
 }
 
@@ -109,7 +112,6 @@ export function isOverdue(release: ConditionalRelease, db: ErpData) {
   return open.length > 0
 }
 
-/** 승인됐지만 아직 보완이 끝나지 않은 조건부 선적 */
 /** 매입 증빙 게이트 — 사후 증빙을 끝내 받지 못하면 불공제 확정으로 종결할 수 있다 */
 export const EVIDENCE_GATES: GateCode[] = ['S1', 'S2', 'S3']
 
@@ -124,7 +126,7 @@ export function canWriteOff(vehicleId: string, db: ErpData, ev = evaluate(vehicl
 }
 
 /**
- * 조건부 선적 보완 기한 =min(요청일 + 정책 기한, 부가세 신고 마감 − 버퍼)
+ * 조건부 선적 보완 기한 = min(요청일 + 정책 기한, 부가세 신고 마감 − 버퍼)
  * 신고 전에 증빙을 확보해야 매입세액을 공제받을 수 있으므로, 정책 기한이 남아 있어도 신고 마감에 맞춰 당긴다.
  */
 export function releaseDueDate(days: number, policy: ErpData['policy']): { dueDate: string; cappedByFiling: boolean } {
@@ -133,19 +135,20 @@ export function releaseDueDate(days: number, policy: ErpData['policy']): { dueDa
   return byFiling < byPolicy ? { dueDate: byFiling, cappedByFiling: true } : { dueDate: byPolicy, cappedByFiling: false }
 }
 
-export const isOpenRelease =(release: ConditionalRelease) => release.status === 'APPROVED' && !release.resolvedAt
+/** 승인됐지만 아직 보완이 끝나지 않은 조건부 선적 */
+export const isOpenRelease = (release: ConditionalRelease) => release.status === 'APPROVED' && !release.resolvedAt
 
 export function canRequestRelease(vehicleId: string, userId: string, db: ErpData, ev = evaluate(vehicleId, db)): Guard {
   const stage = db.vehicles[vehicleId].stage
   const mine = db.releases.filter((r) => r.ownerId === userId)
   const overdue = mine.filter((r) => isOverdue(r, db))
   const open = mine.filter(isOpenRelease)
-  const soft = ev.gates.filter((g) => g.severity === 'SOFT')
+  const docs = ev.gates.filter((g) => RELEASABLE.includes(g.code))
   if (isDomesticSale(vehicleId, db)) return guard(['국내 판매 차량은 조건부 선적 대상이 아닙니다. 보완 항목은 회계 확인으로 해소합니다.'])
   return guard([
     stage !== 'SALE_REGISTERED' && '수출 검증 단계 차량만 요청할 수 있습니다.',
     ev.gates.some((g) => g.severity === 'HARD') && '차단(Hard) 항목은 조건부 선적 대상이 아닙니다.',
-    soft.length === 0 && '보완할 항목이 없습니다.',
+    docs.length === 0 && '사후 보완할 서류 항목이 없습니다. 판단 항목(반복 매도인·역마진·국내 판매)은 회계 확인으로 해소합니다.',
     ev.release?.status === 'PENDING' && '이미 결재 대기 중입니다.',
     ev.releaseCovers && '이미 조건부 선적이 승인되었습니다.',
     overdue.length > 0 && `기한을 넘긴 사후 증빙 ${overdue.length}건이 있어 신규 요청이 제한됩니다.`,

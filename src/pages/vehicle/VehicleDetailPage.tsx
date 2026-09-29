@@ -4,6 +4,7 @@ import { usePageTitle } from '@/components/layout/pageTitle'
 import { ReleaseRequestModal } from '@/components/domain/ReleaseRequestModal'
 import { RiskChip } from '@/components/domain/RiskChip'
 import { Button, Chip, toast } from '@/components/ui'
+import { RELEASABLE } from '@/domain/constants'
 import { formatKRW, formatNumber } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
 import { can, canConfirmPurchase, canRequestRelease, canWriteOff, isDomesticSale, permissionHint } from '@/domain/rules'
@@ -130,7 +131,8 @@ export function VehicleDetailPage() {
         <Hint>국내 판매 — 선적 대상 아님 · 회계 확인 후 종결</Hint>
       )
     }
-    if (v.stage === 'SALE_REGISTERED' && hasSoft && can(user.role, 'REQUEST_RELEASE')) {
+    // 조건부 선적 요청은 서류로 사후 보완하는 항목이 있을 때만
+    if (v.stage === 'SALE_REGISTERED' && ev.gates.some((g) => RELEASABLE.includes(g.code)) && can(user.role, 'REQUEST_RELEASE')) {
       return (
         <>
           <Button variant="outlined" disabled={!releaseGuard.ok} onClick={() => setModal({ type: 'release' })}>

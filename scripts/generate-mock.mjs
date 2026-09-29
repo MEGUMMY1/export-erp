@@ -127,7 +127,8 @@ addE(1, 'S1_DEALER', { release: 'APPROVED', requester: 'U-SAL2', reason: '딜러
 addE(4, 'S1_DEALER')
 addE(5, 'S1_INDIV_CASH')
 addE(3, 'S4_REPEAT')
-addE(1, 'S5_LOSS', { release: 'PENDING', requester: 'U-SAL2', reason: '장기 재고(60일) 처분, 추가 시세 하락 전 판매' })
+// 역마진(S5)은 판단 항목 — 조건부 선적이 아니라 영업이 사유를 남기고 회계가 확인한다
+addE(1, 'S5_LOSS', { lossNote: true, requester: 'U-SAL2', reason: '장기 재고(60일) 처분, 추가 시세 하락 전 판매' })
 addE(2, 'S5_LOSS')
 addE(2, 'S2_RECEIPT')
 addE(2, 'S3_AMOUNT')
@@ -316,11 +317,17 @@ plan.forEach((p, i) => {
     }
   }
 
-  // 조건부 선적
+  // 선적 전 요청은 최근(9/27~28), 선적 완료 건은 선적 직전에 요청된 것으로 둔다
+  const reqDay = p.release || p.lossNote ? (stageIdx >= 5 ? Math.min(sDay + 1, 17) : int(27, 28)) : 0
+
+  // 역마진(S5)은 조건부 선적 대상이 아니다 — 영업이 사유를 남기고 회계 확인을 기다린다
+  if (p.lossNote) {
+    log({ vehicleId: id, action: '회계 확인 요청 · 역마진 사유', actorId: p.requester, at: at(9, reqDay, 15), reason: p.reason })
+  }
+
+  // 조건부 선적 — 서류로 사후 보완하는 항목(S1)만
   if (p.release) {
-    // 선적 전 요청은 최근(9/27~28), 선적 완료 건은 선적 직전에 요청된 것으로 둔다
-    const reqDay = stageIdx >= 5 ? Math.min(sDay + 1, 17) : int(27, 28)
-    const gateCodes = p.scenario === 'S5_LOSS' ? ['S5'] : ['S1']
+    const gateCodes = ['S1']
     const release = {
       id: `R${pad(++relSeq)}`,
       vehicleId: id,

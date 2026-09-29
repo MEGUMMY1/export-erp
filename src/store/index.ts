@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
-import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, TODAY } from '@/domain/constants'
+import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, RELEASABLE, TODAY } from '@/domain/constants'
 import { formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
 import {
@@ -201,7 +201,8 @@ export const useErpStore = create<ErpState>()(
 
           const { dueDate } = releaseDueDate(dueDays, data.policy)
           const id = nextId('R')
-          const gateCodes = ev.gates.filter((g) => g.severity === 'SOFT').map((g) => g.code)
+          // 조건부 선적은 서류로 사후 보완하는 항목만 담는다 (판단 항목은 회계 확인 대상)
+          const gateCodes = ev.gates.filter((g) => RELEASABLE.includes(g.code)).map((g) => g.code)
           commit(
             {
               ...data,
@@ -708,9 +709,11 @@ export const useErpStore = create<ErpState>()(
           const excluded: { vehicleId: string; reasons: string[] }[] = []
           const shipped: string[] = []
           for (const id of s.vehicleIds) {
-            // 차단(Hard) + 조건부 선적 승인으로 커버되지 않은 보완(Soft) 항목
+            // 차단(Hard) + 회계 확인 전인 판단 항목 + 조건부 선적 승인으로 커버되지 않은 서류 항목
             const ev = evaluate(id, next)
-            const hard = ev.gates.filter((g) => g.severity === 'HARD' || (!ev.releaseCovers && g.severity === 'SOFT'))
+            const hard = ev.gates.filter(
+              (g) => g.severity === 'HARD' || ACKNOWLEDGEABLE.includes(g.code) || (!ev.releaseCovers && RELEASABLE.includes(g.code)),
+            )
             const v = next.vehicles[id]
             if (hard.length) {
               const reasons = hard.map((g) => `[${g.code}] ${g.title} — ${g.reason}`)

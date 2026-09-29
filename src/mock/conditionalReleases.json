@@ -1,20 +1,6 @@
 [
   {
     "id": "R001",
-    "vehicleId": "V037",
-    "gateCodes": [
-      "S5"
-    ],
-    "dueDate": "2026-10-05",
-    "ownerId": "U-SAL2",
-    "requestedBy": "U-SAL2",
-    "requestedAt": "2026-09-28T15:21",
-    "reason": "장기 재고(60일) 처분, 추가 시세 하락 전 판매",
-    "vatImpact": 0,
-    "status": "PENDING"
-  },
-  {
-    "id": "R002",
     "vehicleId": "V039",
     "gateCodes": [
       "S1"
@@ -31,7 +17,7 @@
     "decisionNote": "보완 기한 2026.10.04 엄수"
   },
   {
-    "id": "R003",
+    "id": "R002",
     "vehicleId": "V098",
     "gateCodes": [
       "S1"
@@ -45,7 +31,7 @@
     "status": "PENDING"
   },
   {
-    "id": "R004",
+    "id": "R003",
     "vehicleId": "V191",
     "gateCodes": [
       "S1"
@@ -62,7 +48,7 @@
     "decisionNote": "보완 기한 2026.09.27 엄수"
   },
   {
-    "id": "R005",
+    "id": "R004",
     "vehicleId": "V192",
     "gateCodes": [
       "S1"
@@ -79,7 +65,7 @@
     "decisionNote": "보완 기한 2026.09.27 엄수"
   },
   {
-    "id": "R006",
+    "id": "R005",
     "vehicleId": "V193",
     "gateCodes": [
       "S1"

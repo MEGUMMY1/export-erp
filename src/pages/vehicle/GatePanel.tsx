@@ -37,11 +37,17 @@ const ACTIONS: Partial<Record<NextAction, ActionDef>> = {
   CONDITIONAL_RELEASE: { kind: 'RELEASE', label: '조건부 선적 요청', permission: 'REQUEST_RELEASE' },
 }
 
-/** 역할에 맞는 해소 액션 — 회계는 S4·S5·S8을 직접 확인으로 해소할 수 있다. 국내 판매 차량은 조건부 선적 대상이 아니다 */
-function actionFor(gate: GateResult, role: Role, exportable: boolean): ActionDef | undefined {
+/** 역할에 맞는 해소 액션 — 판단 항목(S4·S5·S8)은 회계 확인으로 해소한다 */
+function actionFor(gate: GateResult, role: Role): ActionDef | undefined {
   if (role === 'ACCOUNTING' && ACKNOWLEDGEABLE.includes(gate.code)) return ACTIONS.ACKNOWLEDGE
-  if (!exportable && gate.nextAction === 'CONDITIONAL_RELEASE') return undefined
   return ACTIONS[gate.nextAction]
+}
+
+/** 게이트 성격 안내 — 차단 / 판단 항목(회계 확인) / 서류 항목(조건부 선적으로 사후 보완 가능) */
+function kindLabel(gate: GateResult, exportable: boolean) {
+  if (gate.severity === 'HARD') return '우회 불가'
+  if (ACKNOWLEDGEABLE.includes(gate.code)) return '회계 확인 필요'
+  return exportable ? '서류 보완 · 조건부 선적 가능' : '서류 보완 필요'
 }
 
 interface Props {
@@ -76,8 +82,7 @@ export function GatePanel({ gates, role, onAction, blockedActions = {}, exportab
       ) : (
         <ul className="divide-y divide-gray-20">
           {gates.map((g) => {
-            const action = actionFor(g, role, exportable)
-            const viaAck = !exportable && ACKNOWLEDGEABLE.includes(g.code)
+            const action = actionFor(g, role)
             const allowed = action && can(role, action.permission)
             return (
               <li key={g.code} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
@@ -85,8 +90,7 @@ export function GatePanel({ gates, role, onAction, blockedActions = {}, exportab
                   <div className="flex flex-wrap items-center gap-2">
                     <GateLabel gate={g} />
                     <span className="text-caption-sm text-gray-70">
-                      {g.severity === 'HARD' ? '우회 불가' : exportable ? '조건부 선적 가능' : viaAck ? '회계 확인 필요' : '보완 필요'} · 담당{' '}
-                      {ROLE_LABEL[viaAck ? 'ACCOUNTING' : g.ownerRole]}
+                      {kindLabel(g, exportable)} · 담당 {ROLE_LABEL[g.ownerRole]}
                     </span>
                   </div>
                   <p className="mt-1.5 text-body-md text-gray-90">{g.reason}</p>
@@ -110,7 +114,7 @@ export function GatePanel({ gates, role, onAction, blockedActions = {}, exportab
                       {blockedActions[action.kind] && <span className="text-caption-sm text-gray-70">{blockedActions[action.kind]}</span>}
                     </>
                   ) : (
-                    <span className="text-caption-md text-gray-50">{ROLE_LABEL[viaAck ? 'ACCOUNTING' : g.ownerRole]} 담당 처리</span>
+                    <span className="text-caption-md text-gray-50">{ROLE_LABEL[g.ownerRole]} 담당 처리</span>
                   )}
                 </div>
               </li>

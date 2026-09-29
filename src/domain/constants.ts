@@ -74,7 +74,7 @@ export const GATE_META: Record<GateCode, GateMeta> = {
   S2: { severity: 'SOFT', title: '증빙 유형 불일치', nextAction: 'UPLOAD_EVIDENCE', ownerRole: 'PURCHASER' },
   S3: { severity: 'SOFT', title: '증빙 금액 불일치', nextAction: 'UPLOAD_EVIDENCE', ownerRole: 'PURCHASER' },
   S4: { severity: 'SOFT', title: '개인 반복 매도인', nextAction: 'ACKNOWLEDGE', ownerRole: 'ACCOUNTING' },
-  S5: { severity: 'SOFT', title: '역마진 거래', nextAction: 'CONDITIONAL_RELEASE', ownerRole: 'SALES' },
+  S5: { severity: 'SOFT', title: '역마진 거래', nextAction: 'ACKNOWLEDGE', ownerRole: 'ACCOUNTING' },
   S6: { severity: 'SOFT', title: '통관 정보 누락', nextAction: 'FIX_SALE', ownerRole: 'LOGISTICS' },
   S7: { severity: 'SOFT', title: '서류 정보 불일치', nextAction: 'CORRECT_DECL', ownerRole: 'LOGISTICS' },
   S8: { severity: 'SOFT', title: '국내 판매 전환', nextAction: 'ACKNOWLEDGE', ownerRole: 'ACCOUNTING' },
@@ -83,5 +83,10 @@ export const GATE_META: Record<GateCode, GateMeta> = {
 /** 매입 확정을 막는 게이트 */
 export const CONFIRM_BLOCKERS: GateCode[] = ['H1', 'H2', 'H3', 'H4', 'H5']
 
-/** 회계 확인만으로 해소할 수 있는 Soft 게이트 */
+/**
+ * Soft 게이트의 두 종류 — 해소 방식이 다르다.
+ * 판단 항목: 보완할 서류가 없고 회계가 판단해 확인한다 (기한 없음, 조건부 선적 대상 아님)
+ * 서류 항목: 서류로 사후 보완할 수 있다 → 조건부 선적(승인 + 기한 + 책임자) 대상
+ */
 export const ACKNOWLEDGEABLE: GateCode[] = ['S4', 'S5', 'S8']
+export const RELEASABLE: GateCode[] = ['S1', 'S2', 'S3', 'S6', 'S7']

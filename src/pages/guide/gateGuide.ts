@@ -96,7 +96,7 @@ export const GATE_GUIDE: Record<GateCode, GateGuide> = {
   S5: {
     when: '판매 등록',
     condition: () => '판매가(원화 환산) < 매입가',
-    resolve: '조건부 선적 결재 시 사유 기재 또는 회계 확인 (국내 판매는 회계 확인만)',
+    resolve: '회계 확인 (회계가 판단 · 기한 없음, 조건부 선적 대상 아님)',
     why: '손실 거래는 막지 않되, 누가 왜 승인했는지 남깁니다.',
   },
   S6: {

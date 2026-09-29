@@ -120,8 +120,9 @@ export function GuidePage() {
               <li className="flex items-start gap-3">
                 <Chip tone="warning">보완</Chip>
                 <p className="text-body-md text-gray-80">
-                  <b className="text-gray-90">Soft Gate</b> — 증빙·서류 리스크. 원칙은 선적 전 보완입니다. 사후 보완이 가능한 항목은 회사 정책에 따라 조건부 선적 대상으로 분리하며,
-                  회계 책임자의 명시적 승인과 기한·책임자 지정 없이는 진행할 수 없습니다.
+                  <b className="text-gray-90">Soft Gate</b> — 원칙은 선적 전 보완입니다. 해소 방식에 따라 두 가지로 나눕니다.
+                  <b className="text-gray-90"> 서류 항목</b>(S1·S2·S3·S6·S7)은 사후 보완이 가능해 회사 정책에 따라 조건부 선적 대상이 되며, 회계 책임자의 명시적 승인과 기한·책임자
+                  지정 없이는 진행할 수 없습니다. <b className="text-gray-90">판단 항목</b>(S4·S5·S8)은 보완할 서류가 없어 회계 확인으로만 해소하고 기한이 없습니다.
                 </p>
               </li>
               <li className="flex items-start gap-3">
@@ -161,7 +162,7 @@ export function GuidePage() {
               </tbody>
             </table>
             <p className="text-body-md text-gray-80">
-              <b className="text-gray-90">차단 항목이 없고 보완 항목이 모두 해소되면 수출 검증 정상</b>입니다. 보완 항목이 남은 차량은 조건부 선적 승인이 모든 보완 항목을 포함할 때만 전표에 담을 수 있습니다.
+              <b className="text-gray-90">차단 항목이 없고 보완 항목이 모두 해소되면 수출 검증 정상</b>입니다. 판단 항목(S4·S5·S8)은 회계 확인이 끝나야 하고, 서류 항목이 남은 차량은 조건부 선적 승인이 그 항목을 모두 포함할 때만 전표에 담을 수 있습니다.
             </p>
           </Panel>
           <Panel title="매입·매출 크로스체크 분류">

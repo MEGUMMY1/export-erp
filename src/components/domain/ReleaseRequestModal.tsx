@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { GateLabel } from './RiskChip'
 import { Dropdown, Modal, TextArea, toast } from '@/components/ui'
 import { daysBetween, formatDate, formatKRW } from '@/domain/format'
-import { TODAY } from '@/domain/constants'
+import { ACKNOWLEDGEABLE, RELEASABLE, TODAY } from '@/domain/constants'
 import { canRequestRelease, releaseDueDate } from '@/domain/rules'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
 
@@ -25,7 +25,9 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
   const vehicle = data.vehicles[vehicleId]
   const ev = evals[vehicleId]
   const guard = canRequestRelease(vehicleId, user.id, data, ev)
-  const soft = ev.gates.filter((g) => g.severity === 'SOFT')
+  // 조건부 선적은 서류 항목만 — 판단 항목은 회계 확인이 따로 필요하다고 안내
+  const soft = ev.gates.filter((g) => RELEASABLE.includes(g.code))
+  const judgment = ev.gates.filter((g) => ACKNOWLEDGEABLE.includes(g.code))
   const maxDays = data.policy.conditionalDueDays
 
   const submit = () => {
@@ -68,7 +70,7 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
         )}
 
         <section className="flex flex-col gap-2">
-          <p className="text-caption-md text-gray-80">선적 후 보완할 항목</p>
+          <p className="text-caption-md text-gray-80">선적 후 서류로 보완할 항목</p>
           <ul className="flex flex-col gap-2">
             {soft.map((g) => (
               <li key={g.code} className="flex flex-col gap-1 rounded-lg border border-gray-30 px-4 py-3">
@@ -77,6 +79,11 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
               </li>
             ))}
           </ul>
+          {judgment.length > 0 && (
+            <p className="text-caption-md text-gray-70">
+              {judgment.map((g) => `[${g.code}] ${g.title}`).join(', ')}은 조건부 선적 대상이 아니라 회계 확인이 따로 필요합니다. 확인 전에는 전표에 담을 수 없습니다.
+            </p>
+          )}
         </section>
 
         <div className="grid grid-cols-2 gap-4">
