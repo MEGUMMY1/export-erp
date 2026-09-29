@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router'
 import { ROLE_LABEL, TODAY } from '@/domain/constants'
 import { dday, formatDate } from '@/domain/format'
@@ -34,7 +34,11 @@ export function AppLayout() {
   }, [pathname])
 
   // 사용자가 바뀌면 그 사람에게 도착한 새 알림을 알려준다
+  // (StrictMode에서 이펙트가 두 번 실행돼도 같은 사용자에게는 한 번만)
+  const announcedUserId = useRef<string | null>(null)
   useEffect(() => {
+    if (announcedUserId.current === user.id) return
+    announcedUserId.current = user.id
     const unread = notificationsFor(useErpStore.getState().data.notifications, user).filter((n) => isUnread(n, user.id))
     if (unread.length) toast.info(`${user.name} ${user.title} · 새 알림 ${unread.length}건`)
   }, [user])
