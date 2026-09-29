@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
-import { RiskChip } from '../../components/domain/RiskChip'
-import { Button, Checkbox, Chip } from '../../components/ui'
-import { PURCHASE_TYPE_LABEL } from '../../domain/constants'
-import { formatKRW, formatMoney } from '../../domain/format'
-import { canAddToSlip, canRequestRelease, type Evaluation } from '../../domain/rules'
-import type { ErpData, Vehicle } from '../../domain/types'
-import { cn } from '../../lib/cn'
+import { RiskChip } from '@/components/domain/RiskChip'
+import { Button, Checkbox, Chip } from '@/components/ui'
+import { PURCHASE_TYPE_LABEL } from '@/domain/constants'
+import { formatKRW, formatMoney } from '@/domain/format'
+import { canAddToSlip, canRequestRelease, type Evaluation } from '@/domain/rules'
+import type { ErpData, Vehicle } from '@/domain/types'
+import { cn } from '@/lib/cn'
 
 interface Props {
   rows: Vehicle[]

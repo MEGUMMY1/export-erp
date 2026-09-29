@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
-import { RiskChip } from '../../components/domain/RiskChip'
-import { Chip } from '../../components/ui'
-import { PURCHASE_TYPE_LABEL, STAGE_LABEL } from '../../domain/constants'
-import { formatDate, formatKRW } from '../../domain/format'
-import { canConfirmPurchase, type Evaluation } from '../../domain/rules'
-import type { ErpData, Vehicle } from '../../domain/types'
-import { cn } from '../../lib/cn'
+import { RiskChip } from '@/components/domain/RiskChip'
+import { Chip } from '@/components/ui'
+import { PURCHASE_TYPE_LABEL, STAGE_LABEL } from '@/domain/constants'
+import { formatDate, formatKRW } from '@/domain/format'
+import { canConfirmPurchase, type Evaluation } from '@/domain/rules'
+import type { ErpData, Vehicle } from '@/domain/types'
+import { cn } from '@/lib/cn'
 
 /** 매입 진행 중 차량 — 매입 확정 전에 걸러야 할 항목 */
 export function PurchaseQueue({ rows, data, evals }: { rows: Vehicle[]; data: ErpData; evals: Record<string, Evaluation> }) {

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '../../lib/cn'
+import { cn } from '@/lib/cn'
 
 // 상태 칩: 성공·주의·오류·진행·대기·예정·어두움
 export type ChipTone = 'default' | 'success' | 'warning' | 'error' | 'progress' | 'waiting' | 'scheduled' | 'dark'

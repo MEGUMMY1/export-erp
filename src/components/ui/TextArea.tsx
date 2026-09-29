@@ -1,5 +1,5 @@
 import { useId, type ComponentProps, type ReactNode } from 'react'
-import { cn } from '../../lib/cn'
+import { cn } from '@/lib/cn'
 import { fieldBorder } from './fieldStyles'
 import { FieldFrame } from './TextField'
 

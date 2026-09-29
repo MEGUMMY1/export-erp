@@ -1,9 +1,9 @@
 import { NavLink, Outlet } from 'react-router'
-import { ROLE_LABEL, TODAY } from '../../domain/constants'
-import { dday } from '../../domain/format'
-import { cn } from '../../lib/cn'
-import { useCurrentUser, useData, useErpStore } from '../../store'
-import { Dropdown } from '../ui'
+import { ROLE_LABEL, TODAY } from '@/domain/constants'
+import { dday } from '@/domain/format'
+import { cn } from '@/lib/cn'
+import { useCurrentUser, useData, useErpStore } from '@/store'
+import { Dropdown } from '@/components/ui'
 import { usePageTitleStore } from './pageTitle'
 
 const NAV = [
@@ -83,7 +83,7 @@ export function AppLayout() {
             </span>
           </div>
         </header>
-        <main className="min-w-0 flex-1 px-8 py-6">
+        <main className="min-w-0 flex-1 px-8 pt-6 pb-24">
           <Outlet />
         </main>
       </div>

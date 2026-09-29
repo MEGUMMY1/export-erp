@@ -1,4 +1,4 @@
-import { usePageTitle } from '../components/layout/pageTitle'
+import { usePageTitle } from '@/components/layout/pageTitle'
 
 // 임시: 아직 구현하지 않은 화면
 export function ComingSoon({ title }: { title: string }) {

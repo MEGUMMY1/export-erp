@@ -1,5 +1,5 @@
-import type { GateResult, Risk } from '../../domain/types'
-import { Chip, type ChipTone } from '../ui'
+import type { GateResult, Risk } from '@/domain/types'
+import { Chip, type ChipTone } from '@/components/ui'
 
 const RISK: Record<Risk, { tone: ChipTone; label: string }> = {
   CLEAR: { tone: 'success', label: '정상' },

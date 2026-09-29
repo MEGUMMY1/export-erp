@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react'
-import checkWhite from '../../assets/icons/check-white.svg'
-import { cn } from '../../lib/cn'
+import checkWhite from '@/assets/icons/check-white.svg'
+import { cn } from '@/lib/cn'
 
 interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type'> {
   label?: ReactNode

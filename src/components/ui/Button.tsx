@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react'
-import { cn } from '../../lib/cn'
+import { cn } from '@/lib/cn'
 
 type Variant = 'solid' | 'outlined' | 'outlined-gray' | 'outlined-red' | 'text'
 type Size = 'lg' | 'md' | 'sm'

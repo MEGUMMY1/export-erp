@@ -1,5 +1,5 @@
-import chevronRight from '../../assets/icons/chevron-right.svg'
-import { cn } from '../../lib/cn'
+import chevronRight from '@/assets/icons/chevron-right.svg'
+import { cn } from '@/lib/cn'
 
 interface PaginationProps {
   page: number

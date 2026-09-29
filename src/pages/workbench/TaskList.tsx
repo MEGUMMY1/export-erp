@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
-import circleCheck from '../../assets/icons/circle-check.svg'
-import circleClose from '../../assets/icons/circle-close.svg'
-import circleInfo from '../../assets/icons/circle-exclamation-info.svg'
-import chevronRight from '../../assets/icons/chevron-right.svg'
-import triangle from '../../assets/icons/triangle-exclamation.svg'
-import type { Task, TaskTone } from '../../domain/tasks'
-import type { User } from '../../domain/types'
+import circleCheck from '@/assets/icons/circle-check.svg'
+import circleClose from '@/assets/icons/circle-close.svg'
+import circleInfo from '@/assets/icons/circle-exclamation-info.svg'
+import chevronRight from '@/assets/icons/chevron-right.svg'
+import triangle from '@/assets/icons/triangle-exclamation.svg'
+import type { Task, TaskTone } from '@/domain/tasks'
+import type { User } from '@/domain/types'
 
 const TONE_ICON: Record<TaskTone, string> = {
   error: circleClose,

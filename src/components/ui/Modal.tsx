@@ -1,7 +1,7 @@
 import { useEffect, useId, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import closeIcon from '../../assets/icons/close.svg'
-import { cn } from '../../lib/cn'
+import closeIcon from '@/assets/icons/close.svg'
+import { cn } from '@/lib/cn'
 import { Button } from './Button'
 
 // Text 타입(가운데 정렬 제목+설명) / Content 타입(좌측 제목+본문), Confirm(취소+확인) / Alert(확인만)

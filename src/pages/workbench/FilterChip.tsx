@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '../../lib/cn'
+import { cn } from '@/lib/cn'
 
 /** 필터 선택 칩 (Outlined Default / Selected) */
 export function FilterChip({ selected, onClick, children }: { selected: boolean; onClick: () => void; children: ReactNode }) {

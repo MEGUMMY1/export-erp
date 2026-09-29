@@ -1,6 +1,6 @@
 import { useId, type ComponentProps, type ReactNode } from 'react'
-import searchIcon from '../../assets/icons/search.svg'
-import { cn } from '../../lib/cn'
+import searchIcon from '@/assets/icons/search.svg'
+import { cn } from '@/lib/cn'
 import { fieldBorder } from './fieldStyles'
 
 type Size = 'lg' | 'sm'

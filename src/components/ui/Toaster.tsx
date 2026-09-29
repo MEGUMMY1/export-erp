@@ -1,9 +1,9 @@
-import circleCheck from '../../assets/icons/circle-check.svg'
-import circleClose from '../../assets/icons/circle-close.svg'
-import circleExclamationInfo from '../../assets/icons/circle-exclamation-info.svg'
-import circleExclamationNeutral from '../../assets/icons/circle-exclamation-neutral.svg'
-import triangleExclamation from '../../assets/icons/triangle-exclamation.svg'
-import { cn } from '../../lib/cn'
+import circleCheck from '@/assets/icons/circle-check.svg'
+import circleClose from '@/assets/icons/circle-close.svg'
+import circleExclamationInfo from '@/assets/icons/circle-exclamation-info.svg'
+import circleExclamationNeutral from '@/assets/icons/circle-exclamation-neutral.svg'
+import triangleExclamation from '@/assets/icons/triangle-exclamation.svg'
+import { cn } from '@/lib/cn'
 import { useToastStore, type ToastType } from './toast'
 
 const typeStyle: Record<ToastType, { className: string; icon: string }> = {

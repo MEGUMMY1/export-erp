@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { Dropdown, Modal, TextField, toast } from '../../components/ui'
-import { addDays, formatKRW } from '../../domain/format'
-import { TODAY } from '../../domain/constants'
-import { useData, useErpStore, useEvaluations, type SlipInput } from '../../store'
+import { Dropdown, Modal, TextField, toast } from '@/components/ui'
+import { addDays, formatKRW } from '@/domain/format'
+import { TODAY } from '@/domain/constants'
+import { useData, useErpStore, useEvaluations, type SlipInput } from '@/store'
 
 interface Props {
   vehicleIds: string[]

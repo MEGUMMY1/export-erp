@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
-import checkIcon from '../../assets/icons/check.svg'
-import chevronDown from '../../assets/icons/chevron-down.svg'
-import { cn } from '../../lib/cn'
+import checkIcon from '@/assets/icons/check.svg'
+import chevronDown from '@/assets/icons/chevron-down.svg'
+import { cn } from '@/lib/cn'
 
 export interface DropdownOption<T extends string> {
   value: T

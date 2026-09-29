@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router'
-import { Chip, type ChipTone } from '../../components/ui'
-import { GATE_META, STAGE_LABEL } from '../../domain/constants'
-import { daysFromToday, dday, formatDate, formatKRW } from '../../domain/format'
-import { isOverdue, type Evaluation } from '../../domain/rules'
-import type { ConditionalRelease, ErpData } from '../../domain/types'
+import { Chip, type ChipTone } from '@/components/ui'
+import { GATE_META, STAGE_LABEL } from '@/domain/constants'
+import { daysFromToday, dday, formatDate, formatKRW } from '@/domain/format'
+import { isOverdue, type Evaluation } from '@/domain/rules'
+import type { ConditionalRelease, ErpData } from '@/domain/types'
 
 function releaseState(r: ConditionalRelease, data: ErpData, ev: Evaluation | undefined): { tone: ChipTone; label: string } {
   if (r.status === 'PENDING') return { tone: 'progress', label: '결재 대기' }

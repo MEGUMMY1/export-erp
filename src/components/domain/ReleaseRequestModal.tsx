@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { GateChip } from '../../components/domain/RiskChip'
-import { Dropdown, Modal, TextArea, toast } from '../../components/ui'
-import { addDays, formatKRW } from '../../domain/format'
-import { TODAY } from '../../domain/constants'
-import { canRequestRelease } from '../../domain/rules'
-import { useCurrentUser, useData, useErpStore, useEvaluations } from '../../store'
+import { GateChip } from './RiskChip'
+import { Dropdown, Modal, TextArea, toast } from '@/components/ui'
+import { addDays, formatKRW } from '@/domain/format'
+import { TODAY } from '@/domain/constants'
+import { canRequestRelease } from '@/domain/rules'
+import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
 
 interface Props {
   vehicleId: string | null

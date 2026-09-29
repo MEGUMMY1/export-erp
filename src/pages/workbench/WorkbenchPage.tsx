@@ -1,19 +1,19 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router'
-import { usePageTitle } from '../../components/layout/pageTitle'
-import { Button, Dropdown, Pagination, Tabs, TextField } from '../../components/ui'
-import { GATE_META, stageIndex } from '../../domain/constants'
-import { formatKRW } from '../../domain/format'
-import { can, canAddToSlip, permissionHint } from '../../domain/rules'
-import { tasksFor } from '../../domain/tasks'
-import type { GateCode, Risk, Vehicle } from '../../domain/types'
-import { useCurrentUser, useData, useEvaluations } from '../../store'
+import { usePageTitle } from '@/components/layout/pageTitle'
+import { Button, Dropdown, Pagination, Tabs, TextField } from '@/components/ui'
+import { GATE_META, stageIndex } from '@/domain/constants'
+import { formatKRW } from '@/domain/format'
+import { can, canAddToSlip, permissionHint } from '@/domain/rules'
+import { tasksFor } from '@/domain/tasks'
+import type { GateCode, Risk, Vehicle } from '@/domain/types'
+import { useCurrentUser, useData, useEvaluations } from '@/store'
 import { CreateSlipModal } from './CreateSlipModal'
 import { ExportQueue } from './ExportQueue'
 import { FilterChip } from './FilterChip'
 import { PostEvidenceQueue } from './PostEvidenceQueue'
 import { PurchaseQueue } from './PurchaseQueue'
-import { ReleaseRequestModal } from './ReleaseRequestModal'
+import { ReleaseRequestModal } from '@/components/domain/ReleaseRequestModal'
 import { TaskList } from './TaskList'
 
 type Tab = 'export' | 'purchase' | 'post'
@@ -108,7 +108,7 @@ export function WorkbenchPage() {
     })
 
   return (
-    <div className="flex flex-col gap-6 pb-20">
+    <div className="flex flex-col gap-6">
       <TaskList tasks={tasks} user={user} />
 
       <section className="rounded-xl border border-gray-30 bg-white">

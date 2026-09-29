@@ -13,7 +13,7 @@ import type {
   Vehicle,
   Vendor,
   VinRecord,
-} from '../domain/types'
+} from '@/domain/types'
 import auditLogs from './auditLogs.json'
 import releases from './conditionalReleases.json'
 import evidences from './evidences.json'
