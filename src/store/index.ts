@@ -500,7 +500,7 @@ export const useErpStore = create<ErpState>()(
           const { data, currentUserId } = get()
           const invalid = validateSale(vehicleId, draft, data)
           if (invalid.length || !vehicleId) return fail(...invalid)
-          const saleBlock = saleBlockReason(vehicleId, draft, data)
+          const saleBlock = saleBlockReason(vehicleId, data)
           if (saleBlock) return fail(saleBlock)
 
           // 신규 판매번호: SO-YYMM-N001 (mock 번호와 겹치지 않도록 N 접두)

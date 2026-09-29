@@ -45,7 +45,7 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
           status: 'error',
           title: '부가세 이중 손실',
           result: `매입세액 ${formatKRW(vat.unsecured)} 공제 불가`,
-          note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}인데 국내 과세 매출이라 매출세액${saleKrw ? ` ${formatKRW(inputVat(saleKrw))}` : ''}까지 발생합니다.`,
+          note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}인데 국내 과세 매출이라 매출세액${saleKrw ? ` ${formatKRW(inputVat(saleKrw))}` : ''}까지 발생합니다. 회계 팀장 확인 전에는 진행할 수 없습니다.`,
         }
       : taxTreatment === 'DOMESTIC'
       ? {

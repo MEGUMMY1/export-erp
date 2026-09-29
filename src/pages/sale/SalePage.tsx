@@ -7,7 +7,7 @@ import { CURRENCY_DECIMALS, EVIDENCE_LABEL, PURCHASE_TYPE_LABEL, TODAY } from '@
 import { formatKRW, formatNumber, nowStamp } from '@/domain/format'
 import { evaluateGates, riskOf } from '@/domain/gates'
 import { can, permissionHint } from '@/domain/rules'
-import { applySale, saleBlockReason, INCOTERMS, saleKrw, validateSale, type SaleDraft } from '@/domain/saleDraft'
+import { applySale, isDoubleLoss, saleBlockReason, INCOTERMS, saleKrw, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { Currency, TaxTreatment } from '@/domain/types'
 import { calcVat } from '@/domain/vat'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
@@ -55,7 +55,8 @@ export function SalePage() {
   }, [data, draft, selectedId, user.id])
 
   const invalid = validateSale(selectedId, draft, data)
-  const saleBlock = saleBlockReason(selectedId, draft, data)
+  const saleBlock = saleBlockReason(selectedId, data)
+  const doubleLoss = isDoubleLoss(selectedId, draft, data)
   const allowed = can(user.role, 'REGISTER_SALE')
   const evidences = selectedId ? data.evidences.filter((e) => e.vehicleId === selectedId && e.status !== 'REJECTED') : []
 
@@ -204,6 +205,8 @@ export function SalePage() {
             <p className="text-caption-md text-red-60">{saleBlock}</p>
           ) : invalid.length > 0 ? (
             <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
+          ) : doubleLoss ? (
+            <p className="text-caption-md text-orange-60">등록할 수 있지만 [S8] 부가세 이중 손실로 판정되어, 회계 팀장이 손실을 확인하기 전에는 다음 단계로 진행할 수 없습니다.</p>
           ) : (
             <p className="text-caption-md text-gray-70">등록하면 수출 검증 대상에 추가되고, 보완 항목은 업무 현황에서 추적됩니다.</p>
           )}
