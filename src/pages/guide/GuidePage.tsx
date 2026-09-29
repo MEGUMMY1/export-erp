@@ -114,7 +114,7 @@ export function GuidePage() {
               <li className="flex items-start gap-3">
                 <Chip tone="error">차단</Chip>
                 <p className="text-body-md text-gray-80">
-                  <b className="text-gray-90">Hard Gate</b> — 법적·장물 리스크. 해소 전에는 다음 단계로 갈 수 없고, 어떤 승인으로도 우회할 수 없습니다.
+                  <b className="text-gray-90">Hard Gate</b> — 압류·도난 등 거래 리스크. 해소 전에는 다음 단계로 갈 수 없고, 어떤 승인으로도 우회할 수 없습니다.
                 </p>
               </li>
               <li className="flex items-start gap-3">

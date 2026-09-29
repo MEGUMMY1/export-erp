@@ -37,7 +37,7 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
     if (c?.theft) push('H2', `${formatDate(c.checkedAt)} 조회 결과 도난 신고 차량입니다. 거래를 중단해야 합니다.`)
     if (c && (c.seizure || c.lien)) {
       const kinds = [c.seizure && '압류', c.lien && '저당'].filter(Boolean).join('·')
-      push('H1', `${formatDate(c.checkedAt)} 조회 결과 ${kinds} 등록 확인. 해제 전에는 수출 말소등록이 불가합니다.`)
+      push('H1', `${formatDate(c.checkedAt)} 조회 결과 ${kinds} 등록 확인. 해제가 확인되기 전에는 거래·선적을 진행할 수 없습니다.`)
     }
     if (!c) push('H3', 'VIN 압류·도난 조회 이력이 없습니다.')
     else {
