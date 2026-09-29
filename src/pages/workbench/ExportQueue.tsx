@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router'
 import { RiskChip } from '@/components/domain/RiskChip'
-import { Button, Checkbox, Chip } from '@/components/ui'
+import { Checkbox, Chip } from '@/components/ui'
 import { PURCHASE_TYPE_LABEL } from '@/domain/constants'
 import { formatKRW, formatMoney } from '@/domain/format'
-import { canAddToSlip, canRequestRelease, type Evaluation } from '@/domain/rules'
+import { canAddToSlip, type Evaluation } from '@/domain/rules'
 import type { ErpData, Vehicle } from '@/domain/types'
 import { cn } from '@/lib/cn'
 
@@ -11,16 +11,13 @@ interface Props {
   rows: Vehicle[]
   data: ErpData
   evals: Record<string, Evaluation>
-  userId: string
-  canRequest: boolean
   selected: Set<string>
   onToggle: (id: string) => void
   onToggleAll: (ids: string[], checked: boolean) => void
-  onRequestRelease: (id: string) => void
 }
 
-/** 수출 검증 대상 — 차량별 판정, 판정 사유, 다음 행동 */
-export function ExportQueue({ rows, data, evals, userId, canRequest, selected, onToggle, onToggleAll, onRequestRelease }: Props) {
+/** 수출 검증 대상 — 차량별 판정과 판정 사유. 행을 누르면 상세에서 해소 액션을 처리한다 */
+export function ExportQueue({ rows, data, evals, selected, onToggle, onToggleAll }: Props) {
   const navigate = useNavigate()
   const eligible = rows.filter((v) => canAddToSlip(v.id, data, evals[v.id]).ok).map((v) => v.id)
   const allChecked = eligible.length > 0 && eligible.every((id) => selected.has(id))
@@ -38,8 +35,7 @@ export function ExportQueue({ rows, data, evals, userId, canRequest, selected, o
         <col className="w-36" />
         <col className="w-36" />
         <col />
-        <col className="w-32" />
-        <col className="w-36" />
+        <col className="w-40" />
       </colgroup>
       <thead className="sticky top-16 z-10 bg-gray-10 text-label-md text-gray-70">
         <tr className="border-b border-gray-30">
@@ -56,8 +52,7 @@ export function ExportQueue({ rows, data, evals, userId, canRequest, selected, o
           <th className="py-3">판매</th>
           <th className="py-3">판정</th>
           <th className="py-3">판정 사유</th>
-          <th className="py-3 text-right">미확보 매입세액</th>
-          <th className="py-3 pr-5 text-right">다음 행동</th>
+          <th className="py-3 pr-5 text-right">미확보 매입세액</th>
         </tr>
       </thead>
       <tbody>
@@ -67,7 +62,6 @@ export function ExportQueue({ rows, data, evals, userId, canRequest, selected, o
           const s = data.sales[v.id]
           const eligibleRow = canAddToSlip(v.id, data, ev).ok
           const top = ev.gates[0]
-          const requestable = canRequest && canRequestRelease(v.id, userId, data, ev).ok
           return (
             <tr
               key={v.id}
@@ -121,21 +115,8 @@ export function ExportQueue({ rows, data, evals, userId, canRequest, selected, o
                   <p className="text-body-sm text-gray-50">모든 검증 통과</p>
                 )}
               </td>
-              <td className={cn('py-3.5 pr-3 text-right text-body-sm', ev.vat.unsecured > 0 ? 'text-orange-60' : 'text-gray-50')}>
+              <td className={cn('py-3.5 pr-5 text-right text-body-sm', ev.vat.unsecured > 0 ? 'text-orange-60' : 'text-gray-50')}>
                 {ev.vat.unsecured > 0 ? formatKRW(ev.vat.unsecured) : '—'}
-              </td>
-              <td className="py-3 pr-5 text-right" onClick={(e) => e.stopPropagation()}>
-                {requestable ? (
-                  <Button variant="outlined" size="sm" onClick={() => onRequestRelease(v.id)}>
-                    조건부 선적 요청
-                  </Button>
-                ) : eligibleRow ? (
-                  <span className="text-caption-md text-green-60">전표 편입 가능</span>
-                ) : (
-                  <Button variant="text" size="sm" onClick={() => navigate(`/vehicles/${v.id}`)}>
-                    {top?.severity === 'HARD' ? '차단 사유 보기' : '상세 보기'}
-                  </Button>
-                )}
               </td>
             </tr>
           )

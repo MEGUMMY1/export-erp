@@ -13,7 +13,6 @@ import { ExportQueue } from './ExportQueue'
 import { FilterChip } from './FilterChip'
 import { PostEvidenceQueue } from './PostEvidenceQueue'
 import { PurchaseQueue } from './PurchaseQueue'
-import { ReleaseRequestModal } from '@/components/domain/ReleaseRequestModal'
 import { TaskList } from './TaskList'
 
 type Tab = 'export' | 'purchase' | 'post'
@@ -36,7 +35,6 @@ export function WorkbenchPage() {
   const user = useCurrentUser()
   const [params, setParams] = useSearchParams()
   const [selected, setSelected] = useState<Set<string>>(new Set())
-  const [releaseTarget, setReleaseTarget] = useState<string | null>(null)
   const [slipOpen, setSlipOpen] = useState(false)
 
   const tab = (params.get('tab') as Tab) ?? 'export'
@@ -157,12 +155,9 @@ export function WorkbenchPage() {
             rows={slice(exportRows)}
             data={data}
             evals={evals}
-            userId={user.id}
-            canRequest={can(user.role, 'REQUEST_RELEASE')}
             selected={selected}
             onToggle={toggle}
             onToggleAll={toggleAll}
-            onRequestRelease={setReleaseTarget}
           />
         )}
         {tab === 'purchase' && <PurchaseQueue rows={slice(purchaseRows)} data={data} evals={evals} />}
@@ -198,7 +193,6 @@ export function WorkbenchPage() {
         </div>
       )}
 
-      {releaseTarget && <ReleaseRequestModal key={releaseTarget} vehicleId={releaseTarget} onClose={() => setReleaseTarget(null)} />}
       {slipOpen && (
         <CreateSlipModal
           vehicleIds={selectedIds}
