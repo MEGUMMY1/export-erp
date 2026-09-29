@@ -57,7 +57,7 @@ export function SalePanel({ vehicleId, data }: { vehicleId: string; data: ErpDat
             <thead className="text-label-md text-gray-70">
               <tr className="border-b border-gray-20">
                 <th className="py-2">항목</th>
-                <th className="py-2">ERP</th>
+                <th className="py-2">전산</th>
                 <th className="py-2">신고필증</th>
                 <th className="py-2 text-right">결과</th>
               </tr>

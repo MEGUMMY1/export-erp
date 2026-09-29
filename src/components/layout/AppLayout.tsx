@@ -19,6 +19,7 @@ const NAV = [
     ],
   },
   { section: '선적', items: [{ to: '/shipments', label: '선적 승인' }] },
+  { section: '도움말', items: [{ to: '/guide', label: '판정 기준' }] },
 ]
 
 export function AppLayout() {
@@ -48,7 +49,7 @@ export function AppLayout() {
       <aside className="sticky top-0 flex h-screen w-65 shrink-0 flex-col bg-gray-100 px-3">
         <div className="border-b border-gray-90 px-4 py-6">
           <p className="text-label-xs text-gray-70">K-AUTO GLOBAL</p>
-          <p className="mt-1 text-title-md text-gray-10">수출 ERP</p>
+          <p className="mt-1 text-title-md text-gray-10">수출 관리</p>
         </div>
         <nav className="flex flex-col gap-5 py-5">
           {NAV.map((group) => (

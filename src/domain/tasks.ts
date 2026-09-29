@@ -70,7 +70,7 @@ export function tasksFor(user: User, db: ErpData, evals: Record<string, Evaluati
     const broker = withGate('S6')
     const decl = [...withGate('H6'), ...withGate('S7')]
     const expired = withGate('H3')
-    add({ id: 'log-decl', tone: 'error', title: `수출신고필증 불일치 ${decl.length}대`, description: '신고필증과 ERP 정보가 다릅니다. 정정 후 재대조가 필요합니다.', to: '/workbench?gate=H6', actionLabel: '정정하기' }, decl.length)
+    add({ id: 'log-decl', tone: 'error', title: `수출신고필증 불일치 ${decl.length}대`, description: '신고필증과 전산 정보가 다릅니다. 정정 후 재대조가 필요합니다.', to: '/workbench?gate=H6', actionLabel: '정정하기' }, decl.length)
     add({ id: 'log-vin', tone: 'error', title: `VIN 조회 만료 ${expired.length}대`, description: `조회 후 ${db.policy.vinCheckValidDays}일이 지나 선적이 차단됩니다.`, to: '/workbench?gate=H3', actionLabel: '재조회' }, expired.length)
     add({ id: 'log-ship', tone: 'success', title: `선적 처리 대기 전표 ${approved.length}건`, description: '결재 승인된 전표입니다. 선적 직전 VIN을 재조회합니다.', to: '/shipments', actionLabel: '선적 처리' }, approved.length)
     add({ id: 'log-broker', tone: 'warning', title: `통관 정보 누락 ${broker.length}대`, description: '관세사 또는 예정 선적일이 없습니다.', to: '/workbench?gate=S6', actionLabel: '보완하기' }, broker.length)

@@ -102,9 +102,9 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
     if (!decl) push('H7', '수출신고 전입니다. 수리 전에는 선적할 수 없습니다.')
     else {
       if (decl.extracted.vin !== v.vin)
-        push('H6', `신고필증 ${decl.extracted.vin} ≠ ERP ${v.vin}. 다른 차량으로 신고되었을 수 있습니다.`)
+        push('H6', `신고필증 ${decl.extracted.vin} ≠ 전산 ${v.vin}. 다른 차량으로 신고되었을 수 있습니다.`)
       if (decl.extracted.plateNumber !== v.plateNumber)
-        push('S7', `신고필증 차량번호 ${decl.extracted.plateNumber} ≠ ERP ${v.plateNumber}`)
+        push('S7', `신고필증 차량번호 ${decl.extracted.plateNumber} ≠ 전산 ${v.plateNumber}`)
       if (decl.status !== 'ACCEPTED') push('H7', `수출신고 미수리 (${decl.declNo}). 수리 전에는 선적할 수 없습니다.`)
     }
   }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { Panel } from '@/components/domain/Panel'
 import { GateLabel } from '@/components/domain/RiskChip'
 import { Button } from '@/components/ui'
@@ -55,9 +56,14 @@ export function GatePanel({ gates, role, onAction }: Props) {
     <Panel
       title="리스크 게이트 판정"
       actions={
-        <span className="text-caption-md text-gray-70">
-          차단 {hard} · 보완 {gates.length - hard}
-        </span>
+        <>
+          <span className="text-caption-md text-gray-70">
+            차단 {hard} · 보완 {gates.length - hard}
+          </span>
+          <Link to="/guide" className="text-caption-md text-brand-70 hover:underline">
+            판정 기준 보기
+          </Link>
+        </>
       }
     >
       {gates.length === 0 ? (

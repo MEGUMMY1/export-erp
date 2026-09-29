@@ -462,7 +462,7 @@ for (const v of vehicles) {
     notify({ at: v.vinCheck.checkedAt, severity: 'error', title: sc === 'H2_THEFT' ? '도난 신고 차량 확인' : 'VIN 재조회 압류 확인', message: `${v.plateNumber} · ${rec.note} · 선적 차단`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING', 'SALES'], actorId: 'U-LOG', vehicleId: v.id })
   }
   if (sc === 'H6_VIN')
-    notify({ at: `${s.salesDate}T16:10`, severity: 'error', title: '수출신고필증 VIN 불일치', message: `${v.plateNumber} · 신고필증과 ERP VIN이 다릅니다`, link: `/vehicles/${v.id}`, roles: ['LOGISTICS', 'ACCOUNTING'], actorId: 'SYSTEM', vehicleId: v.id })
+    notify({ at: `${s.salesDate}T16:10`, severity: 'error', title: '수출신고필증 VIN 불일치', message: `${v.plateNumber} · 신고필증과 전산 VIN이 다릅니다`, link: `/vehicles/${v.id}`, roles: ['LOGISTICS', 'ACCOUNTING'], actorId: 'SYSTEM', vehicleId: v.id })
   if (sc === 'S5_LOSS') {
     const margin = s.amount * s.exchangeRate - p.amount
     notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스', message: `${v.plateNumber} · 역마진 ${won(margin)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
