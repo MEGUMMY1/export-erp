@@ -11,6 +11,20 @@ interface GateGuide {
   why: string
 }
 
+/** 수출 검증 정상 조건 — 검증 항목별로 무엇이면 통과이고, 아니면 어떤 게이트로 걸리는가 */
+export const EXPORT_CHECKS: { item: string; pass: string; codes: GateCode[] }[] = [
+  { item: 'VIN', pass: '압류·저당·도난 없음 + 조회 유효기간 이내', codes: ['H1', 'H2', 'H3'] },
+  { item: '실물 인수', pass: '인수자 · 차량번호 · 외관 사진 확인 완료', codes: ['H4'] },
+  { item: '매도인', pass: '신원 확인 (회사 정책상 필수)', codes: ['H5'] },
+  { item: '매입 증빙', pass: '유형별 필수 증빙 제출 + 회계 검증, 금액 일치', codes: ['S1', 'S2', 'S3'] },
+  { item: '매도인 반복 거래', pass: '기준 미만 또는 회계 확인', codes: ['S4'] },
+  { item: '손익', pass: '판매가 ≥ 매입가 또는 회계 확인', codes: ['S5'] },
+  { item: '통관 정보', pass: '관세사 · 예정 선적일 입력', codes: ['S6'] },
+  { item: '수출신고필증', pass: 'VIN · 차량번호가 전산과 일치', codes: ['H6', 'S7'] },
+  { item: '수출신고', pass: '수리 완료', codes: ['H7'] },
+  { item: '매출 처리', pass: '영세율(직수출) 또는 회계 확인', codes: ['S8'] },
+]
+
 /** 게이트별 설명 — 판정 로직(gates.ts)과 같은 기준을 사람이 읽는 말로 */
 export const GATE_GUIDE: Record<GateCode, GateGuide> = {
   H1: {
@@ -41,7 +55,7 @@ export const GATE_GUIDE: Record<GateCode, GateGuide> = {
     when: '매입 확정 전',
     condition: () => '개인 매입인데 매도인 신분증 사본 없음 / 사업자 매입인데 사업자등록번호 없음',
     resolve: '신원 증빙 제출',
-    why: '매도인을 특정할 수 없으면 장물 여부를 추적할 수 없습니다.',
+    why: '회사 내부 정책상 필수 확인 항목으로 둡니다. 매도인을 특정할 수 없으면 장물 여부를 추적할 수 없습니다.',
   },
   H6: {
     when: '판매 등록 이후 (수출신고필증 대조)',

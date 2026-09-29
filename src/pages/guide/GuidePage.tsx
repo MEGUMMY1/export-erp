@@ -8,7 +8,7 @@ import { can, type Permission } from '@/domain/rules'
 import type { GateCode, PurchaseType, Role, Stage } from '@/domain/types'
 import { cn } from '@/lib/cn'
 import { useData } from '@/store'
-import { GATE_GUIDE } from './gateGuide'
+import { EXPORT_CHECKS, GATE_GUIDE } from './gateGuide'
 
 type Tab = 'gates' | 'policy' | 'flow'
 
@@ -22,7 +22,7 @@ const STAGE_RULE: Record<Stage, string> = {
   PURCHASE_CONFIRMED: 'H1~H5 없음 (압류·도난·조회 만료·인수·신원)',
   SALE_REGISTERED: '매입 확정 차량만 · 압류·도난 차량과 부가세 이중 손실(무증빙 매입 + 국내 판매)은 등록 불가 · 수출 검증 시작',
   IN_SLIP: '차단 없음 + 보완 항목은 조건부 선적 승인 → 전표 결재',
-  SHIPPED: '전표 결재 승인 + 선적 직전 VIN 재조회·재판정 통과 (차단 또는 승인되지 않은 보완 항목이 있으면 자동 제외)',
+  SHIPPED: '전표 결재 승인 + 선적 직전 VIN 재조회·재판정 통과 (전표 결재는 차량별 선적 가능 상태를 전제로 한 승인 — 차단 또는 승인되지 않은 보완 항목이 생긴 차량은 승인 효력이 취소되어 자동 제외)',
   CLOSED: '사후 보완 항목까지 모두 해소',
 }
 
@@ -112,13 +112,14 @@ export function GuidePage() {
               <li className="flex items-start gap-3">
                 <Chip tone="error">차단</Chip>
                 <p className="text-body-md text-gray-80">
-                  <b className="text-gray-90">Hard Gate</b> — 법적·장물 리스크. 해소 전에는 다음 단계로 갈 수 없고, 결재로도 우회할 수 없습니다.
+                  <b className="text-gray-90">Hard Gate</b> — 법적·장물 리스크. 해소 전에는 다음 단계로 갈 수 없고, 어떤 승인으로도 우회할 수 없습니다.
                 </p>
               </li>
               <li className="flex items-start gap-3">
                 <Chip tone="warning">보완</Chip>
                 <p className="text-body-md text-gray-80">
-                  <b className="text-gray-90">Soft Gate</b> — 증빙·부가세 리스크. 회계 팀장이 승인하면 기한부로 먼저 선적하고, 기한 내 보완을 추적합니다.
+                  <b className="text-gray-90">Soft Gate</b> — 증빙·서류 리스크. 원칙은 선적 전 보완입니다. 사후 보완이 가능한 항목은 회사 정책에 따라 조건부 선적 대상으로 분리하며,
+                  회계 책임자의 명시적 승인과 기한·책임자 지정 없이는 진행할 수 없습니다.
                 </p>
               </li>
               <li className="flex items-start gap-3">
@@ -126,6 +127,40 @@ export function GuidePage() {
                 <p className="text-body-md text-gray-80">걸리는 항목이 없습니다. 선적 전표 단위로 일괄 승인됩니다.</p>
               </li>
             </ul>
+          </Panel>
+          <Panel title="수출 검증 정상 조건">
+            <table className="w-full table-fixed text-left">
+              <colgroup>
+                <col className="w-52" />
+                <col />
+                <col className="w-72" />
+              </colgroup>
+              <thead className="border-y border-gray-20 text-label-md text-gray-70">
+                <tr>
+                  <th className="py-2.5">검증 항목</th>
+                  <th className="py-2.5">정상 조건</th>
+                  <th className="py-2.5">실패 시</th>
+                </tr>
+              </thead>
+              <tbody>
+                {EXPORT_CHECKS.map((c) => (
+                  <tr key={c.item} className="border-b border-gray-20 align-top">
+                    <td className="py-3 pr-3 text-body-md-m">{c.item}</td>
+                    <td className="py-3 pr-3 text-body-sm text-gray-80">{c.pass}</td>
+                    <td className="py-3 text-body-sm">
+                      {c.codes.map((code) => (
+                        <span key={code} className={cn('block', GATE_META[code].severity === 'HARD' ? 'text-red-60' : 'text-orange-60')}>
+                          [{code}] {GATE_META[code].title}
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="text-body-md text-gray-80">
+              <b className="text-gray-90">차단 항목이 없고 보완 항목이 모두 해소되면 수출 검증 정상</b>입니다. 보완 항목이 남은 차량은 조건부 선적 승인이 모든 보완 항목을 포함할 때만 전표에 담을 수 있습니다.
+            </p>
           </Panel>
           <Panel title="차단 — Hard Gate" actions={<span className="text-caption-md text-gray-70">{HARD.length}개</span>}>
             <GateTable codes={HARD} />
