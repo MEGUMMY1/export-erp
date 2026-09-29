@@ -50,31 +50,30 @@ export function AppLayout() {
             </div>
           ))}
         </nav>
+
+        <div className="mt-auto flex flex-col gap-2 border-t border-gray-90 px-1 py-5">
+          <p className="text-label-xs text-gray-70">시연 사용자</p>
+          <Dropdown
+            size="sm"
+            placement="top"
+            value={user.id}
+            onChange={setCurrentUser}
+            options={data.users.map((u) => ({
+              value: u.id,
+              label: `[${ROLE_LABEL[u.role]}] ${u.name} ${u.title}`,
+            }))}
+          />
+        </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-gray-30 bg-white px-8">
-          <div className="flex items-center gap-4 text-body-sm text-gray-70">
-            <span>기준일 {TODAY}</span>
-            <span className="text-gray-40">|</span>
-            <span>
-              부가세 예정신고 마감 {data.policy.vatFilingDeadline}{' '}
-              <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-body-sm text-gray-70">시연 사용자</span>
-            <Dropdown
-              size="sm"
-              className="w-60"
-              value={user.id}
-              onChange={setCurrentUser}
-              options={data.users.map((u) => ({
-                value: u.id,
-                label: `[${ROLE_LABEL[u.role]}] ${u.name} ${u.title}`,
-              }))}
-            />
-          </div>
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-end gap-4 border-b border-gray-30 bg-white px-8 text-body-sm text-gray-70">
+          <span>기준일 {TODAY}</span>
+          <span className="text-gray-40">|</span>
+          <span>
+            부가세 예정신고 마감 {data.policy.vatFilingDeadline}{' '}
+            <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
+          </span>
         </header>
         <main className="min-w-0 flex-1 px-8 py-6">
           <Outlet />

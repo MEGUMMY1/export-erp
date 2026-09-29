@@ -23,6 +23,8 @@ interface DropdownProps<T extends string> {
   error?: string
   disabled?: boolean
   readOnly?: boolean
+  /** 목록이 펼쳐지는 방향 (화면 하단에 놓일 때 'top') */
+  placement?: 'bottom' | 'top'
   className?: string
 }
 
@@ -47,6 +49,7 @@ export function Dropdown<T extends string>({
   error,
   disabled = false,
   readOnly = false,
+  placement = 'bottom',
   className,
 }: DropdownProps<T>) {
   const id = useId()
@@ -158,7 +161,10 @@ export function Dropdown<T extends string>({
         <ul
           id={`${id}-listbox`}
           role="listbox"
-          className="absolute top-full right-0 left-0 z-50 mt-1.5 flex max-h-72 flex-col gap-[5px] overflow-y-auto rounded-lg border border-brand-60 bg-white p-2"
+          className={cn(
+            'absolute right-0 left-0 z-50 flex max-h-72 flex-col gap-[5px] overflow-y-auto rounded-lg border border-brand-60 bg-white p-2',
+            placement === 'top' ? 'bottom-full mb-1.5' : 'top-full mt-1.5',
+          )}
         >
           {options.map((o, i) => {
             const isSelected = o.value === value
