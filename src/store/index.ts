@@ -480,16 +480,6 @@ export const useErpStore = create<ErpState>()(
           }
 
           const notes: NewNotification[] = []
-          if (vinCheck.seizure || vinCheck.lien) {
-            notes.push({
-              severity: 'error',
-              title: '압류·저당 차량 매입 등록',
-              message: `${draft.plateNumber} · ${vinCheck.note ?? vinResult} · 해제 전 매입 확정 불가`,
-              link: `/vehicles/${vehicleId}`,
-              roles: ['ACCOUNTING'],
-              vehicleId,
-            })
-          }
           if (draft.evidences.length) {
             notes.push({
               severity: 'info',
