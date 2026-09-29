@@ -60,7 +60,16 @@ export function CrossCheckPanel({ purchase, saleKrw, taxTreatment, vat, gates, r
         ? { key: 'margin', status: 'warn', title: '손익', result: `역마진 ${formatKRW(margin)} (${rate.toFixed(1)}%)`, note: '결재 시 사유가 필요합니다.' }
         : { key: 'margin', status: 'ok', title: '손익', result: `+${formatKRW(margin)} (${rate.toFixed(1)}%)` },
 
-    taxTreatment === 'DOMESTIC'
+    taxTreatment === 'DOMESTIC' && vat.unsecured > 0
+      ? {
+          // 원문의 "현금으로 매입해 놓고 계산서 매출로 잡아 버리는" 경우
+          key: 'vat',
+          status: 'error',
+          title: '부가세 — 매입 증빙 ↔ 매출 처리 불일치',
+          result: `이중 손실: 매입세액 ${formatKRW(vat.unsecured)} 공제 불가 + 매출세액 ${saleKrw ? formatKRW(inputVat(saleKrw)) : '—'} 발생`,
+          note: `${purchase.paymentMethod === 'CASH' ? '현금 매입' : '증빙 없는 매입'}을 과세 매출로 처리하면 부가세를 내기만 하고 돌려받지 못합니다.`,
+        }
+      : taxTreatment === 'DOMESTIC'
       ? {
           key: 'vat',
           status: 'warn',

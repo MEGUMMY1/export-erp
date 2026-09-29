@@ -1,6 +1,6 @@
 import { EVIDENCE_LABEL, GATE_META, PURCHASE_TYPE_LABEL, TODAY, stageIndex } from './constants'
 import { daysBetween, formatDate, formatKRW } from './format'
-import { calcVat } from './vat'
+import { calcVat, inputVat } from './vat'
 import type { ErpData, GateCode, GateResult, Risk } from './types'
 
 /**
@@ -97,7 +97,19 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
     const saleMissing = [!sale.customsBroker && '관세사', !sale.expectedShipmentDate && '예정 선적일'].filter(Boolean)
     if (saleMissing.length) push('S6', `${saleMissing.join(' · ')} 정보가 없습니다.`)
 
-    if (sale.taxTreatment === 'DOMESTIC') push('S8', '국내 판매로 처리됩니다. 영세율 대상에서 제외되어 10% 과세 매출이 됩니다.')
+    if (sale.taxTreatment === 'DOMESTIC') {
+      // 현금·무증빙 매입을 과세 매출로 잡으면 매출세액은 내고 매입세액은 못 돌려받는다 (부가세 이중 손실)
+      if (vat.unsecured > 0) {
+        const cash = p.paymentMethod === 'CASH' ? '현금 매입 · ' : ''
+        push(
+          'S8',
+          `부가세 이중 손실: ${cash}매입 증빙이 없어 매입세액 ${formatKRW(vat.unsecured)} 공제 불가, 과세 매출로 매출세액 ${formatKRW(inputVat(saleKrw))} 발생.`,
+          { vatImpact: vat.unsecured },
+        )
+      } else {
+        push('S8', '국내 판매로 처리됩니다. 영세율 대상에서 제외되어 10% 과세 매출이 됩니다.')
+      }
+    }
 
     if (!decl) push('H7', '수출신고 전입니다. 수리 전에는 선적할 수 없습니다.')
     else {

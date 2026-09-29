@@ -67,9 +67,11 @@ function unbalanceNote(vehicleId: string, db: ErpData): NewNotification | null {
   const gates = evaluateGates(vehicleId, db).filter((g) => ['S1', 'S2', 'S3', 'S5', 'S8'].includes(g.code))
   if (!gates.length) return null
   const vat = gates.find((g) => g.vatImpact)?.vatImpact
+  // 증빙 없는 매입을 과세 매출로 처리 → 부가세 이중 손실로 격상
+  const doubleLoss = gates.some((g) => g.code === 'S8' && g.vatImpact)
   return {
-    severity: 'warning',
-    title: '매입·매출 언밸런스',
+    severity: doubleLoss ? 'error' : 'warning',
+    title: doubleLoss ? '매입·매출 언밸런스 · 부가세 이중 손실' : '매입·매출 언밸런스',
     message: `${db.vehicles[vehicleId].plateNumber} · ${gates.map((g) => g.title).join(', ')}${vat ? ` · 미확보 매입세액 ${formatKRW(vat)}` : ''}`,
     link: `/vehicles/${vehicleId}`,
     roles: ['ACCOUNTING'],
