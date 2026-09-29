@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { create } from 'zustand'
 import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, TODAY } from '@/domain/constants'
-import { addDays, formatDate, formatMoney, nowStamp } from '@/domain/format'
+import { addDays, formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
 import {
   can,
@@ -16,7 +16,7 @@ import {
 } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
 import { applySale, validateSale, type SaleDraft } from '@/domain/saleDraft'
-import type { AuditLog, ErpData, EvidenceKind, GateCode, Sale, Shipment, User } from '@/domain/types'
+import type { AuditLog, ErpData, EvidenceKind, GateCode, Notification, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
 
@@ -51,12 +51,31 @@ interface ErpState {
   decideSlip: (shipmentId: string, approve: boolean, reason?: string) => ActionResult
   processShipment: (shipmentId: string) => ActionResult & { shipped?: string[]; excluded?: { vehicleId: string; reasons: string[] }[] }
   decideRelease: (releaseId: string, approve: boolean, note: string) => ActionResult
+  /** 현재 사용자의 알림 읽음 처리 (ids 없으면 전체) */
+  markNotificationsRead: (ids?: string[]) => void
 }
 
 let seq = 0
 const nextId = (prefix: string) => `${prefix}-${Date.now().toString(36)}${(++seq).toString(36)}`
 
 const audit = (entry: Omit<AuditLog, 'id' | 'at'>): AuditLog => ({ id: nextId('L'), at: nowStamp(), ...entry })
+
+type NewNotification = Omit<Notification, 'id' | 'at' | 'actorId' | 'readBy'>
+
+/** 매입·매출 언밸런스 알림 — 판매 등록 직후 판정 결과로 만든다 */
+function unbalanceNote(vehicleId: string, db: ErpData): NewNotification | null {
+  const gates = evaluateGates(vehicleId, db).filter((g) => ['S1', 'S2', 'S3', 'S5', 'S8'].includes(g.code))
+  if (!gates.length) return null
+  const vat = gates.find((g) => g.vatImpact)?.vatImpact
+  return {
+    severity: 'warning',
+    title: '매입·매출 언밸런스',
+    message: `${db.vehicles[vehicleId].plateNumber} · ${gates.map((g) => g.title).join(', ')}${vat ? ` · 미확보 매입세액 ${formatKRW(vat)}` : ''}`,
+    link: `/vehicles/${vehicleId}`,
+    roles: ['ACCOUNTING'],
+    vehicleId,
+  }
+}
 
 const ok = (id?: string): ActionResult => ({ ok: true, reasons: [], id })
 const fail = (...reasons: string[]): ActionResult => ({ ok: false, reasons })
@@ -94,16 +113,39 @@ export const useErpStore = create<ErpState>()((set, get) => {
     const user = data.users.find((u) => u.id === currentUserId)
     return user && can(user.role, permission) ? null : fail(`${permissionHint(permission)}이 필요합니다.`)
   }
-  /** 데이터 변경 + 감사 로그 + 공통 정리 */
-  const commit = (next: ErpData, logs: Omit<AuditLog, 'id' | 'at'>[]) => {
+  /** 데이터 변경 + 감사 로그 + 알림 + 공통 정리 */
+  const commit = (next: ErpData, logs: Omit<AuditLog, 'id' | 'at'>[], notes: NewNotification[] = []) => {
     const actorId = get().currentUserId
-    set({ data: settle({ ...next, auditLogs: [...next.auditLogs, ...logs.map(audit)] }, actorId) })
+    const at = nowStamp()
+    set({
+      data: settle(
+        {
+          ...next,
+          auditLogs: [...next.auditLogs, ...logs.map(audit)],
+          notifications: [...next.notifications, ...notes.map((n) => ({ id: nextId('N'), at, actorId, readBy: [], ...n }))],
+        },
+        actorId,
+      ),
+    })
   }
 
   return {
     data: loadMockData(),
     currentUserId: 'U-ACC',
     setCurrentUser: (currentUserId) => set({ currentUserId }),
+
+    markNotificationsRead: (ids) => {
+      const { data, currentUserId } = get()
+      const target = ids ? new Set(ids) : null
+      set({
+        data: {
+          ...data,
+          notifications: data.notifications.map((n) =>
+            (!target || target.has(n.id)) && !n.readBy.includes(currentUserId) ? { ...n, readBy: [...n.readBy, currentUserId] } : n,
+          ),
+        },
+      })
+    },
 
     requestRelease: (vehicleId, { reason, dueDays }) => {
       const denied = deny('REQUEST_RELEASE')
@@ -137,6 +179,16 @@ export const useErpStore = create<ErpState>()((set, get) => {
           ],
         },
         [{ vehicleId, action: '조건부 선적 요청', actorId: currentUserId, reason: `${gateCodes.join('·')} / 기한 ${formatDate(dueDate)} / ${reason.trim()}` }],
+        [
+          {
+            severity: 'warning',
+            title: '조건부 선적 결재 요청',
+            message: `${data.vehicles[vehicleId].plateNumber} · ${gateCodes.join('·')} · 보완 기한 ${formatDate(dueDate)}${ev.vat.unsecured ? ` · 미확보 ${formatKRW(ev.vat.unsecured)}` : ''}`,
+            link: '/shipments?tab=releases',
+            roles: ['ACCOUNTING'],
+            vehicleId,
+          },
+        ],
       )
       return ok(id)
     },
@@ -178,6 +230,15 @@ export const useErpStore = create<ErpState>()((set, get) => {
           nextStage: 'IN_SLIP' as const,
           reason: slipNo,
         })),
+        [
+          {
+            severity: 'info',
+            title: '선적 전표 결재 요청',
+            message: `${slipNo} · ${vehicleIds.length}대 · ${input.vessel} ${input.voyage}`,
+            link: `/shipments?id=${id}`,
+            roles: ['ACCOUNTING'],
+          },
+        ],
       )
       return ok(id)
     },
@@ -230,6 +291,16 @@ export const useErpStore = create<ErpState>()((set, get) => {
           ],
         },
         [{ vehicleId, action: '증빙 제출', actorId: currentUserId, reason: `${EVIDENCE_LABEL[kind]} · ${fileName.trim()}` }],
+        [
+          {
+            severity: 'info',
+            title: '증빙 검증 요청',
+            message: `${data.vehicles[vehicleId].plateNumber} · ${EVIDENCE_LABEL[kind]} 제출`,
+            link: `/vehicles/${vehicleId}`,
+            roles: ['ACCOUNTING'],
+            vehicleId,
+          },
+        ],
       )
       return ok(id)
     },
@@ -248,6 +319,19 @@ export const useErpStore = create<ErpState>()((set, get) => {
           ),
         },
         [{ vehicleId: ev.vehicleId, action: approve ? '증빙 검증 완료' : '증빙 반려', actorId: currentUserId, reason: EVIDENCE_LABEL[ev.kind] }],
+        approve
+          ? []
+          : [
+              {
+                severity: 'warning',
+                title: '증빙 반려',
+                message: `${data.vehicles[ev.vehicleId].plateNumber} · ${EVIDENCE_LABEL[ev.kind]} 재제출 필요`,
+                link: `/vehicles/${ev.vehicleId}`,
+                roles: [],
+                userIds: [ev.uploadedBy],
+                vehicleId: ev.vehicleId,
+              },
+            ],
       )
       return ok()
     },
@@ -262,6 +346,18 @@ export const useErpStore = create<ErpState>()((set, get) => {
       commit(
         { ...data, vehicles: { ...data.vehicles, [vehicleId]: { ...v, vinCheck } } },
         [{ vehicleId, action: 'VIN 재조회', actorId: currentUserId, reason: note ? `${result} (${note})` : result }],
+        vinCheck.theft || vinCheck.seizure || vinCheck.lien
+          ? [
+              {
+                severity: 'error',
+                title: `VIN 재조회 ${result}`,
+                message: `${v.plateNumber} · ${note ?? result} · 선적 차단`,
+                link: `/vehicles/${vehicleId}`,
+                roles: ['ACCOUNTING', 'SALES'],
+                vehicleId,
+              },
+            ]
+          : [],
       )
       return ok()
     },
@@ -351,7 +447,29 @@ export const useErpStore = create<ErpState>()((set, get) => {
         next = { ...next, vehicles: { ...next.vehicles, [vehicleId]: { ...v, stage: 'PURCHASE_CONFIRMED' } } }
         logs.push({ vehicleId, action: '매입 확정', actorId: currentUserId, prevStage: v.stage, nextStage: 'PURCHASE_CONFIRMED' })
       }
-      commit(next, logs)
+
+      const notes: NewNotification[] = []
+      if (vinCheck.seizure || vinCheck.lien) {
+        notes.push({
+          severity: 'error',
+          title: '압류·저당 차량 매입 등록',
+          message: `${draft.plateNumber} · ${vinCheck.note ?? vinResult} · 해제 전 매입 확정 불가`,
+          link: `/vehicles/${vehicleId}`,
+          roles: ['ACCOUNTING'],
+          vehicleId,
+        })
+      }
+      if (draft.evidences.length) {
+        notes.push({
+          severity: 'info',
+          title: '증빙 검증 요청',
+          message: `${draft.plateNumber} · ${draft.evidences.map((e) => EVIDENCE_LABEL[e.kind]).join(', ')} 제출`,
+          link: `/vehicles/${vehicleId}`,
+          roles: ['ACCOUNTING'],
+          vehicleId,
+        })
+      }
+      commit(next, logs, notes)
       return ok(vehicleId)
     },
 
@@ -367,10 +485,15 @@ export const useErpStore = create<ErpState>()((set, get) => {
       const salesNo = `SO-${TODAY.slice(2, 4)}${TODAY.slice(5, 7)}-N${String(newCount + 1).padStart(3, '0')}`
       const next = applySale(data, vehicleId, draft, salesNo, currentUserId, nowStamp())
       const buyer = data.buyers[draft.buyerId ?? '']
-      commit(next, [
-        { vehicleId, action: '판매 등록', actorId: currentUserId, prevStage: 'PURCHASE_CONFIRMED', nextStage: 'SALE_REGISTERED', reason: `${buyer.name} (${buyer.country}) · ${formatMoney(draft.amount ?? 0, draft.currency)}` },
-        { vehicleId, action: '수출신고 수리 (관세사 연동 mock)', actorId: currentUserId, reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치` },
-      ])
+      const unbalance = unbalanceNote(vehicleId, next)
+      commit(
+        next,
+        [
+          { vehicleId, action: '판매 등록', actorId: currentUserId, prevStage: 'PURCHASE_CONFIRMED', nextStage: 'SALE_REGISTERED', reason: `${buyer.name} (${buyer.country}) · ${formatMoney(draft.amount ?? 0, draft.currency)}` },
+          { vehicleId, action: '수출신고 수리 (관세사 연동 mock)', actorId: currentUserId, reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치` },
+        ],
+        unbalance ? [unbalance] : [],
+      )
       return ok(vehicleId)
     },
 
@@ -387,6 +510,16 @@ export const useErpStore = create<ErpState>()((set, get) => {
         commit(
           { ...data, shipments: { ...data.shipments, [shipmentId]: { ...s, status: 'APPROVED', decidedBy: currentUserId, decidedAt: at } } },
           s.vehicleIds.map((vehicleId) => ({ vehicleId, shipmentId, action: '선적 전표 결재 승인', actorId: currentUserId, reason: s.slipNo })),
+          [
+            {
+              severity: 'success',
+              title: '선적 처리 요청',
+              message: `${s.slipNo} 결재 승인 · 출항 ${formatDate(s.scheduledDeparture)}`,
+              link: `/shipments?id=${shipmentId}`,
+              roles: ['LOGISTICS'],
+              userIds: [s.createdBy],
+            },
+          ],
         )
         return ok(shipmentId)
       }
@@ -409,6 +542,16 @@ export const useErpStore = create<ErpState>()((set, get) => {
           nextStage: 'SALE_REGISTERED' as const,
           reason: `${s.slipNo} · ${reason.trim()}`,
         })),
+        [
+          {
+            severity: 'warning',
+            title: '선적 전표 반려',
+            message: `${s.slipNo} · ${reason.trim()}`,
+            link: `/shipments?id=${shipmentId}`,
+            roles: [],
+            userIds: [s.createdBy],
+          },
+        ],
       )
       return ok(shipmentId)
     },
@@ -452,7 +595,22 @@ export const useErpStore = create<ErpState>()((set, get) => {
       }
 
       next = { ...next, shipments: { ...next.shipments, [shipmentId]: { ...s, status: 'SHIPPED', shippedAt: at, excluded } } }
-      commit(next, logs)
+      const plates = (ids: string[]) => ids.map((id) => data.vehicles[id].plateNumber).join(', ')
+      commit(
+        next,
+        logs,
+        excluded.length
+          ? [
+              {
+                severity: 'error',
+                title: `선적 차단 ${excluded.length}대`,
+                message: `${s.slipNo} · ${plates(excluded.map((e) => e.vehicleId))} — ${excluded.map((e) => e.reasons[0].split(' — ')[0]).join(', ')}`,
+                link: `/shipments?id=${shipmentId}`,
+                roles: ['ACCOUNTING', 'SALES'],
+              },
+            ]
+          : [],
+      )
       return { ...ok(shipmentId), shipped, excluded }
     },
 
@@ -472,6 +630,17 @@ export const useErpStore = create<ErpState>()((set, get) => {
           ),
         },
         [{ vehicleId: r.vehicleId, action: approve ? '조건부 선적 승인' : '조건부 선적 반려', actorId: currentUserId, reason: decisionNote }],
+        [
+          {
+            severity: approve ? 'success' : 'warning',
+            title: approve ? '조건부 선적 승인' : '조건부 선적 반려',
+            message: `${data.vehicles[r.vehicleId].plateNumber} · ${decisionNote}`,
+            link: `/vehicles/${r.vehicleId}`,
+            roles: [],
+            userIds: [r.requestedBy],
+            vehicleId: r.vehicleId,
+          },
+        ],
       )
       return ok(releaseId)
     },

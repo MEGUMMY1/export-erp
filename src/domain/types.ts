@@ -191,6 +191,27 @@ export interface AuditLog {
   reason?: string
 }
 
+export type NotificationSeverity = 'error' | 'warning' | 'info' | 'success'
+
+/** 알림 — 업무가 일어난 순간 담당 역할(또는 특정 사용자)에게 전달되는 기록 */
+export interface Notification {
+  id: string
+  at: string
+  severity: NotificationSeverity
+  title: string
+  message: string
+  /** 누르면 이동할 화면 */
+  link: string
+  /** 받는 역할 */
+  roles: Role[]
+  /** 받는 사용자 (역할과 별개로 지정) */
+  userIds?: string[]
+  /** 알림을 만든 행동의 수행자 — 본인에게는 보내지 않는다 */
+  actorId: string
+  vehicleId?: string
+  readBy: string[]
+}
+
 export interface Policy {
   conditionalDueDays: number
   perUserOpenLimit: number
@@ -263,4 +284,5 @@ export interface ErpData {
   shipments: Record<string, Shipment>
   releases: ConditionalRelease[]
   auditLogs: AuditLog[]
+  notifications: Notification[]
 }

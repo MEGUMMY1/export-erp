@@ -37,6 +37,18 @@ export const addDays = (date: string, days: number) => {
   return `${d.getFullYear()}-${mm}-${dd}`
 }
 
+/** 방금 전 / n분 전 / n시간 전 / n일 전 (7일 이상은 yyyy.mm.dd) — 기준: 데모 기준일 + 현재 시각 */
+export const formatRelative = (s: string) => {
+  const toTime = (v: string) => new Date(v.length > 10 ? v : `${v}T00:00`).getTime()
+  const minutes = Math.floor((toTime(nowStamp()) - toTime(s)) / 60_000)
+  if (minutes < 1) return '방금 전'
+  if (minutes < 60) return `${minutes}분 전`
+  const hours = Math.floor(minutes / 60)
+  if (hours < 24) return `${hours}시간 전`
+  const days = Math.floor(hours / 24)
+  return days < 7 ? `${days}일 전` : formatDate(s)
+}
+
 /** 데모 기준일 + 현재 시각 */
 export const nowStamp = () => {
   const now = new Date()

@@ -5,6 +5,7 @@ import type {
   ErpData,
   Evidence,
   ExportDeclaration,
+  Notification,
   Policy,
   Purchase,
   Sale,
@@ -19,6 +20,7 @@ import releases from './conditionalReleases.json'
 import evidences from './evidences.json'
 import exportDecls from './exportDeclarations.json'
 import masters from './masters.json'
+import notifications from './notifications.json'
 import policy from './policy.json'
 import purchases from './purchases.json'
 import sales from './sales.json'
@@ -46,5 +48,6 @@ export function loadMockData(): ErpData {
     shipments: byKey(shipments as Shipment[], (s) => s.id),
     releases: releases as ConditionalRelease[],
     auditLogs: auditLogs as AuditLog[],
+    notifications: notifications as Notification[],
   }
 }

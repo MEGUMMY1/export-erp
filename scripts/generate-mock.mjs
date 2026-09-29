@@ -160,6 +160,7 @@ const exportDecls = []
 const releases = []
 const auditLogs = []
 const vinRegistry = []
+const scenarioById = {}
 const slipVehicles = { 'S-PENDING': [], 'S-APPROVED': [], 'S-SHIPPED': [] }
 
 let evSeq = 0
@@ -353,6 +354,7 @@ plan.forEach((p, i) => {
     vinCheck,
     ...(p.slip && { shipmentId: p.slip }),
   })
+  scenarioById[id] = p.scenario
 })
 
 // ── 선적 전표 ────────────────────────────────────────────────
@@ -425,6 +427,56 @@ vinRegistry.push(
 
 auditLogs.sort((a, b) => a.at.localeCompare(b.at))
 
+// ── 알림 이력 (최근 이벤트) ──────────────────────────────────
+const notifications = []
+let notiSeq = 0
+const won = (n) => `${n < 0 ? '-' : ''}₩${Math.abs(Math.round(n)).toLocaleString('ko-KR')}`
+const dot = (date) => date.slice(0, 10).replaceAll('-', '.')
+const vehicleOf = (id) => vehicles.find((v) => v.id === id)
+const notify = (n) => notifications.push({ id: `N${pad(++notiSeq)}`, readBy: [], userIds: [], ...n })
+
+for (const r of releases) {
+  const v = vehicleOf(r.vehicleId)
+  if (r.status === 'PENDING') {
+    notify({ at: r.requestedAt, severity: 'warning', title: '조건부 선적 결재 요청', message: `${v.plateNumber} · ${r.gateCodes.join('·')} · 보완 기한 ${dot(r.dueDate)}`, link: '/shipments?tab=releases', roles: ['ACCOUNTING'], actorId: r.requestedBy, vehicleId: v.id })
+  } else if (v.stage === 'SHIPPED' && r.dueDate < '2026-09-29') {
+    notify({ at: `${addDays(r.dueDate, 1)}T09:00`, severity: 'error', title: '사후 증빙 기한 초과', message: `${v.plateNumber} · 보완 기한 ${dot(r.dueDate)} 경과 · 신규 조건부 선적 요청 제한`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], userIds: [r.ownerId], actorId: 'SYSTEM', vehicleId: v.id })
+  } else if (v.stage === 'SHIPPED') {
+    notify({ at: '2026-09-28T09:00', severity: 'warning', title: '사후 증빙 기한 임박', message: `${v.plateNumber} · 보완 기한 ${dot(r.dueDate)}`, link: `/vehicles/${v.id}`, roles: [], userIds: [r.ownerId], actorId: 'SYSTEM', vehicleId: v.id })
+  }
+}
+
+for (const s of shipments) {
+  if (s.status === 'PENDING')
+    notify({ at: s.createdAt, severity: 'info', title: '선적 전표 결재 요청', message: `${s.slipNo} · ${s.vehicleIds.length}대 · ${s.vessel} ${s.voyage}`, link: `/shipments?id=${s.id}`, roles: ['ACCOUNTING'], actorId: s.createdBy })
+  if (s.status === 'APPROVED')
+    notify({ at: s.decidedAt, severity: 'success', title: '선적 처리 요청', message: `${s.slipNo} 결재 승인 · 출항 ${dot(s.scheduledDeparture)}`, link: `/shipments?id=${s.id}`, roles: ['LOGISTICS'], userIds: [s.createdBy], actorId: 'U-ACC' })
+}
+
+for (const v of vehicles) {
+  const sc = scenarioById[v.id]
+  const p = purchases.find((x) => x.vehicleId === v.id)
+  const s = sales.find((x) => x.vehicleId === v.id)
+  if (sc === 'H1_SEIZURE' || sc === 'H2_THEFT') {
+    const rec = vinRegistry.find((r) => r.vin === v.vin)
+    notify({ at: v.vinCheck.checkedAt, severity: 'error', title: sc === 'H2_THEFT' ? '도난 신고 차량 확인' : 'VIN 재조회 압류 확인', message: `${v.plateNumber} · ${rec.note} · 선적 차단`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING', 'SALES'], actorId: 'U-LOG', vehicleId: v.id })
+  }
+  if (sc === 'H6_VIN')
+    notify({ at: `${s.salesDate}T16:10`, severity: 'error', title: '수출신고필증 VIN 불일치', message: `${v.plateNumber} · 신고필증과 ERP VIN이 다릅니다`, link: `/vehicles/${v.id}`, roles: ['LOGISTICS', 'ACCOUNTING'], actorId: 'SYSTEM', vehicleId: v.id })
+  if (sc === 'S5_LOSS') {
+    const margin = s.amount * s.exchangeRate - p.amount
+    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스', message: `${v.plateNumber} · 역마진 ${won(margin)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
+  }
+  if (sc === 'S2_RECEIPT' || sc === 'S3_AMOUNT') {
+    const label = sc === 'S2_RECEIPT' ? '딜러 매입인데 간이영수증만 수취' : '세금계산서 금액 불일치'
+    notify({ at: `${s.salesDate}T14:30`, severity: 'warning', title: '매입·매출 언밸런스', message: `${v.plateNumber} · ${label} · 미확보 매입세액 ${won(sc === 'S2_RECEIPT' ? (p.amount * 10) / 110 : (500000 * 10) / 110)}`, link: `/vehicles/${v.id}`, roles: ['ACCOUNTING'], actorId: s.salesPersonId, vehicleId: v.id })
+  }
+}
+
+// 9/27 이전 알림은 이미 확인한 것으로
+for (const n of notifications) if (n.at < '2026-09-27') n.readBy = users.map((u) => u.id)
+notifications.sort((a, b) => a.at.localeCompare(b.at))
+
 // ── 저장 ────────────────────────────────────────────────────
 mkdirSync(OUT, { recursive: true })
 const save = (name, data) => writeFileSync(`${OUT}${name}.json`, JSON.stringify(data, null, 2) + '\n')
@@ -439,6 +491,7 @@ save('exportDeclarations', exportDecls)
 save('shipments', shipments)
 save('conditionalReleases', releases)
 save('auditLogs', auditLogs)
+save('notifications', notifications)
 
 const count = (stage) => vehicles.filter((v) => v.stage === stage).length
 console.log(`vehicles ${vehicles.length}`, Object.fromEntries(STAGES.map((s) => [s, count(s)])))

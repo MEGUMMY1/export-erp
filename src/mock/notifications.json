@@ -1,0 +1,368 @@
+[
+  {
+    "id": "N019",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-11T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "41나3504 · 딜러 매입인데 간이영수증만 수취 · 미확보 매입세액 ₩1,009,091",
+    "link": "/vehicles/V156",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL1",
+    "vehicleId": "V156"
+  },
+  {
+    "id": "N017",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-13T16:10",
+    "severity": "error",
+    "title": "수출신고필증 VIN 불일치",
+    "message": "190두2278 · 신고필증과 ERP VIN이 다릅니다",
+    "link": "/vehicles/V131",
+    "roles": [
+      "LOGISTICS",
+      "ACCOUNTING"
+    ],
+    "actorId": "SYSTEM",
+    "vehicleId": "V131"
+  },
+  {
+    "id": "N013",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-15T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "295조1643 · 역마진 -₩4,020,020",
+    "link": "/vehicles/V110",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V110"
+  },
+  {
+    "id": "N008",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-16T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "60가1654 · 역마진 -₩5,623,530",
+    "link": "/vehicles/V030",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL1",
+    "vehicleId": "V030"
+  },
+  {
+    "id": "N011",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-19T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "310마6712 · 세금계산서 금액 불일치 · 미확보 매입세액 ₩45,455",
+    "link": "/vehicles/V080",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V080"
+  },
+  {
+    "id": "N014",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-20T16:10",
+    "severity": "error",
+    "title": "수출신고필증 VIN 불일치",
+    "message": "364더6359 · 신고필증과 ERP VIN이 다릅니다",
+    "link": "/vehicles/V112",
+    "roles": [
+      "LOGISTICS",
+      "ACCOUNTING"
+    ],
+    "actorId": "SYSTEM",
+    "vehicleId": "V112"
+  },
+  {
+    "id": "N012",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-21T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "183더3930 · 세금계산서 금액 불일치 · 미확보 매입세액 ₩45,455",
+    "link": "/vehicles/V084",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V084"
+  },
+  {
+    "id": "N009",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-23T11:52",
+    "severity": "error",
+    "title": "VIN 재조회 압류 확인",
+    "message": "192나8746 · 지방세 체납 압류 (매입 후 등록) · 선적 차단",
+    "link": "/vehicles/V032",
+    "roles": [
+      "ACCOUNTING",
+      "SALES"
+    ],
+    "actorId": "U-LOG",
+    "vehicleId": "V032"
+  },
+  {
+    "id": "N015",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-24T11:59",
+    "severity": "error",
+    "title": "VIN 재조회 압류 확인",
+    "message": "35수1232 · 지방세 체납 압류 (매입 후 등록) · 선적 차단",
+    "link": "/vehicles/V119",
+    "roles": [
+      "ACCOUNTING",
+      "SALES"
+    ],
+    "actorId": "U-LOG",
+    "vehicleId": "V119"
+  },
+  {
+    "id": "N018",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-24T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "122너2566 · 딜러 매입인데 간이영수증만 수취 · 미확보 매입세액 ₩872,727",
+    "link": "/vehicles/V150",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V150"
+  },
+  {
+    "id": "N010",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-25T14:30",
+    "severity": "warning",
+    "title": "매입·매출 언밸런스",
+    "message": "258마4267 · 역마진 -₩3,014,240",
+    "link": "/vehicles/V037",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V037"
+  },
+  {
+    "id": "N016",
+    "readBy": [
+      "U-PUR",
+      "U-SAL1",
+      "U-SAL2",
+      "U-ACC",
+      "U-LOG"
+    ],
+    "userIds": [],
+    "at": "2026-09-26T11:29",
+    "severity": "error",
+    "title": "도난 신고 차량 확인",
+    "message": "399수3664 · 도난 신고 접수 차량 · 선적 차단",
+    "link": "/vehicles/V123",
+    "roles": [
+      "ACCOUNTING",
+      "SALES"
+    ],
+    "actorId": "U-LOG",
+    "vehicleId": "V123"
+  },
+  {
+    "id": "N002",
+    "readBy": [],
+    "userIds": [],
+    "at": "2026-09-27T15:47",
+    "severity": "warning",
+    "title": "조건부 선적 결재 요청",
+    "message": "51주2018 · S1 · 보완 기한 2026.10.04",
+    "link": "/shipments?tab=releases",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V098"
+  },
+  {
+    "id": "N003",
+    "readBy": [],
+    "userIds": [
+      "U-SAL1"
+    ],
+    "at": "2026-09-28T09:00",
+    "severity": "error",
+    "title": "사후 증빙 기한 초과",
+    "message": "208오9115 · 보완 기한 2026.09.27 경과 · 신규 조건부 선적 요청 제한",
+    "link": "/vehicles/V191",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "SYSTEM",
+    "vehicleId": "V191"
+  },
+  {
+    "id": "N004",
+    "readBy": [],
+    "userIds": [
+      "U-SAL1"
+    ],
+    "at": "2026-09-28T09:00",
+    "severity": "error",
+    "title": "사후 증빙 기한 초과",
+    "message": "85노7211 · 보완 기한 2026.09.27 경과 · 신규 조건부 선적 요청 제한",
+    "link": "/vehicles/V192",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "SYSTEM",
+    "vehicleId": "V192"
+  },
+  {
+    "id": "N005",
+    "readBy": [],
+    "userIds": [
+      "U-SAL2"
+    ],
+    "at": "2026-09-28T09:00",
+    "severity": "warning",
+    "title": "사후 증빙 기한 임박",
+    "message": "261소3663 · 보완 기한 2026.09.30",
+    "link": "/vehicles/V193",
+    "roles": [],
+    "actorId": "SYSTEM",
+    "vehicleId": "V193"
+  },
+  {
+    "id": "N006",
+    "readBy": [],
+    "userIds": [
+      "U-SAL2"
+    ],
+    "at": "2026-09-28T09:59",
+    "severity": "success",
+    "title": "선적 처리 요청",
+    "message": "SP-260927-01 결재 승인 · 출항 2026.10.01",
+    "link": "/shipments?id=S-APPROVED",
+    "roles": [
+      "LOGISTICS"
+    ],
+    "actorId": "U-ACC"
+  },
+  {
+    "id": "N001",
+    "readBy": [],
+    "userIds": [],
+    "at": "2026-09-28T15:21",
+    "severity": "warning",
+    "title": "조건부 선적 결재 요청",
+    "message": "258마4267 · S5 · 보완 기한 2026.10.05",
+    "link": "/shipments?tab=releases",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL2",
+    "vehicleId": "V037"
+  },
+  {
+    "id": "N007",
+    "readBy": [],
+    "userIds": [],
+    "at": "2026-09-28T17:20",
+    "severity": "info",
+    "title": "선적 전표 결재 요청",
+    "message": "SP-260928-01 · 20대 · SEA PIONEER 2610W",
+    "link": "/shipments?id=S-PENDING",
+    "roles": [
+      "ACCOUNTING"
+    ],
+    "actorId": "U-SAL1"
+  }
+]

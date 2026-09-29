@@ -4,7 +4,9 @@ import { ROLE_LABEL, TODAY } from '@/domain/constants'
 import { dday, formatDate } from '@/domain/format'
 import { cn } from '@/lib/cn'
 import { useCurrentUser, useData, useErpStore } from '@/store'
-import { Dropdown } from '@/components/ui'
+import { Dropdown, toast } from '@/components/ui'
+import { isUnread, notificationsFor } from '@/domain/notifications'
+import { NotificationCenter } from './NotificationCenter'
 import { usePageTitleStore } from './pageTitle'
 
 const NAV = [
@@ -30,6 +32,12 @@ export function AppLayout() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
+
+  // 사용자가 바뀌면 그 사람에게 도착한 새 알림을 알려준다
+  useEffect(() => {
+    const unread = notificationsFor(useErpStore.getState().data.notifications, user).filter((n) => isUnread(n, user.id))
+    if (unread.length) toast.info(`${user.name} ${user.title} · 새 알림 ${unread.length}건`)
+  }, [user])
 
   return (
     <div className="flex min-h-screen">
@@ -88,6 +96,7 @@ export function AppLayout() {
               부가세 예정신고 마감 {formatDate(data.policy.vatFilingDeadline)}{' '}
               <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
             </span>
+            <NotificationCenter />
           </div>
         </header>
         <main className="min-w-0 flex-1 px-8 pt-6 pb-24">
