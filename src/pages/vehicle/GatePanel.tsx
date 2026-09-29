@@ -1,5 +1,5 @@
 import { Panel } from '@/components/domain/Panel'
-import { GateChip } from '@/components/domain/RiskChip'
+import { GateLabel } from '@/components/domain/RiskChip'
 import { Button } from '@/components/ui'
 import { ACKNOWLEDGEABLE, ROLE_LABEL } from '@/domain/constants'
 import { formatKRW } from '@/domain/format'
@@ -71,7 +71,7 @@ export function GatePanel({ gates, role, onAction }: Props) {
               <li key={g.code} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <GateChip gate={g} />
+                    <GateLabel gate={g} />
                     <span className="text-caption-sm text-gray-70">
                       {g.severity === 'HARD' ? '우회 불가' : '조건부 선적 가능'} · 담당 {ROLE_LABEL[g.ownerRole]}
                     </span>

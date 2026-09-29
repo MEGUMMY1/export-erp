@@ -5,7 +5,11 @@ import type { ErpData } from '@/domain/types'
 
 /** 처리 이력 — "왜 이 차량이 선적 승인을 받았지?"에 답한다 */
 export function AuditTrail({ vehicleId, data }: { vehicleId: string; data: ErpData }) {
-  const logs = data.auditLogs.filter((l) => l.vehicleId === vehicleId).sort((a, b) => b.at.localeCompare(a.at))
+  // 최신순. 같은 시각에 남은 로그도 나중에 기록된 것이 위로 오도록 먼저 뒤집는다
+  const logs = data.auditLogs
+    .filter((l) => l.vehicleId === vehicleId)
+    .reverse()
+    .sort((a, b) => b.at.localeCompare(a.at))
   const user = (id: string) => data.users.find((u) => u.id === id)
 
   return (

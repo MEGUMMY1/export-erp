@@ -16,8 +16,9 @@
 
 - 차량 상세 (/vehicles/:id) 완료 — 진행 단계, 게이트별 사유·해소 액션(역할별), 매입세액, 증빙 제출·검증, 신고필증 대조, 조건부 선적, Audit Trail
 
+- 매입 등록 (/purchases/new) 완료 — VIN 즉시 조회(시연 VIN 3종), 유형별 증빙 체크리스트, 실물 인수, 입력값으로 실시간 게이트 판정(applyDraft 공유), 등록/등록 후 확정
+
 ## 다음 할 일 (페이지 단위로 하나씩)
-3. 매입 등록 (/purchases/new) — VIN 즉시 조회, 증빙 체크리스트, 실시간 게이트
 4. 판매 등록 (/sales/new) — 크로스체크 패널
 5. 선적 전표 · 결재 (/shipments) — 일괄/조건부 결재, 선적 처리(VIN 재조회)
 - 세무 요건(개인 매입 공제 특례 등) 표현 수위 최종 점검
@@ -36,7 +37,8 @@
 - 색·타이포는 index.css @theme 디자인 토큰으로만 관리 (Tailwind 기본 팔레트 제거, bg-brand-70 / text-title-lg 등)
 - 리스크 표시 매핑: 🟢 CLEAR → Chip success, 🟡 REVIEW → warning, 🔴 BLOCKED → error
 - 공통 UI: Button, Chip, Modal, Toast, Dropdown, TextField, TextArea, Tabs, Checkbox, Pagination
-- 칩은 dot 없이 sm 크기 기본
+- 칩은 dot 없이 sm 크기 기본, 상태 표시에만 사용 — 게이트 항목은 칩 대신 [코드] 제목 텍스트(GateLabel)
+- 금액 입력은 NumberField(천 단위 구분자), 통화별 소수 자릿수는 CURRENCY_DECIMALS
 - 페이지 제목·설명은 본문이 아닌 상단 헤더에 표시 (usePageTitle)
 - import는 '@/' 별칭 사용 (같은 폴더만 './')
 - 섹션(Panel) 내부 요소에는 따로 패딩을 두지 않고 Panel 본문 여백으로 통일

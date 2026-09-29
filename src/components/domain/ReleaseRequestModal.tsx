@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GateChip } from './RiskChip'
+import { GateLabel } from './RiskChip'
 import { Dropdown, Modal, TextArea, toast } from '@/components/ui'
 import { addDays, formatKRW } from '@/domain/format'
 import { TODAY } from '@/domain/constants'
@@ -72,7 +72,7 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
           <ul className="flex flex-col gap-2">
             {soft.map((g) => (
               <li key={g.code} className="flex flex-col gap-1 rounded-lg border border-gray-30 px-4 py-3">
-                <GateChip gate={g} />
+                <GateLabel gate={g} />
                 <p className="text-body-sm text-gray-80">{g.reason}</p>
               </li>
             ))}

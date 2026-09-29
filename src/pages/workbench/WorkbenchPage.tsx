@@ -29,7 +29,7 @@ const RISK_FILTERS: { value: RiskFilter; label: string }[] = [
 ]
 
 export function WorkbenchPage() {
-  usePageTitle('검증 작업 큐', '시스템이 모든 차량을 먼저 검증합니다. 사람은 걸러진 차량만 확인하면 됩니다.')
+  usePageTitle('검증 작업 큐', '시스템이 먼저 검증합니다. 판정 결과에 이슈가 있는 차량만 확인하세요.')
   const data = useData()
   const evals = useEvaluations()
   const user = useCurrentUser()

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { GateChip } from '@/components/domain/RiskChip'
+import { PhotoSlots } from '@/components/domain/PhotoSlots'
+import { GateLabel } from '@/components/domain/RiskChip'
 import { Checkbox, Dropdown, Modal, NumberField, TextArea, TextField, toast } from '@/components/ui'
 import { CURRENCY_DECIMALS, EVIDENCE_LABEL } from '@/domain/constants'
 import { formatKRW } from '@/domain/format'
@@ -37,23 +38,7 @@ export function HandoverModal({ vehicleId, onClose }: { vehicleId: string; onClo
         <Checkbox checked={plateChecked} onChange={(e) => setPlateChecked(e.target.checked)} label={`차량번호 ${v.plateNumber} 실물과 일치 확인`} />
         <div className="flex flex-col gap-2">
           <p className="text-caption-md text-gray-80">외관 사진 (전·후·좌·우)</p>
-          <div className="grid grid-cols-4 gap-2">
-            {['전면', '후면', '좌측', '우측'].map((side, i) => (
-              <button
-                key={side}
-                type="button"
-                onClick={() => setPhotos((n) => Math.max(n, i + 1))}
-                className={
-                  i < photos
-                    ? 'flex aspect-4/3 items-center justify-center rounded-lg bg-brand-10 text-caption-md text-brand-70'
-                    : 'flex aspect-4/3 items-center justify-center rounded-lg border border-dashed border-gray-40 text-caption-md text-gray-50 hover:bg-gray-10'
-                }
-              >
-                {i < photos ? `${side} ✓` : `+ ${side}`}
-              </button>
-            ))}
-          </div>
-          <p className="text-caption-sm text-gray-50">시연용: 칸을 누르면 사진이 올라간 것으로 처리됩니다.</p>
+          <PhotoSlots count={photos} onChange={setPhotos} />
         </div>
       </div>
     </Modal>
@@ -144,7 +129,7 @@ export function AcknowledgeModal({ vehicleId, gate, onClose }: { vehicleId: stri
     >
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5 rounded-lg border border-gray-30 px-4 py-3">
-          <GateChip gate={gate} />
+          <GateLabel gate={gate} />
           <p className="text-body-sm text-gray-80">{gate.reason}</p>
         </div>
         <TextArea

@@ -14,7 +14,9 @@ import {
   type Guard,
   type Permission,
 } from '@/domain/rules'
+import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
 import type { AuditLog, ErpData, EvidenceKind, GateCode, Sale, Shipment, User } from '@/domain/types'
+import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
 
 export interface SlipInput {
@@ -43,6 +45,7 @@ interface ErpState {
   acceptDeclaration: (vehicleId: string) => ActionResult
   acknowledgeGate: (vehicleId: string, code: GateCode, note: string) => ActionResult
   updateSale: (vehicleId: string, patch: Pick<Sale, 'customsBroker' | 'expectedShipmentDate'>) => ActionResult
+  registerPurchase: (draft: PurchaseDraft, options: { confirm: boolean }) => ActionResult
 }
 
 let seq = 0
@@ -249,12 +252,11 @@ export const useErpStore = create<ErpState>()((set, get) => {
       if (denied) return denied
       const { data, currentUserId } = get()
       const v = data.vehicles[vehicleId]
-      const record = data.vinRegistry[v.vin]
-      const vinCheck = { checkedAt: nowStamp(), seizure: !!record?.seizure, lien: !!record?.lien, theft: !!record?.theft }
-      const result = vinCheck.theft ? '도난 신고 확인' : vinCheck.seizure || vinCheck.lien ? '압류·저당 확인' : '이상 없음'
+      const { note, ...vinCheck } = lookupVin(v.vin, data, nowStamp())
+      const result = vinResultLabel(vinCheck)
       commit(
         { ...data, vehicles: { ...data.vehicles, [vehicleId]: { ...v, vinCheck } } },
-        [{ vehicleId, action: 'VIN 재조회', actorId: currentUserId, reason: record?.note ? `${result} (${record.note})` : result }],
+        [{ vehicleId, action: 'VIN 재조회', actorId: currentUserId, reason: note ? `${result} (${note})` : result }],
       )
       return ok()
     },
@@ -311,6 +313,41 @@ export const useErpStore = create<ErpState>()((set, get) => {
         [{ vehicleId, action: '통관 정보 보완', actorId: currentUserId, reason: [patch.customsBroker, patch.expectedShipmentDate].filter(Boolean).join(' · ') }],
       )
       return ok()
+    },
+
+    registerPurchase: (draft, { confirm }) => {
+      const denied = deny('REGISTER_PURCHASE')
+      if (denied) return denied
+      const { data, currentUserId } = get()
+      const invalid = validateDraft(draft, data)
+      if (invalid.length) return fail(...invalid)
+      const at = nowStamp()
+      const vinCheck = lookupVin(draft.vin, data, at)
+      if (vinCheck.theft) return fail('도난 신고 차량은 매입 등록할 수 없습니다.')
+
+      const vehicleId = nextId('V')
+      const ids = { vehicleId, vendorId: nextId('I'), evidenceId: () => nextId('E') }
+      let next = applyDraft(data, draft, ids, currentUserId, at)
+      const vinResult = vinResultLabel(vinCheck)
+      const logs: Omit<AuditLog, 'id' | 'at'>[] = [
+        { vehicleId, action: '매입 등록', actorId: currentUserId, nextStage: 'PURCHASE_REGISTERED', reason: `VIN 조회: ${vinCheck.note ? `${vinResult} (${vinCheck.note})` : vinResult}` },
+      ]
+      if (draft.evidences.length) {
+        logs.push({ vehicleId, action: '증빙 제출', actorId: currentUserId, reason: draft.evidences.map((e) => EVIDENCE_LABEL[e.kind]).join(', ') })
+      }
+      if (isHandoverDone(draft)) {
+        logs.push({ vehicleId, action: '인수 완료', actorId: currentUserId, prevStage: 'PURCHASE_REGISTERED', nextStage: 'HANDED_OVER', reason: `차량번호 확인 · 외관 사진 ${draft.handover.photoCount}장` })
+      }
+
+      if (confirm) {
+        const guard = canConfirmPurchase(vehicleId, next)
+        if (!guard.ok) return fail(`매입 확정 불가: ${guard.reasons.join(', ')}`)
+        const v = next.vehicles[vehicleId]
+        next = { ...next, vehicles: { ...next.vehicles, [vehicleId]: { ...v, stage: 'PURCHASE_CONFIRMED' } } }
+        logs.push({ vehicleId, action: '매입 확정', actorId: currentUserId, prevStage: v.stage, nextStage: 'PURCHASE_CONFIRMED' })
+      }
+      commit(next, logs)
+      return ok(vehicleId)
     },
   }
 })

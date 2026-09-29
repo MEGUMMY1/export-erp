@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router'
+import { useEffect } from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router'
 import { ROLE_LABEL, TODAY } from '@/domain/constants'
 import { dday } from '@/domain/format'
 import { cn } from '@/lib/cn'
@@ -23,6 +24,12 @@ export function AppLayout() {
   const user = useCurrentUser()
   const setCurrentUser = useErpStore((s) => s.setCurrentUser)
   const page = usePageTitleStore()
+  const { pathname } = useLocation()
+
+  // 화면이 바뀌면 맨 위부터 보여준다
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     <div className="flex min-h-screen">
