@@ -20,7 +20,7 @@ import {
 } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
 import { applySale, saleBlockReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
-import type { AuditLog, ErpData, EvidenceKind, GateCode, GateResult, Notification, Sale, Shipment, User } from '@/domain/types'
+import type { AuditLog, ConditionalRelease, ErpData, EvidenceKind, GateCode, GateResult, Notification, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
 
@@ -122,9 +122,15 @@ function settle(data: ErpData, actorId: string): ErpData {
     const open = evaluateGates(r.vehicleId, data).some((g) => r.gateCodes.includes(g.code))
     if (open) return r
     changed = true
-    const writtenOff = !!data.vehicles[r.vehicleId].writeOff
-    logs.push(audit({ vehicleId: r.vehicleId, action: writtenOff ? '사후 증빙 미확보 · 불공제 확정' : '사후 증빙 보완 완료', actorId, reason: r.gateCodes.join('·') }))
-    return { ...r, resolvedAt: nowStamp(), outcome: writtenOff ? ('WRITTEN_OFF' as const) : ('RESOLVED' as const) }
+    // 기한을 넘겨 보완된 건은 "지연 보완"으로 남겨 책임자 이행 이력에서 사라지지 않게 한다
+    const outcome: NonNullable<ConditionalRelease['outcome']> = data.vehicles[r.vehicleId].writeOff
+      ? 'WRITTEN_OFF'
+      : r.dueDate < TODAY
+        ? 'RESOLVED_LATE'
+        : 'RESOLVED'
+    const action = { WRITTEN_OFF: '사후 증빙 미확보 · 불공제 확정', RESOLVED_LATE: '사후 증빙 보완 완료 (기한 초과 후)', RESOLVED: '사후 증빙 보완 완료' }[outcome]
+    logs.push(audit({ vehicleId: r.vehicleId, action, actorId, reason: `${r.gateCodes.join('·')} · 기한 ${formatDate(r.dueDate)}` }))
+    return { ...r, resolvedAt: nowStamp(), outcome }
   })
   for (const v of Object.values(data.vehicles)) {
     // 국내 판매 차량은 선적 없이, 회계 확인 등으로 보완 항목이 모두 해소되면 종결한다

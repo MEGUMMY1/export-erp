@@ -9,6 +9,7 @@ function releaseState(r: ConditionalRelease, data: ErpData, ev: Evaluation | und
   if (r.status === 'PENDING') return { tone: 'progress', label: '결재 대기' }
   if (r.status === 'REJECTED') return { tone: 'default', label: '반려' }
   if (r.outcome === 'WRITTEN_OFF') return { tone: 'error', label: '불공제 확정' }
+  if (r.outcome === 'RESOLVED_LATE') return { tone: 'warning', label: '지연 보완' }
   const open = ev?.gates.some((g) => r.gateCodes.includes(g.code)) ?? false
   if (r.resolvedAt || !open) return { tone: 'success', label: '보완 완료' }
   if (isOverdue(r, data)) return { tone: 'error', label: '기한 초과' }

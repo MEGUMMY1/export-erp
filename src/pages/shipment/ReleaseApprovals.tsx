@@ -31,6 +31,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
     return {
       open: mine.filter(isOpenRelease).length,
       overdue: mine.filter((r) => isOverdue(r, data)).length,
+      late: mine.filter((r) => r.outcome === 'RESOLVED_LATE').length,
       writtenOff: mine.filter((r) => r.outcome === 'WRITTEN_OFF').length,
     }
   }
@@ -88,7 +89,7 @@ export function ReleaseApprovals({ data, evals, role }: Props) {
                 </Field>
                 <Field label="책임자 이행 이력">
                   <span className={t.overdue || t.writtenOff ? 'text-red-60' : undefined}>
-                    미해소 {t.open}건 · 기한 초과 {t.overdue}건 · 불공제 확정 {t.writtenOff}건
+                    미해소 {t.open}건 · 기한 초과 {t.overdue}건 · 지연 보완 {t.late}건 · 불공제 확정 {t.writtenOff}건
                   </span>
                 </Field>
               </dl>

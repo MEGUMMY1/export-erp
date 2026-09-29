@@ -184,8 +184,8 @@ export interface ConditionalRelease {
   decidedAt?: string
   decisionNote?: string
   resolvedAt?: string
-  /** 종결 방식 — 증빙 보완 완료 / 증빙 미확보로 불공제 확정 */
-  outcome?: 'RESOLVED' | 'WRITTEN_OFF'
+  /** 종결 방식 — 기한 내 보완 / 기한 초과 후 보완 / 증빙 미확보로 불공제 확정 */
+  outcome?: 'RESOLVED' | 'RESOLVED_LATE' | 'WRITTEN_OFF'
 }
 
 export interface AuditLog {
