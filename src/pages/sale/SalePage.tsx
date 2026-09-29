@@ -76,7 +76,7 @@ export function SalePage() {
         </Panel>
 
         {vehicle && purchase && (
-          <Panel title="연결된 차량 · 매입 정보" actions={<span className="text-caption-md text-gray-70">매입 데이터에서 자동 연결 · 재입력 없음</span>}>
+          <Panel title="연결된 차량 · 매입 정보">
             <dl className="grid grid-cols-4 gap-4">
               <Field label="VIN">
                 <span className="font-mono text-body-sm">{vehicle.vin}</span>
@@ -103,76 +103,85 @@ export function SalePage() {
           </Panel>
         )}
 
-        <Panel title="판매 조건">
-          <div className="grid grid-cols-2 gap-4">
-            <Dropdown
-              size="sm"
-              label="바이어"
-              required
-              value={draft.buyerId}
-              onChange={(id) => update({ buyerId: id })}
-              options={Object.values(data.buyers).map((b) => ({ value: b.id, label: `${b.name} (${b.country})` }))}
-            />
-            <TextField size="sm" label="수출국 · 도착항" readOnly value={buyer ? `${buyer.country} · ${buyer.port}` : ''} placeholder="바이어 선택 시 자동" />
-            <Dropdown
-              size="sm"
-              label="통화"
-              required
-              value={draft.currency}
-              onChange={(c) => update({ currency: c as Currency, amount: null })}
-              options={(Object.keys(data.rates) as Currency[]).map((c) => ({ value: c, label: c }))}
-            />
-            <NumberField
-              size="sm"
-              label="판매가"
-              required
-              value={draft.amount}
-              onChange={(n) => update({ amount: n })}
-              decimals={CURRENCY_DECIMALS[draft.currency]}
-              suffix={draft.currency}
-              message={
-                draft.currency === 'KRW'
-                  ? undefined
-                  : `환율 ${formatNumber(data.rates[draft.currency])} (등록 시점 고정)${krw ? ` · ${formatKRW(krw)}` : ''}`
-              }
-            />
-            <Dropdown
-              size="sm"
-              label="Incoterms"
-              required
-              value={draft.incoterms}
-              onChange={(i) => update({ incoterms: i })}
-              options={INCOTERMS.map((i) => ({ value: i, label: i }))}
-            />
-            <Dropdown
-              size="sm"
-              label="매출 처리"
-              required
-              value={draft.taxTreatment}
-              onChange={(t) => update({ taxTreatment: t as TaxTreatment })}
-              options={[
-                { value: 'ZERO_RATED', label: '영세율 (직수출)' },
-                { value: 'DOMESTIC', label: '국내 판매 (과세 10%)' },
-              ]}
-            />
-            <Dropdown
-              size="sm"
-              label="관세사"
-              placeholder="미지정 — 통관 정보 누락으로 판정"
-              value={draft.customsBroker}
-              onChange={(b) => update({ customsBroker: b })}
-              options={data.brokers.map((b) => ({ value: b, label: b }))}
-            />
-            <TextField
-              size="sm"
-              type="date"
-              label="예정 선적일"
-              min={TODAY}
-              value={draft.expectedShipmentDate}
-              onChange={(e) => update({ expectedShipmentDate: e.target.value })}
-            />
+        {!vehicle && (
+          <div className="rounded-xl border border-dashed border-gray-40 px-5 py-10 text-center">
+            <p className="text-body-md-m text-gray-80">위 목록에서 판매할 차량을 선택하세요.</p>
+            <p className="mt-1 text-caption-md text-gray-70">선택한 차량의 매입 정보가 자동으로 연결되고, 판매 조건을 입력할 수 있습니다.</p>
           </div>
-        </Panel>
+        )}
+
+        {vehicle && (
+          <Panel title="판매 조건">
+            <div className="grid grid-cols-2 gap-4">
+              <Dropdown
+                size="sm"
+                label="바이어"
+                required
+                value={draft.buyerId}
+                onChange={(id) => update({ buyerId: id })}
+                options={Object.values(data.buyers).map((b) => ({ value: b.id, label: `${b.name} (${b.country})` }))}
+              />
+              <TextField size="sm" label="수출국 · 도착항" readOnly value={buyer ? `${buyer.country} · ${buyer.port}` : ''} placeholder="바이어 선택 시 자동" />
+              <Dropdown
+                size="sm"
+                label="통화"
+                required
+                value={draft.currency}
+                onChange={(c) => update({ currency: c as Currency, amount: null })}
+                options={(Object.keys(data.rates) as Currency[]).map((c) => ({ value: c, label: c }))}
+              />
+              <NumberField
+                size="sm"
+                label="판매가"
+                required
+                value={draft.amount}
+                onChange={(n) => update({ amount: n })}
+                decimals={CURRENCY_DECIMALS[draft.currency]}
+                suffix={draft.currency}
+                message={
+                  draft.currency === 'KRW'
+                    ? undefined
+                    : `환율 ${formatNumber(data.rates[draft.currency])} (등록 시점 고정)${krw ? ` · ${formatKRW(krw)}` : ''}`
+                }
+              />
+              <Dropdown
+                size="sm"
+                label="Incoterms"
+                required
+                value={draft.incoterms}
+                onChange={(i) => update({ incoterms: i })}
+                options={INCOTERMS.map((i) => ({ value: i, label: i }))}
+              />
+              <Dropdown
+                size="sm"
+                label="매출 처리"
+                required
+                value={draft.taxTreatment}
+                onChange={(t) => update({ taxTreatment: t as TaxTreatment })}
+                options={[
+                  { value: 'ZERO_RATED', label: '영세율 (직수출)' },
+                  { value: 'DOMESTIC', label: '국내 판매 (과세 10%)' },
+                ]}
+              />
+              <Dropdown
+                size="sm"
+                label="관세사"
+                placeholder="미지정 — 통관 정보 누락으로 판정"
+                value={draft.customsBroker}
+                onChange={(b) => update({ customsBroker: b })}
+                options={data.brokers.map((b) => ({ value: b, label: b }))}
+              />
+              <TextField
+                size="sm"
+                type="date"
+                label="예정 선적일"
+                min={TODAY}
+                value={draft.expectedShipmentDate}
+                onChange={(e) => update({ expectedShipmentDate: e.target.value })}
+              />
+            </div>
+          </Panel>
+        )}
       </div>
 
       <div className="sticky top-21 flex flex-col gap-4">
@@ -191,11 +200,7 @@ export function SalePage() {
           {!allowed ? (
             <p className="text-caption-md text-gray-70">{permissionHint('REGISTER_SALE')}이 필요합니다.</p>
           ) : invalid.length > 0 ? (
-            <ul className="list-disc pl-4 text-caption-md text-gray-70">
-              {invalid.map((r) => (
-                <li key={r}>{r}</li>
-              ))}
-            </ul>
+            <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
           ) : (
             <p className="text-caption-md text-gray-70">등록하면 수출 검증 대상에 추가되고, 보완 항목은 작업 큐에서 추적됩니다.</p>
           )}

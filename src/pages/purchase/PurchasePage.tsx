@@ -267,14 +267,7 @@ export function PurchasePage() {
           ) : theft ? (
             <p className="text-caption-md text-red-60">도난 신고 차량은 매입 등록할 수 없습니다.</p>
           ) : invalid.length > 0 ? (
-            <div className="text-caption-md text-gray-70">
-              <p>필수 항목을 입력해야 등록할 수 있습니다.</p>
-              <ul className="mt-1 list-disc pl-4">
-                {invalid.map((r) => (
-                  <li key={r}>{r}</li>
-                ))}
-              </ul>
-            </div>
+            <p className="text-caption-md text-gray-70">필수 항목(*)을 모두 입력하면 등록할 수 있습니다.</p>
           ) : (
             <p className="text-caption-md text-gray-70">{confirmDisabledReason ?? '제출된 증빙은 회계 검증을 거쳐 매입세액으로 확보됩니다.'}</p>
           )}
