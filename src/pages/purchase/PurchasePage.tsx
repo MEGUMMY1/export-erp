@@ -49,7 +49,6 @@ export function PurchasePage() {
   const navigate = useNavigate()
   const registerPurchase = useErpStore((s) => s.registerPurchase)
   const [draft, setDraft] = useState<PurchaseDraft>(EMPTY)
-  const [submitted, setSubmitted] = useState(false)
   const update = (patch: Partial<PurchaseDraft>) => setDraft((d) => ({ ...d, ...patch }))
 
   // 제조사·모델 목록은 기존 차량 데이터에서
@@ -90,10 +89,15 @@ export function PurchasePage() {
   const theft = !!preview.vinCheck?.theft
   const missingVatEvidence = data.policy.vatEvidence[draft.purchaseType].some((k) => !draft.evidences.some((e) => e.kind === k))
   const allowed = can(user.role, 'REGISTER_PURCHASE')
-  const errorOf = (field: string) => (submitted ? invalid.find((r) => r.includes(field)) : undefined)
+  // VIN은 17자리를 다 입력하면 형식(I·O·Q)·중복 오류를 바로 보여준다
+  const vinError = draft.vin.length === 17 ? invalid.find((r) => r.includes('VIN')) : undefined
+  const confirmDisabledReason = !isHandoverDone(draft)
+    ? '실물 인수(차량번호 확인·외관 사진)가 끝나야 확정할 수 있습니다.'
+    : confirmBlockers.length
+      ? `확정 불가: ${confirmBlockers.map((g) => g.title).join(', ')}`
+      : null
 
   const submit = (confirm: boolean) => {
-    setSubmitted(true)
     const result = registerPurchase(draft, { confirm })
     if (!result.ok) {
       toast.error(result.reasons[0])
@@ -126,7 +130,7 @@ export function PurchasePage() {
               value={draft.vin}
               onChange={(e) => update({ vin: normalizeVin(e.target.value) })}
               suffix={`${draft.vin.length}/17`}
-              error={errorOf('VIN')}
+              error={vinError}
             />
             <div className="flex items-center gap-1">
               <span className="text-caption-md text-gray-50">시연 입력</span>
@@ -138,7 +142,7 @@ export function PurchasePage() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <TextField size="sm" label="차량번호" required placeholder="예) 123가4567" value={draft.plateNumber} onChange={(e) => update({ plateNumber: e.target.value })} error={errorOf('차량번호')} />
+            <TextField size="sm" label="차량번호" required placeholder="예) 123가4567" value={draft.plateNumber} onChange={(e) => update({ plateNumber: e.target.value })} />
             <Dropdown
               size="sm"
               label="연식"
@@ -146,7 +150,7 @@ export function PurchasePage() {
               value={draft.modelYear ? String(draft.modelYear) : null}
               onChange={(y) => update({ modelYear: Number(y) })}
               options={YEARS.map((y) => ({ value: y, label: `${y}년식` }))}
-              error={errorOf('연식')}
+             
             />
             <Dropdown
               size="sm"
@@ -155,7 +159,7 @@ export function PurchasePage() {
               value={draft.manufacturer || null}
               onChange={(m) => update({ manufacturer: m, model: '' })}
               options={[...catalog.keys()].map((m) => ({ value: m, label: m }))}
-              error={errorOf('제조사')}
+             
             />
             <Dropdown
               size="sm"
@@ -181,7 +185,7 @@ export function PurchasePage() {
               options={(Object.keys(PURCHASE_TYPE_LABEL) as PurchaseType[]).map((t) => ({ value: t, label: PURCHASE_TYPE_LABEL[t] }))}
             />
             {draft.purchaseType === 'INDIVIDUAL' ? (
-              <TextField size="sm" label="매도인 성명" required value={draft.sellerName} onChange={(e) => update({ sellerName: e.target.value })} error={errorOf('매도인')} />
+              <TextField size="sm" label="매도인 성명" required value={draft.sellerName} onChange={(e) => update({ sellerName: e.target.value })} />
             ) : (
               <Dropdown
                 size="sm"
@@ -190,7 +194,7 @@ export function PurchasePage() {
                 value={draft.vendorId}
                 onChange={(id) => update({ vendorId: id })}
                 options={vendorOptions}
-                error={errorOf('매입처')}
+               
               />
             )}
             <NumberField
@@ -201,7 +205,7 @@ export function PurchasePage() {
               onChange={(n) => update({ amount: n })}
               decimals={CURRENCY_DECIMALS.KRW}
               suffix="KRW"
-              error={errorOf('매입가')}
+             
             />
             <Dropdown
               size="sm"
@@ -247,26 +251,33 @@ export function PurchasePage() {
           missingVatEvidence={missingVatEvidence}
         />
         <div className="flex flex-col gap-2">
-          <Button size="lg" disabled={!allowed || theft} onClick={() => submit(false)}>
+          <Button size="lg" disabled={!allowed || theft || invalid.length > 0} onClick={() => submit(false)}>
             매입 등록
           </Button>
           <Button
             size="lg"
             variant="outlined"
-            disabled={!allowed || theft || confirmBlockers.length > 0 || !isHandoverDone(draft)}
+            disabled={!allowed || theft || invalid.length > 0 || !!confirmDisabledReason}
             onClick={() => submit(true)}
           >
             등록 후 매입 확정
           </Button>
-          <p className="text-caption-md text-gray-70">
-            {!allowed
-              ? `${permissionHint('REGISTER_PURCHASE')}이 필요합니다.`
-              : theft
-                ? '도난 신고 차량은 매입 등록할 수 없습니다.'
-                : confirmBlockers.length
-                  ? `확정 불가: ${confirmBlockers.map((g) => g.title).join(', ')}`
-                  : '제출된 증빙은 회계 검증을 거쳐 매입세액으로 확보됩니다.'}
-          </p>
+          {!allowed ? (
+            <p className="text-caption-md text-gray-70">{permissionHint('REGISTER_PURCHASE')}이 필요합니다.</p>
+          ) : theft ? (
+            <p className="text-caption-md text-red-60">도난 신고 차량은 매입 등록할 수 없습니다.</p>
+          ) : invalid.length > 0 ? (
+            <div className="text-caption-md text-gray-70">
+              <p>필수 항목을 입력해야 등록할 수 있습니다.</p>
+              <ul className="mt-1 list-disc pl-4">
+                {invalid.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <p className="text-caption-md text-gray-70">{confirmDisabledReason ?? '제출된 증빙은 회계 검증을 거쳐 매입세액으로 확보됩니다.'}</p>
+          )}
         </div>
       </div>
     </div>
