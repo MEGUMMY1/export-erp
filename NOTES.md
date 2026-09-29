@@ -6,10 +6,18 @@
 - 기획서 v1 작성: docs/planning.md (GPT 초안 + 리뷰 반영)
 - 준비용 컨텍스트(JD 요약, 내 경험↔과제 연결): docs/private/context.md — git 제외
 
-## 다음 할 일
-- 타입 정의(src/types) + mock 데이터(src/mock) — 기획서 13장 케이스 A~J
-- 게이트 판정 로직(순수 함수) → 스토어
-- 화면 5개 라우팅 뼈대 + 역할 전환 헤더
+- 개발 기반 완료
+  - 도메인 타입/상수/포맷: src/domain
+  - 게이트 판정(evaluateGates, 순수 함수) · 매입세액 계산(calcVat) · 전이 가드/권한(rules.ts)
+  - mock 200대: scripts/generate-mock.mjs → src/mock/*.json (수출 검증 150대 = 정상 115 / 보완 28 / 차단 7)
+  - 스토어(useErpStore, useEvaluations) · 공통 레이아웃(사이드바, 시연 사용자 전환) · 라우트 뼈대
+
+## 다음 할 일 (페이지 단위로 하나씩)
+1. 검증 작업 큐 (/workbench) — 역할별 할 일, 리스크 필터, 선적 전표 담기, 조건부 선적 요청
+2. 차량 상세 (/vehicles/:id) — 게이트 사유·해소 액션, 매입세액, 증빙, Audit Trail
+3. 매입 등록 (/purchases/new) — VIN 즉시 조회, 증빙 체크리스트, 실시간 게이트
+4. 판매 등록 (/sales/new) — 크로스체크 패널
+5. 선적 전표 · 결재 (/shipments) — 일괄/조건부 결재, 선적 처리(VIN 재조회)
 - 세무 요건(개인 매입 공제 특례 등) 표현 수위 최종 점검
 
 ## 결정사항
@@ -25,4 +33,8 @@
 - 공통 UI는 과제에 실제 쓰이는 것만: Button, Chip, Modal, Toast (src/components/ui)
 - 색·타이포는 index.css @theme 디자인 토큰으로만 관리 (Tailwind 기본 팔레트 제거, bg-brand-70 / text-title-lg 등)
 - 리스크 표시 매핑: 🟢 CLEAR → Chip success, 🟡 REVIEW → warning, 🔴 BLOCKED → error
-- 추후 필요 시 DS에서 가져올 후보: StepBar(진행 단계 타임라인), Tabs, Empty, TextField, Dropdown
+- 추후 필요 시 추가할 공통 UI 후보: StepBar(진행 단계), Tabs, Empty, TextField, Dropdown
+- 데모 기준일은 2026-09-29로 고정 (mock 날짜와 D-day 계산 일관성)
+- 기획서에 없던 S8(국내 판매 전환) 게이트 추가 — 4.3 시나리오를 게이트로 승격
+- 수출신고 수리(H7)·신고필증 VIN(H6)은 판매 등록 이후부터 판정, 결재 미승인(H8)은 게이트가 아니라 선적 처리 가드로 구현
+- S4·S5·S8은 회계 확인(acknowledge)으로도 해소 가능, 그 외 Soft는 조건부 선적 승인으로만 통과

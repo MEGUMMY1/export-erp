@@ -1,0 +1,393 @@
+{
+  "users": [
+    {
+      "id": "U-PUR",
+      "name": "이매입",
+      "role": "PURCHASER",
+      "title": "매입 담당"
+    },
+    {
+      "id": "U-SAL1",
+      "name": "김영업",
+      "role": "SALES",
+      "title": "영업 담당"
+    },
+    {
+      "id": "U-SAL2",
+      "name": "이수출",
+      "role": "SALES",
+      "title": "영업 담당"
+    },
+    {
+      "id": "U-ACC",
+      "name": "박회계",
+      "role": "ACCOUNTING",
+      "title": "회계 팀장"
+    },
+    {
+      "id": "U-LOG",
+      "name": "최물류",
+      "role": "LOGISTICS",
+      "title": "물류 담당"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "D01",
+      "name": "한빛모터스",
+      "type": "BUSINESS",
+      "bizRegNo": "214-81-35120"
+    },
+    {
+      "id": "D02",
+      "name": "대성오토",
+      "type": "BUSINESS",
+      "bizRegNo": "137-86-20417"
+    },
+    {
+      "id": "D03",
+      "name": "미래카딜러",
+      "type": "BUSINESS",
+      "bizRegNo": "305-81-77452"
+    },
+    {
+      "id": "D04",
+      "name": "동부자동차상사",
+      "type": "BUSINESS",
+      "bizRegNo": "128-86-41236"
+    },
+    {
+      "id": "D05",
+      "name": "우리중고차",
+      "type": "BUSINESS",
+      "bizRegNo": "415-81-90318"
+    },
+    {
+      "id": "D06",
+      "name": "새한모터스",
+      "type": "BUSINESS",
+      "bizRegNo": "220-87-15693"
+    },
+    {
+      "id": "A01",
+      "name": "서울오토옥션",
+      "type": "AUCTION_HOUSE",
+      "bizRegNo": "117-81-60042"
+    },
+    {
+      "id": "A02",
+      "name": "경기차량경매장",
+      "type": "AUCTION_HOUSE",
+      "bizRegNo": "135-86-33218"
+    },
+    {
+      "id": "A03",
+      "name": "중부오토경매",
+      "type": "AUCTION_HOUSE",
+      "bizRegNo": "312-81-48805"
+    },
+    {
+      "id": "I-REPEAT",
+      "name": "정○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I001",
+      "name": "조○영",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I002",
+      "name": "최○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I003",
+      "name": "윤○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I004",
+      "name": "장○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I005",
+      "name": "김○우",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I006",
+      "name": "최○수",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I007",
+      "name": "윤○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I008",
+      "name": "윤○진",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I009",
+      "name": "김○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I010",
+      "name": "이○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I011",
+      "name": "조○우",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I012",
+      "name": "김○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I013",
+      "name": "윤○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I014",
+      "name": "장○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I015",
+      "name": "임○우",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I016",
+      "name": "장○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I017",
+      "name": "이○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I018",
+      "name": "강○수",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I019",
+      "name": "김○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I020",
+      "name": "이○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I021",
+      "name": "최○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I022",
+      "name": "박○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I023",
+      "name": "정○수",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I024",
+      "name": "임○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I025",
+      "name": "김○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I026",
+      "name": "임○영",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I027",
+      "name": "윤○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I028",
+      "name": "김○우",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I029",
+      "name": "장○진",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I030",
+      "name": "조○진",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I031",
+      "name": "김○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I032",
+      "name": "임○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I033",
+      "name": "김○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I034",
+      "name": "이○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I035",
+      "name": "이○우",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I036",
+      "name": "장○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I037",
+      "name": "조○석",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I038",
+      "name": "이○수",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I039",
+      "name": "윤○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I040",
+      "name": "강○영",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I041",
+      "name": "박○영",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I042",
+      "name": "박○진",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I043",
+      "name": "정○진",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I044",
+      "name": "최○호",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I045",
+      "name": "박○훈",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I046",
+      "name": "정○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I047",
+      "name": "조○준",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I048",
+      "name": "윤○현",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I049",
+      "name": "최○영",
+      "type": "INDIVIDUAL"
+    },
+    {
+      "id": "I050",
+      "name": "장○수",
+      "type": "INDIVIDUAL"
+    }
+  ],
+  "buyers": [
+    {
+      "id": "B01",
+      "name": "Al Noor Motors",
+      "country": "요르단",
+      "port": "아카바항"
+    },
+    {
+      "id": "B02",
+      "name": "Gulf Auto Trading",
+      "country": "UAE",
+      "port": "제벨알리항"
+    },
+    {
+      "id": "B03",
+      "name": "Caucasus Auto",
+      "country": "조지아",
+      "port": "포티항"
+    },
+    {
+      "id": "B04",
+      "name": "Andes Autos",
+      "country": "칠레",
+      "port": "발파라이소항"
+    },
+    {
+      "id": "B05",
+      "name": "Anatolia Oto",
+      "country": "튀르키예",
+      "port": "메르신항"
+    },
+    {
+      "id": "B06",
+      "name": "Nile Car Import",
+      "country": "이집트",
+      "port": "알렉산드리아항"
+    }
+  ],
+  "brokers": [
+    "한결관세사무소",
+    "세움관세법인",
+    "바른통관"
+  ],
+  "rates": {
+    "KRW": 1,
+    "USD": 1385,
+    "EUR": 1510
+  }
+}

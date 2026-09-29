@@ -1,0 +1,44 @@
+[
+  {
+    "vin": "KMTG34RYA9TV4K814",
+    "seizure": true,
+    "lien": false,
+    "theft": false,
+    "note": "지방세 체납 압류 (매입 후 등록)"
+  },
+  {
+    "vin": "KNCSRFC7A5APEM71A",
+    "seizure": true,
+    "lien": false,
+    "theft": false,
+    "note": "지방세 체납 압류 (매입 후 등록)"
+  },
+  {
+    "vin": "KMFZM97K2P7NPLRWW",
+    "seizure": false,
+    "lien": false,
+    "theft": true,
+    "note": "도난 신고 접수 차량"
+  },
+  {
+    "vin": "KMHFYGNAALYJYXX31",
+    "seizure": true,
+    "lien": false,
+    "theft": false,
+    "note": "과태료 체납 압류 (9/28 신규 등록)"
+  },
+  {
+    "vin": "KMHE341DBNA000147",
+    "seizure": true,
+    "lien": true,
+    "theft": false,
+    "note": "자동차세 체납 압류 · 캐피탈 저당"
+  },
+  {
+    "vin": "KNAGM4AD5K5000923",
+    "seizure": false,
+    "lien": false,
+    "theft": true,
+    "note": "도난 신고 접수 차량"
+  }
+]

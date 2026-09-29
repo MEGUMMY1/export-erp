@@ -1,0 +1,1712 @@
+[
+  {
+    "vehicleId": "V011",
+    "declNo": "EX-2609-0011",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGU39VYGNR9RA12",
+      "plateNumber": "350오2357"
+    }
+  },
+  {
+    "vehicleId": "V012",
+    "declNo": "EX-2609-0012",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDKDZ0B6J292HLZ",
+      "plateNumber": "287구5988"
+    }
+  },
+  {
+    "vehicleId": "V013",
+    "declNo": "EX-2609-0013",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSDZ88LRZF2ZZFZ",
+      "plateNumber": "332오9734"
+    }
+  },
+  {
+    "vehicleId": "V014",
+    "declNo": "EX-2609-0014",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDD4J836Y3EGLXT",
+      "plateNumber": "176어1248"
+    }
+  },
+  {
+    "vehicleId": "V015",
+    "declNo": "EX-2609-0015",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGB8HA9ZR5GH8ZN",
+      "plateNumber": "37라5866"
+    }
+  },
+  {
+    "vehicleId": "V016",
+    "declNo": "EX-2609-0016",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDZ569SXA8D80KC",
+      "plateNumber": "263오5339"
+    }
+  },
+  {
+    "vehicleId": "V017",
+    "declNo": "EX-2609-0017",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGJL0YF639669HM",
+      "plateNumber": "192더9112"
+    }
+  },
+  {
+    "vehicleId": "V018",
+    "declNo": "EX-2609-0018",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMDZMLFBPLV17H3",
+      "plateNumber": "243부8268"
+    }
+  },
+  {
+    "vehicleId": "V019",
+    "declNo": "EX-2609-0019",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAG8TTMZ1GHNMC7Y",
+      "plateNumber": "277더2200"
+    }
+  },
+  {
+    "vehicleId": "V020",
+    "declNo": "EX-2609-0020",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ66E6AUT7KBF7F",
+      "plateNumber": "274러1769"
+    }
+  },
+  {
+    "vehicleId": "V021",
+    "declNo": "EX-2609-0021",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPJ40ESJCA3XR3C",
+      "plateNumber": "167거6959"
+    }
+  },
+  {
+    "vehicleId": "V022",
+    "declNo": "EX-2609-0022",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGFEDY7SL8GZLGA",
+      "plateNumber": "188머2628"
+    }
+  },
+  {
+    "vehicleId": "V023",
+    "declNo": "EX-2609-0023",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDWF3RJ0V958W3D",
+      "plateNumber": "50주8720"
+    }
+  },
+  {
+    "vehicleId": "V024",
+    "declNo": "EX-2609-0024",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS3SR02PD9VUX26",
+      "plateNumber": "279무6841"
+    }
+  },
+  {
+    "vehicleId": "V025",
+    "declNo": "EX-2609-0025",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDSZ0HUU85UMGA5",
+      "plateNumber": "131러3433"
+    }
+  },
+  {
+    "vehicleId": "V026",
+    "declNo": "EX-2609-0026",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMZVUUECX9SYZ5S",
+      "plateNumber": "326로3403"
+    }
+  },
+  {
+    "vehicleId": "V027",
+    "declNo": "EX-2609-0027",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFALAF182U91YY9",
+      "plateNumber": "137구1081"
+    }
+  },
+  {
+    "vehicleId": "V028",
+    "declNo": "EX-2609-0028",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSR72SDBWYKPWRC",
+      "plateNumber": "262다2003"
+    }
+  },
+  {
+    "vehicleId": "V029",
+    "declNo": "EX-2609-0029",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPUX9WZ2NTGU9T0",
+      "plateNumber": "221서1610"
+    }
+  },
+  {
+    "vehicleId": "V030",
+    "declNo": "EX-2609-0030",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGG6ANXJM33TTBU",
+      "plateNumber": "60가1654"
+    }
+  },
+  {
+    "vehicleId": "V031",
+    "declNo": "EX-2609-0031",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPJ8MDGE48NG4PB",
+      "plateNumber": "233나2941"
+    }
+  },
+  {
+    "vehicleId": "V032",
+    "declNo": "EX-2609-0032",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG34RYA9TV4K814",
+      "plateNumber": "192나8746"
+    }
+  },
+  {
+    "vehicleId": "V033",
+    "declNo": "EX-2609-0033",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPSL6SH9TLU8AT6",
+      "plateNumber": "60서8396"
+    }
+  },
+  {
+    "vehicleId": "V034",
+    "declNo": "EX-2609-0034",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPAUSG2LR6YH8W3",
+      "plateNumber": "62수2551"
+    }
+  },
+  {
+    "vehicleId": "V035",
+    "declNo": "EX-2609-0035",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAM9086UBE015VMN",
+      "plateNumber": "367보1846"
+    }
+  },
+  {
+    "vehicleId": "V036",
+    "declNo": "EX-2609-0036",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG4NHL95WCB9J7U",
+      "plateNumber": "262수6092"
+    }
+  },
+  {
+    "vehicleId": "V037",
+    "declNo": "EX-2609-0037",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ0NFXMHCWJ8SS3",
+      "plateNumber": "258마4267"
+    }
+  },
+  {
+    "vehicleId": "V038",
+    "declNo": "EX-2609-0038",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDCJNZU5NL7UHWE",
+      "plateNumber": "282라4604"
+    }
+  },
+  {
+    "vehicleId": "V039",
+    "declNo": "EX-2609-0039",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMRPA7TRB7URLXC",
+      "plateNumber": "230부4059"
+    }
+  },
+  {
+    "vehicleId": "V040",
+    "declNo": "EX-2609-0040",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEHGCAMLNR0CJPM",
+      "plateNumber": "117부1518"
+    }
+  },
+  {
+    "vehicleId": "V041",
+    "declNo": "EX-2609-0041",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPWFNW2BCSLLUF4",
+      "plateNumber": "102도3976"
+    }
+  },
+  {
+    "vehicleId": "V042",
+    "declNo": "EX-2609-0042",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEEXRGRWSJVUW26",
+      "plateNumber": "177누9057"
+    }
+  },
+  {
+    "vehicleId": "V043",
+    "declNo": "EX-2609-0043",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHESDCPAFNJK77SW",
+      "plateNumber": "14나9367"
+    }
+  },
+  {
+    "vehicleId": "V044",
+    "declNo": "EX-2609-0044",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPES5A2RF4UEFBH",
+      "plateNumber": "149나9353"
+    }
+  },
+  {
+    "vehicleId": "V045",
+    "declNo": "EX-2609-0045",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHS6PVBWMWS9RBHG",
+      "plateNumber": "144로3366"
+    }
+  },
+  {
+    "vehicleId": "V046",
+    "declNo": "EX-2609-0046",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE6S51AJWWLJ3C7",
+      "plateNumber": "184로7403"
+    }
+  },
+  {
+    "vehicleId": "V047",
+    "declNo": "EX-2609-0047",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHERUX6H5AHZNLC2",
+      "plateNumber": "364버9725"
+    }
+  },
+  {
+    "vehicleId": "V048",
+    "declNo": "EX-2609-0048",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDVGELHLG7VG37B",
+      "plateNumber": "296주2103"
+    }
+  },
+  {
+    "vehicleId": "V049",
+    "declNo": "EX-2609-0049",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGUVFCDBAJ15EZ6",
+      "plateNumber": "269버6205"
+    }
+  },
+  {
+    "vehicleId": "V050",
+    "declNo": "EX-2609-0050",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARW4LX97UBAYB3C",
+      "plateNumber": "42오1774"
+    }
+  },
+  {
+    "vehicleId": "V051",
+    "declNo": "EX-2609-0051",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGTN6K3PRRUT43Y",
+      "plateNumber": "91마6792"
+    }
+  },
+  {
+    "vehicleId": "V052",
+    "declNo": "EX-2609-0052",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMVS4LRS68XD5AU",
+      "plateNumber": "365다6007"
+    }
+  },
+  {
+    "vehicleId": "V053",
+    "declNo": "EX-2609-0053",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEFMHHJDTT0HRNN",
+      "plateNumber": "69마3866"
+    }
+  },
+  {
+    "vehicleId": "V054",
+    "declNo": "EX-2609-0054",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG4PVZEFVB4CPPH",
+      "plateNumber": "161더7935"
+    }
+  },
+  {
+    "vehicleId": "V055",
+    "declNo": "EX-2609-0055",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGBBC9D3B954YHJ",
+      "plateNumber": "178머8486"
+    }
+  },
+  {
+    "vehicleId": "V056",
+    "declNo": "EX-2609-0056",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAM6UAHY27FKA1JB",
+      "plateNumber": "356나2567"
+    }
+  },
+  {
+    "vehicleId": "V057",
+    "declNo": "EX-2609-0057",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGKBCRFU82BFMX9",
+      "plateNumber": "286우3934"
+    }
+  },
+  {
+    "vehicleId": "V058",
+    "declNo": "EX-2609-0058",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZTP14NSNC46M9B",
+      "plateNumber": "384도6969"
+    }
+  },
+  {
+    "vehicleId": "V059",
+    "declNo": "EX-2609-0059",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGECYCH82BL93F8",
+      "plateNumber": "37두2857"
+    }
+  },
+  {
+    "vehicleId": "V060",
+    "declNo": "EX-2609-0060",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS449MG5LUJH5KR",
+      "plateNumber": "85러9261"
+    }
+  },
+  {
+    "vehicleId": "V061",
+    "declNo": "EX-2609-0061",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDWJM3X1TR8WPVV",
+      "plateNumber": "193보5242"
+    }
+  },
+  {
+    "vehicleId": "V062",
+    "declNo": "EX-2609-0062",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARY6ELG0MMSS83P",
+      "plateNumber": "262무8560"
+    }
+  },
+  {
+    "vehicleId": "V063",
+    "declNo": "EX-2609-0063",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE0CN0BL41GR49E",
+      "plateNumber": "80무8220"
+    }
+  },
+  {
+    "vehicleId": "V064",
+    "declNo": "EX-2609-0064",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSSWL7V4PH88XKB",
+      "plateNumber": "199루8903"
+    }
+  },
+  {
+    "vehicleId": "V065",
+    "declNo": "EX-2609-0065",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARYN7JNLMPRHRB3",
+      "plateNumber": "86누3128"
+    }
+  },
+  {
+    "vehicleId": "V066",
+    "declNo": "EX-2609-0066",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF49CNMJS8EV29P",
+      "plateNumber": "238소1112"
+    }
+  },
+  {
+    "vehicleId": "V067",
+    "declNo": "EX-2609-0067",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS9YZMCLRGC9096",
+      "plateNumber": "130어5052"
+    }
+  },
+  {
+    "vehicleId": "V068",
+    "declNo": "EX-2609-0068",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPRKX00AUGXZS5C",
+      "plateNumber": "115저1777"
+    }
+  },
+  {
+    "vehicleId": "V069",
+    "declNo": "EX-2609-0069",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAM3ARYR70KR9ZM6",
+      "plateNumber": "227가9896"
+    }
+  },
+  {
+    "vehicleId": "V070",
+    "declNo": "EX-2609-0070",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG2G1R1GNTB0U08",
+      "plateNumber": "149어8692"
+    }
+  },
+  {
+    "vehicleId": "V071",
+    "declNo": "EX-2609-0071",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHD2LC268BHUE0BR",
+      "plateNumber": "153구2705"
+    }
+  },
+  {
+    "vehicleId": "V072",
+    "declNo": "EX-2609-0072",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFAT6JKWWJH6144",
+      "plateNumber": "266부7173"
+    }
+  },
+  {
+    "vehicleId": "V073",
+    "declNo": "EX-2609-0073",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSHYXFJJJXFT4MY",
+      "plateNumber": "327주4735"
+    }
+  },
+  {
+    "vehicleId": "V074",
+    "declNo": "EX-2609-0074",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMJ183DWZEDR2TZ",
+      "plateNumber": "188노3004"
+    }
+  },
+  {
+    "vehicleId": "V075",
+    "declNo": "EX-2609-0075",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEG1JVC6BX83PS6",
+      "plateNumber": "179루5854"
+    }
+  },
+  {
+    "vehicleId": "V076",
+    "declNo": "EX-2609-0076",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ3LL5H869A7046",
+      "plateNumber": "217너3844"
+    }
+  },
+  {
+    "vehicleId": "V077",
+    "declNo": "EX-2609-0077",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGB6959F8WB1DCL",
+      "plateNumber": "54러5979"
+    }
+  },
+  {
+    "vehicleId": "V078",
+    "declNo": "EX-2609-0078",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDEN1TLE6JT8Z19",
+      "plateNumber": "259서2843"
+    }
+  },
+  {
+    "vehicleId": "V079",
+    "declNo": "EX-2609-0079",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJP5T4VZSXTWT23",
+      "plateNumber": "37가5750"
+    }
+  },
+  {
+    "vehicleId": "V080",
+    "declNo": "EX-2609-0080",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDLW7MZHZP2EXVA",
+      "plateNumber": "195오9272"
+    }
+  },
+  {
+    "vehicleId": "V081",
+    "declNo": "EX-2609-0081",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHS0KPM1D29MUA9V",
+      "plateNumber": "306로8017"
+    }
+  },
+  {
+    "vehicleId": "V082",
+    "declNo": "EX-2609-0082",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGNR0E2Y647X7TF",
+      "plateNumber": "43무9226"
+    }
+  },
+  {
+    "vehicleId": "V083",
+    "declNo": "EX-2609-0083",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG0SAFAUZDN9DT2",
+      "plateNumber": "110버2865"
+    }
+  },
+  {
+    "vehicleId": "V084",
+    "declNo": "EX-2609-0084",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF6MLAFRJLW00HC",
+      "plateNumber": "339너7565"
+    }
+  },
+  {
+    "vehicleId": "V085",
+    "declNo": "EX-2609-0085",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSM1BL9JXM3A32B",
+      "plateNumber": "280어1850"
+    }
+  },
+  {
+    "vehicleId": "V086",
+    "declNo": "EX-2609-0086",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJEXTFCA4Y2AW1D",
+      "plateNumber": "336루5440"
+    }
+  },
+  {
+    "vehicleId": "V087",
+    "declNo": "EX-2609-0087",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFZ883ZJCK8SKAV",
+      "plateNumber": "229우9047"
+    }
+  },
+  {
+    "vehicleId": "V088",
+    "declNo": "EX-2609-0088",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF7G66MBRYBYMMP",
+      "plateNumber": "266소1609"
+    }
+  },
+  {
+    "vehicleId": "V089",
+    "declNo": "EX-2609-0089",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZABU5AHZZSW09H",
+      "plateNumber": "29서7088"
+    }
+  },
+  {
+    "vehicleId": "V090",
+    "declNo": "EX-2609-0090",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE4F6X8ADB1N5W8",
+      "plateNumber": "265부3945"
+    }
+  },
+  {
+    "vehicleId": "V091",
+    "declNo": "EX-2609-0091",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ3F3Z88N7TAZV2",
+      "plateNumber": "174로6699"
+    }
+  },
+  {
+    "vehicleId": "V092",
+    "declNo": "EX-2609-0092",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFWMS48KC30YB3G",
+      "plateNumber": "277더9398"
+    }
+  },
+  {
+    "vehicleId": "V093",
+    "declNo": "EX-2609-0093",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF991CPMKBYNLHZ",
+      "plateNumber": "131모1766"
+    }
+  },
+  {
+    "vehicleId": "V094",
+    "declNo": "EX-2609-0094",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARAK02EH74AS352",
+      "plateNumber": "193노9261"
+    }
+  },
+  {
+    "vehicleId": "V095",
+    "declNo": "EX-2609-0095",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGPFC0UD19XGS5G",
+      "plateNumber": "229소3808"
+    }
+  },
+  {
+    "vehicleId": "V096",
+    "declNo": "EX-2609-0096",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGTCEVECT2SV3JT",
+      "plateNumber": "272무2816"
+    }
+  },
+  {
+    "vehicleId": "V097",
+    "declNo": "EX-2609-0097",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFH7CVWN07MV8F3",
+      "plateNumber": "189루6530"
+    }
+  },
+  {
+    "vehicleId": "V098",
+    "declNo": "EX-2609-0098",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGZFR67D9D5V6W7",
+      "plateNumber": "374너6113"
+    }
+  },
+  {
+    "vehicleId": "V099",
+    "declNo": "EX-2609-0099",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSSVW3PV7KPYSTL",
+      "plateNumber": "80노8777"
+    }
+  },
+  {
+    "vehicleId": "V100",
+    "declNo": "EX-2609-0100",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAP49PKAVB11KDAR",
+      "plateNumber": "317노3180"
+    }
+  },
+  {
+    "vehicleId": "V101",
+    "declNo": "EX-2609-0101",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPVWJKWNWKVZR93",
+      "plateNumber": "75서6597"
+    }
+  },
+  {
+    "vehicleId": "V102",
+    "declNo": "EX-2609-0102",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFWWFYCLE3EJZ0Y",
+      "plateNumber": "104저9267"
+    }
+  },
+  {
+    "vehicleId": "V103",
+    "declNo": "EX-2609-0103",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGSHEJEALVD236T",
+      "plateNumber": "241고4114"
+    }
+  },
+  {
+    "vehicleId": "V104",
+    "declNo": "EX-2609-0104",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFZAAW388XRJMT8",
+      "plateNumber": "233라6556"
+    }
+  },
+  {
+    "vehicleId": "V105",
+    "declNo": "EX-2609-0105",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJTN2JZ6YSBWXYN",
+      "plateNumber": "377저3183"
+    }
+  },
+  {
+    "vehicleId": "V106",
+    "declNo": "EX-2609-0106",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHENYDZC7909PB5L",
+      "plateNumber": "345모4212"
+    }
+  },
+  {
+    "vehicleId": "V107",
+    "declNo": "EX-2609-0107",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGN6RETWWBRRNB0",
+      "plateNumber": "173오8709"
+    }
+  },
+  {
+    "vehicleId": "V108",
+    "declNo": "EX-2609-0108",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFY53A3DFJSSUZ8",
+      "plateNumber": "45노8616"
+    }
+  },
+  {
+    "vehicleId": "V109",
+    "declNo": "EX-2609-0109",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSUFJXCHSLB65EV",
+      "plateNumber": "153수7403"
+    }
+  },
+  {
+    "vehicleId": "V110",
+    "declNo": "EX-2609-0110",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ10CMJDBTC19L0",
+      "plateNumber": "189마8625"
+    }
+  },
+  {
+    "vehicleId": "V111",
+    "declNo": "EX-2609-0111",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARSJ0XEXX2XKWRV",
+      "plateNumber": "165부1954"
+    }
+  },
+  {
+    "vehicleId": "V112",
+    "declNo": "EX-2609-0112",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAP39S71C6GDRM47",
+      "plateNumber": "110마2970"
+    }
+  },
+  {
+    "vehicleId": "V113",
+    "declNo": "EX-2609-0113",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARZJ9DLV955P5S8",
+      "plateNumber": "74로6004"
+    }
+  },
+  {
+    "vehicleId": "V114",
+    "declNo": "EX-2609-0114",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEEMAKZF6LLVU1T",
+      "plateNumber": "112어4702"
+    }
+  },
+  {
+    "vehicleId": "V115",
+    "declNo": "EX-2609-0115",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS0KM802JU40S18",
+      "plateNumber": "59소2264"
+    }
+  },
+  {
+    "vehicleId": "V116",
+    "declNo": "EX-2609-0116",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGVUBYNV2L2K96N",
+      "plateNumber": "94거4159"
+    }
+  },
+  {
+    "vehicleId": "V117",
+    "declNo": "EX-2609-0117",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSH8GXXF8RPLWPP",
+      "plateNumber": "188우9261"
+    }
+  },
+  {
+    "vehicleId": "V118",
+    "declNo": "EX-2609-0118",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDHMYV3PPJZD8FW",
+      "plateNumber": "54주6117"
+    }
+  },
+  {
+    "vehicleId": "V119",
+    "declNo": "EX-2609-0119",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSRFC7A5APEM71A",
+      "plateNumber": "122너3509"
+    }
+  },
+  {
+    "vehicleId": "V120",
+    "declNo": "EX-2609-0120",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG87FUGC9CTK4TT",
+      "plateNumber": "68두2026"
+    }
+  },
+  {
+    "vehicleId": "V121",
+    "declNo": "EX-2609-0121",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS3WM1S2ER851UW",
+      "plateNumber": "143더6487"
+    }
+  },
+  {
+    "vehicleId": "V122",
+    "declNo": "EX-2609-0122",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJLN5UCU55DR3ZZ",
+      "plateNumber": "277구5626"
+    }
+  },
+  {
+    "vehicleId": "V123",
+    "declNo": "EX-2609-0123",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZM97K2P7NPLRWW",
+      "plateNumber": "111두6857"
+    }
+  },
+  {
+    "vehicleId": "V124",
+    "declNo": "EX-2609-0124",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGZVKF6T40ZZMJ9",
+      "plateNumber": "89부5936"
+    }
+  },
+  {
+    "vehicleId": "V125",
+    "declNo": "EX-2609-0125",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF9MD51D4ZWYTKL",
+      "plateNumber": "336저2628"
+    }
+  },
+  {
+    "vehicleId": "V126",
+    "declNo": "EX-2609-0126",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG2536EU8DKEFTW",
+      "plateNumber": "157나9293"
+    }
+  },
+  {
+    "vehicleId": "V127",
+    "declNo": "EX-2609-0127",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARFD9ED7TJKTCVU",
+      "plateNumber": "133나6233"
+    }
+  },
+  {
+    "vehicleId": "V128",
+    "declNo": "EX-2609-0128",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSLEKDRH7YK81Y9",
+      "plateNumber": "309보8796"
+    }
+  },
+  {
+    "vehicleId": "V129",
+    "declNo": "EX-2609-0129",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHS5KRETY3G3RH7S",
+      "plateNumber": "377구5354"
+    }
+  },
+  {
+    "vehicleId": "V130",
+    "declNo": "EX-2609-0130",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSDWW5CWKRHT30J",
+      "plateNumber": "341노5737"
+    }
+  },
+  {
+    "vehicleId": "V131",
+    "declNo": "EX-2609-0131",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGCYT772JU0S3E7",
+      "plateNumber": "139수6304"
+    }
+  },
+  {
+    "vehicleId": "V132",
+    "declNo": "EX-2609-0132",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZ0GF3VKG4XA843",
+      "plateNumber": "389러1841"
+    }
+  },
+  {
+    "vehicleId": "V133",
+    "declNo": "EX-2609-0133",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFRVDBA9CVWJARB",
+      "plateNumber": "114러2218"
+    }
+  },
+  {
+    "vehicleId": "V134",
+    "declNo": "EX-2609-0134",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGX8KAF8AEFREAD",
+      "plateNumber": "21버7515"
+    }
+  },
+  {
+    "vehicleId": "V135",
+    "declNo": "EX-2609-0135",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGMAVC80APCN95X",
+      "plateNumber": "188서8655"
+    }
+  },
+  {
+    "vehicleId": "V136",
+    "declNo": "EX-2609-0136",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMZCNHZWW5ESR3W",
+      "plateNumber": "253오5505"
+    }
+  },
+  {
+    "vehicleId": "V137",
+    "declNo": "EX-2609-0137",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHS5G81XLEWF1R67",
+      "plateNumber": "316더3918"
+    }
+  },
+  {
+    "vehicleId": "V138",
+    "declNo": "EX-2609-0138",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPMML3R4PKXG1AD",
+      "plateNumber": "255구3332"
+    }
+  },
+  {
+    "vehicleId": "V139",
+    "declNo": "EX-2609-0139",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSGXTHZU19HGRZ2",
+      "plateNumber": "126누6661"
+    }
+  },
+  {
+    "vehicleId": "V140",
+    "declNo": "EX-2609-0140",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF6Y095A944PXVG",
+      "plateNumber": "207구6165"
+    }
+  },
+  {
+    "vehicleId": "V141",
+    "declNo": "EX-2609-0141",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZCTPW69A3YULKE",
+      "plateNumber": "31두6241"
+    }
+  },
+  {
+    "vehicleId": "V142",
+    "declNo": "EX-2609-0142",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSUA7HJ069EUSEF",
+      "plateNumber": "326서2935"
+    }
+  },
+  {
+    "vehicleId": "V143",
+    "declNo": "EX-2609-0143",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGV89BMY0SLKC3L",
+      "plateNumber": "19러1682"
+    }
+  },
+  {
+    "vehicleId": "V144",
+    "declNo": "EX-2609-0144",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAP3NN2C7220WE7K",
+      "plateNumber": "373우3362"
+    }
+  },
+  {
+    "vehicleId": "V145",
+    "declNo": "EX-2609-0145",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGUP6H6S7A6U05E",
+      "plateNumber": "148부7578"
+    }
+  },
+  {
+    "vehicleId": "V146",
+    "declNo": "EX-2609-0146",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG7KYZ9SZTWFYVR",
+      "plateNumber": "336무8661"
+    }
+  },
+  {
+    "vehicleId": "V147",
+    "declNo": "EX-2609-0147",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHD6T4KZKUWCB4VR",
+      "plateNumber": "179두1625"
+    }
+  },
+  {
+    "vehicleId": "V148",
+    "declNo": "EX-2609-0148",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGZJHWDK5LK89TT",
+      "plateNumber": "326노2106"
+    }
+  },
+  {
+    "vehicleId": "V149",
+    "declNo": "EX-2609-0149",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS3ZH269CB9552D",
+      "plateNumber": "182노6910"
+    }
+  },
+  {
+    "vehicleId": "V150",
+    "declNo": "EX-2609-0150",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZN0R5FDJ5J8YCY",
+      "plateNumber": "122너2566"
+    }
+  },
+  {
+    "vehicleId": "V151",
+    "declNo": "EX-2609-0151",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF3PSJ8YVKD7PCP",
+      "plateNumber": "368조5257"
+    }
+  },
+  {
+    "vehicleId": "V152",
+    "declNo": "EX-2609-0152",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ07EUUCZXT5N2L",
+      "plateNumber": "17루7254"
+    }
+  },
+  {
+    "vehicleId": "V153",
+    "declNo": "EX-2609-0153",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDRJM7CG7TLZC4G",
+      "plateNumber": "207거7776"
+    }
+  },
+  {
+    "vehicleId": "V154",
+    "declNo": "EX-2609-0154",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHS20AFXLC17YH3L",
+      "plateNumber": "114도5419"
+    }
+  },
+  {
+    "vehicleId": "V155",
+    "declNo": "EX-2609-0155",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHENRE5KSNZKZPJD",
+      "plateNumber": "360머7762"
+    }
+  },
+  {
+    "vehicleId": "V156",
+    "declNo": "EX-2609-0156",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSJEKJVFK6ES5Y5",
+      "plateNumber": "41나3504"
+    }
+  },
+  {
+    "vehicleId": "V157",
+    "declNo": "EX-2609-0157",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAMXAX1N2YCA7F2Z",
+      "plateNumber": "321머7973"
+    }
+  },
+  {
+    "vehicleId": "V158",
+    "declNo": "EX-2609-0158",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPEVJ9V4RR2SX03",
+      "plateNumber": "144구7669"
+    }
+  },
+  {
+    "vehicleId": "V159",
+    "declNo": "EX-2609-0159",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHEJ64KVS2X1W9L3",
+      "plateNumber": "210고2885"
+    }
+  },
+  {
+    "vehicleId": "V160",
+    "declNo": "EX-2609-0160",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGD3EG891HGYDRM",
+      "plateNumber": "29마7519"
+    }
+  },
+  {
+    "vehicleId": "V161",
+    "declNo": "EX-2609-0161",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFDTVD7P6DAFCHT",
+      "plateNumber": "40수8324"
+    }
+  },
+  {
+    "vehicleId": "V162",
+    "declNo": "EX-2609-0162",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJASCDM6C725GSA",
+      "plateNumber": "88너8731"
+    }
+  },
+  {
+    "vehicleId": "V163",
+    "declNo": "EX-2609-0163",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARZHG4BFSB5MG8R",
+      "plateNumber": "246가1554"
+    }
+  },
+  {
+    "vehicleId": "V164",
+    "declNo": "EX-2609-0164",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAGR6KUCVXB95V1Z",
+      "plateNumber": "292어8034"
+    }
+  },
+  {
+    "vehicleId": "V165",
+    "declNo": "EX-2609-0165",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE4JYZRD815CZU9",
+      "plateNumber": "39두9764"
+    }
+  },
+  {
+    "vehicleId": "V166",
+    "declNo": "EX-2609-0166",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTGBSHNFVEHX7HX0",
+      "plateNumber": "185고2878"
+    }
+  },
+  {
+    "vehicleId": "V167",
+    "declNo": "EX-2609-0167",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAR81MWW5985MURK",
+      "plateNumber": "226나7623"
+    }
+  },
+  {
+    "vehicleId": "V168",
+    "declNo": "EX-2609-0168",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARVRZ17GJ89KLUU",
+      "plateNumber": "172머4415"
+    }
+  },
+  {
+    "vehicleId": "V169",
+    "declNo": "EX-2609-0169",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARL8SVTZ7U4BK9R",
+      "plateNumber": "357거1206"
+    }
+  },
+  {
+    "vehicleId": "V170",
+    "declNo": "EX-2609-0170",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAM05268GGFY3474",
+      "plateNumber": "235라1610"
+    }
+  },
+  {
+    "vehicleId": "V171",
+    "declNo": "EX-2609-0171",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPYPRS22UDB4U98",
+      "plateNumber": "152너7242"
+    }
+  },
+  {
+    "vehicleId": "V172",
+    "declNo": "EX-2609-0172",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZ4TXAYXP6Y0UWA",
+      "plateNumber": "85모6571"
+    }
+  },
+  {
+    "vehicleId": "V173",
+    "declNo": "EX-2609-0173",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE5K6ENGSBWGK0L",
+      "plateNumber": "72나3963"
+    }
+  },
+  {
+    "vehicleId": "V174",
+    "declNo": "EX-2609-0174",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJ31F5V32J4JHG7",
+      "plateNumber": "104너1475"
+    }
+  },
+  {
+    "vehicleId": "V175",
+    "declNo": "EX-2609-0175",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJBSCTUTSNP6PHK",
+      "plateNumber": "77더4951"
+    }
+  },
+  {
+    "vehicleId": "V176",
+    "declNo": "EX-2609-0176",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARYX0MRKPVYSFAR",
+      "plateNumber": "77노4699"
+    }
+  },
+  {
+    "vehicleId": "V177",
+    "declNo": "EX-2609-0177",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAM93M1GGSU6P57P",
+      "plateNumber": "169보1541"
+    }
+  },
+  {
+    "vehicleId": "V178",
+    "declNo": "EX-2609-0178",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHJEE9VL06LLMH4P",
+      "plateNumber": "131러7506"
+    }
+  },
+  {
+    "vehicleId": "V179",
+    "declNo": "EX-2609-0179",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHSX24639613LGU1",
+      "plateNumber": "201로4476"
+    }
+  },
+  {
+    "vehicleId": "V180",
+    "declNo": "EX-2609-0180",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARHX9J728RGPSMM",
+      "plateNumber": "178도9144"
+    }
+  },
+  {
+    "vehicleId": "V181",
+    "declNo": "EX-2609-0181",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG7B8DSME5ACMH9",
+      "plateNumber": "95고9860"
+    }
+  },
+  {
+    "vehicleId": "V182",
+    "declNo": "EX-2609-0182",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF4XFB1MNW51J4C",
+      "plateNumber": "140어2697"
+    }
+  },
+  {
+    "vehicleId": "V183",
+    "declNo": "EX-2609-0183",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMTG6EZCTJ1YCY01F",
+      "plateNumber": "354더2586"
+    }
+  },
+  {
+    "vehicleId": "V184",
+    "declNo": "EX-2609-0184",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAPZMZJDH3B6XGUV",
+      "plateNumber": "90구6727"
+    }
+  },
+  {
+    "vehicleId": "V185",
+    "declNo": "EX-2609-0185",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCS8SX3ZF47S41MT",
+      "plateNumber": "322라4252"
+    }
+  },
+  {
+    "vehicleId": "V186",
+    "declNo": "EX-2609-0186",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZ9K25B5RV3SXWJ",
+      "plateNumber": "67러1769"
+    }
+  },
+  {
+    "vehicleId": "V187",
+    "declNo": "EX-2609-0187",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFW5E3J18ZU73GN",
+      "plateNumber": "268부1270"
+    }
+  },
+  {
+    "vehicleId": "V188",
+    "declNo": "EX-2609-0188",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFYMK3SD1K0622R",
+      "plateNumber": "232저4195"
+    }
+  },
+  {
+    "vehicleId": "V189",
+    "declNo": "EX-2609-0189",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFYGNAALYJYXX31",
+      "plateNumber": "104도3849"
+    }
+  },
+  {
+    "vehicleId": "V190",
+    "declNo": "EX-2609-0190",
+    "status": "FILED",
+    "extracted": {
+      "vin": "KNAM25KWFB9UDR211",
+      "plateNumber": "380오7781"
+    }
+  },
+  {
+    "vehicleId": "V191",
+    "declNo": "EX-2609-0191",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNARRTGKJ87THLVV7",
+      "plateNumber": "208오9115"
+    }
+  },
+  {
+    "vehicleId": "V192",
+    "declNo": "EX-2609-0192",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHE62GWAXTWTGGXX",
+      "plateNumber": "85노7211"
+    }
+  },
+  {
+    "vehicleId": "V193",
+    "declNo": "EX-2609-0193",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNAR55TFJMFNKUY4E",
+      "plateNumber": "261소3663"
+    }
+  },
+  {
+    "vehicleId": "V194",
+    "declNo": "EX-2609-0194",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF2NSUXUE1KAEDD",
+      "plateNumber": "345고7884"
+    }
+  },
+  {
+    "vehicleId": "V195",
+    "declNo": "EX-2609-0195",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMFZPT93UG5ZJ8GVH",
+      "plateNumber": "204서3379"
+    }
+  },
+  {
+    "vehicleId": "V196",
+    "declNo": "EX-2609-0196",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF54WNZ54LTAJAN",
+      "plateNumber": "137보2157"
+    }
+  },
+  {
+    "vehicleId": "V197",
+    "declNo": "EX-2609-0197",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHFHAF42KFSR1ZH4",
+      "plateNumber": "322주5560"
+    }
+  },
+  {
+    "vehicleId": "V198",
+    "declNo": "EX-2609-0198",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KNCSVAF631B5YC2WJ",
+      "plateNumber": "209너4370"
+    }
+  },
+  {
+    "vehicleId": "V199",
+    "declNo": "EX-2609-0199",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHF1PEZJYH3XW0B8",
+      "plateNumber": "366나9866"
+    }
+  },
+  {
+    "vehicleId": "V200",
+    "declNo": "EX-2609-0200",
+    "status": "ACCEPTED",
+    "extracted": {
+      "vin": "KMHDVEE9P6ZNYLZ7G",
+      "plateNumber": "128도3559"
+    }
+  }
+]

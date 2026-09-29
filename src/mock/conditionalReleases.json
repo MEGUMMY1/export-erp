@@ -1,0 +1,98 @@
+[
+  {
+    "id": "R001",
+    "vehicleId": "V037",
+    "gateCodes": [
+      "S5"
+    ],
+    "dueDate": "2026-10-04",
+    "ownerId": "U-SAL2",
+    "requestedBy": "U-SAL2",
+    "requestedAt": "2026-09-27T15:51",
+    "reason": "장기 재고(60일) 처분, 추가 시세 하락 전 판매",
+    "vatImpact": 0,
+    "status": "PENDING"
+  },
+  {
+    "id": "R002",
+    "vehicleId": "V039",
+    "gateCodes": [
+      "S1"
+    ],
+    "dueDate": "2026-10-04",
+    "ownerId": "U-SAL2",
+    "requestedBy": "U-SAL2",
+    "requestedAt": "2026-09-27T15:30",
+    "reason": "딜러 측 전자세금계산서 발행 오류로 재발행 대기",
+    "vatImpact": 2427273,
+    "status": "APPROVED",
+    "decidedBy": "U-ACC",
+    "decidedAt": "2026-09-27T17:11",
+    "decisionNote": "보완 기한 2026-10-04 엄수"
+  },
+  {
+    "id": "R003",
+    "vehicleId": "V098",
+    "gateCodes": [
+      "S1"
+    ],
+    "dueDate": "2026-10-05",
+    "ownerId": "U-SAL2",
+    "requestedBy": "U-SAL2",
+    "requestedAt": "2026-09-28T15:03",
+    "reason": "바이어 선적 일정(10/4 출항) 고정, 세금계산서는 딜러 발행 지연 중",
+    "vatImpact": 4009091,
+    "status": "PENDING"
+  },
+  {
+    "id": "R004",
+    "vehicleId": "V191",
+    "gateCodes": [
+      "S1"
+    ],
+    "dueDate": "2026-09-27",
+    "ownerId": "U-SAL1",
+    "requestedBy": "U-SAL1",
+    "requestedAt": "2026-09-14T15:27",
+    "reason": "바이어 L/C 만기 임박, 세금계산서 사후 수취 예정",
+    "vatImpact": 1954545,
+    "status": "APPROVED",
+    "decidedBy": "U-ACC",
+    "decidedAt": "2026-09-14T17:50",
+    "decisionNote": "보완 기한 2026-09-27 엄수"
+  },
+  {
+    "id": "R005",
+    "vehicleId": "V192",
+    "gateCodes": [
+      "S1"
+    ],
+    "dueDate": "2026-09-27",
+    "ownerId": "U-SAL1",
+    "requestedBy": "U-SAL1",
+    "requestedAt": "2026-09-15T15:15",
+    "reason": "바이어 L/C 만기 임박, 세금계산서 사후 수취 예정",
+    "vatImpact": 1281818,
+    "status": "APPROVED",
+    "decidedBy": "U-ACC",
+    "decidedAt": "2026-09-15T17:10",
+    "decisionNote": "보완 기한 2026-09-27 엄수"
+  },
+  {
+    "id": "R006",
+    "vehicleId": "V193",
+    "gateCodes": [
+      "S1"
+    ],
+    "dueDate": "2026-09-30",
+    "ownerId": "U-SAL2",
+    "requestedBy": "U-SAL2",
+    "requestedAt": "2026-09-13T15:10",
+    "reason": "딜러 세금계산서 월말 일괄 발행",
+    "vatImpact": 1872727,
+    "status": "APPROVED",
+    "decidedBy": "U-ACC",
+    "decidedAt": "2026-09-13T17:37",
+    "decisionNote": "보완 기한 2026-09-30 엄수"
+  }
+]

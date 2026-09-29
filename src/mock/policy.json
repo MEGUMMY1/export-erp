@@ -1,0 +1,36 @@
+{
+  "conditionalDueDays": 7,
+  "perUserOpenLimit": 3,
+  "repeatSellerThreshold": 3,
+  "vinCheckValidDays": 7,
+  "vatFilingDeadline": "2026-10-25",
+  "requiredEvidence": {
+    "DEALER": [
+      "TAX_INVOICE",
+      "CONTRACT"
+    ],
+    "AUCTION": [
+      "TAX_INVOICE",
+      "AUCTION_CONFIRMATION"
+    ],
+    "INDIVIDUAL": [
+      "CONTRACT",
+      "ID_COPY",
+      "TRANSFER_RECEIPT",
+      "OWNERSHIP_TRANSFER"
+    ]
+  },
+  "vatEvidence": {
+    "DEALER": [
+      "TAX_INVOICE"
+    ],
+    "AUCTION": [
+      "TAX_INVOICE"
+    ],
+    "INDIVIDUAL": [
+      "CONTRACT",
+      "TRANSFER_RECEIPT",
+      "OWNERSHIP_TRANSFER"
+    ]
+  }
+}

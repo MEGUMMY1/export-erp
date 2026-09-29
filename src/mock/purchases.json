@@ -1,0 +1,2990 @@
+[
+  {
+    "vehicleId": "V001",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 26000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-29",
+    "purchaserId": "U-PUR"
+  },
+  {
+    "vehicleId": "V002",
+    "vendorId": "I001",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 13400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR"
+  },
+  {
+    "vehicleId": "V003",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 32300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-29T10:32"
+    }
+  },
+  {
+    "vehicleId": "V004",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 10300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-29T10:43"
+    }
+  },
+  {
+    "vehicleId": "V005",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 20100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-29T10:30"
+    }
+  },
+  {
+    "vehicleId": "V006",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 23000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-29T10:40"
+    }
+  },
+  {
+    "vehicleId": "V007",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 22600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:41"
+    }
+  },
+  {
+    "vehicleId": "V008",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 13900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-27",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-28T10:14"
+    }
+  },
+  {
+    "vehicleId": "V009",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 28400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-26",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-27T10:51"
+    }
+  },
+  {
+    "vehicleId": "V010",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 26400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-28",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-29T10:22"
+    }
+  },
+  {
+    "vehicleId": "V011",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 14600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:22"
+    }
+  },
+  {
+    "vehicleId": "V012",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 9300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:46"
+    }
+  },
+  {
+    "vehicleId": "V013",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 19300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:01"
+    }
+  },
+  {
+    "vehicleId": "V014",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 15200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:46"
+    }
+  },
+  {
+    "vehicleId": "V015",
+    "vendorId": "I002",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 31000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:23"
+    }
+  },
+  {
+    "vehicleId": "V016",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 8600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:08"
+    }
+  },
+  {
+    "vehicleId": "V017",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 42500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:58"
+    }
+  },
+  {
+    "vehicleId": "V018",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 32000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:09"
+    }
+  },
+  {
+    "vehicleId": "V019",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 19500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:14"
+    }
+  },
+  {
+    "vehicleId": "V020",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 23600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-13",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-14T10:48"
+    }
+  },
+  {
+    "vehicleId": "V021",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 25700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:46"
+    }
+  },
+  {
+    "vehicleId": "V022",
+    "vendorId": "I003",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 32300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:46"
+    }
+  },
+  {
+    "vehicleId": "V023",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 8000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:19"
+    }
+  },
+  {
+    "vehicleId": "V024",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 13300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:37"
+    }
+  },
+  {
+    "vehicleId": "V025",
+    "vendorId": "I004",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 8400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:24"
+    }
+  },
+  {
+    "vehicleId": "V026",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 21100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:21"
+    }
+  },
+  {
+    "vehicleId": "V027",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 28700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:22"
+    }
+  },
+  {
+    "vehicleId": "V028",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 11100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:34"
+    }
+  },
+  {
+    "vehicleId": "V029",
+    "vendorId": "I005",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 27100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:26"
+    }
+  },
+  {
+    "vehicleId": "V030",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 40200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:20"
+    }
+  },
+  {
+    "vehicleId": "V031",
+    "vendorId": "I006",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 23900000,
+    "paymentMethod": "CASH",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:51"
+    }
+  },
+  {
+    "vehicleId": "V032",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 44100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:39"
+    }
+  },
+  {
+    "vehicleId": "V033",
+    "vendorId": "I007",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 32300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:07"
+    }
+  },
+  {
+    "vehicleId": "V034",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 29100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:45"
+    }
+  },
+  {
+    "vehicleId": "V035",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 30900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:39"
+    }
+  },
+  {
+    "vehicleId": "V036",
+    "vendorId": "I008",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 43300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:27"
+    }
+  },
+  {
+    "vehicleId": "V037",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 21500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:20"
+    }
+  },
+  {
+    "vehicleId": "V038",
+    "vendorId": "I009",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 15100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:26"
+    }
+  },
+  {
+    "vehicleId": "V039",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 26700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:25"
+    }
+  },
+  {
+    "vehicleId": "V040",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 13000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:01"
+    }
+  },
+  {
+    "vehicleId": "V041",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 31200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:54"
+    }
+  },
+  {
+    "vehicleId": "V042",
+    "vendorId": "I010",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 13900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:14"
+    }
+  },
+  {
+    "vehicleId": "V043",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 13600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-13",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-14T10:45"
+    }
+  },
+  {
+    "vehicleId": "V044",
+    "vendorId": "I-REPEAT",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 25600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:21"
+    }
+  },
+  {
+    "vehicleId": "V045",
+    "vendorId": "I011",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 25000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:23"
+    }
+  },
+  {
+    "vehicleId": "V046",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 20300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:28"
+    }
+  },
+  {
+    "vehicleId": "V047",
+    "vendorId": "I012",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 14000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:14"
+    }
+  },
+  {
+    "vehicleId": "V048",
+    "vendorId": "I013",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 8100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:40"
+    }
+  },
+  {
+    "vehicleId": "V049",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 41900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:15"
+    }
+  },
+  {
+    "vehicleId": "V050",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 14000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:22"
+    }
+  },
+  {
+    "vehicleId": "V051",
+    "vendorId": "I014",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:42"
+    }
+  },
+  {
+    "vehicleId": "V052",
+    "vendorId": "I015",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 26100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:05"
+    }
+  },
+  {
+    "vehicleId": "V053",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 13600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:22"
+    }
+  },
+  {
+    "vehicleId": "V054",
+    "vendorId": "I016",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 37200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:17"
+    }
+  },
+  {
+    "vehicleId": "V055",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 34700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:11"
+    }
+  },
+  {
+    "vehicleId": "V056",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 24800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:23"
+    }
+  },
+  {
+    "vehicleId": "V057",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 20400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:00"
+    }
+  },
+  {
+    "vehicleId": "V058",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 14300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:16"
+    }
+  },
+  {
+    "vehicleId": "V059",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 20700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:25"
+    }
+  },
+  {
+    "vehicleId": "V060",
+    "vendorId": "I017",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 13500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:45"
+    }
+  },
+  {
+    "vehicleId": "V061",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 9800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:34"
+    }
+  },
+  {
+    "vehicleId": "V062",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 19600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:08"
+    }
+  },
+  {
+    "vehicleId": "V063",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 21600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:47"
+    }
+  },
+  {
+    "vehicleId": "V064",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 8600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:43"
+    }
+  },
+  {
+    "vehicleId": "V065",
+    "vendorId": "I018",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 17300000,
+    "paymentMethod": "CASH",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:12"
+    }
+  },
+  {
+    "vehicleId": "V066",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 18600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:28"
+    }
+  },
+  {
+    "vehicleId": "V067",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 8200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:42"
+    }
+  },
+  {
+    "vehicleId": "V068",
+    "vendorId": "I019",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 24000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:42"
+    }
+  },
+  {
+    "vehicleId": "V069",
+    "vendorId": "I-REPEAT",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:37"
+    }
+  },
+  {
+    "vehicleId": "V070",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 44000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:54"
+    }
+  },
+  {
+    "vehicleId": "V071",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 15700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:51"
+    }
+  },
+  {
+    "vehicleId": "V072",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 19900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:35"
+    }
+  },
+  {
+    "vehicleId": "V073",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 9400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:30"
+    }
+  },
+  {
+    "vehicleId": "V074",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 30600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:32"
+    }
+  },
+  {
+    "vehicleId": "V075",
+    "vendorId": "I020",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:36"
+    }
+  },
+  {
+    "vehicleId": "V076",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 19800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:18"
+    }
+  },
+  {
+    "vehicleId": "V077",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 13000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:03"
+    }
+  },
+  {
+    "vehicleId": "V078",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 15700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:22"
+    }
+  },
+  {
+    "vehicleId": "V079",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 19200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:28"
+    }
+  },
+  {
+    "vehicleId": "V080",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 15300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:27"
+    }
+  },
+  {
+    "vehicleId": "V081",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 21200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:49"
+    }
+  },
+  {
+    "vehicleId": "V082",
+    "vendorId": "I021",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:42"
+    }
+  },
+  {
+    "vehicleId": "V083",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 37400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:58"
+    }
+  },
+  {
+    "vehicleId": "V084",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 18000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:58"
+    }
+  },
+  {
+    "vehicleId": "V085",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 20500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:40"
+    }
+  },
+  {
+    "vehicleId": "V086",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 15700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:17"
+    }
+  },
+  {
+    "vehicleId": "V087",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 28900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:33"
+    }
+  },
+  {
+    "vehicleId": "V088",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 32800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:56"
+    }
+  },
+  {
+    "vehicleId": "V089",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 16800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:44"
+    }
+  },
+  {
+    "vehicleId": "V090",
+    "vendorId": "I022",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 14600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:11"
+    }
+  },
+  {
+    "vehicleId": "V091",
+    "vendorId": "I023",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:49"
+    }
+  },
+  {
+    "vehicleId": "V092",
+    "vendorId": "I024",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 21300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:51"
+    }
+  },
+  {
+    "vehicleId": "V093",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 24400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:45"
+    }
+  },
+  {
+    "vehicleId": "V094",
+    "vendorId": "I025",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:25"
+    }
+  },
+  {
+    "vehicleId": "V095",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 12300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:04"
+    }
+  },
+  {
+    "vehicleId": "V096",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 14300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:57"
+    }
+  },
+  {
+    "vehicleId": "V097",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 20300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:33"
+    }
+  },
+  {
+    "vehicleId": "V098",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 44100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:23"
+    }
+  },
+  {
+    "vehicleId": "V099",
+    "vendorId": "I026",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 8600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:36"
+    }
+  },
+  {
+    "vehicleId": "V100",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 25600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:40"
+    }
+  },
+  {
+    "vehicleId": "V101",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 31900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-19",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-20T10:39"
+    }
+  },
+  {
+    "vehicleId": "V102",
+    "vendorId": "I027",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 21800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:10"
+    }
+  },
+  {
+    "vehicleId": "V103",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 12000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:21"
+    }
+  },
+  {
+    "vehicleId": "V104",
+    "vendorId": "I028",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:28"
+    }
+  },
+  {
+    "vehicleId": "V105",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 17300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-19",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-20T10:45"
+    }
+  },
+  {
+    "vehicleId": "V106",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 13500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-13",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-14T10:27"
+    }
+  },
+  {
+    "vehicleId": "V107",
+    "vendorId": "I-REPEAT",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 35000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:07"
+    }
+  },
+  {
+    "vehicleId": "V108",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 29300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:21"
+    }
+  },
+  {
+    "vehicleId": "V109",
+    "vendorId": "I029",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 8800000,
+    "paymentMethod": "CASH",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:42"
+    }
+  },
+  {
+    "vehicleId": "V110",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 14600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:11"
+    }
+  },
+  {
+    "vehicleId": "V111",
+    "vendorId": "I030",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:15"
+    }
+  },
+  {
+    "vehicleId": "V112",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 23300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:44"
+    }
+  },
+  {
+    "vehicleId": "V113",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 14700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:26"
+    }
+  },
+  {
+    "vehicleId": "V114",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 20800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:42"
+    }
+  },
+  {
+    "vehicleId": "V115",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 14300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:58"
+    }
+  },
+  {
+    "vehicleId": "V116",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 30900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-13",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-14T10:14"
+    }
+  },
+  {
+    "vehicleId": "V117",
+    "vendorId": "I031",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:45"
+    }
+  },
+  {
+    "vehicleId": "V118",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 14900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:20"
+    }
+  },
+  {
+    "vehicleId": "V119",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 9200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:57"
+    }
+  },
+  {
+    "vehicleId": "V120",
+    "vendorId": "I032",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 40400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:33"
+    }
+  },
+  {
+    "vehicleId": "V121",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 10900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:52"
+    }
+  },
+  {
+    "vehicleId": "V122",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 17300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:32"
+    }
+  },
+  {
+    "vehicleId": "V123",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 15500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:08"
+    }
+  },
+  {
+    "vehicleId": "V124",
+    "vendorId": "I033",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 31700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:55"
+    }
+  },
+  {
+    "vehicleId": "V125",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 21800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:23"
+    }
+  },
+  {
+    "vehicleId": "V126",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 35400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:13"
+    }
+  },
+  {
+    "vehicleId": "V127",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 14100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:18"
+    }
+  },
+  {
+    "vehicleId": "V128",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 11200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:34"
+    }
+  },
+  {
+    "vehicleId": "V129",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 26900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:50"
+    }
+  },
+  {
+    "vehicleId": "V130",
+    "vendorId": "I034",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 12300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:33"
+    }
+  },
+  {
+    "vehicleId": "V131",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 41600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:44"
+    }
+  },
+  {
+    "vehicleId": "V132",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 15200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:11"
+    }
+  },
+  {
+    "vehicleId": "V133",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 21300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:00"
+    }
+  },
+  {
+    "vehicleId": "V134",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 12900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:31"
+    }
+  },
+  {
+    "vehicleId": "V135",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 43900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:27"
+    }
+  },
+  {
+    "vehicleId": "V136",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 35800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:49"
+    }
+  },
+  {
+    "vehicleId": "V137",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 18200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:53"
+    }
+  },
+  {
+    "vehicleId": "V138",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 24300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:01"
+    }
+  },
+  {
+    "vehicleId": "V139",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 20000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:08"
+    }
+  },
+  {
+    "vehicleId": "V140",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 27500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-15",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-16T10:06"
+    }
+  },
+  {
+    "vehicleId": "V141",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 13300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:34"
+    }
+  },
+  {
+    "vehicleId": "V142",
+    "vendorId": "I035",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22900000,
+    "paymentMethod": "CASH",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:39"
+    }
+  },
+  {
+    "vehicleId": "V143",
+    "vendorId": "I036",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 42900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:40"
+    }
+  },
+  {
+    "vehicleId": "V144",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 29700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:55"
+    }
+  },
+  {
+    "vehicleId": "V145",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 14100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:41"
+    }
+  },
+  {
+    "vehicleId": "V146",
+    "vendorId": "I037",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 40000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:42"
+    }
+  },
+  {
+    "vehicleId": "V147",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 11700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:44"
+    }
+  },
+  {
+    "vehicleId": "V148",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 16000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:33"
+    }
+  },
+  {
+    "vehicleId": "V149",
+    "vendorId": "I038",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 8300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:24"
+    }
+  },
+  {
+    "vehicleId": "V150",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 9600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-21",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-22T10:51"
+    }
+  },
+  {
+    "vehicleId": "V151",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 32300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:29"
+    }
+  },
+  {
+    "vehicleId": "V152",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 22200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:44"
+    }
+  },
+  {
+    "vehicleId": "V153",
+    "vendorId": "I039",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 12500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-19",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-20T10:13"
+    }
+  },
+  {
+    "vehicleId": "V154",
+    "vendorId": "I040",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:55"
+    }
+  },
+  {
+    "vehicleId": "V155",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 18100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:45"
+    }
+  },
+  {
+    "vehicleId": "V156",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 11100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:15"
+    }
+  },
+  {
+    "vehicleId": "V157",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 34500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:40"
+    }
+  },
+  {
+    "vehicleId": "V158",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 30800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:05"
+    }
+  },
+  {
+    "vehicleId": "V159",
+    "vendorId": "I041",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 16000000,
+    "paymentMethod": "CASH",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:45"
+    }
+  },
+  {
+    "vehicleId": "V160",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 11900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:42"
+    }
+  },
+  {
+    "vehicleId": "V161",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 25200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:54"
+    }
+  },
+  {
+    "vehicleId": "V162",
+    "vendorId": "I042",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 23600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:54"
+    }
+  },
+  {
+    "vehicleId": "V163",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 20200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:00"
+    }
+  },
+  {
+    "vehicleId": "V164",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 14300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:40"
+    }
+  },
+  {
+    "vehicleId": "V165",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 20700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:43"
+    }
+  },
+  {
+    "vehicleId": "V166",
+    "vendorId": "A02",
+    "purchaseType": "AUCTION",
+    "amount": 37900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-10",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-11T10:17"
+    }
+  },
+  {
+    "vehicleId": "V167",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 20200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:43"
+    }
+  },
+  {
+    "vehicleId": "V168",
+    "vendorId": "I043",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 17900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-19",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-20T10:42"
+    }
+  },
+  {
+    "vehicleId": "V169",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 19800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:16"
+    }
+  },
+  {
+    "vehicleId": "V170",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 23700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:27"
+    }
+  },
+  {
+    "vehicleId": "V171",
+    "vendorId": "A03",
+    "purchaseType": "AUCTION",
+    "amount": 25600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:12"
+    }
+  },
+  {
+    "vehicleId": "V172",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 14100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-17",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-18T10:47"
+    }
+  },
+  {
+    "vehicleId": "V173",
+    "vendorId": "I044",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 16700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-18",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-19T10:32"
+    }
+  },
+  {
+    "vehicleId": "V174",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 23300000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-14",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-15T10:04"
+    }
+  },
+  {
+    "vehicleId": "V175",
+    "vendorId": "I045",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:50"
+    }
+  },
+  {
+    "vehicleId": "V176",
+    "vendorId": "I046",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 22400000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:36"
+    }
+  },
+  {
+    "vehicleId": "V177",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 28200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:03"
+    }
+  },
+  {
+    "vehicleId": "V178",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 18600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-24",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-25T10:43"
+    }
+  },
+  {
+    "vehicleId": "V179",
+    "vendorId": "I047",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 19500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-19",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-20T10:25"
+    }
+  },
+  {
+    "vehicleId": "V180",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 17700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:51"
+    }
+  },
+  {
+    "vehicleId": "V181",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 30100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:35"
+    }
+  },
+  {
+    "vehicleId": "V182",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 18000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-20",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-21T10:35"
+    }
+  },
+  {
+    "vehicleId": "V183",
+    "vendorId": "D03",
+    "purchaseType": "DEALER",
+    "amount": 34000000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-23",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-24T10:54"
+    }
+  },
+  {
+    "vehicleId": "V184",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 27900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:41"
+    }
+  },
+  {
+    "vehicleId": "V185",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 10700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:20"
+    }
+  },
+  {
+    "vehicleId": "V186",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 15900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:02"
+    }
+  },
+  {
+    "vehicleId": "V187",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 18100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-22",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-23T10:16"
+    }
+  },
+  {
+    "vehicleId": "V188",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 32900000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-25",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-26T10:35"
+    }
+  },
+  {
+    "vehicleId": "V189",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 24200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-13",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-14T10:24"
+    }
+  },
+  {
+    "vehicleId": "V190",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 35700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-16",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-17T10:19"
+    }
+  },
+  {
+    "vehicleId": "V191",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 21500000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:26"
+    }
+  },
+  {
+    "vehicleId": "V192",
+    "vendorId": "D01",
+    "purchaseType": "DEALER",
+    "amount": 14100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-11",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-12T10:27"
+    }
+  },
+  {
+    "vehicleId": "V193",
+    "vendorId": "D06",
+    "purchaseType": "DEALER",
+    "amount": 20600000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:56"
+    }
+  },
+  {
+    "vehicleId": "V194",
+    "vendorId": "I048",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 33800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:03"
+    }
+  },
+  {
+    "vehicleId": "V195",
+    "vendorId": "D04",
+    "purchaseType": "DEALER",
+    "amount": 12700000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-05",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-06T10:02"
+    }
+  },
+  {
+    "vehicleId": "V196",
+    "vendorId": "I049",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 18100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-08",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-09T10:29"
+    }
+  },
+  {
+    "vehicleId": "V197",
+    "vendorId": "D02",
+    "purchaseType": "DEALER",
+    "amount": 25800000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-06",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-07T10:48"
+    }
+  },
+  {
+    "vehicleId": "V198",
+    "vendorId": "I050",
+    "purchaseType": "INDIVIDUAL",
+    "amount": 13200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-12",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-13T10:39"
+    }
+  },
+  {
+    "vehicleId": "V199",
+    "vendorId": "D05",
+    "purchaseType": "DEALER",
+    "amount": 29200000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-09",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-10T10:58"
+    }
+  },
+  {
+    "vehicleId": "V200",
+    "vendorId": "A01",
+    "purchaseType": "AUCTION",
+    "amount": 12100000,
+    "paymentMethod": "BANK_TRANSFER",
+    "purchaseDate": "2026-09-06",
+    "purchaserId": "U-PUR",
+    "handover": {
+      "receiverId": "U-PUR",
+      "plateChecked": true,
+      "photoCount": 4,
+      "at": "2026-09-07T10:31"
+    }
+  }
+]
