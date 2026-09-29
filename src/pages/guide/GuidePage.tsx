@@ -164,7 +164,7 @@ export function GuidePage() {
                     <td className="py-3 text-body-sm">{policy.requiredEvidence[t].map((k) => EVIDENCE_LABEL[k]).join(', ')}</td>
                     <td className="py-3 text-body-sm">
                       {policy.vatEvidence[t].map((k) => EVIDENCE_LABEL[k]).join(', ')}
-                      {t === 'INDIVIDUAL' && <span className="block text-caption-md text-gray-70">+ 대금 계좌이체 지급 (현금 지급 시 공제 불가)</span>}
+                      {t === 'INDIVIDUAL' && <span className="block text-caption-md text-gray-70">+ 대금 계좌이체 지급 (회사 기준 — 현금 지급은 미확보로 처리)</span>}
                     </td>
                   </tr>
                 ))}
@@ -187,7 +187,7 @@ export function GuidePage() {
               </li>
             </ul>
             <p className="text-caption-md text-gray-70">
-              ※ 세법 요건(개인 매입 공제 특례의 적용 요건 등)은 세무 자문으로 확정할 영역이며, 시스템은 위 기준을 회사 정책값으로 적용합니다.
+              ※ 세법 요건(중고자동차 매입세액 공제 특례의 적용 요건 등)은 세무 자문으로 확정할 영역이며, 시스템은 위 기준을 회사 정책값으로 적용합니다.
             </p>
           </Panel>
         </>
