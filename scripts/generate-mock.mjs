@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 const OUT = fileURLToPath(new URL('../src/mock/', import.meta.url))
 
+// mock 기록은 모두 기준일(9/29) 이전 — 시연 중 새로 남기는 기록이 항상 가장 최근이 되도록
 let seed = 20260929
 const rand = () => {
   seed = (seed * 1664525 + 1013904223) % 4294967296
@@ -195,7 +196,7 @@ plan.forEach((p, i) => {
 
   // 날짜 흐름
   const pDay =
-    stageIdx <= 1 ? int(28, 29) : stageIdx === 2 ? int(24, 28) : stageIdx >= 5 ? int(5, 13) : int(8, 25)
+    stageIdx <= 1 ? int(27, 28) : stageIdx === 2 ? int(23, 27) : stageIdx >= 5 ? int(5, 13) : int(8, 25)
   const sDay = stageIdx >= 5 ? Math.min(pDay + int(1, 3), 16) : Math.min(pDay + int(1, 3), 28)
 
   // 매입처
@@ -214,7 +215,7 @@ plan.forEach((p, i) => {
 
   const purchase = { vehicleId: id, vendorId, purchaseType: type, amount, paymentMethod, purchaseDate, purchaserId: 'U-PUR' }
   if (stageIdx >= 1) {
-    purchase.handover = { receiverId: 'U-PUR', plateChecked: true, photoCount: 4, at: at(9, Math.min(pDay + 1, 29), 10) }
+    purchase.handover = { receiverId: 'U-PUR', plateChecked: true, photoCount: 4, at: at(9, Math.min(pDay + 1, 28), 10) }
   }
   purchases.push(purchase)
 
@@ -242,16 +243,16 @@ plan.forEach((p, i) => {
     if (kind === 'TAX_INVOICE' || kind === 'SIMPLE_RECEIPT') ev.amount = p.scenario === 'S3_AMOUNT' ? amount - 500000 : amount
     if (status === 'VERIFIED') {
       ev.verifiedBy = 'U-ACC'
-      ev.verifiedAt = at(9, Math.min(pDay + 1, 29), 16)
+      ev.verifiedAt = at(9, Math.min(pDay + 1, 28), 16)
     }
     evidences.push(ev)
   })
   if (!earlyStage && kinds.length) {
-    log({ vehicleId: id, action: '증빙 검증', actorId: 'U-ACC', at: at(9, Math.min(pDay + 1, 29), 16), reason: `증빙 ${kinds.length}건 확인` })
+    log({ vehicleId: id, action: '증빙 검증', actorId: 'U-ACC', at: at(9, Math.min(pDay + 1, 28), 16), reason: `증빙 ${kinds.length}건 확인` })
   }
 
   // VIN 조회 스냅샷
-  let checkDay = stageIdx >= 3 ? int(23, 29) : pDay
+  let checkDay = stageIdx >= 3 ? int(23, 28) : pDay
   if (stageIdx >= 5) checkDay = 19
   const vinCheck = { checkedAt: at(9, checkDay, 11), seizure: false, lien: false, theft: false }
   if (p.scenario === 'H3_EXPIRED') vinCheck.checkedAt = at(9, int(12, 15), 11)
@@ -271,7 +272,7 @@ plan.forEach((p, i) => {
     log({ vehicleId: id, action: '인수 완료', actorId: 'U-PUR', at: purchase.handover.at, prevStage: 'PURCHASE_REGISTERED', nextStage: 'HANDED_OVER', reason: '차량번호 확인 · 외관 사진 4장' })
   }
   if (stageIdx >= 2) {
-    log({ vehicleId: id, action: '매입 확정', actorId: 'U-PUR', at: at(9, Math.min(pDay + 1, 29), 17), prevStage: 'HANDED_OVER', nextStage: 'PURCHASE_CONFIRMED' })
+    log({ vehicleId: id, action: '매입 확정', actorId: 'U-PUR', at: at(9, Math.min(pDay + 1, 28), 17), prevStage: 'HANDED_OVER', nextStage: 'PURCHASE_CONFIRMED' })
   }
 
   // 판매·수출신고
@@ -375,7 +376,7 @@ const shipments = [
   },
   {
     id: 'S-APPROVED',
-    slipNo: 'SP-260929-02',
+    slipNo: 'SP-260927-01',
     vessel: 'OCEAN BRIDGE',
     voyage: '2610E',
     departurePort: '인천항',
@@ -391,7 +392,7 @@ const shipments = [
   },
   {
     id: 'S-PENDING',
-    slipNo: 'SP-260929-01',
+    slipNo: 'SP-260928-01',
     vessel: 'SEA PIONEER',
     voyage: '2610W',
     departurePort: '평택항',
@@ -401,7 +402,7 @@ const shipments = [
     vehicleIds: slipVehicles['S-PENDING'],
     status: 'PENDING',
     createdBy: 'U-SAL1',
-    createdAt: at(9, 29, 9, 20),
+    createdAt: at(9, 28, 17, 20),
   },
 ]
 

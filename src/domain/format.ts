@@ -3,7 +3,8 @@ import type { Currency } from './types'
 
 const krw = new Intl.NumberFormat('ko-KR')
 
-export const formatKRW = (n: number) => `₩${krw.format(Math.round(n))}`
+/** ₩1,234 / -₩1,234 (부호는 통화 기호 앞) */
+export const formatKRW = (n: number) => `${n < 0 ? '-' : ''}₩${krw.format(Math.abs(Math.round(n)))}`
 
 export const formatMoney = (n: number, currency: Currency) =>
   currency === 'KRW' ? formatKRW(n) : `${currency} ${krw.format(n)}`

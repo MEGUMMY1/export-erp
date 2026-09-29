@@ -29,7 +29,7 @@
   },
   {
     "id": "S-APPROVED",
-    "slipNo": "SP-260929-02",
+    "slipNo": "SP-260927-01",
     "vessel": "OCEAN BRIDGE",
     "voyage": "2610E",
     "departurePort": "인천항",
@@ -56,7 +56,7 @@
   },
   {
     "id": "S-PENDING",
-    "slipNo": "SP-260929-01",
+    "slipNo": "SP-260928-01",
     "vessel": "SEA PIONEER",
     "voyage": "2610W",
     "departurePort": "평택항",
@@ -87,6 +87,6 @@
     ],
     "status": "PENDING",
     "createdBy": "U-SAL1",
-    "createdAt": "2026-09-29T09:20"
+    "createdAt": "2026-09-28T17:20"
   }
 ]

@@ -7,14 +7,14 @@
     "note": "지방세 체납 압류 (매입 후 등록)"
   },
   {
-    "vin": "KNCSRFC7A5APEM71A",
+    "vin": "KNAMH33AMV7Z05SRF",
     "seizure": true,
     "lien": false,
     "theft": false,
     "note": "지방세 체납 압류 (매입 후 등록)"
   },
   {
-    "vin": "KMFZM97K2P7NPLRWW",
+    "vin": "KMHEMX7BSVZ43XRJM",
     "seizure": false,
     "lien": false,
     "theft": true,

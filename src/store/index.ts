@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { create } from 'zustand'
 import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, TODAY } from '@/domain/constants'
-import { addDays, nowStamp } from '@/domain/format'
+import { addDays, formatMoney, nowStamp } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
 import {
   can,
@@ -15,6 +15,7 @@ import {
   type Permission,
 } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
+import { applySale, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { AuditLog, ErpData, EvidenceKind, GateCode, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
@@ -46,6 +47,7 @@ interface ErpState {
   acknowledgeGate: (vehicleId: string, code: GateCode, note: string) => ActionResult
   updateSale: (vehicleId: string, patch: Pick<Sale, 'customsBroker' | 'expectedShipmentDate'>) => ActionResult
   registerPurchase: (draft: PurchaseDraft, options: { confirm: boolean }) => ActionResult
+  registerSale: (vehicleId: string | null, draft: SaleDraft) => ActionResult
 }
 
 let seq = 0
@@ -347,6 +349,25 @@ export const useErpStore = create<ErpState>()((set, get) => {
         logs.push({ vehicleId, action: '매입 확정', actorId: currentUserId, prevStage: v.stage, nextStage: 'PURCHASE_CONFIRMED' })
       }
       commit(next, logs)
+      return ok(vehicleId)
+    },
+
+    registerSale: (vehicleId, draft) => {
+      const denied = deny('REGISTER_SALE')
+      if (denied) return denied
+      const { data, currentUserId } = get()
+      const invalid = validateSale(vehicleId, draft, data)
+      if (invalid.length || !vehicleId) return fail(...invalid)
+
+      // 신규 판매번호: SO-YYMM-N001 (mock 번호와 겹치지 않도록 N 접두)
+      const newCount = Object.values(data.sales).filter((s) => s.salesNo.includes('-N')).length
+      const salesNo = `SO-${TODAY.slice(2, 4)}${TODAY.slice(5, 7)}-N${String(newCount + 1).padStart(3, '0')}`
+      const next = applySale(data, vehicleId, draft, salesNo, currentUserId, nowStamp())
+      const buyer = data.buyers[draft.buyerId ?? '']
+      commit(next, [
+        { vehicleId, action: '판매 등록', actorId: currentUserId, prevStage: 'PURCHASE_CONFIRMED', nextStage: 'SALE_REGISTERED', reason: `${buyer.name} (${buyer.country}) · ${formatMoney(draft.amount ?? 0, draft.currency)}` },
+        { vehicleId, action: '수출신고 수리 (관세사 연동 mock)', actorId: currentUserId, reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치` },
+      ])
       return ok(vehicleId)
     },
   }

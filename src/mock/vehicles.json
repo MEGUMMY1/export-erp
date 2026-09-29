@@ -9,7 +9,7 @@
     "mileage": 44446,
     "stage": "PURCHASE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:28",
+      "checkedAt": "2026-09-28T11:28",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -25,7 +25,7 @@
     "mileage": 160200,
     "stage": "PURCHASE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:45",
+      "checkedAt": "2026-09-27T11:45",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -41,7 +41,7 @@
     "mileage": 121673,
     "stage": "HANDED_OVER",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:06",
+      "checkedAt": "2026-09-27T11:06",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -57,7 +57,7 @@
     "mileage": 49813,
     "stage": "HANDED_OVER",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:18",
+      "checkedAt": "2026-09-27T11:18",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -73,7 +73,7 @@
     "mileage": 152972,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:07",
+      "checkedAt": "2026-09-27T11:07",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -89,7 +89,7 @@
     "mileage": 77315,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:59",
+      "checkedAt": "2026-09-27T11:59",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -105,7 +105,7 @@
     "mileage": 97286,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-24T11:49",
+      "checkedAt": "2026-09-23T11:49",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -121,7 +121,7 @@
     "mileage": 156866,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:11",
+      "checkedAt": "2026-09-26T11:11",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -137,7 +137,7 @@
     "mileage": 100400,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:27",
+      "checkedAt": "2026-09-25T11:27",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -153,7 +153,7 @@
     "mileage": 131918,
     "stage": "PURCHASE_CONFIRMED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:36",
+      "checkedAt": "2026-09-27T11:36",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -169,7 +169,7 @@
     "mileage": 128905,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:42",
+      "checkedAt": "2026-09-25T11:42",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -265,7 +265,7 @@
     "mileage": 174466,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:07",
+      "checkedAt": "2026-09-28T11:07",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -281,7 +281,7 @@
     "mileage": 152242,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:23",
+      "checkedAt": "2026-09-24T11:23",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -377,7 +377,7 @@
     "mileage": 149640,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:23",
+      "checkedAt": "2026-09-25T11:23",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -425,7 +425,7 @@
     "mileage": 98331,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:35",
+      "checkedAt": "2026-09-28T11:35",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -457,7 +457,7 @@
     "mileage": 141642,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:54",
+      "checkedAt": "2026-09-27T11:54",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -489,7 +489,7 @@
     "mileage": 82731,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:40",
+      "checkedAt": "2026-09-28T11:40",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -581,11 +581,11 @@
     "plateNumber": "258마4267",
     "manufacturer": "현대",
     "model": "투싼",
-    "modelYear": 2018,
-    "mileage": 93315,
+    "modelYear": 2022,
+    "mileage": 84103,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:04",
+      "checkedAt": "2026-09-25T11:04",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -593,15 +593,15 @@
   },
   {
     "id": "V038",
-    "vin": "KMHDCJNZU5NL7UHWE",
-    "plateNumber": "282라4604",
+    "vin": "KMHJ4CJNZU5NL7UHW",
+    "plateNumber": "63조1891",
     "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2022,
-    "mileage": 147689,
+    "model": "투싼",
+    "modelYear": 2023,
+    "mileage": 184495,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:54",
+      "checkedAt": "2026-09-25T11:29",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -609,15 +609,15 @@
   },
   {
     "id": "V039",
-    "vin": "KNAMRPA7TRB7URLXC",
-    "plateNumber": "230부4059",
-    "manufacturer": "기아",
-    "model": "카니발",
-    "modelYear": 2017,
-    "mileage": 100245,
+    "vin": "KMFZ2F5Z23RPA7TRB",
+    "plateNumber": "375도4888",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2021,
+    "mileage": 87372,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:04",
+      "checkedAt": "2026-09-25T11:25",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -625,15 +625,15 @@
   },
   {
     "id": "V040",
-    "vin": "KMHEHGCAMLNR0CJPM",
-    "plateNumber": "117부1518",
+    "vin": "KMFZGFSAAFHGCAMLN",
+    "plateNumber": "186구1714",
     "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2023,
-    "mileage": 99427,
+    "model": "포터2",
+    "modelYear": 2022,
+    "mileage": 175427,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:32",
+      "checkedAt": "2026-09-24T11:24",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -641,15 +641,15 @@
   },
   {
     "id": "V041",
-    "vin": "KNAPWFNW2BCSLLUF4",
-    "plateNumber": "102도3976",
+    "vin": "KNAGN8P8YYWFNW2BC",
+    "plateNumber": "188버3992",
     "manufacturer": "기아",
-    "model": "쏘렌토",
-    "modelYear": 2017,
-    "mileage": 99367,
+    "model": "K5",
+    "modelYear": 2016,
+    "mileage": 54605,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:09",
+      "checkedAt": "2026-09-24T11:11",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -657,348 +657,12 @@
   },
   {
     "id": "V042",
-    "vin": "KMHEEXRGRWSJVUW26",
-    "plateNumber": "177누9057",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2022,
-    "mileage": 41431,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:30",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V043",
-    "vin": "KMHESDCPAFNJK77SW",
-    "plateNumber": "14나9367",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2016,
-    "mileage": 115702,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:56",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V044",
-    "vin": "KNAPES5A2RF4UEFBH",
-    "plateNumber": "149나9353",
-    "manufacturer": "기아",
-    "model": "쏘렌토",
-    "modelYear": 2019,
-    "mileage": 49318,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:44",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V045",
-    "vin": "KMHS6PVBWMWS9RBHG",
-    "plateNumber": "144로3366",
+    "vin": "KMHS7ER7A4EXRGRWS",
+    "plateNumber": "116로5790",
     "manufacturer": "현대",
     "model": "싼타페",
-    "modelYear": 2023,
-    "mileage": 152949,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:14",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V046",
-    "vin": "KMHE6S51AJWWLJ3C7",
-    "plateNumber": "184로7403",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2021,
-    "mileage": 54582,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:56",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V047",
-    "vin": "KMHERUX6H5AHZNLC2",
-    "plateNumber": "364버9725",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2022,
-    "mileage": 159697,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:33",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V048",
-    "vin": "KMHDVGELHLG7VG37B",
-    "plateNumber": "296주2103",
-    "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2023,
-    "mileage": 186407,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:38",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V049",
-    "vin": "KMTGUVFCDBAJ15EZ6",
-    "plateNumber": "269버6205",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2019,
-    "mileage": 39703,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:43",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V050",
-    "vin": "KNARW4LX97UBAYB3C",
-    "plateNumber": "42오1774",
-    "manufacturer": "기아",
-    "model": "스포티지",
-    "modelYear": 2018,
-    "mileage": 169512,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:59",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V051",
-    "vin": "KNAGTN6K3PRRUT43Y",
-    "plateNumber": "91마6791",
-    "manufacturer": "기아",
-    "model": "K5",
     "modelYear": 2020,
-    "mileage": 162156,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:40",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V052",
-    "vin": "KNAMVS4LRS68XD5AU",
-    "plateNumber": "365다6007",
-    "manufacturer": "기아",
-    "model": "카니발",
-    "modelYear": 2016,
-    "mileage": 78822,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:16",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V053",
-    "vin": "KMHEFMHHJDTT0HRNN",
-    "plateNumber": "69마3866",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2019,
-    "mileage": 148380,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:28",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V054",
-    "vin": "KMTG4PVZEFVB4CPPH",
-    "plateNumber": "161더7935",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2017,
-    "mileage": 164213,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:39",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V055",
-    "vin": "KMTGBBC9D3B954YHJ",
-    "plateNumber": "178머8486",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2017,
-    "mileage": 111315,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:02",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V056",
-    "vin": "KNAM6UAHY27FKA1JB",
-    "plateNumber": "356나2567",
-    "manufacturer": "기아",
-    "model": "카니발",
-    "modelYear": 2018,
-    "mileage": 30259,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:24",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V057",
-    "vin": "KNAGKBCRFU82BFMX9",
-    "plateNumber": "286우3934",
-    "manufacturer": "기아",
-    "model": "K5",
-    "modelYear": 2019,
-    "mileage": 165541,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:26",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V058",
-    "vin": "KMFZTP14NSNC46M9B",
-    "plateNumber": "384도6969",
-    "manufacturer": "현대",
-    "model": "포터2",
-    "modelYear": 2021,
-    "mileage": 47328,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:31",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V059",
-    "vin": "KNAGECYCH82BL93F8",
-    "plateNumber": "37두2857",
-    "manufacturer": "기아",
-    "model": "K5",
-    "modelYear": 2020,
-    "mileage": 155361,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:31",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V060",
-    "vin": "KNCS449MG5LUJH5KR",
-    "plateNumber": "85러9261",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2023,
-    "mileage": 188641,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:04",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V061",
-    "vin": "KMHDWJM3X1TR8WPVV",
-    "plateNumber": "193보5242",
-    "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2021,
-    "mileage": 43619,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:51",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V062",
-    "vin": "KNARY6ELG0MMSS83P",
-    "plateNumber": "262무8560",
-    "manufacturer": "기아",
-    "model": "스포티지",
-    "modelYear": 2021,
-    "mileage": 54282,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:31",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V063",
-    "vin": "KMHE0CN0BL41GR49E",
-    "plateNumber": "80무8220",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2016,
-    "mileage": 138725,
+    "mileage": 99151,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
       "checkedAt": "2026-09-24T11:13",
@@ -1008,16 +672,352 @@
     }
   },
   {
-    "id": "V064",
-    "vin": "KNCSSWL7V4PH88XKB",
-    "plateNumber": "199루8903",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2016,
-    "mileage": 159587,
+    "id": "V043",
+    "vin": "KMHDN5PPRD3DEBESD",
+    "plateNumber": "38어1037",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2023,
+    "mileage": 170744,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:17",
+      "checkedAt": "2026-09-24T11:46",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V044",
+    "vin": "KMHFRFP8B90CUVWES",
+    "plateNumber": "342가7961",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2021,
+    "mileage": 55477,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:52",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V045",
+    "vin": "KNAR8MPD8CND7P86P",
+    "plateNumber": "228나6416",
+    "manufacturer": "기아",
+    "model": "스포티지",
+    "modelYear": 2017,
+    "mileage": 110392,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:28",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V046",
+    "vin": "KMTGEJ12Z792KBD6S",
+    "plateNumber": "346누1270",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2018,
+    "mileage": 34998,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:06",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V047",
+    "vin": "KNCSE1ESB3RUX6H5A",
+    "plateNumber": "93오4462",
+    "manufacturer": "기아",
+    "model": "봉고3",
+    "modelYear": 2020,
+    "mileage": 174026,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:15",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V048",
+    "vin": "KNAMLM4UN9529F5VG",
+    "plateNumber": "60머3168",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2016,
+    "mileage": 189900,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:18",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V049",
+    "vin": "KMHFY468B9V9VS298",
+    "plateNumber": "259주3355",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2021,
+    "mileage": 34268,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:54",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V050",
+    "vin": "KMHSF0W5E6YMJXDJP",
+    "plateNumber": "30주7436",
+    "manufacturer": "현대",
+    "model": "싼타페",
+    "modelYear": 2019,
+    "mileage": 181084,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:02",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V051",
+    "vin": "KMHS95TB01EK749N5",
+    "plateNumber": "381도9291",
+    "manufacturer": "현대",
+    "model": "싼타페",
+    "modelYear": 2017,
+    "mileage": 103325,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:38",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V052",
+    "vin": "KMFZM9AZBZXSCMF34",
+    "plateNumber": "187수6101",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2021,
+    "mileage": 90864,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:36",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V053",
+    "vin": "KNAGAAW46UT55K3D0",
+    "plateNumber": "88라5176",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2017,
+    "mileage": 81307,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:13",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V054",
+    "vin": "KMHFFN7AWFXH4STZ2",
+    "plateNumber": "369모4924",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2023,
+    "mileage": 75397,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:50",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V055",
+    "vin": "KMHJ73CZG34XH1Y1F",
+    "plateNumber": "188어9886",
+    "manufacturer": "현대",
+    "model": "투싼",
+    "modelYear": 2019,
+    "mileage": 78318,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:05",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V056",
+    "vin": "KMHFLLNG1JUHAU6B4",
+    "plateNumber": "277어8682",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2018,
+    "mileage": 38893,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:53",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V057",
+    "vin": "KMHEF2RKKPHZL03PH",
+    "plateNumber": "271무6729",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2020,
+    "mileage": 187088,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:17",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V058",
+    "vin": "KMTGE7R8A7LRN0R2F",
+    "plateNumber": "52오7036",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2023,
+    "mileage": 116632,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:45",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V059",
+    "vin": "KNAPYYJJGFU90NUHY",
+    "plateNumber": "321도9567",
+    "manufacturer": "기아",
+    "model": "쏘렌토",
+    "modelYear": 2023,
+    "mileage": 47813,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:39",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V060",
+    "vin": "KMHDVH8PKYBR7Z6U9",
+    "plateNumber": "161루9503",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2020,
+    "mileage": 59029,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:18",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V061",
+    "vin": "KNAM72FN3Y826YDCP",
+    "plateNumber": "256너1448",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2018,
+    "mileage": 92253,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:30",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V062",
+    "vin": "KNAGN3TEHD5KULXNR",
+    "plateNumber": "43소9791",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2023,
+    "mileage": 129451,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:24",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V063",
+    "vin": "KNAMUXA823TTHKM1E",
+    "plateNumber": "177다7526",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2016,
+    "mileage": 47510,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:07",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V064",
+    "vin": "KMHSHX49T2P0BWZAY",
+    "plateNumber": "350무3107",
+    "manufacturer": "현대",
+    "model": "싼타페",
+    "modelYear": 2021,
+    "mileage": 75388,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:02",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1025,12 +1025,140 @@
   },
   {
     "id": "V065",
-    "vin": "KNARYN7JNLMPRHRB3",
-    "plateNumber": "86누3128",
+    "vin": "KNARAKZP3HB5YV5A3",
+    "plateNumber": "383오6935",
     "manufacturer": "기아",
     "model": "스포티지",
+    "modelYear": 2016,
+    "mileage": 166293,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:52",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V066",
+    "vin": "KNAM46GD7V6MHK51T",
+    "plateNumber": "52다8476",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2018,
+    "mileage": 30782,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:35",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V067",
+    "vin": "KNAGFWURAXMY6X9YZ",
+    "plateNumber": "145다3891",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2021,
+    "mileage": 42575,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:32",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V068",
+    "vin": "KNAGYBA9WC9X9RKX0",
+    "plateNumber": "291가5716",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2020,
+    "mileage": 135164,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:52",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V069",
+    "vin": "KNAGXZ80KV67408D0",
+    "plateNumber": "306두1153",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2019,
+    "mileage": 82097,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:35",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V070",
+    "vin": "KMHEJDPMR3PUXFL59",
+    "plateNumber": "212누2875",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2017,
+    "mileage": 161767,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:56",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V071",
+    "vin": "KNAMM3RDA9LGJ2LC2",
+    "plateNumber": "354우1383",
+    "manufacturer": "기아",
+    "model": "카니발",
     "modelYear": 2022,
-    "mileage": 145118,
+    "mileage": 113384,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:57",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V072",
+    "vin": "KMFZTPGJJ4RGEAT6J",
+    "plateNumber": "117보6304",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2019,
+    "mileage": 92719,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:04",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V073",
+    "vin": "KMHSKJ3C9SH5PHYXF",
+    "plateNumber": "106러3240",
+    "manufacturer": "현대",
+    "model": "싼타페",
+    "modelYear": 2022,
+    "mileage": 162554,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
       "checkedAt": "2026-09-28T11:58",
@@ -1040,144 +1168,16 @@
     }
   },
   {
-    "id": "V066",
-    "vin": "KMHF49CNMJS8EV29P",
-    "plateNumber": "238소1112",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2020,
-    "mileage": 86557,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:53",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V067",
-    "vin": "KNCS9YZMCLRGC9096",
-    "plateNumber": "130어5052",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2020,
-    "mileage": 49909,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:38",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V068",
-    "vin": "KNAPRKX00AUGXZS5C",
-    "plateNumber": "115저1777",
+    "id": "V074",
+    "vin": "KNAP7M4XJ183DWZED",
+    "plateNumber": "175누5526",
     "manufacturer": "기아",
     "model": "쏘렌토",
-    "modelYear": 2023,
-    "mileage": 46994,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:34",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V069",
-    "vin": "KNAM3ARYR70KR9ZM6",
-    "plateNumber": "227가9896",
-    "manufacturer": "기아",
-    "model": "카니발",
-    "modelYear": 2017,
-    "mileage": 78524,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:03",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V070",
-    "vin": "KMTG2G1R1GNTB0U08",
-    "plateNumber": "149어8692",
-    "manufacturer": "제네시스",
-    "model": "G80",
     "modelYear": 2016,
-    "mileage": 183256,
+    "mileage": 172521,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:11",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V071",
-    "vin": "KMHD2LC268BHUE0BR",
-    "plateNumber": "153구2705",
-    "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2022,
-    "mileage": 92105,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:08",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V072",
-    "vin": "KMHFAT6JKWWJH6144",
-    "plateNumber": "266부7173",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2023,
-    "mileage": 102162,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:43",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V073",
-    "vin": "KNCSHYXFJJJXFT4MY",
-    "plateNumber": "327주4735",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2017,
-    "mileage": 173335,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:13",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V074",
-    "vin": "KNAMJ183DWZEDR2TZ",
-    "plateNumber": "188노3004",
-    "manufacturer": "기아",
-    "model": "카니발",
-    "modelYear": 2016,
-    "mileage": 181313,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:29",
+      "checkedAt": "2026-09-27T11:48",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1185,15 +1185,15 @@
   },
   {
     "id": "V075",
-    "vin": "KMHEG1JVC6BX83PS6",
-    "plateNumber": "179루5854",
+    "vin": "KMHF8EA7G1JVC6BX8",
+    "plateNumber": "318저5116",
     "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2020,
-    "mileage": 151605,
+    "model": "그랜저",
+    "modelYear": 2022,
+    "mileage": 35030,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:38",
+      "checkedAt": "2026-09-24T11:39",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1201,15 +1201,15 @@
   },
   {
     "id": "V076",
-    "vin": "KMHJ3LL5H869A7046",
-    "plateNumber": "217너3844",
-    "manufacturer": "현대",
-    "model": "투싼",
-    "modelYear": 2021,
-    "mileage": 133437,
+    "vin": "KNAM5XK4UV2FJD3LL",
+    "plateNumber": "347너9465",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2022,
+    "mileage": 154954,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:43",
+      "checkedAt": "2026-09-26T11:45",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1217,15 +1217,15 @@
   },
   {
     "id": "V077",
-    "vin": "KNAGB6959F8WB1DCL",
-    "plateNumber": "54러5979",
+    "vin": "KNAGYXMVLB6959F8W",
+    "plateNumber": "32구2054",
     "manufacturer": "기아",
     "model": "K5",
-    "modelYear": 2019,
-    "mileage": 87372,
+    "modelYear": 2017,
+    "mileage": 41508,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:15",
+      "checkedAt": "2026-09-28T11:28",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1233,15 +1233,15 @@
   },
   {
     "id": "V078",
-    "vin": "KMHDEN1TLE6JT8Z19",
-    "plateNumber": "259서2843",
+    "vin": "KMHFTL1HAEN1TLE6J",
+    "plateNumber": "202우7053",
     "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2017,
-    "mileage": 105613,
+    "model": "그랜저",
+    "modelYear": 2022,
+    "mileage": 185382,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:22",
+      "checkedAt": "2026-09-28T11:02",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1249,444 +1249,12 @@
   },
   {
     "id": "V079",
-    "vin": "KMHJP5T4VZSXTWT23",
-    "plateNumber": "37가5750",
-    "manufacturer": "현대",
-    "model": "투싼",
-    "modelYear": 2019,
-    "mileage": 111458,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:54",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V080",
-    "vin": "KMHDLW7MZHZP2EXVA",
-    "plateNumber": "195오9272",
-    "manufacturer": "현대",
-    "model": "아반떼",
-    "modelYear": 2016,
-    "mileage": 109328,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-23T11:54",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V081",
-    "vin": "KMHS0KPM1D29MUA9V",
-    "plateNumber": "306로8017",
-    "manufacturer": "현대",
-    "model": "싼타페",
-    "modelYear": 2017,
-    "mileage": 36458,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:49",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V082",
-    "vin": "KNAGNR0E2Y647X7TF",
-    "plateNumber": "43무9226",
+    "vin": "KNAGGSVKDP5T4VZSX",
+    "plateNumber": "208모5565",
     "manufacturer": "기아",
     "model": "K5",
-    "modelYear": 2017,
-    "mileage": 112320,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:41",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V083",
-    "vin": "KMTG0SAFAUZDN9DT2",
-    "plateNumber": "110버2865",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2018,
-    "mileage": 123951,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:01",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V084",
-    "vin": "KMHF6MLAFRJLW00HC",
-    "plateNumber": "339너7565",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2023,
-    "mileage": 51412,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:06",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V085",
-    "vin": "KMHSM1BL9JXM3A32B",
-    "plateNumber": "280어1850",
-    "manufacturer": "현대",
-    "model": "싼타페",
-    "modelYear": 2022,
-    "mileage": 77294,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:03",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V086",
-    "vin": "KMHJEXTFCA4Y2AW1D",
-    "plateNumber": "336루5440",
-    "manufacturer": "현대",
-    "model": "투싼",
     "modelYear": 2019,
-    "mileage": 165024,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:46",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V087",
-    "vin": "KMHFZ883ZJCK8SKAV",
-    "plateNumber": "229우9047",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2018,
-    "mileage": 59033,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:29",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V088",
-    "vin": "KMHF7G66MBRYBYMMP",
-    "plateNumber": "266소1609",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2016,
-    "mileage": 61058,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:37",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V089",
-    "vin": "KMFZABU5AHZZSW09H",
-    "plateNumber": "29서7088",
-    "manufacturer": "현대",
-    "model": "포터2",
-    "modelYear": 2022,
-    "mileage": 135966,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:59",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V090",
-    "vin": "KMHE4F6X8ADB1N5W8",
-    "plateNumber": "265부3945",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2023,
-    "mileage": 120594,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-25T11:03",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V091",
-    "vin": "KMHJ3F3Z88N7TAZV2",
-    "plateNumber": "174로6699",
-    "manufacturer": "현대",
-    "model": "투싼",
-    "modelYear": 2022,
-    "mileage": 131606,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:25",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V092",
-    "vin": "KMHFWMS48KC30YB3G",
-    "plateNumber": "277더9398",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2020,
-    "mileage": 52941,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:47",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V093",
-    "vin": "KMHF991CPMKBYNLHZ",
-    "plateNumber": "131모1766",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2019,
-    "mileage": 175400,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:52",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V094",
-    "vin": "KNARAK02EH74AS352",
-    "plateNumber": "193노9261",
-    "manufacturer": "기아",
-    "model": "스포티지",
-    "modelYear": 2022,
-    "mileage": 112554,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:55",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V095",
-    "vin": "KNAGPFC0UD19XGS5G",
-    "plateNumber": "229소3808",
-    "manufacturer": "기아",
-    "model": "K5",
-    "modelYear": 2016,
-    "mileage": 145192,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:56",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V096",
-    "vin": "KNAGTCEVECT2SV3JT",
-    "plateNumber": "272무2816",
-    "manufacturer": "기아",
-    "model": "K5",
-    "modelYear": 2022,
-    "mileage": 106745,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:34",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V097",
-    "vin": "KMHFH7CVWN07MV8F3",
-    "plateNumber": "189루6530",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2016,
-    "mileage": 150452,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:25",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V098",
-    "vin": "KMTGZFR67D9D5V6W7",
-    "plateNumber": "374너6113",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2023,
-    "mileage": 145112,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:30",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V099",
-    "vin": "KNCSSVW3PV7KPYSTL",
-    "plateNumber": "80노8777",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2022,
-    "mileage": 76236,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:22",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V100",
-    "vin": "KNAP49PKAVB11KDAR",
-    "plateNumber": "317노3180",
-    "manufacturer": "기아",
-    "model": "쏘렌토",
-    "modelYear": 2016,
-    "mileage": 168597,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-28T11:15",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V101",
-    "vin": "KNAPVWJKWNWKVZR93",
-    "plateNumber": "75서6597",
-    "manufacturer": "기아",
-    "model": "쏘렌토",
-    "modelYear": 2017,
-    "mileage": 100240,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:37",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V102",
-    "vin": "KMHFWWFYCLE3EJZ0Y",
-    "plateNumber": "104저9267",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2022,
-    "mileage": 80840,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:29",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V103",
-    "vin": "KNAGSHEJEALVD236T",
-    "plateNumber": "241고4114",
-    "manufacturer": "기아",
-    "model": "K5",
-    "modelYear": 2018,
-    "mileage": 174067,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:50",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V104",
-    "vin": "KMHFZAAW388XRJMT8",
-    "plateNumber": "233라6556",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2021,
-    "mileage": 114895,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:03",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V105",
-    "vin": "KMHJTN2JZ6YSBWXYN",
-    "plateNumber": "377저3183",
-    "manufacturer": "현대",
-    "model": "투싼",
-    "modelYear": 2017,
-    "mileage": 31532,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-12T11:55",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V106",
-    "vin": "KMHENYDZC7909PB5L",
-    "plateNumber": "345모4212",
-    "manufacturer": "현대",
-    "model": "쏘나타",
-    "modelYear": 2019,
-    "mileage": 147945,
+    "mileage": 80097,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
       "checkedAt": "2026-09-26T11:07",
@@ -1696,157 +1264,317 @@
     }
   },
   {
-    "id": "V107",
-    "vin": "KMTGN6RETWWBRRNB0",
-    "plateNumber": "173오8709",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2021,
-    "mileage": 103739,
+    "id": "V080",
+    "vin": "KMHDSPTEJLW7MZHZP",
+    "plateNumber": "310마6712",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2023,
+    "mileage": 185772,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:23",
+      "checkedAt": "2026-09-25T11:50",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V108",
-    "vin": "KMHFY53A3DFJSSUZ8",
-    "plateNumber": "45노8616",
+    "id": "V081",
+    "vin": "KMHDT7NU0KPM1D29M",
+    "plateNumber": "216가9910",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2018,
+    "mileage": 34670,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:46",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V082",
+    "vin": "KMHFYV8NR0E2Y647X",
+    "plateNumber": "375노2528",
     "manufacturer": "현대",
     "model": "그랜저",
-    "modelYear": 2021,
-    "mileage": 103292,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-29T11:26",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V109",
-    "vin": "KNCSUFJXCHSLB65EV",
-    "plateNumber": "153수7403",
-    "manufacturer": "기아",
-    "model": "봉고3",
     "modelYear": 2020,
-    "mileage": 139147,
+    "mileage": 47263,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:39",
+      "checkedAt": "2026-09-27T11:15",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V110",
-    "vin": "KMHJ10CMJDBTC19L0",
-    "plateNumber": "189마8625",
+    "id": "V083",
+    "vin": "KMTG500GVH9Y0SAFA",
+    "plateNumber": "220오2006",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2022,
+    "mileage": 66511,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:58",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V084",
+    "vin": "KMHD1FHJKVPE6MLAF",
+    "plateNumber": "183더3930",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2017,
+    "mileage": 42064,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:58",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V085",
+    "vin": "KMHJJY6FEMWM1BL9J",
+    "plateNumber": "254버8323",
     "manufacturer": "현대",
     "model": "투싼",
     "modelYear": 2021,
-    "mileage": 163921,
+    "mileage": 160081,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:00",
+      "checkedAt": "2026-09-27T11:11",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V111",
-    "vin": "KNARSJ0XEXX2XKWRV",
-    "plateNumber": "165부1954",
-    "manufacturer": "기아",
-    "model": "스포티지",
-    "modelYear": 2018,
-    "mileage": 172431,
+    "id": "V086",
+    "vin": "KMHFYW2J1KDEXTFCA",
+    "plateNumber": "338소7837",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2023,
+    "mileage": 63772,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:55",
+      "checkedAt": "2026-09-24T11:14",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V112",
-    "vin": "KNAP39S71C6GDRM4X",
-    "plateNumber": "110마2970",
+    "id": "V087",
+    "vin": "KNCSEGZ883ZJCK8SK",
+    "plateNumber": "11모6055",
     "manufacturer": "기아",
-    "model": "쏘렌토",
+    "model": "봉고3",
+    "modelYear": 2017,
+    "mileage": 72559,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:05",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V088",
+    "vin": "KMHFE07G66MBRYBYM",
+    "plateNumber": "147저6915",
+    "manufacturer": "현대",
+    "model": "그랜저",
     "modelYear": 2019,
-    "mileage": 68452,
+    "mileage": 60138,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:54",
+      "checkedAt": "2026-09-23T11:24",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V113",
-    "vin": "KNARZJ9DLV955P5S8",
-    "plateNumber": "74로6004",
-    "manufacturer": "기아",
-    "model": "스포티지",
+    "id": "V089",
+    "vin": "KMHE5AHZZSW09HBMZ",
+    "plateNumber": "87우6162",
+    "manufacturer": "현대",
+    "model": "쏘나타",
     "modelYear": 2020,
-    "mileage": 180030,
+    "mileage": 37600,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:31",
+      "checkedAt": "2026-09-24T11:04",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V114",
-    "vin": "KMHEEMAKZF6LLVU1T",
-    "plateNumber": "112어4702",
+    "id": "V090",
+    "vin": "KNAM6X8ADB1N5W8Y6",
+    "plateNumber": "137오1973",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2016,
+    "mileage": 158764,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:57",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V091",
+    "vin": "KMTGBK23F3Z88N7TA",
+    "plateNumber": "270로7867",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2018,
+    "mileage": 143678,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:38",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V092",
+    "vin": "KMHEGCB4YFD8WMS48",
+    "plateNumber": "124다8360",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2023,
+    "mileage": 127872,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:11",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V093",
+    "vin": "KMHECAEGGV1UTEKDU",
+    "plateNumber": "388주7673",
     "manufacturer": "현대",
     "model": "쏘나타",
     "modelYear": 2021,
-    "mileage": 96565,
+    "mileage": 168697,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-24T11:58",
+      "checkedAt": "2026-09-26T11:05",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V115",
-    "vin": "KNCS0KM802JU40S18",
-    "plateNumber": "59소2264",
+    "id": "V094",
+    "vin": "KMHJLDD5YZKPS6U19",
+    "plateNumber": "15머7427",
+    "manufacturer": "현대",
+    "model": "투싼",
+    "modelYear": 2019,
+    "mileage": 159186,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:56",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V095",
+    "vin": "KMHDGPLBSR4G5VJVH",
+    "plateNumber": "164거1689",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2023,
+    "mileage": 163410,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:04",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V096",
+    "vin": "KNARYRRD0UVATCEVE",
+    "plateNumber": "44도7878",
     "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2016,
-    "mileage": 122562,
+    "model": "스포티지",
+    "modelYear": 2023,
+    "mileage": 40664,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:30",
+      "checkedAt": "2026-09-25T11:57",
       "seizure": false,
       "lien": false,
       "theft": false
     }
   },
   {
-    "id": "V116",
-    "vin": "KMTGVUBYNV2L2K96N",
-    "plateNumber": "94거4159",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2021,
-    "mileage": 91948,
+    "id": "V097",
+    "vin": "KNAGX012SZEXH7CVW",
+    "plateNumber": "162조9384",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2017,
+    "mileage": 175815,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:33",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V098",
+    "vin": "KNARRVERD3B9ZFR67",
+    "plateNumber": "51주2018",
+    "manufacturer": "기아",
+    "model": "스포티지",
+    "modelYear": 2020,
+    "mileage": 115848,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:51",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V099",
+    "vin": "KNAPFY3B80T67SVW3",
+    "plateNumber": "171로9453",
+    "manufacturer": "기아",
+    "model": "쏘렌토",
+    "modelYear": 2018,
+    "mileage": 178191,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
       "checkedAt": "2026-09-28T11:26",
@@ -1856,16 +1584,288 @@
     }
   },
   {
-    "id": "V117",
-    "vin": "KMHSH8GXXF8RPLWPP",
-    "plateNumber": "188우9261",
+    "id": "V100",
+    "vin": "KMHSXE9GC1YZK4JXW",
+    "plateNumber": "44루9931",
     "manufacturer": "현대",
     "model": "싼타페",
-    "modelYear": 2018,
-    "mileage": 82682,
+    "modelYear": 2019,
+    "mileage": 127355,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:10",
+      "checkedAt": "2026-09-27T11:28",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V101",
+    "vin": "KMHJ1DDK1MNH2XD55",
+    "plateNumber": "253모6250",
+    "manufacturer": "현대",
+    "model": "투싼",
+    "modelYear": 2019,
+    "mileage": 34750,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:49",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V102",
+    "vin": "KNAPFZ7XVR1A7ESAE",
+    "plateNumber": "377보6292",
+    "manufacturer": "기아",
+    "model": "쏘렌토",
+    "modelYear": 2018,
+    "mileage": 78840,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:36",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V103",
+    "vin": "KMFZ57P2YG1JX2NCV",
+    "plateNumber": "225노3071",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2021,
+    "mileage": 144831,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:26",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V104",
+    "vin": "KNCSMHT59PD8NN5PD",
+    "plateNumber": "357조1218",
+    "manufacturer": "기아",
+    "model": "봉고3",
+    "modelYear": 2017,
+    "mileage": 52445,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-26T11:06",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V105",
+    "vin": "KMFZ1V9CT53B8MY85",
+    "plateNumber": "393오5656",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2023,
+    "mileage": 154584,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-14T11:38",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V106",
+    "vin": "KNAPRSH7GH70Y0AV6",
+    "plateNumber": "165마1494",
+    "manufacturer": "기아",
+    "model": "쏘렌토",
+    "modelYear": 2019,
+    "mileage": 85248,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:34",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V107",
+    "vin": "KMHF31VWYL3L1KP03",
+    "plateNumber": "376어9030",
+    "manufacturer": "현대",
+    "model": "그랜저",
+    "modelYear": 2017,
+    "mileage": 80363,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:31",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V108",
+    "vin": "KMHSY1Z8F2FB1TNFF",
+    "plateNumber": "260무8336",
+    "manufacturer": "현대",
+    "model": "싼타페",
+    "modelYear": 2017,
+    "mileage": 184444,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:50",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V109",
+    "vin": "KNARU1PJGP21J1SL7",
+    "plateNumber": "219거3200",
+    "manufacturer": "기아",
+    "model": "스포티지",
+    "modelYear": 2019,
+    "mileage": 156521,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:52",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V110",
+    "vin": "KMTG5KYFKZA7VY7JL",
+    "plateNumber": "295조1643",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2022,
+    "mileage": 53957,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:50",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V111",
+    "vin": "KMHEALAMXLXMZ5N19",
+    "plateNumber": "188러7408",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2018,
+    "mileage": 136985,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:06",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V112",
+    "vin": "KNAMCX72EX1EKCVPM",
+    "plateNumber": "364더6359",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2016,
+    "mileage": 170578,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:52",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V113",
+    "vin": "KMFZDS50U9RG41TZJ",
+    "plateNumber": "391라3881",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2020,
+    "mileage": 184359,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-28T11:24",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V114",
+    "vin": "KNARFYALE0V9ACEEM",
+    "plateNumber": "18러7204",
+    "manufacturer": "기아",
+    "model": "스포티지",
+    "modelYear": 2023,
+    "mileage": 77471,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:06",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V115",
+    "vin": "KMHJRHCJ8TYRY5N0K",
+    "plateNumber": "147우7484",
+    "manufacturer": "현대",
+    "model": "투싼",
+    "modelYear": 2020,
+    "mileage": 189476,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:35",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V116",
+    "vin": "KNARWJUZBNCXJ70VU",
+    "plateNumber": "31소4377",
+    "manufacturer": "기아",
+    "model": "스포티지",
+    "modelYear": 2019,
+    "mileage": 169021,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:23",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V117",
+    "vin": "KMTG67V3RTYRGN6H8",
+    "plateNumber": "82보6641",
+    "manufacturer": "제네시스",
+    "model": "G80",
+    "modelYear": 2017,
+    "mileage": 178655,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-27T11:25",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1873,15 +1873,15 @@
   },
   {
     "id": "V118",
-    "vin": "KMHDHMYV3PPJZD8FW",
-    "plateNumber": "54주6117",
+    "vin": "KMHD0TRRWPMMJG1HM",
+    "plateNumber": "258모8315",
     "manufacturer": "현대",
     "model": "아반떼",
-    "modelYear": 2023,
-    "mileage": 137003,
+    "modelYear": 2019,
+    "mileage": 84458,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:24",
+      "checkedAt": "2026-09-25T11:22",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1889,15 +1889,15 @@
   },
   {
     "id": "V119",
-    "vin": "KNCSRFC7A5APEM71A",
-    "plateNumber": "122너3509",
+    "vin": "KNAMH33AMV7Z05SRF",
+    "plateNumber": "35수1232",
     "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2021,
-    "mileage": 178993,
+    "model": "카니발",
+    "modelYear": 2018,
+    "mileage": 144701,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:44",
+      "checkedAt": "2026-09-24T11:59",
       "seizure": true,
       "lien": false,
       "theft": false
@@ -1905,15 +1905,15 @@
   },
   {
     "id": "V120",
-    "vin": "KMTG87FUGC9CTK4TT",
-    "plateNumber": "68두2026",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2021,
-    "mileage": 50597,
+    "vin": "KNAGFCUWUERZ76888",
+    "plateNumber": "369거5692",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2019,
+    "mileage": 174993,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-23T11:49",
+      "checkedAt": "2026-09-23T11:20",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1921,15 +1921,15 @@
   },
   {
     "id": "V121",
-    "vin": "KNCS3WM1S2ER851UW",
-    "plateNumber": "143더6487",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2019,
-    "mileage": 178590,
+    "vin": "KMHDA4J9MX7UKG8FY",
+    "plateNumber": "63나9096",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2021,
+    "mileage": 84222,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:20",
+      "checkedAt": "2026-09-26T11:11",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -1937,92 +1937,12 @@
   },
   {
     "id": "V122",
-    "vin": "KMHJLN5UCU55DR3ZZ",
-    "plateNumber": "277구5626",
-    "manufacturer": "현대",
-    "model": "투싼",
-    "modelYear": 2022,
-    "mileage": 156258,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-26T11:32",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V123",
-    "vin": "KMFZM97K2P7NPLRWW",
-    "plateNumber": "111두6857",
-    "manufacturer": "현대",
-    "model": "포터2",
-    "modelYear": 2023,
-    "mileage": 92964,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:33",
-      "seizure": false,
-      "lien": false,
-      "theft": true
-    }
-  },
-  {
-    "id": "V124",
-    "vin": "KMTGZVKF6T40ZZMJ9",
-    "plateNumber": "89부5936",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2020,
-    "mileage": 47914,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:10",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V125",
-    "vin": "KMHF9MD51D4ZWYTKL",
-    "plateNumber": "336저2628",
-    "manufacturer": "현대",
-    "model": "그랜저",
-    "modelYear": 2023,
-    "mileage": 146566,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-24T11:32",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V126",
-    "vin": "KMTG2536EU8DKEFTW",
-    "plateNumber": "157나9293",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2017,
-    "mileage": 38497,
-    "stage": "SALE_REGISTERED",
-    "vinCheck": {
-      "checkedAt": "2026-09-27T11:10",
-      "seizure": false,
-      "lien": false,
-      "theft": false
-    }
-  },
-  {
-    "id": "V127",
-    "vin": "KNARFD9ED7TJKTCVU",
-    "plateNumber": "133나6233",
+    "vin": "KNARHTNV4EBR75LLL",
+    "plateNumber": "155무5756",
     "manufacturer": "기아",
     "model": "스포티지",
     "modelYear": 2019,
-    "mileage": 184166,
+    "mileage": 114889,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
       "checkedAt": "2026-09-26T11:27",
@@ -2032,16 +1952,96 @@
     }
   },
   {
-    "id": "V128",
-    "vin": "KNCSLEKDRH7YK81Y9",
-    "plateNumber": "309보8796",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2018,
-    "mileage": 40560,
+    "id": "V123",
+    "vin": "KMHEMX7BSVZ43XRJM",
+    "plateNumber": "399수3664",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2017,
+    "mileage": 112250,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:56",
+      "checkedAt": "2026-09-26T11:29",
+      "seizure": false,
+      "lien": false,
+      "theft": true
+    }
+  },
+  {
+    "id": "V124",
+    "vin": "KMHJM67NH5Y7NK79Z",
+    "plateNumber": "234머2417",
+    "manufacturer": "현대",
+    "model": "투싼",
+    "modelYear": 2021,
+    "mileage": 131736,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:55",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V125",
+    "vin": "KMHDFUZGX3M1TD3DN",
+    "plateNumber": "392서1931",
+    "manufacturer": "현대",
+    "model": "아반떼",
+    "modelYear": 2016,
+    "mileage": 102828,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:10",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V126",
+    "vin": "KNAG4MNXDWAZ61Y7H",
+    "plateNumber": "306무8116",
+    "manufacturer": "기아",
+    "model": "K5",
+    "modelYear": 2022,
+    "mileage": 154331,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-25T11:13",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V127",
+    "vin": "KMFZLSTUFA50EFD9E",
+    "plateNumber": "48수5531",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2017,
+    "mileage": 182043,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-24T11:06",
+      "seizure": false,
+      "lien": false,
+      "theft": false
+    }
+  },
+  {
+    "id": "V128",
+    "vin": "KMFZUY37P9P4LLEKD",
+    "plateNumber": "183너9362",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2016,
+    "mileage": 113056,
+    "stage": "SALE_REGISTERED",
+    "vinCheck": {
+      "checkedAt": "2026-09-23T11:26",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2049,15 +2049,15 @@
   },
   {
     "id": "V129",
-    "vin": "KMHS5KRETY3G3RH7S",
-    "plateNumber": "377구5354",
+    "vin": "KMHSDBMX5KRETY3G3",
+    "plateNumber": "182더9437",
     "manufacturer": "현대",
     "model": "싼타페",
     "modelYear": 2016,
-    "mileage": 180236,
+    "mileage": 55501,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-24T11:30",
+      "checkedAt": "2026-09-25T11:23",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2065,15 +2065,15 @@
   },
   {
     "id": "V130",
-    "vin": "KNCSDWW5CWKRHT30J",
-    "plateNumber": "341노5737",
-    "manufacturer": "기아",
-    "model": "봉고3",
-    "modelYear": 2016,
-    "mileage": 69710,
+    "vin": "KMHEA57DWW5CWKRHT",
+    "plateNumber": "325구3299",
+    "manufacturer": "현대",
+    "model": "쏘나타",
+    "modelYear": 2019,
+    "mileage": 80503,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:33",
+      "checkedAt": "2026-09-23T11:45",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2081,15 +2081,15 @@
   },
   {
     "id": "V131",
-    "vin": "KMTGCYT772JU0S3EH",
-    "plateNumber": "139수6304",
-    "manufacturer": "제네시스",
-    "model": "G80",
-    "modelYear": 2019,
-    "mileage": 186636,
+    "vin": "KMFZH98DCYT772JU0",
+    "plateNumber": "190두2278",
+    "manufacturer": "현대",
+    "model": "포터2",
+    "modelYear": 2022,
+    "mileage": 115648,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:30",
+      "checkedAt": "2026-09-25T11:51",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2097,15 +2097,15 @@
   },
   {
     "id": "V132",
-    "vin": "KMFZ0GF3VKG4XA843",
-    "plateNumber": "389러1841",
-    "manufacturer": "현대",
-    "model": "포터2",
-    "modelYear": 2019,
-    "mileage": 65458,
+    "vin": "KNAM9YSE0GF3VKG4X",
+    "plateNumber": "13우8485",
+    "manufacturer": "기아",
+    "model": "카니발",
+    "modelYear": 2023,
+    "mileage": 185378,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:08",
+      "checkedAt": "2026-09-23T11:28",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2113,8 +2113,8 @@
   },
   {
     "id": "V133",
-    "vin": "KMHFRVDBA9CVWJARB",
-    "plateNumber": "114러2218",
+    "vin": "KMHFPGVD1RVDBA9CV",
+    "plateNumber": "239러1255",
     "manufacturer": "현대",
     "model": "그랜저",
     "modelYear": 2017,
@@ -2153,7 +2153,7 @@
     "mileage": 66586,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:00",
+      "checkedAt": "2026-09-26T11:00",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2169,7 +2169,7 @@
     "mileage": 98338,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:38",
+      "checkedAt": "2026-09-28T11:38",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2185,7 +2185,7 @@
     "mileage": 109156,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:08",
+      "checkedAt": "2026-09-28T11:08",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2233,7 +2233,7 @@
     "mileage": 107089,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:25",
+      "checkedAt": "2026-09-28T11:25",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2265,7 +2265,7 @@
     "mileage": 90860,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:26",
+      "checkedAt": "2026-09-28T11:26",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2313,7 +2313,7 @@
     "mileage": 185717,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:45",
+      "checkedAt": "2026-09-27T11:45",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2329,7 +2329,7 @@
     "mileage": 175726,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:35",
+      "checkedAt": "2026-09-28T11:35",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2361,7 +2361,7 @@
     "mileage": 57551,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:24",
+      "checkedAt": "2026-09-26T11:24",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2393,7 +2393,7 @@
     "mileage": 145110,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:51",
+      "checkedAt": "2026-09-25T11:51",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2409,7 +2409,7 @@
     "mileage": 85300,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:40",
+      "checkedAt": "2026-09-27T11:40",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2425,7 +2425,7 @@
     "mileage": 124718,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-25T11:49",
+      "checkedAt": "2026-09-24T11:49",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2457,7 +2457,7 @@
     "mileage": 153064,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:06",
+      "checkedAt": "2026-09-26T11:06",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2489,7 +2489,7 @@
     "mileage": 97499,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:37",
+      "checkedAt": "2026-09-27T11:37",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2505,7 +2505,7 @@
     "mileage": 88650,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:04",
+      "checkedAt": "2026-09-28T11:04",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2537,7 +2537,7 @@
     "mileage": 53659,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:05",
+      "checkedAt": "2026-09-25T11:05",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2553,7 +2553,7 @@
     "mileage": 116690,
     "stage": "SALE_REGISTERED",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:20",
+      "checkedAt": "2026-09-27T11:20",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2569,7 +2569,7 @@
     "mileage": 70702,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:17",
+      "checkedAt": "2026-09-28T11:17",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2603,7 +2603,7 @@
     "mileage": 145537,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:20",
+      "checkedAt": "2026-09-28T11:20",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2875,7 +2875,7 @@
     "mileage": 30914,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-24T11:08",
+      "checkedAt": "2026-09-23T11:08",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2892,7 +2892,7 @@
     "mileage": 175141,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-27T11:16",
+      "checkedAt": "2026-09-26T11:16",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2909,7 +2909,7 @@
     "mileage": 154868,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-29T11:54",
+      "checkedAt": "2026-09-28T11:54",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2960,7 +2960,7 @@
     "mileage": 184311,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:56",
+      "checkedAt": "2026-09-27T11:56",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2977,7 +2977,7 @@
     "mileage": 167244,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:07",
+      "checkedAt": "2026-09-25T11:07",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -2994,7 +2994,7 @@
     "mileage": 96941,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-28T11:32",
+      "checkedAt": "2026-09-27T11:32",
       "seizure": false,
       "lien": false,
       "theft": false
@@ -3062,7 +3062,7 @@
     "mileage": 163140,
     "stage": "IN_SLIP",
     "vinCheck": {
-      "checkedAt": "2026-09-26T11:25",
+      "checkedAt": "2026-09-25T11:25",
       "seizure": false,
       "lien": false,
       "theft": false

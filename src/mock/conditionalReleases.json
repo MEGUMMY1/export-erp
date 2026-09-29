@@ -5,10 +5,10 @@
     "gateCodes": [
       "S5"
     ],
-    "dueDate": "2026-10-04",
+    "dueDate": "2026-10-05",
     "ownerId": "U-SAL2",
     "requestedBy": "U-SAL2",
-    "requestedAt": "2026-09-27T15:51",
+    "requestedAt": "2026-09-28T15:21",
     "reason": "장기 재고(60일) 처분, 추가 시세 하락 전 판매",
     "vatImpact": 0,
     "status": "PENDING"
@@ -22,12 +22,12 @@
     "dueDate": "2026-10-04",
     "ownerId": "U-SAL2",
     "requestedBy": "U-SAL2",
-    "requestedAt": "2026-09-27T15:30",
+    "requestedAt": "2026-09-27T15:38",
     "reason": "딜러 측 전자세금계산서 발행 오류로 재발행 대기",
-    "vatImpact": 2427273,
+    "vatImpact": 1227273,
     "status": "APPROVED",
     "decidedBy": "U-ACC",
-    "decidedAt": "2026-09-27T17:11",
+    "decidedAt": "2026-09-27T17:13",
     "decisionNote": "보완 기한 2026-10-04 엄수"
   },
   {
@@ -36,12 +36,12 @@
     "gateCodes": [
       "S1"
     ],
-    "dueDate": "2026-10-05",
+    "dueDate": "2026-10-04",
     "ownerId": "U-SAL2",
     "requestedBy": "U-SAL2",
-    "requestedAt": "2026-09-28T15:03",
+    "requestedAt": "2026-09-27T15:47",
     "reason": "바이어 선적 일정(10/4 출항) 고정, 세금계산서는 딜러 발행 지연 중",
-    "vatImpact": 4009091,
+    "vatImpact": 1718182,
     "status": "PENDING"
   },
   {
