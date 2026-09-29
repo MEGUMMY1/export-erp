@@ -1,14 +1,20 @@
 import { NavLink, Outlet } from 'react-router'
 import { ROLE_LABEL, TODAY } from '../../domain/constants'
 import { dday } from '../../domain/format'
-import { useCurrentUser, useData, useErpStore } from '../../store'
 import { cn } from '../../lib/cn'
+import { useCurrentUser, useData, useErpStore } from '../../store'
+import { Dropdown } from '../ui'
 
 const NAV = [
-  { to: '/workbench', label: '검증 작업 큐', desc: '내가 처리할 차량' },
-  { to: '/purchases/new', label: '매입 등록', desc: 'VIN 조회 · 증빙' },
-  { to: '/sales/new', label: '판매 등록', desc: '매입·매출 크로스체크' },
-  { to: '/shipments', label: '선적 전표 · 결재', desc: '결재 · 선적 처리' },
+  { section: '검증', items: [{ to: '/workbench', label: '검증 작업 큐' }] },
+  {
+    section: '업무 등록',
+    items: [
+      { to: '/purchases/new', label: '매입 등록' },
+      { to: '/sales/new', label: '판매 등록' },
+    ],
+  },
+  { section: '선적', items: [{ to: '/shipments', label: '선적 전표 · 결재' }] },
 ]
 
 export function AppLayout() {
@@ -18,23 +24,30 @@ export function AppLayout() {
 
   return (
     <div className="flex min-h-screen">
-      <aside className="sticky top-0 flex h-screen w-60 shrink-0 flex-col bg-brand-90 text-white">
-        <div className="px-6 py-6">
-          <p className="text-label-sm text-brand-30">K-AUTO GLOBAL</p>
-          <p className="mt-1 text-subtitle-lg">수출 ERP</p>
+      <aside className="sticky top-0 flex h-screen w-65 shrink-0 flex-col bg-gray-100 px-3">
+        <div className="border-b border-gray-90 px-4 py-6">
+          <p className="text-label-xs text-gray-70">K-AUTO GLOBAL</p>
+          <p className="mt-1 text-title-md text-gray-10">수출 ERP</p>
         </div>
-        <nav className="flex flex-col gap-1 px-3">
-          {NAV.map((n) => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              className={({ isActive }) =>
-                cn('rounded-lg px-3 py-2.5 transition-colors', isActive ? 'bg-brand-70' : 'hover:bg-brand-80')
-              }
-            >
-              <p className="text-body-md-m">{n.label}</p>
-              <p className="text-caption-sm text-brand-30">{n.desc}</p>
-            </NavLink>
+        <nav className="flex flex-col gap-5 py-5">
+          {NAV.map((group) => (
+            <div key={group.section} className="flex flex-col gap-2">
+              <p className="px-1 text-label-xs text-gray-70">{group.section}</p>
+              {group.items.map((n) => (
+                <NavLink
+                  key={n.to}
+                  to={n.to}
+                  className={({ isActive }) =>
+                    cn(
+                      'rounded-lg px-4 py-3 text-label-lg transition-colors',
+                      isActive ? 'bg-gray-90 text-gray-10' : 'text-gray-50 hover:bg-black hover:text-gray-10',
+                    )
+                  }
+                >
+                  {n.label}
+                </NavLink>
+              ))}
+            </div>
           ))}
         </nav>
       </aside>
@@ -49,20 +62,19 @@ export function AppLayout() {
               <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
             </span>
           </div>
-          <label className="flex items-center gap-2 text-body-sm text-gray-70">
-            시연 사용자
-            <select
+          <div className="flex items-center gap-3">
+            <span className="text-body-sm text-gray-70">시연 사용자</span>
+            <Dropdown
+              size="sm"
+              className="w-60"
               value={user.id}
-              onChange={(e) => setCurrentUser(e.target.value)}
-              className="h-9 rounded-lg border border-gray-40 bg-white px-3 text-body-md-m text-gray-90"
-            >
-              {data.users.map((u) => (
-                <option key={u.id} value={u.id}>
-                  [{ROLE_LABEL[u.role]}] {u.name} {u.title}
-                </option>
-              ))}
-            </select>
-          </label>
+              onChange={setCurrentUser}
+              options={data.users.map((u) => ({
+                value: u.id,
+                label: `[${ROLE_LABEL[u.role]}] ${u.name} ${u.title}`,
+              }))}
+            />
+          </div>
         </header>
         <main className="min-w-0 flex-1 px-8 py-6">
           <Outlet />
