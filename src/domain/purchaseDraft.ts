@@ -1,3 +1,4 @@
+import { TODAY } from './constants'
 import { VIN_PATTERN, lookupVin } from './vin'
 import type { ErpData, Evidence, EvidenceKind, PaymentMethod, PurchaseType, Stage, Vendor } from './types'
 
@@ -45,6 +46,7 @@ export function validateDraft(d: PurchaseDraft, db: ErpData): string[] {
     !d.modelYear && '연식을 선택해 주세요.',
     d.purchaseType === 'INDIVIDUAL' ? !d.sellerName.trim() && '매도인 성명을 입력해 주세요.' : !d.vendorId && '매입처를 선택해 주세요.',
     !(d.amount && d.amount > 0) && '매입가를 입력해 주세요.',
+    (!d.purchaseDate || d.purchaseDate > TODAY) && '매입일은 오늘 이전이어야 합니다.',
   ].filter(Boolean) as string[]
 }
 

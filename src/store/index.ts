@@ -6,7 +6,7 @@ import { addDays, formatDate, formatKRW, formatMoney, nowStamp } from '@/domain/
 import { evaluateGates } from '@/domain/gates'
 import { can, canAddToSlip, canConfirmPurchase, canRequestRelease, evaluate, evaluateAll, permissionHint, type Guard, type Permission } from '@/domain/rules'
 import { applyDraft, isHandoverDone, validateDraft, type PurchaseDraft } from '@/domain/purchaseDraft'
-import { applySale, doubleLossReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
+import { applySale, saleBlockReason, validateSale, type SaleDraft } from '@/domain/saleDraft'
 import type { AuditLog, ErpData, EvidenceKind, GateCode, Notification, Sale, Shipment, User } from '@/domain/types'
 import { lookupVin, vinResultLabel } from '@/domain/vin'
 import { loadMockData } from '@/mock'
@@ -408,6 +408,7 @@ export const useErpStore = create<ErpState>()(
           const { data, currentUserId } = get()
           if (!ACKNOWLEDGEABLE.includes(code)) return fail('회계 확인으로 해소할 수 없는 항목입니다.')
           if (!note.trim()) return fail('확인 내용을 입력해 주세요.')
+          if (!evaluateGates(vehicleId, data).some((g) => g.code === code)) return fail('이미 해소된 항목입니다.')
           const v = data.vehicles[vehicleId]
           commit({ ...data, vehicles: { ...data.vehicles, [vehicleId]: { ...v, acknowledgedGates: [...(v.acknowledgedGates ?? []), code] } } }, [
             { vehicleId, action: `회계 확인 · ${code} ${GATE_META[code].title}`, actorId: currentUserId, reason: note.trim() },
@@ -509,8 +510,8 @@ export const useErpStore = create<ErpState>()(
           const { data, currentUserId } = get()
           const invalid = validateSale(vehicleId, draft, data)
           if (invalid.length || !vehicleId) return fail(...invalid)
-          const doubleLoss = doubleLossReason(vehicleId, draft, data)
-          if (doubleLoss) return fail(doubleLoss)
+          const saleBlock = saleBlockReason(vehicleId, draft, data)
+          if (saleBlock) return fail(saleBlock)
 
           // 신규 판매번호: SO-YYMM-N001 (mock 번호와 겹치지 않도록 N 접두)
           const newCount = Object.values(data.sales).filter((s) => s.salesNo.includes('-N')).length
@@ -627,7 +628,9 @@ export const useErpStore = create<ErpState>()(
           const excluded: { vehicleId: string; reasons: string[] }[] = []
           const shipped: string[] = []
           for (const id of s.vehicleIds) {
-            const hard = evaluateGates(id, next).filter((g) => g.severity === 'HARD')
+            // 차단(Hard) + 조건부 선적 승인으로 커버되지 않은 보완(Soft) 항목
+            const ev = evaluate(id, next)
+            const hard = ev.gates.filter((g) => g.severity === 'HARD' || (!ev.releaseCovers && g.severity === 'SOFT'))
             const v = next.vehicles[id]
             if (hard.length) {
               const reasons = hard.map((g) => `[${g.code}] ${g.title} — ${g.reason}`)
@@ -684,6 +687,11 @@ export const useErpStore = create<ErpState>()(
           const r = data.releases.find((x) => x.id === releaseId)
           if (!r || r.status !== 'PENDING') return fail('결재 대기 중인 요청이 아닙니다.')
           if (!approve && !note.trim()) return fail('반려 사유를 입력해 주세요.')
+          if (approve) {
+            // 요청 이후 차단 항목이 생겼으면 승인할 수 없다 (예: VIN 재조회에서 압류 확인)
+            const hard = evaluateGates(r.vehicleId, data).filter((g) => g.severity === 'HARD')
+            if (hard.length) return fail(`차단 항목이 있어 승인할 수 없습니다: ${hard.map((g) => `[${g.code}] ${g.title}`).join(', ')}`)
+          }
           const decisionNote = note.trim() || `보완 기한 ${formatDate(r.dueDate)} 엄수`
           commit(
             {

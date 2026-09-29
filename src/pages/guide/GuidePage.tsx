@@ -17,12 +17,12 @@ const SOFT: GateCode[] = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8']
 const ROLES: Role[] = ['PURCHASER', 'SALES', 'ACCOUNTING', 'LOGISTICS']
 
 const STAGE_RULE: Record<Stage, string> = {
-  PURCHASE_REGISTERED: 'VIN 즉시 조회 · 증빙 제출 (도난 차량은 등록 불가)',
-  HANDED_OVER: '인수자 · 차량번호 · 외관 사진 확인',
+  PURCHASE_REGISTERED: 'VIN 즉시 조회 · 증빙 제출 (압류·저당·도난 차량은 등록 불가)',
+  HANDED_OVER: '인수자 · 차량번호 · 외관 사진 확인 (압류·저당·도난 차량은 인수 불가)',
   PURCHASE_CONFIRMED: 'H1~H5 없음 (압류·도난·조회 만료·인수·신원)',
-  SALE_REGISTERED: '매입 확정 차량만 · 매입 정보 자동 연결 · 수출 검증 시작',
+  SALE_REGISTERED: '매입 확정 차량만 · 압류·도난 차량과 부가세 이중 손실(무증빙 매입 + 국내 판매)은 등록 불가 · 수출 검증 시작',
   IN_SLIP: '차단 없음 + 보완 항목은 조건부 선적 승인 → 전표 결재',
-  SHIPPED: '전표 결재 승인 + 선적 직전 VIN 재조회 통과 (차단 차량은 자동 제외)',
+  SHIPPED: '전표 결재 승인 + 선적 직전 VIN 재조회·재판정 통과 (차단 또는 승인되지 않은 보완 항목이 있으면 자동 제외)',
   CLOSED: '사후 보완 항목까지 모두 해소',
 }
 

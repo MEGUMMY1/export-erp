@@ -24,11 +24,16 @@ export function validateSale(vehicleId: string | null, d: SaleDraft, db: ErpData
 }
 
 /**
- * 부가세 이중 손실 차단 — 매입세액을 확보하지 못한 차량(현금·무증빙 매입)을 국내 과세 매출로 처리하면
- * 공제는 못 받고 매출세액만 생긴다. 판매 등록 자체를 막고 수출(영세율) 처리나 증빙 확보를 요구한다.
+ * 판매 등록 차단 사유 (필수 입력과 별개)
+ * - 매입 확정 후 VIN 재조회에서 압류·저당·도난이 나온 차량
+ * - 부가세 이중 손실: 매입세액을 확보하지 못한 차량(현금·무증빙 매입)을 국내 과세 매출로 처리하면
+ *   공제는 못 받고 매출세액만 생긴다 → 수출(영세율) 처리나 증빙 확보를 요구한다.
  */
-export function doubleLossReason(vehicleId: string | null, d: SaleDraft, db: ErpData): string | null {
-  if (!vehicleId || d.taxTreatment !== 'DOMESTIC') return null
+export function saleBlockReason(vehicleId: string | null, d: SaleDraft, db: ErpData): string | null {
+  if (!vehicleId) return null
+  const vc = db.vehicles[vehicleId]?.vinCheck
+  if (vc && (vc.theft || vc.seizure || vc.lien)) return '압류·저당·도난 차량은 판매 등록할 수 없습니다. 해제 확인 후 VIN을 재조회해 주세요.'
+  if (d.taxTreatment !== 'DOMESTIC') return null
   const purchase = db.purchases[vehicleId]
   if (!purchase) return null
   const vat = calcVat(purchase, db.evidences.filter((e) => e.vehicleId === vehicleId), db.policy)
