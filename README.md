@@ -1,32 +1,140 @@
-# React + TypeScript + Vite
+# 스마트 중고차 수출 ERP
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> 빠른 차량은 더 빠르게, 위험한 차량은 확실하게 멈춘다.
 
-Currently, two official plugins are available:
+영업은 "당일 선적", 회계는 "증빙·압류 확인 전 선적 불가"를 요구하는 상황에서,
+**매입 → 판매 → 선적이 일어나는 순간마다 리스크 게이트로 차량을 걸러내는** 수출 관리 화면입니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 장물·법적 리스크(압류·도난·실물 미확인 등)는 **차단(Hard Gate)** — 결재로도 우회할 수 없습니다.
+- 증빙·부가세 리스크는 **보완(Soft Gate)** — 회계 팀장 승인 시 기한부로 먼저 선적하고, 사후 증빙을 끝까지 추적합니다.
+- 정상 차량은 **선적 전표 단위로 일괄 승인**해 영업 속도를 지킵니다.
 
-## React Compiler
+백엔드·외부 API 없이 mock 데이터로 동작합니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 실행
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev        # http://localhost:5173
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+| 명령 | 설명 |
+|---|---|
+| `npm run dev` | 개발 서버 |
+| `npm run build` | 타입 검사 + 빌드 |
+| `npm run preview` | 빌드 결과 실행 |
+| `npm run lint` | 린트 (oxlint) |
+| `npm run mock` | mock 데이터 재생성 (`scripts/generate-mock.mjs` → `src/mock/*.json`) |
+
+### 시연 환경
+
+- **기준일**: 2026.09.29로 고정되어 있습니다. D-day·기한 초과 판정이 mock 데이터와 맞도록 하기 위해서입니다.
+- **시연 사용자**: 좌측 하단에서 역할을 바꿔 가며 확인합니다. 권한이 없는 업무는 버튼이 비활성화됩니다.
+
+  | 사용자 | 역할 |
+  |---|---|
+  | 이매입 | 매입 담당 — 매입 등록, 실물 인수, 매입 확정 |
+  | 김영업 · 이수출 | 영업 담당 — 판매 등록, 조건부 선적 요청, 선적 전표 생성 |
+  | 박회계 | 회계 팀장 — 증빙 검증, 조건부 선적·선적 전표 결재 |
+  | 최물류 | 물류 담당 — 통관 정보 보완, 신고필증 정정, 선적 처리 |
+
+- **데이터 유지**: 시연 중 변경은 새로고침해도 유지됩니다(탭 단위 sessionStorage). 처음 상태로 돌리려면 좌측 하단 **데모 초기화**를 누릅니다.
+- **mock 데이터**: 차량 200대 — 매입 진행 10 / 수출 검증 150(정상 115 · 보완 28 · 차단 7) / 선적 전표 30 / 선적 완료 10.
+
+---
+
+## 시연 시나리오 (회계 팀장 설득 순서)
+
+| # | 사용자 | 화면 | 보여줄 것 |
+|---|---|---|---|
+| 1 | 박회계 | 업무 현황 | 200대를 다 보지 않고, 시스템이 걸러낸 차단·보완 차량과 **미확보 매입세액**만 확인. 헤더 알림 센터 |
+| 2 | 이매입 | 매입 등록 | 시연 VIN **압류** → [H1] 확정 불가 / **도난** → 등록 자체 차단 / **정상** + 세금계산서 없이 등록 후 확정 → [S1] |
+| 3 | 이수출 | 판매 등록 | 방금 확정한 차량 선택 → 매입 정보 자동 연결, 크로스체크 "매입세액 환급 불가". 매출 처리를 **국내 판매**로 바꾸면 **부가세 이중 손실** 경고 |
+| 4 | 이수출 | 차량 상세 | 게이트별 판정 사유 확인 → **조건부 선적 요청** (보완 항목·기한·미확보 금액) |
+| 5 | 박회계 | 알림 → 선적 승인 > 조건부 선적 결재 | 요청자의 이행 이력(미해소·기한 초과)을 보고 승인 |
+| 6 | 이수출 | 업무 현황 > 전표 편입 가능 | 정상 + 조건부 승인 차량 선택 → **선적 전표 만들기** |
+| 7 | 박회계 → 최물류 | 선적 승인 | 전표 일괄 결재 → 선적 처리. `SP-260927-01`을 처리하면 **선적 직전 VIN 재조회로 새로 압류된 차량과 수출신고 미수리 차량이 자동 제외** |
+| 8 | 이매입 → 박회계 | 차량 상세 | 선적 후 "사후 보완 중" → 증빙 제출 → 회계 검증 → **자동 종결**. 처리 이력(Audit Trail)으로 "왜 이 차가 승인됐는지" 추적 |
+| + | 김영업 | 업무 현황 | 사후 증빙 **기한 초과 2건** → 신규 조건부 선적 요청이 자동 제한됨 |
+
+게이트 코드(H1~H7, S1~S8)와 정책값은 **도움말 > 판정 기준**에서 확인할 수 있습니다.
+
+---
+
+## 핵심 설계
+
+### 리스크 게이트
+
+| 강도 | 코드 | 예 | 통과 방법 |
+|---|---|---|---|
+| 차단 (Hard) | H1~H7 | VIN 압류·도난, 조회 만료, 실물 인수·매도인 신원 미확인, 신고필증 VIN 불일치, 수출신고 미수리 | 해소 전 진행 불가 (우회 불가) |
+| 보완 (Soft) | S1~S8 | 매입 증빙 미비·유형·금액 불일치, 반복 매도인, 역마진, 통관 정보 누락, 국내 판매 전환 | 조건부 선적(회계 승인 + 기한 + 책임자) 또는 회계 확인 |
+
+- 판정은 순수 함수 [`evaluateGates`](src/domain/gates.ts) 하나로 이뤄지고, 매입·판매 등록 화면의 미리보기와 실제 등록이 **같은 함수**를 씁니다(입력값을 반영한 초안으로 판정).
+- 진행 단계(매입 등록 → … → 종결)와 리스크 판정(정상·보완·차단)은 **별개의 축**입니다. 그래서 "선적은 끝났지만 증빙은 미완(사후 보완 중)"을 표현할 수 있습니다.
+- 모든 업무 액션은 화면의 버튼 비활성화와 별개로, 스토어에서 **권한과 상태 전이 규칙을 다시 검증**한 뒤 반영됩니다.
+
+### 부가세 손실을 금액으로
+
+수출(영세율)은 매출세액이 0이므로, 매입 증빙으로 확보한 매입세액이 곧 환급액입니다.
+차량마다 `매입가 × 10/110`을 **확보(회계 검증 완료) / 미확보**로 나눠 보여주고, 조건부 선적 결재와 알림에 그 금액을 함께 싣습니다.
+
+### 조건부 선적 · 사후 증빙 강제
+
+- 보완 항목이 있는 차량은 영업이 사유·기한(최대 7일)을 적어 요청하고, 회계 팀장이 승인해야 전표에 담을 수 있습니다.
+- 기한을 넘기면 책임자의 **신규 조건부 선적 요청이 자동 제한**되고, 담당자별 미해소 한도(3건)도 둡니다.
+- 증빙이 모두 검증되면 자동으로 "사후 증빙 보완 완료 → 종결"이 기록됩니다.
+
+### 알림
+
+알림은 상태 표시가 아니라 **업무가 일어난 순간 담당 역할에게 전달되는 이벤트**입니다.
+매입·매출 언밸런스, 압류·도난 확인, 결재 요청·결과, 선적 차단, 증빙 검증·반려 등을 알림 센터로 받고, 누르면 해당 화면으로 이동합니다.
+(업무 현황의 **내 할 일**은 현재 상태 기준의 처리 목록, **알림**은 이벤트 이력입니다.)
+
+---
+
+## 화면
+
+| 경로 | 화면 | 설명 |
+|---|---|---|
+| `/workbench` | 업무 현황 | 역할별 내 할 일, 수출 검증 / 매입 진행 / 조건부 선적·사후 증빙 탭, 리스크·게이트 필터 |
+| `/purchases/new` | 매입 등록 | VIN 즉시 조회, 매입 유형별 증빙 체크리스트, 실물 인수, 실시간 게이트 판정 |
+| `/sales/new` | 판매 등록 | 매입 정보 자동 연결, 매입·매출 크로스체크(손익·부가세·통관) |
+| `/shipments` | 선적 승인 | 선적 전표 일괄 결재, 선적 처리(직전 VIN 재조회), 조건부 선적 결재 |
+| `/vehicles/:id` | 차량 상세 | 진행 단계, 게이트별 사유·해소 액션, 매입세액, 증빙, 신고필증 대조, 처리 이력 |
+| `/guide` | 판정 기준 | 게이트 코드, 회사 정책값, 업무 단계·권한 |
+
+---
+
+## 기술 스택
+
+React 19 · TypeScript · Vite · React Router · Zustand · Tailwind CSS v4
+
+## 폴더 구조
+
+```text
+src/
+├─ domain/       # 업무 규칙 (화면과 무관한 순수 로직)
+│  ├─ gates.ts          # 리스크 게이트 판정
+│  ├─ rules.ts          # 상태 전이 가드, 역할 권한
+│  ├─ vat.ts            # 매입세액 확보/미확보 계산
+│  ├─ purchaseDraft.ts  # 매입 초안 → 데이터 반영 (미리보기·등록 공용)
+│  ├─ saleDraft.ts      # 판매 초안 → 데이터 반영
+│  ├─ tasks.ts          # 역할별 내 할 일
+│  └─ notifications.ts  # 알림 수신 대상
+├─ store/        # Zustand 스토어 — 업무 액션, 감사 로그, 알림 생성
+├─ mock/         # mock 데이터 (npm run mock 으로 생성)
+├─ components/
+│  ├─ ui/        # 공통 UI (Button, Chip, Modal, Toast, Dropdown, TextField …)
+│  ├─ domain/    # 업무 공통 컴포넌트 (Panel, RiskChip, 결재 모달 …)
+│  └─ layout/    # GNB, 헤더, 알림 센터
+└─ pages/        # 화면별 컴포넌트
+```
+
+## 범위 밖 · 가정
+
+- VIN 압류·도난 조회, 환율, 관세청(수출신고) 연동은 mock으로 대체했습니다.
+- 수출 인보이스 발행은 구현하지 않았고, 판매 등록이 그 역할을 대신합니다.
+- 개인 매입 공제 특례 요건 등 세법 요건은 세무 자문으로 확정할 영역으로 보고, 회사 정책값(`src/mock/policy.json`)으로 분리했습니다.
