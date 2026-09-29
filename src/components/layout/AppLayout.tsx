@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router'
 import { ROLE_LABEL, TODAY } from '@/domain/constants'
-import { dday } from '@/domain/format'
+import { dday, formatDate } from '@/domain/format'
 import { cn } from '@/lib/cn'
 import { useCurrentUser, useData, useErpStore } from '@/store'
 import { Dropdown } from '@/components/ui'
@@ -82,10 +82,10 @@ export function AppLayout() {
             {page.description && <p className="truncate text-body-sm text-gray-70">{page.description}</p>}
           </div>
           <div className="flex shrink-0 items-center gap-4 text-body-sm text-gray-70">
-            <span>기준일 {TODAY}</span>
+            <span>기준일 {formatDate(TODAY)}</span>
             <span className="text-gray-40">|</span>
             <span>
-              부가세 예정신고 마감 {data.policy.vatFilingDeadline}{' '}
+              부가세 예정신고 마감 {formatDate(data.policy.vatFilingDeadline)}{' '}
               <b className="text-gray-90">{dday(data.policy.vatFilingDeadline)}</b>
             </span>
           </div>

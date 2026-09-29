@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { GateLabel } from './RiskChip'
 import { Dropdown, Modal, TextArea, toast } from '@/components/ui'
-import { addDays, formatKRW } from '@/domain/format'
+import { addDays, formatDate, formatKRW } from '@/domain/format'
 import { TODAY } from '@/domain/constants'
 import { canRequestRelease } from '@/domain/rules'
 import { useCurrentUser, useData, useErpStore, useEvaluations } from '@/store'
@@ -92,7 +92,7 @@ export function ReleaseRequestModal({ vehicleId, onClose }: Props) {
             onChange={setDueDays}
             options={[3, 5, maxDays].map((d) => ({
               value: String(d),
-              label: `${addDays(TODAY, d)} (D-${d})${d === maxDays ? ' · 정책 최대' : ''}`,
+              label: `${formatDate(addDays(TODAY, d))} (D-${d})${d === maxDays ? ' · 정책 최대' : ''}`,
             }))}
           />
         </div>

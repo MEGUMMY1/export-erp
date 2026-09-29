@@ -68,7 +68,7 @@ export function EvidenceUploadModal({ vehicleId, kind: initialKind, onClose }: {
         onClick: () =>
           report(
             uploadEvidence(vehicleId, { kind, fileName, amount: needsAmount ? (amount ?? undefined) : undefined }),
-            `${EVIDENCE_LABEL[kind]}를 제출했습니다 · 회계 검증 대기`,
+            `${EVIDENCE_LABEL[kind]} 제출 완료 · 회계 검증 대기`,
           ) && onClose(),
       }}
     >
@@ -101,7 +101,7 @@ export function EvidenceUploadModal({ vehicleId, kind: initialKind, onClose }: {
             onChange={setAmount}
             decimals={CURRENCY_DECIMALS.KRW}
             suffix="KRW"
-            message={`등록 매입가 ${formatKRW(p.amount)}와 다르면 금액 불일치(S3)로 판정됩니다.`}
+            message={`등록 매입가 ${formatKRW(p.amount)} — 금액이 다르면 금액 불일치(S3)로 판정됩니다.`}
           />
         )}
       </div>

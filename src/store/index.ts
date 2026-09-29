@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { create } from 'zustand'
 import { ACKNOWLEDGEABLE, EVIDENCE_LABEL, GATE_META, TODAY } from '@/domain/constants'
-import { addDays, formatMoney, nowStamp } from '@/domain/format'
+import { addDays, formatDate, formatMoney, nowStamp } from '@/domain/format'
 import { evaluateGates } from '@/domain/gates'
 import {
   can,
@@ -48,6 +48,9 @@ interface ErpState {
   updateSale: (vehicleId: string, patch: Pick<Sale, 'customsBroker' | 'expectedShipmentDate'>) => ActionResult
   registerPurchase: (draft: PurchaseDraft, options: { confirm: boolean }) => ActionResult
   registerSale: (vehicleId: string | null, draft: SaleDraft) => ActionResult
+  decideSlip: (shipmentId: string, approve: boolean, reason?: string) => ActionResult
+  processShipment: (shipmentId: string) => ActionResult & { shipped?: string[]; excluded?: { vehicleId: string; reasons: string[] }[] }
+  decideRelease: (releaseId: string, approve: boolean, note: string) => ActionResult
 }
 
 let seq = 0
@@ -133,7 +136,7 @@ export const useErpStore = create<ErpState>()((set, get) => {
             },
           ],
         },
-        [{ vehicleId, action: '조건부 선적 요청', actorId: currentUserId, reason: `${gateCodes.join('·')} / 기한 ${dueDate} / ${reason.trim()}` }],
+        [{ vehicleId, action: '조건부 선적 요청', actorId: currentUserId, reason: `${gateCodes.join('·')} / 기한 ${formatDate(dueDate)} / ${reason.trim()}` }],
       )
       return ok(id)
     },
@@ -369,6 +372,108 @@ export const useErpStore = create<ErpState>()((set, get) => {
         { vehicleId, action: '수출신고 수리 (관세사 연동 mock)', actorId: currentUserId, reason: `${next.exportDecls[vehicleId].declNo} · 신고필증 대조 일치` },
       ])
       return ok(vehicleId)
+    },
+
+    decideSlip: (shipmentId, approve, reason = '') => {
+      const denied = deny('DECIDE_SLIP')
+      if (denied) return denied
+      const { data, currentUserId } = get()
+      const s = data.shipments[shipmentId]
+      if (!s || s.status !== 'PENDING') return fail('결재 대기 중인 전표가 아닙니다.')
+      if (!approve && !reason.trim()) return fail('반려 사유를 입력해 주세요.')
+      const at = nowStamp()
+
+      if (approve) {
+        commit(
+          { ...data, shipments: { ...data.shipments, [shipmentId]: { ...s, status: 'APPROVED', decidedBy: currentUserId, decidedAt: at } } },
+          s.vehicleIds.map((vehicleId) => ({ vehicleId, shipmentId, action: '선적 전표 결재 승인', actorId: currentUserId, reason: s.slipNo })),
+        )
+        return ok(shipmentId)
+      }
+
+      // 반려: 차량은 수출 검증 단계로 돌아간다
+      const vehicles = { ...data.vehicles }
+      for (const id of s.vehicleIds) vehicles[id] = { ...vehicles[id], stage: 'SALE_REGISTERED', shipmentId: undefined }
+      commit(
+        {
+          ...data,
+          vehicles,
+          shipments: { ...data.shipments, [shipmentId]: { ...s, status: 'REJECTED', decidedBy: currentUserId, decidedAt: at, rejectReason: reason.trim() } },
+        },
+        s.vehicleIds.map((vehicleId) => ({
+          vehicleId,
+          shipmentId,
+          action: '선적 전표 반려',
+          actorId: currentUserId,
+          prevStage: 'IN_SLIP' as const,
+          nextStage: 'SALE_REGISTERED' as const,
+          reason: `${s.slipNo} · ${reason.trim()}`,
+        })),
+      )
+      return ok(shipmentId)
+    },
+
+    processShipment: (shipmentId) => {
+      const denied = deny('PROCESS_SHIPMENT')
+      if (denied) return denied
+      const { data, currentUserId } = get()
+      const s = data.shipments[shipmentId]
+      if (!s) return fail('전표를 찾을 수 없습니다.')
+      if (s.status !== 'APPROVED') return fail('[H8] 결재 승인 전에는 선적 처리할 수 없습니다.')
+      const at = nowStamp()
+      const logs: Omit<AuditLog, 'id' | 'at'>[] = []
+
+      // 1) 선적 직전 VIN 재조회 — 매입 이후 새로 걸린 압류·도난을 잡는다
+      let next: ErpData = { ...data, vehicles: { ...data.vehicles } }
+      for (const id of s.vehicleIds) {
+        const v = next.vehicles[id]
+        const { note, ...vinCheck } = lookupVin(v.vin, next, at)
+        next.vehicles[id] = { ...v, vinCheck }
+        const result = vinResultLabel(vinCheck)
+        logs.push({ vehicleId: id, shipmentId, action: 'VIN 재조회 (선적 직전)', actorId: currentUserId, reason: note ? `${result} (${note})` : result })
+      }
+
+      // 2) 재판정 — 차단 항목이 있으면 전표에서 제외, 나머지는 선적 완료
+      const excluded: { vehicleId: string; reasons: string[] }[] = []
+      const shipped: string[] = []
+      for (const id of s.vehicleIds) {
+        const hard = evaluateGates(id, next).filter((g) => g.severity === 'HARD')
+        const v = next.vehicles[id]
+        if (hard.length) {
+          const reasons = hard.map((g) => `[${g.code}] ${g.title} — ${g.reason}`)
+          excluded.push({ vehicleId: id, reasons })
+          next.vehicles[id] = { ...v, stage: 'SALE_REGISTERED', shipmentId: undefined }
+          logs.push({ vehicleId: id, shipmentId, action: '선적 제외', actorId: currentUserId, prevStage: 'IN_SLIP', nextStage: 'SALE_REGISTERED', reason: hard.map((g) => `${g.code} ${g.title}`).join(', ') })
+        } else {
+          shipped.push(id)
+          next.vehicles[id] = { ...v, stage: 'SHIPPED' }
+          logs.push({ vehicleId: id, shipmentId, action: '선적 완료', actorId: currentUserId, prevStage: 'IN_SLIP', nextStage: 'SHIPPED', reason: `${s.vessel} ${s.voyage}` })
+        }
+      }
+
+      next = { ...next, shipments: { ...next.shipments, [shipmentId]: { ...s, status: 'SHIPPED', shippedAt: at, excluded } } }
+      commit(next, logs)
+      return { ...ok(shipmentId), shipped, excluded }
+    },
+
+    decideRelease: (releaseId, approve, note) => {
+      const denied = deny('DECIDE_RELEASE')
+      if (denied) return denied
+      const { data, currentUserId } = get()
+      const r = data.releases.find((x) => x.id === releaseId)
+      if (!r || r.status !== 'PENDING') return fail('결재 대기 중인 요청이 아닙니다.')
+      if (!approve && !note.trim()) return fail('반려 사유를 입력해 주세요.')
+      const decisionNote = note.trim() || `보완 기한 ${formatDate(r.dueDate)} 엄수`
+      commit(
+        {
+          ...data,
+          releases: data.releases.map((x) =>
+            x.id === releaseId ? { ...x, status: approve ? 'APPROVED' : 'REJECTED', decidedBy: currentUserId, decidedAt: nowStamp(), decisionNote } : x,
+          ),
+        },
+        [{ vehicleId: r.vehicleId, action: approve ? '조건부 선적 승인' : '조건부 선적 반려', actorId: currentUserId, reason: decisionNote }],
+      )
+      return ok(releaseId)
     },
   }
 })

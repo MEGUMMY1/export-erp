@@ -333,7 +333,7 @@ plan.forEach((p, i) => {
     if (p.release === 'APPROVED') {
       release.decidedBy = 'U-ACC'
       release.decidedAt = at(9, reqDay, 17)
-      release.decisionNote = `보완 기한 ${release.dueDate} 엄수`
+      release.decisionNote = `보완 기한 ${release.dueDate.replaceAll('-', '.')} 엄수`
       log({ vehicleId: id, action: '조건부 선적 승인', actorId: 'U-ACC', at: release.decidedAt, reason: release.decisionNote })
     }
     releases.push(release)

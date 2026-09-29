@@ -11,8 +11,8 @@ export const formatMoney = (n: number, currency: Currency) =>
 
 export const formatNumber = (n: number) => krw.format(n)
 
-/** 'YYYY-MM-DDTHH:mm' 또는 'YYYY-MM-DD' → 'MM.DD' / 'MM.DD HH:mm' */
-export const formatDate = (s: string) => s.slice(5, 10).replace('-', '.')
+/** 'YYYY-MM-DDTHH:mm' 또는 'YYYY-MM-DD' → 'YYYY.MM.DD' / 'YYYY.MM.DD HH:mm' */
+export const formatDate = (s: string) => s.slice(0, 10).replaceAll('-', '.')
 export const formatDateTime = (s: string) => (s.length > 10 ? `${formatDate(s)} ${s.slice(11, 16)}` : formatDate(s))
 
 const toDate = (s: string) => new Date(`${s.slice(0, 10)}T00:00:00`)

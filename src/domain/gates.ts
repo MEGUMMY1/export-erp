@@ -35,7 +35,7 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
     if (c?.theft) push('H2', `${formatDate(c.checkedAt)} 조회 결과 도난 신고 차량입니다. 거래를 중단해야 합니다.`)
     if (c && (c.seizure || c.lien)) {
       const kinds = [c.seizure && '압류', c.lien && '저당'].filter(Boolean).join('·')
-      push('H1', `${formatDate(c.checkedAt)} 조회 결과 ${kinds}이 등록되어 있습니다. 해제 전에는 수출 말소등록이 불가합니다.`)
+      push('H1', `${formatDate(c.checkedAt)} 조회 결과 ${kinds} 등록 확인. 해제 전에는 수출 말소등록이 불가합니다.`)
     }
     if (!c) push('H3', 'VIN 압류·도난 조회 이력이 없습니다.')
     else {
@@ -105,7 +105,7 @@ export function evaluateGates(vehicleId: string, db: ErpData): GateResult[] {
         push('H6', `신고필증 ${decl.extracted.vin} ≠ ERP ${v.vin}. 다른 차량으로 신고되었을 수 있습니다.`)
       if (decl.extracted.plateNumber !== v.plateNumber)
         push('S7', `신고필증 차량번호 ${decl.extracted.plateNumber} ≠ ERP ${v.plateNumber}`)
-      if (decl.status !== 'ACCEPTED') push('H7', `수출신고 ${decl.declNo}가 아직 수리되지 않았습니다.`)
+      if (decl.status !== 'ACCEPTED') push('H7', `수출신고 미수리 (${decl.declNo}). 수리 전에는 선적할 수 없습니다.`)
     }
   }
 
