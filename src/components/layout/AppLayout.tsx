@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router'
+import { useEffect, useRef, useState } from 'react'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
 import { ROLE_LABEL, TODAY } from '@/domain/constants'
 import { dday, formatDate } from '@/domain/format'
 import { cn } from '@/lib/cn'
 import { useCurrentUser, useData, useErpStore } from '@/store'
-import { Dropdown, toast } from '@/components/ui'
+import { Dropdown, Modal, toast } from '@/components/ui'
 import { isUnread, notificationsFor } from '@/domain/notifications'
 import { NotificationCenter } from './NotificationCenter'
 import { usePageTitleStore } from './pageTitle'
@@ -26,8 +26,11 @@ export function AppLayout() {
   const data = useData()
   const user = useCurrentUser()
   const setCurrentUser = useErpStore((s) => s.setCurrentUser)
+  const resetDemo = useErpStore((s) => s.resetDemo)
   const page = usePageTitleStore()
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const [resetOpen, setResetOpen] = useState(false)
 
   // 화면이 바뀌면 맨 위부터 보여준다
   useEffect(() => {
@@ -74,7 +77,12 @@ export function AppLayout() {
         </nav>
 
         <div className="mt-auto flex flex-col gap-2 border-t border-gray-90 px-1 py-5">
-          <p className="text-label-xs text-gray-70">시연 사용자</p>
+          <div className="flex items-center justify-between">
+            <p className="text-label-xs text-gray-70">시연 사용자</p>
+            <button type="button" onClick={() => setResetOpen(true)} className="text-label-xs text-gray-50 hover:text-gray-10">
+              데모 초기화
+            </button>
+          </div>
           <Dropdown
             size="sm"
             placement="top"
@@ -108,6 +116,24 @@ export function AppLayout() {
           <Outlet />
         </main>
       </div>
+
+      <Modal
+        open={resetOpen}
+        onClose={() => setResetOpen(false)}
+        title="데모를 초기화할까요?"
+        description="시연 중 등록·결재·선적한 내용이 모두 사라지고 처음 데이터로 돌아갑니다."
+        cancel={{ label: '취소', onClick: () => setResetOpen(false) }}
+        confirm={{
+          label: '초기화',
+          onClick: () => {
+            resetDemo()
+            announcedUserId.current = null
+            setResetOpen(false)
+            navigate('/workbench')
+            toast.success('데모 데이터를 초기화했습니다')
+          },
+        }}
+      />
     </div>
   )
 }
